@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient +</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="materialize.min.css">
+    <style>
+        body {
+            background-color: #fff8e1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar-fixed">
+    <nav class="nav-wrapper red darken-1">
+        <div class="container">
+            <a href="#" class="brand-logo">Patient +</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                <i class=" material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#" class="btn waves-effect amber lighten-4 red-text">Home</a></li>
+                <li><a href="" class="btn waves-effect amber lighten-4 red-text">Download</a></li>
+                <li><a href="" class="btn waves-effect amber lighten-4 red-text">Support</a></li>
+                <li><a href="" class="btn waves-effect amber lighten-4 red-text">System Doc</a></li>
+                <li><a href="" class="btn waves-effect amber lighten-4 red-text">About</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<ul class="sidenav" id="mobile-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="">Download</a></li>
+    <li><a href="">Support</a></li>
+    <li><a href="">System Doc</a></li>
+    <li><a href="">About</a></li>
+</ul>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+
+    $(document).ready(
+        function () {
+            $(".sidenav").sidenav();
+        }
+    )
+
+</script>
+</body>
+</html>
+
