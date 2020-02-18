@@ -1,8 +1,6 @@
 package psu.ajm6684.patientmonitoringsystem.createAccount;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,35 +8,29 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
-
-
 import java.util.HashMap;
 import java.util.Map;
-
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
-
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Map;
 import java.util.HashMap;
 import com.google.android.gms.dynamic.ObjectWrapper;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import psu.ajm6684.patientmonitoringsystem.R;
-import psu.ajm6684.patientmonitoringsystem.ui.login.User;
+import psu.ajm6684.patientmonitoringsystem.databaseHandler;
+import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
+//import psu.ajm6684.patientmonitoringsystem.ui.login.User;
 
 public class createAccount extends AppCompatActivity {
 
@@ -55,17 +47,26 @@ public class createAccount extends AppCompatActivity {
     private Button submit;
     private DatabaseReference mDatabase;
     private Firebase mRef;
+    private Spinner hopsitalSpinner;
+    private Spinner positionSpinner;
+    private Spinner departmentSpinner;
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+    databaseHandler databaseHandler;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        Firebase.setAndroidContext(this);
+        databaseHandler = new databaseHandler(this);
 
-        mRef = new Firebase("https://patient-monitoring-syste-39706.firebaseio.com/");
+//        Firebase.setAndroidContext(this);
+
+//        mRef = new Firebase("https://patient-monitoring-syste-39706.firebaseio.com/");
 
         firstName = (EditText) findViewById(R.id.editText);
         lastName = (EditText) findViewById(R.id.editText2);
@@ -73,11 +74,25 @@ public class createAccount extends AppCompatActivity {
         employeeID = (EditText) findViewById(R.id.editText4);
         submit = (Button) findViewById(R.id.button);
 
+//        hopsitalSpinner = (Spinner)
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                SQLiteDatabase mydatabase = openOrCreateDatabase("Patient Monitoring System",MODE_PRIVATE,null);
+                boolean isInserted = databaseHandler.insertData("reffe", firstName.getText().toString(), lastName.getText().toString(),"refef ", "fefef", userName.getText().toString(), "dfsdfdf");
+                if(isInserted){
+
+                    Toast.makeText(createAccount.this,"Account Created", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(createAccount.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(createAccount.this,"Something went wrong, Account was not created", Toast.LENGTH_LONG).show();
+
+
+//                SQLiteDatabase mydatabase = openOrCreateDatabase("Patient Monitoring System",MODE_PRIVATE,null);
 
 //                Map<String,Object> myMap = new HashMap<String,Object>();
 //
