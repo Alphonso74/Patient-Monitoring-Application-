@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="position_createAccount">
+        <item>Doctor</item>
+        <item>Nurse</item>
+        <item>Receptionist</item>
+    </string-array>
+    <string-array name="department_createAccount">
+        <item>Neonatal</item>
+        <item>General Care</item>
+        <item>Post-Operation</item>
+    </string-array>
+    <string-array name="hosptial_createAccount">
+        <item>PSU FRIENDS</item>
+    </string-array>
+</resources>
+

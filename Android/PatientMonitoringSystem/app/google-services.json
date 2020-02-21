@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "721554238180",
+    "firebase_url": "https://patient-monitoring-syste-39706.firebaseio.com",
+    "project_id": "patient-monitoring-syste-39706",
+    "storage_bucket": "patient-monitoring-syste-39706.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721554238180:android:2e498782aa4294e4dfdaf1",
+        "android_client_info": {
+          "package_name": "psu.ajm6684.patientmonitoringsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721554238180-siakflc80a4ea2tkuicouj1c88q60t20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "psu.ajm6684.patientmonitoringsystem",
+            "certificate_hash": "86bfef38f42c190376f6362d99a02540fc5c17fb"
+          }
+        },
+        {
+          "client_id": "721554238180-4aqq8pp0p7jd4auugnaoo79fva3j1ts1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXnXSNYzOmV-BfnzXU9f_WH3nF9uag2b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721554238180-4aqq8pp0p7jd4auugnaoo79fva3j1ts1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
