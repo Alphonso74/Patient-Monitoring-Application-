@@ -5,6 +5,7 @@
     android:id="@+id/Activity_createAccount"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".createAccount.createAccount">
 
     <TextView
@@ -65,6 +66,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
         android:ems="10"
+        android:hint="First Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/editText2"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -78,6 +80,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
+        android:hint="Last Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
@@ -143,7 +146,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="40dp"
-        android:text="Username"
+        android:text="Email "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -157,6 +160,7 @@
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
         android:ems="10"
+        android:hint="Email Address"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.305"
@@ -170,7 +174,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="48dp"
-        android:text="Employee ID"
+        android:text="Password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -184,7 +188,8 @@
         android:layout_marginEnd="78dp"
         android:layout_marginRight="78dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:hint="Password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -200,4 +205,34 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="291dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginBottom="146dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="11dp"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="back"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,60 +1,38 @@
 package psu.ajm6684.patientmonitoringsystem.createAccount;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import com.firebase.client.Firebase;
-import com.google.firebase.database.DatabaseReference;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.Map;
-import java.util.HashMap;
-import com.google.android.gms.dynamic.ObjectWrapper;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 import psu.ajm6684.patientmonitoringsystem.R;
-import psu.ajm6684.patientmonitoringsystem.databaseHandler;
 import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
 //import psu.ajm6684.patientmonitoringsystem.ui.login.User;
 
 public class createAccount extends AppCompatActivity {
 
-    private static final String KEY_FNAME = "First Name";
-    private static final String KEY_LNAME = "Last Name";
-    private static final String KEY_UNAME = "User Name";
-    private static final String KEY_EID = "Employee ID";
-
-    private FirebaseAuth auth;
     private EditText firstName;
     private EditText lastName;
-    private EditText userName;
-    private EditText employeeID;
+    private EditText email;
+    private EditText password;
     private Button submit;
-    private DatabaseReference mDatabase;
-    private Firebase mRef;
     private Spinner hopsitalSpinner;
     private Spinner positionSpinner;
     private Spinner departmentSpinner;
 
-
-
-    databaseHandler databaseHandler;
-
+    FirebaseAuth firebaseAuth;
+    ProgressBar progressBar;
 
 
     @Override
@@ -62,54 +40,93 @@ public class createAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        databaseHandler = new databaseHandler(this);
 
-//        Firebase.setAndroidContext(this);
-
-//        mRef = new Firebase("https://patient-monitoring-syste-39706.firebaseio.com/");
 
         firstName = (EditText) findViewById(R.id.editText);
         lastName = (EditText) findViewById(R.id.editText2);
-        userName = (EditText) findViewById(R.id.editText3);
-        employeeID = (EditText) findViewById(R.id.editText4);
+        email = (EditText) findViewById(R.id.editText3);
+        password = (EditText) findViewById(R.id.editText4);
         submit = (Button) findViewById(R.id.button);
 
-//        hopsitalSpinner = (Spinner)
+        hopsitalSpinner = (Spinner) findViewById(R.id.spinner);
+        positionSpinner = (Spinner) findViewById(R.id.spinner2);
+        departmentSpinner = (Spinner) findViewById(R.id.spinner3);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.INVISIBLE);
+
+
+        if(firebaseAuth.getCurrentUser() != null){
+
+            Toast.makeText(getApplicationContext(), "Account already created", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(createAccount.this, LoginActivity.class);
+            startActivity(intent);
+        }
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                boolean isInserted = databaseHandler.insertData("reffe", firstName.getText().toString(), lastName.getText().toString(),"refef ", "fefef", userName.getText().toString(), "dfsdfdf");
-                if(isInserted){
+                progressBar.setVisibility(View.VISIBLE);
 
-                    Toast.makeText(createAccount.this,"Account Created", Toast.LENGTH_LONG).show();
+
+                if(password.length() < 6){
+
+                    password.setError("Password must be longer than 6 characters!");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return;
+                }
+
+
+                if(firstName.getText().toString().isEmpty()
+                        || lastName.getText().toString().isEmpty()
+                        || email.getText().toString().isEmpty()
+                        || password.getText().toString().isEmpty()) {
+
+
+                    Toast.makeText(getApplicationContext(), "Empty Credentials", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return;
+                }
+
+                else
+                {
+
+
+                    String passWord = password.getText().toString().trim();
+                    String lname = lastName.getText().toString().trim();
+                    String fname = firstName.getText().toString().trim();
+                    String hopsitall = hopsitalSpinner.getSelectedItem().toString().trim();
+                    String emailAdd = email.getText().toString().trim();
+                    String pos = positionSpinner.getSelectedItem().toString().trim();
+                    String dep = departmentSpinner.getSelectedItem().toString().trim();
+
+
+                    firebaseAuth.createUserWithEmailAndPassword(emailAdd,passWord).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_LONG).show();
+
+
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(), "Error!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.INVISIBLE);
+
+                            }
+                        }
+                    });
+
+
+
 
                     Intent intent = new Intent(createAccount.this, LoginActivity.class);
                     startActivity(intent);
                 }
-                else
-                    Toast.makeText(createAccount.this,"Something went wrong, Account was not created", Toast.LENGTH_LONG).show();
-
-
-//                SQLiteDatabase mydatabase = openOrCreateDatabase("Patient Monitoring System",MODE_PRIVATE,null);
-
-//                Map<String,Object> myMap = new HashMap<String,Object>();
-//
-//                String fname = firstName.getText().toString();
-//                String lname = lastName.getText().toString();
-//                String uName = userName.getText().toString();
-//                String eID = employeeID.getText().toString();
-//
-//                myMap.put(KEY_FNAME,fname);
-//                myMap.put(KEY_LNAME,lname);
-//                myMap.put(KEY_UNAME,uName);
-//                myMap.put(KEY_EID,eID);
-//
-////                db.collection("demoProviders").document("First Provider");
-//
-//                db.collection("Doctors").document().set(myMap);
-
             }
         });
 
@@ -117,8 +134,9 @@ public class createAccount extends AppCompatActivity {
     }
 
 
+    public void back(View view) {
 
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
 
-
-
+    }
 }

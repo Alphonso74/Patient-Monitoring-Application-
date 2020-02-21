@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import psu.ajm6684.patientmonitoringsystem.dummy.DummyContent;
+import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
 
 import java.util.List;
 
@@ -70,6 +72,13 @@ public class patientListActivity extends AppCompatActivity {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+    }
+
+    public void logout(View view) {
+
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();
     }
 
     public static class SimpleItemRecyclerViewAdapter
