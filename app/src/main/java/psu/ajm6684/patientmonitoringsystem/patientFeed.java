@@ -24,6 +24,7 @@ public class patientFeed extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patients = db.collection("patients");
 
+    private Button button;
     private PatientAdapter patientAdapter;
 
     @Override
