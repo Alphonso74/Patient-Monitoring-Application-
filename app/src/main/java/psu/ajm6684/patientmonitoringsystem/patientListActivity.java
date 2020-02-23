@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import psu.ajm6684.patientmonitoringsystem.dummy.DummyContent;
@@ -39,14 +40,30 @@ public class patientListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
 
+    private Button addPatient;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        addPatient = (Button) findViewById(R.id.addPatient);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
+//        toolbar.setTitle(getTitle());
+//        addPatient.setOnClickListener();
+
+        addPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(patientListActivity.this, add_patient.class);
+                startActivity(intent);
+
+            }
+        });
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +86,8 @@ public class patientListActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
+
+
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
@@ -149,4 +168,6 @@ public class patientListActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }

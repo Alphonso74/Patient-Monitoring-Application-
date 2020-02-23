@@ -8,28 +8,57 @@
     android:background="@drawable/background"
     tools:context=".patientListActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/app_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:theme="@style/AppTheme.AppBarOverlay">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:popupTheme="@style/AppTheme.PopupOverlay"/>-->
+
+
+
+
+
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+
+    <com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/materialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:background="@color/colorPrimary"
+        android:elevation="4dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+<!--        <Spinner-->
+<!--            android:id="@+id/spinner4"-->
+<!--            android:layout_width="118dp"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:background=""/>-->
+
+
 
         <Button
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:onClick="logout"
-            />
+            android:text="Logout" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <Button
+        android:id="@+id/addPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "Add Patient"
+        android:layout_gravity="end" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -37,10 +66,17 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/patient_list" />
+
     </FrameLayout>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <include
+        layout="@layout/patient_list"
+        android:layout_width="411dp"
+        android:layout_height="622dp"
+        app:layout_anchor="@+id/frameLayout"
+        app:layout_anchorGravity="center" />
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
 <!--        android:id="@+id/fab"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->

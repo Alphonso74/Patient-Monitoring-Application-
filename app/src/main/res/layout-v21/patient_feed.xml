@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patientFeed">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--        <Spinner-->
+        <!--            android:id="@+id/spinner4"-->
+        <!--            android:layout_width="118dp"-->
+        <!--            android:layout_height="55dp"-->
+        <!--            android:background=""/>-->
+
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:onClick="logout"
+            android:text="Logout" />
+
+        <Button
+            android:id="@+id/addPatient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Add Patient" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_add_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        />
+
+</android.support.design.widget.CoordinatorLayout>
+    
+    
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:orientation="vertical"-->
+<!--    app:cardCornerRadius="12dp"-->
+<!--    android:layout_margin="7dp"-->
+<!--    android:elevation="90dp">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="248dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:background="@color/colorPrimary">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="180dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:id="@+id/patient_image"/>-->
+
+<!--<TextView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:id="@+id/patient_name"-->
+<!--    android:text="Name: "-->
+<!--    android:textSize="20sp"-->
+<!--    android:textColor="#ffff"/>-->
+
+
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/patient_description"-->
+<!--            android:text="Description: "-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="#ffff"/>-->
+
+
+
+
+<!--        </LinearLayout>-->
+
+
+<!--</androidx.cardview.widget.CardView>-->
+
+
+
