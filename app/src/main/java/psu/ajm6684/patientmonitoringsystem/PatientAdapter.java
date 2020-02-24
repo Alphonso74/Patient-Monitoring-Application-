@@ -23,6 +23,11 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
 
         patientHolder.patientNameView.setText(note.getPatientName());
         patientHolder.patientDescriptionView.setText(note.getDescription());
+        patientHolder.patientTriageTag.setText(note.getTriageTag());
+        patientHolder.patientHeight.setText(note.getHeight());
+        patientHolder.patientWeight.setText(String.valueOf(note.getWeight()));
+        patientHolder.patientRHeartRate.setText(String.valueOf(note.getrHeartRate()));
+
     }
 
     @NonNull
@@ -36,12 +41,21 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
     class patientHolder extends RecyclerView.ViewHolder{
             TextView patientNameView;
             TextView patientDescriptionView;
+            TextView patientHeight;
+            TextView patientWeight;
+            TextView patientRHeartRate;
+            TextView patientTriageTag;
+
 
 
         public patientHolder(View itemView){
             super(itemView);
             patientNameView = itemView.findViewById(R.id.text_view_title);
             patientDescriptionView = itemView.findViewById(R.id.text_view_description);
+            patientHeight = itemView.findViewById(R.id.text_view_height);
+            patientWeight = itemView.findViewById(R.id.text_view_weight);
+            patientRHeartRate = itemView.findViewById(R.id.text_view_heartrate);
+            patientTriageTag = itemView.findViewById(R.id.text_view_triage);
         }
     }
 }

@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_patient">
-
-
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_add_patient" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".addPatient"
+    android:background="@drawable/background">
 
     <TextView
-        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="Add Patient "
-        app:layout_anchorGravity="top|center" />
+        android:layout_marginTop="16dp"
+        android:text="New Patient"
+        android:textAppearance="@android:style/TextAppearance.Medium" />
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <EditText
+        android:id="@+id/edit_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/edit_text_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Height"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_text_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_text_heartRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Heart Rate"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_text_triageTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Triage Tag"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:text="Add Patient"
+        />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:text="Discard"
+        />
+
+
+</LinearLayout>

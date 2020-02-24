@@ -9,7 +9,7 @@
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    app:cardBackgroundColor="#00B8D4"
+    app:cardBackgroundColor="#9FA2AA"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -19,22 +19,116 @@
 
         <TextView
             android:id="@+id/text_view_title"
-            android:layout_width="211dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
             android:ellipsize="end"
             android:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
 
 
         <TextView
             android:id="@+id/text_view_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_below="@id/text_view_title"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView8"
             android:text="Description" />
+
+        <TextView
+            android:id="@+id/text_view_triage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_description"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView9"
+            android:text="Triage Tag" />
+
+        <TextView
+            android:id="@+id/text_view_heartrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_triage"
+
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView14"
+            android:text="Heart Rate" />
+
+        <TextView
+            android:id="@+id/text_view_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_heartrate"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView15"
+            android:text="Height" />
+
+        <TextView
+            android:id="@+id/text_view_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_height"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView16"
+            android:text="Weight" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_title"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Description:" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Triage Tag:" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView9"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Resting Heart Rate:" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView14"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Height:" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView15"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Weight:" />
+
 
     </RelativeLayout>
 

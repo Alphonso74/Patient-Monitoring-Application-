@@ -55,15 +55,15 @@ public class patientListActivity extends AppCompatActivity {
 //        toolbar.setTitle(getTitle());
 //        addPatient.setOnClickListener();
 
-        addPatient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(patientListActivity.this, add_patient.class);
-                startActivity(intent);
-
-            }
-        });
+//        addPatient.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(patientListActivity.this, add_patient.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {

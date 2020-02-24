@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,18 +25,30 @@ public class patientFeed extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patients = db.collection("patients");
 
-    private Button button;
     private PatientAdapter patientAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed_patient);
-        Button addPatient = (Button) findViewById(R.id.addPatient);
+//         addPatient = (Button) findViewById(R.id.addPatient);
+
+        Button buttonAddPatient = (Button) findViewById(R.id.button_add);
+        buttonAddPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(patientFeed.this, addPatient.class));
+            }
+        });
 
 
         setUpView();
     }
+
+
         private void setUpView() {
             Query query = patients;
 
@@ -43,7 +56,7 @@ public class patientFeed extends AppCompatActivity {
 
             patientAdapter = new PatientAdapter(options);
 
-            RecyclerView recyclerView = findViewById(R.id.RecycleView);
+            RecyclerView recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(patientAdapter);
@@ -62,7 +75,12 @@ public class patientFeed extends AppCompatActivity {
         }
 
 
-
+//    public void fabClick(View view){
+//
+//
+//        startActivity(new Intent(patientFeed.this, addPatient.class));
+//
+//    }
 
     public void logout(View view) {
 
