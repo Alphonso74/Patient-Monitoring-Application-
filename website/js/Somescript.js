@@ -27,7 +27,7 @@ document.querySelectorAll('.like_button_container')
         // Read the comment ID from a data-* attribute.
         const commentID = parseInt(domContainer.dataset.commentid, 10);
         ReactDOM.render(
-            e(LikeButton, { commentID: commentID }),
+            e(Somescript, { commentID: commentID }),
             domContainer
         );
     });
