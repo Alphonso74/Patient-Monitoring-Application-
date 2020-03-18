@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,9 +13,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.core.Tag;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import psu.ajm6684.patientmonitoringsystem.R;
 import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
@@ -30,6 +38,12 @@ public class createAccount extends AppCompatActivity {
     private Spinner hopsitalSpinner;
     private Spinner positionSpinner;
     private Spinner departmentSpinner;
+
+    String Uid;
+
+    FirebaseFirestore firestore;
+
+
 
     FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
@@ -47,6 +61,8 @@ public class createAccount extends AppCompatActivity {
         email = (EditText) findViewById(R.id.editText3);
         password = (EditText) findViewById(R.id.editText4);
         submit = (Button) findViewById(R.id.button);
+
+        firestore = FirebaseFirestore.getInstance();
 
         hopsitalSpinner = (Spinner) findViewById(R.id.spinner);
         positionSpinner = (Spinner) findViewById(R.id.spinner2);
@@ -99,18 +115,39 @@ public class createAccount extends AppCompatActivity {
                     String passWord = password.getText().toString().trim();
                     String lname = lastName.getText().toString().trim();
                     String fname = firstName.getText().toString().trim();
-                    String hopsitall = hopsitalSpinner.getSelectedItem().toString().trim();
-                    String emailAdd = email.getText().toString().trim();
-                    String pos = positionSpinner.getSelectedItem().toString().trim();
-                    String dep = departmentSpinner.getSelectedItem().toString().trim();
+                    final String fullName = fname + " " + lname;
+                    final String hopsitall = hopsitalSpinner.getSelectedItem().toString().trim();
+                    final String emailAdd = email.getText().toString().trim();
+                    final String pos = positionSpinner.getSelectedItem().toString().trim();
+                    final String dep = departmentSpinner.getSelectedItem().toString().trim();
 
 
                     firebaseAuth.createUserWithEmailAndPassword(emailAdd,passWord).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_LONG).show();
 
+                                Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_LONG).show();
+                                Uid = firebaseAuth.getCurrentUser().getUid();
+                                DocumentReference documentReference = firestore.collection("Users").document(Uid);
+
+                                Map<String,Object> userMap = new HashMap<>();
+                                userMap.put("fullName",fullName);
+                                userMap.put("email",emailAdd);
+                                userMap.put("hospital",hopsitall);
+                                userMap.put("position",pos);
+                                userMap.put("department",dep);
+
+                                documentReference.set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                        System.out.println("Success" + Uid);
+                                    }
+                                });
+
+                                Intent intent = new Intent(createAccount.this, LoginActivity.class);
+                                startActivity(intent);
 
                             }
                             else{
@@ -124,8 +161,7 @@ public class createAccount extends AppCompatActivity {
 
 
 
-                    Intent intent = new Intent(createAccount.this, LoginActivity.class);
-                    startActivity(intent);
+
                 }
             }
         });

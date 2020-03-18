@@ -13,6 +13,8 @@
     <string name="createAccount_title"><u>"Create Your Account"</u></string>
     <string name="title_patient_list">patients</string>
     <string name="title_patient_detail">patient Detail</string>
+    <string name="title_activity_add_patient">add_patient</string>
+    <!--    <string name="title_activity_add_patient">addPatientActivity</string>-->
 
 
 </resources>

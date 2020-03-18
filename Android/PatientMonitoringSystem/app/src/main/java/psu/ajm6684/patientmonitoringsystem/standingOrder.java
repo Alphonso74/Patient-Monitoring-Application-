@@ -1,4 +1,5 @@
 package psu.ajm6684.patientmonitoringsystem;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,36 +20,28 @@ import java.util.Locale;
 import android.app.Activity;
 
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
-public class chart extends Activity {
+public class standingOrder extends Activity {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    final private CollectionReference charts = db.collection("charts");
+
+    private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+//    final private CollectionReference charts = db.collection("patients").document();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.createchart);
+        setContentView(R.layout.createstandingorder);
         Intent intent = getIntent();
-        //final String pName = intent.getStringExtra("Patient Name");
-
         final String pName = intent.getStringExtra("Patient Name");
-        final String patientDescription = intent.getStringExtra("Patient Description");
-        final String patientHeight = intent.getStringExtra("Patient Height");
-        final String patientWeight = intent.getStringExtra("Patient Weight");
-        final String patientRestingHeartRate = intent.getStringExtra("Patient Resting Heart Rate");
-        final String patientID = intent.getStringExtra("Patient ID");
-        final Integer position = intent.getIntExtra("position",0);
-        final String bodyTemp = intent.getStringExtra("bodyTemp");
-        final String activeNurse = intent.getStringExtra("nurse");
-        final String medications = intent.getStringExtra("medications");
-        final String sHistory = intent.getStringExtra("surgicalH");
-        final String standingO = intent.getStringExtra("standingO");
+        final String pID = intent.getStringExtra("Patient ID");
 
-        TextView patientName = (TextView) findViewById(R.id.PatientNameChart);
+        TextView patientName = (TextView) findViewById(R.id.PatientNameChart1);
+
+        final DocumentReference patientItem = firebaseFirestore.collection("patients").document(pID);
 
 
         patientName.setText(pName);
@@ -56,13 +49,13 @@ public class chart extends Activity {
         final String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         final String currentTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
 
-        TextView dateView = (TextView) findViewById(R.id.chartDate);
+        TextView dateView = (TextView) findViewById(R.id.chartDate1);
 
 
         dateView.setText(currentDate + " @" + currentTime);
-        Button cancel = (Button) findViewById(R.id.cancelButton);
-        Button save = (Button) findViewById(R.id.saveButton);
-        final EditText text = (EditText) findViewById(R.id.TextFieldMain);
+        Button cancel = (Button) findViewById(R.id.cancelButton1);
+        Button save = (Button) findViewById(R.id.saveButton1);
+        final EditText text = (EditText) findViewById(R.id.TextFieldMain1);
 
 
 
@@ -83,16 +76,16 @@ public class chart extends Activity {
 
                 if(userText.isEmpty()){
 
-                    Toast toast = Toast.makeText(getApplicationContext(),"Cannot Submit Empty Chart",Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(),"Cannot Submit Empty Standing Order",Toast.LENGTH_SHORT);
                     toast.show();
 
 
                 }
                 else {
 
-                    charts.add(new chartNote(userText, pName, currentDate, currentTime));
+                    //charts.add(new chartNote(userText, pName, currentDate, currentTime));
 
-
+                    patientItem.update("standingOrder",userText);
 
                     Toast toast = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT);
                     toast.show();
