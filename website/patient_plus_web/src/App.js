@@ -1,29 +1,13 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
-import routes from './Routes';
+import Simulator from './Simulator';
+//import routes from './Routes';
 
 class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <nav>
-                    <div className="nav-wrapper">
-                        <a href="#" className="brand-logo center">Patent+</a>
-                        <a href="#" data-target="mobile-id" className="sidenav-trigger">
-                            <i className="material-icons">menu</i></a>
-                        <ul className="left hide-on-med-and-down">
-                                <li><a href="#"><i className="material-icons left">home</i>Home</a></li>
-                                <li><a href="#"><i className="material-icons left">file_download</i>Download</a></li>
-                                <li><a href="#"><i className="material-icons left">local_library</i>Application</a></li>
-                                <li><a href="#"><i className="material-icons left">assignment_ind</i>About</a></li>
-                                <li><a href="#"> <i className="material-icons left">call_end</i>Contact Us</a></li>
-                                <li><Link to="/simulator"><i className="material-icons left">healing</i>Simulator</Link></li>
-                        </ul>
-                    </div>
-                </nav>
 
                 <ul className="sidenav" id="mobile-id">
                     <li>

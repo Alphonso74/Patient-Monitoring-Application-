@@ -36,18 +36,6 @@
       <recent name="C:\Users\Sean\Documents\GitHub\Patient-Monitoring-Application-\website\patient_plus_web\public" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -61,6 +49,7 @@
       <workItem from="1583096107420" duration="8527000" />
       <workItem from="1583109315862" duration="817000" />
       <workItem from="1584312849215" duration="10194000" />
+      <workItem from="1584499526626" duration="4043000" />
     </task>
     <servers />
   </component>
