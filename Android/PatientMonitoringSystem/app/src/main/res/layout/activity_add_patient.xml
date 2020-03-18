@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".addPatient"
+    android:background="@drawable/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:text="New Patient"
+        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+
+    <EditText
+        android:id="@+id/edit_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Name"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/edit_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/edit_text_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Height"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/edit_text_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Weight"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_text_heartRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Heart Rate"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_text_triageTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Triage Tag"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/bodyTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Body Temperature"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/medications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Current Medications (Separate By comma)"
+        android:inputType="textCapWords" />
+
+    <EditText
+        android:id="@+id/surgicalHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient Surgical History (Separate By comma)"
+        android:inputType="textCapWords" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Add Patient"
+        />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Discard"
+        />
+
+
+</LinearLayout>

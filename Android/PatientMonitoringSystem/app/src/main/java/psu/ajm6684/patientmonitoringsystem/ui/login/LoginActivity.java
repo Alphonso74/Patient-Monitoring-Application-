@@ -35,7 +35,8 @@ import com.google.firebase.database.core.Tag;
 
 import psu.ajm6684.patientmonitoringsystem.R;
 import psu.ajm6684.patientmonitoringsystem.createAccount.createAccount;
-import psu.ajm6684.patientmonitoringsystem.patientListActivity;
+import psu.ajm6684.patientmonitoringsystem.patientFeed;
+//import psu.ajm6684.patientmonitoringsystem.patientListActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(LoginActivity.this, patientListActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, patientFeed.class);
                     startActivity(intent);
                     finish();
                 }
@@ -210,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void openPatientFeedActivity(){
-        Intent intent = new Intent(LoginActivity.this, patientListActivity.class);
+        Intent intent = new Intent(LoginActivity.this, patientFeed.class);
         startActivity(intent);
     }
 
