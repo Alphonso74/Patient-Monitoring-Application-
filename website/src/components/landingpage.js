@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
-import logo from "/Users/alphonsomckenzie/Desktop/website/src/images/patientplusimage.png"
+import logo from "/Users/alphonsomckenzie/Documents/GitHub/Patient-Monitoring-Application-/website/src/images/patientplusimage.png"
 
 
 class Landing extends Component {

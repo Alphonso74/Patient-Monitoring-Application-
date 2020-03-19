@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
-import pictureAlphonso from '/Users/alphonsomckenzie/Desktop/website/src/images/picture.jpg'
+ import pictureAlphonso from '/Users/alphonsomckenzie/Documents/GitHub/Patient-Monitoring-Application-/website/src/images/picture.jpg'
 
 
 class Alphonso extends Component {
@@ -12,6 +12,7 @@ class Alphonso extends Component {
                         <h2>Alphonso Mckenzie</h2>
                         <img
                             src={pictureAlphonso}
+                        //src={ '/Users/alphonsomckenzie/Documents/GitHub/Patient-Monitoring-Application-/website/src/images/picture.jpg' }
                             alt="avatar"
                             style={{height: '250px'}}
                         />

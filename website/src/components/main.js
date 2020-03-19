@@ -1,10 +1,7 @@
 import React from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
-
 import LandingPage from './landingpage';
 import Aboutus from './aboutus';
-import Contact from './contact';
-import Projects from './projects';
 import Alphonso from './alphonso';
 import Sean from './sean';
 import Charles from './charles';
@@ -26,8 +23,6 @@ const Main = () => (
   <Switch>
     <Route exact path="/" component={LandingPage} />
     <Route path="/aboutus" component={Aboutus} />
-    <Route path="/contact" component={Contact} />
-    <Route path="/projects" component={Projects} />
       <Route path="/alphonso" component={Alphonso} />
       <Route path="/sean" component={Sean} />
       <Route path="/charles" component={Charles} />

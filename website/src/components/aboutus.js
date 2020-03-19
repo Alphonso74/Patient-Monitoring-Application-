@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 // import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
 import { Grid, Cell } from 'react-mdl';
-import Education from './education';
-import Experience from './experience';
-import Skills from './skills';
-import picture from "/Users/alphonsomckenzie/Desktop/website/src/images/patientPlusApp.png"
 
+
+import patientP from '/Users/alphonsomckenzie/Documents/GitHub/Patient-Monitoring-Application-/website/src/images/patientPlusApp.png';
+
+//import picture from "patientPlusApp.png"
+// var imageName = require('./images/patientPlusApp.png')
 class About extends Component {
   render() {
     return(
@@ -14,7 +15,8 @@ class About extends Component {
             <Cell col={4}>
               <div style={{textAlign: 'center'}}>
                 <img
-                    src={picture}
+
+                    src={patientP}
                     alt="avatar"
                     style={{height: '200px'}}
                 />
