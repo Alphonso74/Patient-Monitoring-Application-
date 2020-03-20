@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
-import Notifications from './Notifications';
-import Feed from './Feed';
-import { Header } from 'react-mdl';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Navbar from './components/layout/Navbar'
+import Dashboard from './components/dashboard/Dashboard'
+import ProjectDetails from './components/patients/PatientDetails'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+import CreatePatient from './components/patients/CreatePatient';
 
 class App extends Component {
-    render(){
-        return(
-            <div className="App">
-                <Header className="teal darken-2" title="Patient+ Data Simulator" scroll />
-                <div>
+  render() {
+    return (
+        <BrowserRouter>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route exact path='/' component={Dashboard} />
+              <Route path='/project/:id' component={ProjectDetails} />
+              <Route path='/signin' component={SignIn} />
+              <Route path='/signup' component={SignUp} />
+              <Route path='/create' component={CreatePatient} />
 
-                    <dic className="row">
-
-                        <div className="col s12 m6">
-                            <Feed />
-                        </div>
-
-                        <div className="col s12 m6">
-                            <Notifications />
-                        </div>
-
-                    </dic>
-                </div>
-            </div>
-        );
-    }
+            </Switch>
+          </div>
+        </BrowserRouter>
+    );
+  }
 }
 
 export default App;
