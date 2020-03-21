@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="393fec69-bc9d-40e8-b9b4-8ee8405ecb07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DataSim/data-sim/src/Store/Reducers/ProjectReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSim/data-sim/src/Store/Reducers/RootReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataSim/data-sim/src/Store/Reducers/authReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSim/data-sim/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/DataSim/data-sim/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSim/data-sim/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataSim/data-sim/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSim/data-sim/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataSim/data-sim/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +135,7 @@
       <workItem from="1582843932443" duration="3816000" />
       <workItem from="1583077531448" duration="232000" />
       <workItem from="1583096077111" duration="24000" />
-      <workItem from="1584824218164" duration="2400000" />
+      <workItem from="1584824218164" duration="2887000" />
     </task>
     <task id="LOCAL-00001" summary="Starting react config">
       <created>1582952304226</created>
@@ -160,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584824554840</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Start to Redux">
+      <created>1584832340661</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584832340661</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +185,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Starting react config" />
     <MESSAGE value="react button" />
-    <option name="LAST_COMMIT_MESSAGE" value="react button" />
+    <MESSAGE value="Start to Redux" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start to Redux" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1583096101138">
