@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
+import {createPatient} from "../../store/actions/patientActions";
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import history from "../../history";
+import {Redirect} from 'react-router-dom'
 
 class CreatePatient extends Component {
     state = {
         patientName: '',
         description: '',
-        patientHeight: '',
-        patientWeight: '',
-        patientHeartRate: '',
+        height: '',
+        weight: '',
+        rHeartRate: '',
         triageTag:  '',
-        bodyTemp: '',
-        currentMedications: '',
-        surgicalHistory: ''
+        bodyTempature: '',
+        medications: '',
+        surgicaHistory: '',
+        activeNurse: '',
+        standingOrder: ''
 
     }
     handleChange = (e) => {
@@ -20,13 +27,18 @@ class CreatePatient extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
+        this.props.history.push('/');
+
         console.log(this.state);
+        this.props.createPatient(this.state)
     }
     render() {
+        const {auth} = this.props;
+        if(!auth.uid) return <Redirect to='/signin'/>
         return (
             <div className="container">
                 <form className="white" onSubmit={this.handleSubmit}>
-                    <h5 className="grey-text text-darken-3">Create a New Project</h5>
+                    <h5 className="grey-text text-darken-3">Add a New Patient</h5>
 
                     <div className="input-field">
                         <label htmlFor="patientName">Patient Name</label>
@@ -40,20 +52,20 @@ class CreatePatient extends Component {
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="patientHeight">Patient Height</label>
-                        <input type="text" id='patientHeight' onChange={this.handleChange} />
+                        <label htmlFor="height">Patient Height</label>
+                        <input type="text" id='height' onChange={this.handleChange} />
 
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="patientWeight">Patient Weight</label>
-                        <input type="number" id='patientWeight' onChange={this.handleChange} />
+                        <label htmlFor="weight">Patient Weight</label>
+                        <input type="number" id='weight' onChange={this.handleChange} />
 
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="patientHeartRate">Patient Resting Heart Rate</label>
-                        <input type="number" id='patientHeartRate' onChange={this.handleChange} />
+                        <label htmlFor="rHeartRate">Patient Resting Heart Rate</label>
+                        <input type="number" id='rHeartRate' onChange={this.handleChange} />
 
                     </div>
 
@@ -65,26 +77,32 @@ class CreatePatient extends Component {
 
 
                     <div className="input-field">
-                        <label htmlFor="bodyTemp">Patient Resting Heart Rate</label>
-                        <input type="number" id='bodyTemp' onChange={this.handleChange} />
+                        <label htmlFor="bodyTempature">Patient Resting Heart Rate</label>
+                        <input type="number" id='bodyTempature' onChange={this.handleChange} />
 
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="currentMedications">Current Medication (Separate With Commas)</label>
-                        <input type="text" id='currentMedications' onChange={this.handleChange} />
+                        <label htmlFor="medications">Current Medication (Separate With Commas)</label>
+                        <input type="text" id='medications' onChange={this.handleChange} />
 
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="surgicalHistory">Surgical History (Separate With Commas)</label>
-                        <input type="text" id='surgicalHistory' onChange={this.handleChange} />
+                        <label htmlFor="surgicaHistory">Surgical History (Separate With Commas)</label>
+                        <input type="text" id='surgicaHistory' onChange={this.handleChange} />
 
                     </div>
 
 
                     <div className="input-field">
-                        <button className="btn red lighten-1">Add Patient</button>
+                        {/*<p>Test</p>*/}
+                        <button className="btn red lighten-1" >Add Patient</button>
+                        {/*<Link*/}
+                        {/*    to="/" >*/}
+                        {/*    <button className="btn red lighten-1">Add Patient</button>*/}
+
+                        {/*</Link>*/}
                     </div>
                 </form>
             </div>
@@ -92,4 +110,16 @@ class CreatePatient extends Component {
     }
 }
 
-export default CreatePatient
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createPatient: (patient) => dispatch(createPatient(patient))
+    }
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(CreatePatient)
