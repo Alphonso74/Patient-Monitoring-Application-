@@ -12,6 +12,9 @@ class App extends Component {
         <Header className="header-color" title={<Link style={{textDecoration: 'none', color: 'white'}} to="/">Home</Link>} scroll>
             <Navigation>
                 <Link to="/aboutus">About Us</Link>
+                {/*<a href="patient-monitoring-syste-39706.firebaseapp.com" rel="noopener noreferrer" target="_blank">*/}
+                {/*    <i className="fa fa-github-square" aria-hidden="true" />*/}
+                {/*</a>*/}
                 <Link to="/datasim">Data Simulator</Link>
                 <Link to="/alphonso">Alphonso Mckenzie</Link>
                 <Link to="/sean">Sean Todd</Link>

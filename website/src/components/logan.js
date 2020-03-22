@@ -9,11 +9,11 @@ class Logan extends Component {
                 <Grid className="contact-grid">
                     <Cell col={6}>
                         <h2>Logan Kollar</h2>
-                        <img
-                            src="https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png"
-                            alt="avatar"
-                            style={{height: '250px'}}
-                        />
+                        {/*<img*/}
+                        {/*    src="https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png"*/}
+                        {/*    alt="avatar"*/}
+                        {/*    style={{height: '250px'}}*/}
+                        {/*/>*/}
                         <p style={{ width: '75%', margin: 'auto', paddingTop: '1em'}}>I am currently employed in the hospitality industry, where i use my down time to work on side projects</p>
 
                     </Cell>

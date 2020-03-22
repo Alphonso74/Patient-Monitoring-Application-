@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dhruvil.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dhruvil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/charles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/logan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/logan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sean.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sean.js" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +44,18 @@
       <recent name="$PROJECT_DIR$/src/images" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -54,6 +73,7 @@
       <workItem from="1584891323853" duration="78000" />
       <workItem from="1584891403390" duration="17000" />
       <workItem from="1584892892563" duration="1352000" />
+      <workItem from="1584909983392" duration="763000" />
     </task>
     <servers />
   </component>
