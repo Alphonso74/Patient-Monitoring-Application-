@@ -18,4 +18,5 @@
     <!--    <string name="title_activity_add_patient">addPatientActivity</string>-->
 
 
+    <item name="fragmentuser" type="id">userfrag</item>
 </resources>
