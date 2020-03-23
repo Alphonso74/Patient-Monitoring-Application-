@@ -5,9 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Android/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/website/src/components/logan.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/components/logan.js" afterDir="false" />
+>>>>>>> 876a3bc5dbe13479cf832bdf276f52537f5de83b
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +59,11 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Android" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/images" />
+>>>>>>> 876a3bc5dbe13479cf832bdf276f52537f5de83b
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.24209486" />
@@ -197,7 +205,7 @@
       <workItem from="1582843932443" duration="3816000" />
       <workItem from="1583077531448" duration="232000" />
       <workItem from="1583096077111" duration="24000" />
-      <workItem from="1584824218164" duration="2887000" />
+      <workItem from="1584824218164" duration="4512000" />
     </task>
     <task id="LOCAL-00001" summary="Starting react config">
       <created>1582952304226</created>
@@ -227,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584832340661</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bug Fix">
+      <created>1584832682945</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584832682945</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +265,8 @@
     <MESSAGE value="Starting react config" />
     <MESSAGE value="react button" />
     <MESSAGE value="Start to Redux" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start to Redux" />
+    <MESSAGE value="Bug Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug Fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1583096101138">
