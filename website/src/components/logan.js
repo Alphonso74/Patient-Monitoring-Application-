@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
+import Loganpicture from '../images/Portrait_Placeholder.png'
+
 
 
 class Logan extends Component {
@@ -9,11 +11,11 @@ class Logan extends Component {
                 <Grid className="contact-grid">
                     <Cell col={6}>
                         <h2>Logan Kollar</h2>
-                        {/*<img*/}
-                        {/*    src="https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png"*/}
-                        {/*    alt="avatar"*/}
-                        {/*    style={{height: '250px'}}*/}
-                        {/*/>*/}
+                        <img
+                            src={Loganpicture}
+                            alt="avatar"
+                            style={{height: '250px'}}
+                        />
                         <p style={{ width: '75%', margin: 'auto', paddingTop: '1em'}}>I am currently employed in the hospitality industry, where i use my down time to work on side projects</p>
 
                     </Cell>
@@ -38,9 +40,9 @@ class Logan extends Component {
                                 </ListItem>
 
                                 <ListItem>
-                                    <ListItemContent style={{fontSize: '30px', fontFamily: 'Anton'}}>
-                                        <i className="fa fa-skype" aria-hidden="true"/>
-                                        MySkypeID
+                                    <ListItemContent style={{fontSize: '20px', fontFamily: 'Anton'}}>
+                                        <i className="fa fa-github" aria-hidden="true"/>
+                                        https://github.com/ayleids12
                                     </ListItemContent>
                                 </ListItem>
 
