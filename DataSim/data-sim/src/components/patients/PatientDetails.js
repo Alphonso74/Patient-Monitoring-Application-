@@ -22,9 +22,7 @@ const PatientDetails = (props) => {
                         <p>Body Temperature: {patient.bodyTempature}</p>
                         <p>Heart Rate: {patient.rHeartRate}</p>
                         <p>Triage Tag: {patient.triageTag}</p>
-                        <p><input type="button" className="" value="Standing Order" onClick={() => handleClick("Standing Order", props)}/> <input type="button" className="" value="Chart" onClick={() => handleClick("Chart", props)}/></p>
-                        <input type="button" className="" value="Assign Nurse" onClick={() => handleClick("Assign Nurse", props)}/>
-
+                        <DetailButtons patient={{patient}}/>
 
 
                     </div>
@@ -47,19 +45,6 @@ const PatientDetails = (props) => {
         )
     }
 };
-
-const handleClick = (val, props) => {
-    const {patient} = props;
-    if (val === 'Standing Order'){
-        patient.standingOrder = prompt("Enter the doctor's standing order:")
-    }
-    else if (val === 'Chart'){
-        //patient.chart = prompt("Enter chart information:")
-    }
-    else if (val === 'Assign Nurse'){
-        patient.activeNurse = prompt("Enter nurse's name:")
-    }
-}
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
