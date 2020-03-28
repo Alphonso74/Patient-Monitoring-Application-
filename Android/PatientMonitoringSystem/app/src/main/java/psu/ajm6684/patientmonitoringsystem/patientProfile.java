@@ -78,7 +78,7 @@ public class patientProfile extends AppCompatActivity {
         final String standingO = intent.getStringExtra("standingO");
 
 
-        final DocumentReference patientItem = firebaseFirestore.collection("patients2").document(patientID);
+        final DocumentReference patientItem = firebaseFirestore.collection("patients3").document(patientID);
 
 
         final TextView pnameView = (TextView) findViewById(R.id.textView10);
@@ -145,6 +145,8 @@ public class patientProfile extends AppCompatActivity {
                         }
                         else {
                             patientItem.update("activeNurse", nurse);
+
+                            Toast.makeText(patientProfile.this, " Nurse Added", Toast.LENGTH_SHORT).show();
 
 
                             Intent intent = new Intent(patientProfile.this,patientProfile.class);

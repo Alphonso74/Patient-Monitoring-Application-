@@ -41,7 +41,7 @@ public class standingOrder extends Activity {
 
         TextView patientName = (TextView) findViewById(R.id.PatientNameChart1);
 
-        final DocumentReference patientItem = firebaseFirestore.collection("patients").document(pID);
+        final DocumentReference patientItem = firebaseFirestore.collection("patients3").document(pID);
 
 
         patientName.setText(pName);

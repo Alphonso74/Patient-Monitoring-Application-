@@ -181,7 +181,7 @@ public class patientFeed extends AppCompatActivity{
                                     //Note patient = documentSnapshot.toObject(Note.class);
 
 
-                                    final DocumentReference patientItem = db.collection("patients2").document(documentSnapshot.getId());
+                                    final DocumentReference patientItem = db.collection("patients3").document(documentSnapshot.getId());
 
                                     //update
 
@@ -193,6 +193,9 @@ public class patientFeed extends AppCompatActivity{
                                     else {
 
                                         patientItem.update("activeNurse", nurse);
+
+                                        Toast.makeText(patientFeed.this, " Nurse Added", Toast.LENGTH_SHORT).show();
+
 
 
                                         dialog1.dismiss();
