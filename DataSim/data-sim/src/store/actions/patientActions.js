@@ -8,7 +8,7 @@ export const createPatient = (patient) =>{
         const firestore = getFirestore();
         // console.log('Test');
 
-        firestore.collection('patients').add({
+        firestore.collection('patients3').add({
 
             ...patient
 

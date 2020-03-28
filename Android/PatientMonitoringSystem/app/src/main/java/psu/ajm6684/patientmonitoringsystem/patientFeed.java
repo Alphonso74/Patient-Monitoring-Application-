@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -24,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
-
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +33,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-
 import java.io.Serializable;
 import java.lang.ref.Reference;
 
@@ -44,7 +41,7 @@ import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
 public class patientFeed extends AppCompatActivity{
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference patients = db.collection("patients");
+    private CollectionReference patients = db.collection("patients3");
     //private CollectionReference bluePatients = db.collection("patients").whereEqualTo("triageTag","Blue");
 
     private PatientAdapter patientAdapter;
@@ -184,7 +181,7 @@ public class patientFeed extends AppCompatActivity{
                                     //Note patient = documentSnapshot.toObject(Note.class);
 
 
-                                    final DocumentReference patientItem = db.collection("patients").document(documentSnapshot.getId());
+                                    final DocumentReference patientItem = db.collection("patients2").document(documentSnapshot.getId());
 
                                     //update
 

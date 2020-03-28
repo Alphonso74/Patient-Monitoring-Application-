@@ -10,28 +10,57 @@ class CreatePatient extends Component {
         patientName: '',
         description: '',
         height: '',
-        weight: '',
-        rHeartRate: '',
+        weight: 0,
+        rHeartRate: 0,
         triageTag:  '',
-        bodyTempature: '',
+        bodyTempature: 0,
         medications: '',
         surgicaHistory: '',
         activeNurse: '',
         standingOrder: ''
 
-    }
+    };
     handleChange = (e) => {
         this.setState({
-            [e.target.id]: e.target.value
+             [e.target.id]: e.target.value
+
         })
-    }
+    };
+
+    handleChangeNumber1 = (e) => {
+
+        // handlePasswordChange: function(e) {
+        this.setState({weight: parseInt(e.target.value)});
+        // }
+
+    };
+
+    handleChangeNumber2 = (e) => {
+
+        // handlePasswordChange: function(e) {
+        this.setState({rHeartRate: parseInt(e.target.value)});
+        // }
+
+    };
+
+    handleChangeNumber3 = (e) => {
+
+        // handlePasswordChange: function(e) {
+        this.setState({bodyTempature: parseInt(e.target.value)});
+        // }
+
+    };
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.history.push('/');
 
+
         console.log(this.state);
         this.props.createPatient(this.state)
-    }
+    };
+
+
     render() {
         const {auth} = this.props;
         if(!auth.uid) return <Redirect to='/signin'/>
@@ -59,13 +88,13 @@ class CreatePatient extends Component {
 
                     <div className="input-field">
                         <label htmlFor="weight">Patient Weight</label>
-                        <input type="number" id='weight' onChange={this.handleChange} />
+                        <input type="number" id='weight' onChange={this.handleChangeNumber1} />
 
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="rHeartRate">Patient Resting Heart Rate</label>
-                        <input type="number" id='rHeartRate' onChange={this.handleChange} />
+                        <input type="number" id='rHeartRate' onChange={this.handleChangeNumber2} />
 
                     </div>
 
@@ -77,8 +106,8 @@ class CreatePatient extends Component {
 
 
                     <div className="input-field">
-                        <label htmlFor="bodyTempature">Patient Resting Heart Rate</label>
-                        <input type="number" id='bodyTempature' onChange={this.handleChange} />
+                        <label htmlFor="bodyTempature">Body Temperature</label>
+                        <input type="number" id='bodyTempature' onChange={this.handleChangeNumber3} />
 
                     </div>
 
@@ -110,9 +139,12 @@ class CreatePatient extends Component {
     }
 }
 
+
+
 const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth
+
     }
 }
 

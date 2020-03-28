@@ -49,20 +49,7 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
         Integer rate = note.getrHeartRate();
 
 
-//        while(true) {
-//
-////            patientHolder.patientRHeartRate.setText(String.valueOf(note.getrHeartRate()));
-//
-//            Random rand = new Random();
-//            Integer next = rand.nextInt((100) + 1);
-//
-//            patientHolder.patientRHeartRate.setText(String.valueOf(next));
-//
-//        }
 
-        //patientHolder.patientRHeartRate.setText(note.getrHeartRate());
-
-        //System.out.println(note.getrHeartRate() + "HELLLOOOOOOOOO");
 
     }
 

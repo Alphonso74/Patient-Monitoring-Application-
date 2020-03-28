@@ -16,6 +16,8 @@ form{
   padding: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  /*background: url(/image/appbackground.jpg) no-repeat;*/
+  background-color: #ffa100;
 }
 
 form button, form h5{

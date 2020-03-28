@@ -77,10 +77,9 @@ public class patientProfile extends AppCompatActivity {
         final String sHistory = intent.getStringExtra("surgicalH");
         final String standingO = intent.getStringExtra("standingO");
 
-        //EditText test;
 
-        final DocumentReference patientItem = firebaseFirestore.collection("patients").document(patientID);
-       // test.
+        final DocumentReference patientItem = firebaseFirestore.collection("patients2").document(patientID);
+
 
         final TextView pnameView = (TextView) findViewById(R.id.textView10);
         TextView pdescriptionView = (TextView) findViewById(R.id.textView13);
@@ -94,7 +93,7 @@ public class patientProfile extends AppCompatActivity {
         TextView standingOrder = (TextView) findViewById(R.id.textView17);
 
 
-       // Button addNurse
+
         bodyTemp1.setText(bodyTemp);
         meds.setText(medications);
         sHistory1.setText(sHistory);
@@ -120,9 +119,7 @@ public class patientProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //showNurseDialog(patientProfile.this,patientItem);
 
-                //TextView newNurse = (TextView) findViewById(R.id.et);
 
                 final Dialog dialog = new Dialog(patientProfile.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -139,10 +136,7 @@ public class patientProfile extends AppCompatActivity {
 
 
                         String nurse = et.getText().toString();
-//                Intent intent = new Intent(activity,patientProfile.class);
-//                intent.putExtra("Nurse Name",nurse);
-//                startActivity(intent);
-                        //update
+
 
                         if(nurse.isEmpty()){
 
@@ -166,8 +160,7 @@ public class patientProfile extends AppCompatActivity {
                             intent.putExtra("medications",medications);
                             intent.putExtra("surgicalH",sHistory);
                             intent.putExtra("standingO",standingO);
-                            //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
-                            //intent.putExtra("Firebse Reference", (Serializable) ref);
+
 
                             startActivity(intent);
 
@@ -208,9 +201,7 @@ public class patientProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Intent intent1 = new Intent(patientProfile.this,chart.class);
-                //intent.putExtra("Patient ID",1); //Changeeeeeeeeeeeee***
-               // intent.putExtra("Patient Name", patientName);
+
 
                 Intent intent = new Intent(patientProfile.this,chart.class);
                 intent.putExtra("Patient Name",patientName);
@@ -220,7 +211,7 @@ public class patientProfile extends AppCompatActivity {
                 intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
                 intent.putExtra("Patient ID",patientID);
                 intent.putExtra("position",position);
-                intent.putExtra("bodyTemp",bodyTemp);
+               intent.putExtra("bodyTemp",bodyTemp);
                 intent.putExtra("nurse",activeNurse);
                 intent.putExtra("medications",medications);
                 intent.putExtra("surgicalH",sHistory);
@@ -234,80 +225,6 @@ public class patientProfile extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onResume() {
-//
-//        Intent intent = new Intent(patientProfile.this,patientProfile.class);
-//        startActivity(intent);
-//
-//        super.onResume();
-//    }
-    //    public void showNurseDialog(final Activity activity, final DocumentReference patientItem){
-//
-//        final Dialog dialog = new Dialog(activity);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setCancelable(true);
-//        dialog.setContentView(R.layout.addnursedialog);
-//
-//        final EditText et = dialog.findViewById(R.id.et);
-//
-//
-//        Button btnok = (Button) dialog.findViewById(R.id.btnok);
-//        btnok.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                 String nurse = et.getText().toString();
-////                Intent intent = new Intent(activity,patientProfile.class);
-////                intent.putExtra("Nurse Name",nurse);
-////                startActivity(intent);
-//                 //update
-//
-//                if(nurse.isEmpty()){
-//
-//                    Toast toast = Toast.makeText(getApplicationContext(),"Please Enter the name of the Nurse",Toast.LENGTH_SHORT);
-//                    toast.show();
-//                }
-//                else {
-//                    patientItem.update("activeNurse", nurse);
-//
-//
-//                    Intent intent = new Intent(patientProfile.this,patientProfile.class);
-//                    intent.putExtra("Patient Name",pati);
-//                    intent.putExtra("Patient Description",pdescription);
-//                    intent.putExtra("Patient Height",pheight);
-//                    intent.putExtra("Patient Weight",pweight);
-//                    intent.putExtra("Patient Resting Heart Rate",prhr);
-//                    intent.putExtra("Patient ID",id);
-//                    intent.putExtra("position",position1);
-//                    intent.putExtra("bodyTemp",bodyTemp);
-//                    intent.putExtra("nurse",activeNurse);
-//                    intent.putExtra("medications",medications);
-//                    intent.putExtra("surgicalH",surgicalHistory);
-//                    intent.putExtra("standingO",standingO);
-//                    //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
-//                    //intent.putExtra("Firebse Reference", (Serializable) ref);
-//
-//                    startActivity(intent);
-//
-//
-//
-//                    dialog.dismiss();
-//                }
-//            }
-//        });
-//
-//        Button btncn = (Button) dialog.findViewById(R.id.btncn);
-//        btncn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        dialog.show();
-//    }
 
 
     private void updateNurse(View v, String Name){

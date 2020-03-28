@@ -128,7 +128,7 @@ public class addPatient extends AppCompatActivity {
 
     private void updateNurse(){
 
-        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("patients");
+        CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("patients2");
 
         //collectionReference.document().
 
@@ -160,7 +160,7 @@ public class addPatient extends AppCompatActivity {
 
             } else {
 
-                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("patients");
+                CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("patients3");
 
                 collectionReference.add(new Note(patientName, patientDescrition, patientHeight, patientWeight, patientRHeartRate, triage, "",temp,meds,sugeries,""));
 

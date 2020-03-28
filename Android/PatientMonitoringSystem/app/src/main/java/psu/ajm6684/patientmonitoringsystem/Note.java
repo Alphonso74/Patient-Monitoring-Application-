@@ -21,7 +21,7 @@ public class Note {
         this.rHeartRate = rHeartRate;
         this.triageTag = triageTag;
         this.activeNurse = activeNurse;
-        BodyTempature = bodyTempature;
+        this.BodyTempature = bodyTempature;
         this.medications = medications;
         this.surgicaHistory = surgicaHistory;
         this.standingOrder = standingOrder;

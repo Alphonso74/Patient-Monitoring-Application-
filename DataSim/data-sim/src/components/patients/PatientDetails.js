@@ -22,8 +22,8 @@ const PatientDetails = (props) => {
                         <p>Body Temperature: {patient.bodyTempature}</p>
                         <p>Heart Rate: {patient.rHeartRate}</p>
                         <p>Triage Tag: {patient.triageTag}</p>
-                        <p><input type="button" className="" value="Standing Order" onClick={() => handleClick("Standing Order", props)}/> <input type="button" className="" value="Chart" onClick={() => handleClick("Chart", props)}/></p>
-                        <input type="button" className="" value="Assign Nurse" onClick={() => handleClick("Assign Nurse", props)}/>
+                        {/*<p><input type="button" className="" value="Standing Order" onClick={() => handleClick("Standing Order", props)}/> <input type="button" className="" value="Chart" onClick={() => handleClick("Chart", props)}/></p>*/}
+                        {/*<input type="button" className="" value="Assign Nurse" onClick={() => handleClick("Assign Nurse", props)}/>*/}
 
 
 
@@ -76,6 +76,6 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'patients'}
+        {collection: 'patients2'}
     ])
 )(PatientDetails)
