@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbd1be75-5585-43a7-8d67-ce0819c45e66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/menu/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/menu/StartActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/menu/menu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/Notifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/patients/CreatePatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patients/CreatePatient.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/patients/PatientDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patients/PatientDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/patients/PatientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/patients/PatientList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/patientReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/patientReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/patientActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/patientActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../website/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../website/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../website/src/components/logan.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../website/src/components/logan.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +73,7 @@
       <workItem from="1584833941668" duration="21075000" />
       <workItem from="1584976682335" duration="6037000" />
       <workItem from="1585031476306" duration="164000" />
-      <workItem from="1585333419185" duration="9753000" />
+      <workItem from="1585333419185" duration="10099000" />
     </task>
     <servers />
   </component>
