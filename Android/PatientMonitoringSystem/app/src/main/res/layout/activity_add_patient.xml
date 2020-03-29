@@ -23,77 +23,101 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Patient Name"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/edit_text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Description"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/edit_text_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Patient Height"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/edit_text_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Patient Weight"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/edit_text_heartRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Patient Heart Rate"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/edit_text_triageTag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Triage Tag"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/bodyTemp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Patient Body Temperature"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/medications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Current Medications (Separate By comma)"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/surgicalHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Patient Surgical History (Separate By comma)"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="Choose a Nurse for this patient"
+        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+    <Spinner
+        android:id="@+id/spinnerPatient"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:textColor="#000000"
+
+        />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Add Patient"
-        />
+        android:layout_marginTop="20dp"
+        android:text="Add Patient" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="15dp"
         android:text="Discard"
         />
 

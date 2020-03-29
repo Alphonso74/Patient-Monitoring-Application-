@@ -98,6 +98,8 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
 
 
             ImageView face = itemView.findViewById(R.id.facey);
+
+
             face.setVisibility(View.VISIBLE);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {

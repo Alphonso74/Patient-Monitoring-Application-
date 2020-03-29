@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbd1be75-5585-43a7-8d67-ce0819c45e66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/font/arbutus.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/values/font_certs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/PatientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/PatientAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/addPatient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/addPatient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/createAccount/createAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/createAccount/createAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/patientFeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/java/psu/ajm6684/patientmonitoringsystem/patientFeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/layout/activity_add_patient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/layout/activity_add_patient.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/layout/feed_patient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/src/main/res/layout/feed_patient.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

@@ -138,11 +138,48 @@ public class createAccount extends AppCompatActivity {
                                 userMap.put("position",pos);
                                 userMap.put("department",dep);
 
+
+
                                 documentReference.set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
 
-                                        System.out.println("Success" + Uid);
+                                        if(pos.equals("Nurse")){
+
+                                            DocumentReference documentReference1 = firestore.collection("Nurse").document(Uid);
+
+                                            Map<String,Object> userMap1 = new HashMap<>();
+                                            userMap1.put("fullName",fullName);
+                                            userMap1.put("email",emailAdd);
+                                            userMap1.put("hospital",hopsitall);
+                                            userMap1.put("position",pos);
+                                            userMap1.put("department",dep);
+
+                                            documentReference1.set(userMap1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+
+
+
+                                                        DocumentReference documentReference1 = firestore.collection("Nurse").document(Uid);
+
+                                                        Map<String,Object> userMap1 = new HashMap<>();
+                                                        userMap1.put("fullName",fullName);
+                                                        userMap1.put("email",emailAdd);
+                                                        userMap1.put("hospital",hopsitall);
+                                                        userMap1.put("position",pos);
+                                                        userMap1.put("department",dep);
+
+
+
+                                                        System.out.println("Success" + Uid);
+
+
+                                                }
+                                            });
+
+                                        }
+
                                     }
                                 });
 
