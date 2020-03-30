@@ -9,7 +9,6 @@ import {updatePatient} from "../../store/actions/patientActions";
 
 class PatientDetails extends Component {
     state = {
-        id: this.props.match.params.id,
         patientName: this.props.patient.patientName,
         description: this.props.patient.description,
         height: this.props.patient.height,
@@ -78,11 +77,12 @@ class PatientDetails extends Component {
                 break;
 
             case "submit":
+                const id = this.props.match.params.id;
                 e.preventDefault();
                 this.props.history.push('/');
 
                 console.log(this.state);
-                this.props.updatePatient(this.state, this.state.id);
+                this.props.updatePatient(this.state, id);
                 break;
 
             default:
