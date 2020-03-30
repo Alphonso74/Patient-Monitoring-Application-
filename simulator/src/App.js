@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Simulator from './Simulator';
-import Feed from './Feed';
+import Simulator from './Components/Simulator';
+import Feed from './Components/Feed';
 import { Header } from 'react-mdl';
+import { connect } from 'react-redux';
+import { firestoreConnect} from "react-redux-firebase";
+import { compose } from "redux";
 
 class App extends Component {
-    constructor(props) {
+/*    constructor(props) {
         super(props);
         this.state = {
             running: null
@@ -17,8 +20,9 @@ class App extends Component {
             running: !prevState.running
         }));
     };
-
+*/
     render(){
+        const { patients } = this.props;
         return(
             <div className="App">
                 <Header className="teal darken-2" title="Patient+ Data Simulator" scroll />
@@ -27,11 +31,11 @@ class App extends Component {
                     <div className="row">
 
                         <div className="col s12 m6">
-                            <Feed running={this.state.running} />
+                            <Feed patients={patients} />
                         </div>
 
                         <div className="col s12 m6">
-                            <Simulator running={this.state.running} startSim={this.startSim} />
+                            <Simulator /*running={this.state.running} startSim={this.startSim}*/ />
                         </div>
 
                     </div>
@@ -41,4 +45,13 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        patients: state.firestore.ordered.patients
+    }
+};
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([ { collection: 'patients' } ] )
+)(App);
