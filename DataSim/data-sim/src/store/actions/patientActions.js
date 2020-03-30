@@ -22,7 +22,23 @@ export const createPatient = (patient) =>{
             dispatch({type: 'CREATE_PATIENT_ERROR', err});
         })
 
-
-
     }
 }
+
+export const updatePatient = (patient, id) => {
+    return(dispatch, getState, {getFirebase, getFirestore}) => {
+        const firestore = getFirestore();
+
+        firestore.collection('patients').doc(id).delete().then(()=> console.log("Delete successful!"))
+            .catch((err)=>{dispatch({type: 'UPDATE_PATIENT_ERROR', err});
+        });
+
+        firestore.collection('patients').add({
+            ...patient
+        }).then(()=>{
+            dispatch({type: 'UPDATE_PATIENT', patient});
+        }).catch((err) =>{
+            dispatch({type:'UPDATE_PATIENT_ERROR', err});
+        })
+    }
+};
