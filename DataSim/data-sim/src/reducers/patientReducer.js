@@ -20,6 +20,14 @@ const patientReducer = (state = initState, action) => {
         case 'UPDATE_PATIENT_ERROR':
             console.log('update patient error', action.err);
             return state;
+            
+        case 'DELETE_PATIENT':
+            console.log('deleted patient', action.patient);
+            return state;
+
+        case 'DELETE_PATIENT_ERROR':
+            console.log('delete patient error', action.err);
+            return state;
         
         default:
             return state;
