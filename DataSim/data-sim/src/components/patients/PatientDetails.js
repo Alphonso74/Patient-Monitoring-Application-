@@ -29,6 +29,17 @@ class PatientDetails extends Component {
             case "name":
                 this.setState({patientName: prompt("Enter new name:", this.state.patientName)});
                 break;
+                
+            case "delete":
+                const input = prompt("Enter YES if you're sure you want to delete:");
+                if (input === 'YES') {
+                    e.preventDefault();
+                    this.props.history.push('/');
+
+                    console.log(this.state + 'deleted!');
+                    this.props.deletePatient(this.state, this.state.id);
+                }
+                break;
 
             case "desc":
                 this.setState({description: prompt("Enter new description:", this.state.description)});
@@ -88,7 +99,9 @@ class PatientDetails extends Component {
                 <div className="container section project-details">
                     <div className="card z-depth-0">
                         <div className="card-content">
-                            <span className="card-title center">{patient.patientName}<input id="name" type="button" className='button' value='Edit' onClick={this.handleClick}/></span>
+                            <span className="card-title center">{patient.patientName}
+                                <input id="name" type="button" className='button' value='Edit' onClick={this.handleClick}/>
+                                <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
                             <p>Patient Description: {patient.description}
                                 <input id="desc" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
                             <p>Height: {patient.height}
@@ -146,7 +159,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updatePatient: (patient, id) => dispatch(updatePatient(patient, id))
+        updatePatient: (patient, id) => dispatch(updatePatient(patient, id)),
+        deletePatient: (patient, id) => dispatch(deletePatient(patient, id))
     }
 };
 
