@@ -44,6 +44,8 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displaymessage);
+
+
         Text = (EditText)findViewById(R.id.editText);
         List = (ListView)findViewById(R.id.listView);
         arrayList = new ArrayList<>();

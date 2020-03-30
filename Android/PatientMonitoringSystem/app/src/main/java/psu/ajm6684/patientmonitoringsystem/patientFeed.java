@@ -1,55 +1,42 @@
 package psu.ajm6684.patientmonitoringsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import java.io.Serializable;
-import java.lang.ref.Reference;
 
 import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
 
-public class patientFeed extends AppCompatActivity{
+public class patientFeed extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patients = db.collection("patients3");
     //private CollectionReference bluePatients = db.collection("patients").whereEqualTo("triageTag","Blue");
 
     private PatientAdapter patientAdapter;
-
-
-
-
+    private ImageButton message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,113 +55,106 @@ public class patientFeed extends AppCompatActivity{
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setAdapter(patientAdapter);
 
+        Button menuButton = (Button) findViewById(R.id.button_menu);
+        ImageButton message = (ImageButton) findViewById(R.id.button_message);
 
-        Button memuButton = (Button) findViewById(R.id.button_menu);
-
-
-
-
-        memuButton.setOnClickListener(new View.OnClickListener() {
+        message.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder menuDialog = new AlertDialog.Builder(patientFeed.this);
-                menuDialog.setTitle("User Options");
-                menuDialog.setMessage("What would you like to do?");
-                menuDialog.setCancelable(true);
-
-                menuDialog.setNegativeButton("Logout", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Toast.makeText(patientFeed.this, " Goodbye", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(patientFeed.this, Chatroom.class);
+                startActivity(intent);
+            }
+            });
 
 
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                        finish();
+        menuButton.setOnClickListener(new View.OnClickListener()
+    {
+        @Override
+        public void onClick (View v){
+        final AlertDialog.Builder menuDialog = new AlertDialog.Builder(patientFeed.this);
+        menuDialog.setTitle("User Options");
+        menuDialog.setMessage("What would you like to do?");
+        menuDialog.setCancelable(true);
+
+        menuDialog.setNegativeButton("Logout", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Toast.makeText(patientFeed.this, " Goodbye", Toast.LENGTH_SHORT).show();
 
 
-                    }
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
 
-
-                });
-
-                menuDialog.setPositiveButton("Add Patient", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                startActivity(new Intent(patientFeed.this, addPatient.class));
-
-
-
-                            }
-
-                        });
-
-                menuDialog.setNeutralButton("Filter Patient Feed", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        final AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(patientFeed.this);
-                        menuDialog1.setTitle("How would you like to filter the feed?");
-                        menuDialog1.setMessage("Options: ");
-                        menuDialog1.setCancelable(true);
-
-                        menuDialog1.setPositiveButton("Filter By Tag", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                //setUpViewByTag();
-
-//                                Query patients1 = patients.whereEqualTo("triageTag","Blue");
-//
-//                                setUpView(patients1);
-                            }
-                        });
-
-
-
-                        menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                //setUpViewByHeartRate();
-
-
-                            }
-                    });
-
-                        menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                setUpView();
-                            }
-                        });
-
-
-
-                        menuDialog1.show();
-                    }
-
-                });
-
-
-                menuDialog.show();
 
             }
 
 
         });
 
+        menuDialog.setPositiveButton("Add Patient", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                startActivity(new Intent(patientFeed.this, addPatient.class));
+
+            }
+
+        });
+
+        menuDialog.setNeutralButton("Filter Patient Feed", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                final AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(patientFeed.this);
+                menuDialog1.setTitle("How would you like to filter the feed?");
+                menuDialog1.setMessage("Options: ");
+                menuDialog1.setCancelable(true);
+
+                menuDialog1.setPositiveButton("Filter By Tag", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //setUpViewByTag();
+
+//                                Query patients1 = patients.whereEqualTo("triageTag","Blue");
+//
+//                                setUpView(patients1);
+                    }
+                });
 
 
+                menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        //setUpViewByHeartRate();
 
 
+                    }
+                });
+
+                menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        setUpView();
+                    }
+                });
 
 
+                menuDialog1.show();
+            }
+
+        });
 
 
+        menuDialog.show();
+
+    }
+
+    });
     }
 
         private void setUpView() {

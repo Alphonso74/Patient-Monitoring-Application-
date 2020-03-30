@@ -27,7 +27,7 @@ public class Chatroom extends AppCompatActivity {
     private String user_name,room_name;
 
     DatabaseReference reference;
-    String temp_key;
+    String key;
 
 
 
@@ -36,6 +36,7 @@ public class Chatroom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatroom);
+
         text= (EditText)findViewById(R.id.editText2);
         view= (TextView)findViewById(R.id.textView);
         if(getSupportActionBar()!=null)
@@ -78,15 +79,7 @@ public class Chatroom extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home)
@@ -98,37 +91,27 @@ public class Chatroom extends AppCompatActivity {
     public void send(View v)
     {
         Map<String,Object> map = new HashMap<String,Object>();
-        temp_key = reference.push().getKey();
+        key = reference.push().getKey();
         reference.updateChildren(map);
 
-        DatabaseReference child_ref = reference.child(temp_key);
+        DatabaseReference child_ref = reference.child(key);
         Map<String,Object> map2 = new HashMap<>();
         map2.put("name",user_name);
         map2.put("msg", text.getText().toString());
         child_ref.updateChildren(map2).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            }
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show(); }
         });
         text.setText("");
-
-
-
-
     }
-    public void append_chat(DataSnapshot ss)
-    {
-        String chat_msg,chat_username;
+    public void append_chat(DataSnapshot ss) {
+        String chat_msg, chat_username;
         Iterator i = ss.getChildren().iterator();
-        while(i.hasNext())
-        {
-            chat_msg = ((DataSnapshot)i.next()).getValue().toString();
-            chat_username = ((DataSnapshot)i.next()).getValue().toString();
-            view.append(chat_username + ": " +chat_msg + " \n");
+        while (i.hasNext()) {
+            chat_msg = ((DataSnapshot) i.next()).getValue().toString();
+            chat_username = ((DataSnapshot) i.next()).getValue().toString();
+            view.append(chat_username + ": " + chat_msg + " \n");
         }
     }
-
-
-
 }
