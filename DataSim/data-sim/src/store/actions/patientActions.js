@@ -42,3 +42,15 @@ export const updatePatient = (patient, id) => {
         })
     }
 };
+
+export const deletePatient = (patient, id) => {
+    return(dispatch, getState, {getFirebase, getFirestore}) => {
+        const firestore = getFirestore();
+
+        firestore.collection('patients').doc(id).delete().then(()=> {
+            dispatch({type: 'DELETE_PATIENT', patient});
+        })
+            .catch((err)=>{dispatch({type: 'DELETE_PATIENT_ERROR', err});
+            });
+    }
+};
