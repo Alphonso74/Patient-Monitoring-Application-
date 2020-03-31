@@ -1,45 +1,55 @@
 package psu.ajm6684.patientmonitoringsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import java.io.Serializable;
-import java.lang.ref.Reference;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
 
-public class patientFeed extends AppCompatActivity{
+public class patientFeed extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patients = db.collection("patients3");
@@ -48,16 +58,101 @@ public class patientFeed extends AppCompatActivity{
     private PatientAdapter patientAdapter;
 
 
+    DatabaseReference reference;
 
+    ArrayList<String> arrayList;
 
+    EditText e1;
+    ImageButton l1;
+    ArrayAdapter<String> adapter;
+    String name;
+    EditText ee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed_patient);
+        e1 = (EditText) findViewById(R.id.editText);
+        l1 = (ImageButton) findViewById(R.id.button_message);
+        arrayList = new ArrayList<>();
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+  //         l1.setAdapter(adapter);
+        reference = FirebaseDatabase.getInstance().getReference().getRoot();
+        //request_username();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Set<String> set = new HashSet<String>();
+
+
+                Iterator i = dataSnapshot.getChildren().iterator();
+                while (i.hasNext()) {
+                    set.add(((DataSnapshot) i.next()).getKey());
+
+                }
+
+                arrayList.clear();
+                arrayList.addAll(set);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(patientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        ImageButton imageButton = (ImageButton) findViewById(R.id.button_message);
+
+        l1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View v) {
+                final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(patientFeed.this);
+                builder.setTitle("Enter your name?");
+                ee = new EditText(patientFeed.this);
+                builder.setView(ee);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        name = ee.getText().toString();
+                        Intent intent = new Intent(patientFeed.this, Chatroom.class);
+                        //intent.putExtra("room_name", ((TextView) e1).getText().toString());
+                       intent.putExtra("room_name","Admin");
+                        intent.putExtra("user_name", name);
+
+                        startActivity(intent);
+
+
+
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                        request_username();
+
+
+                    }
+                });
+                builder.show();
+
+
+
+            }
+        });
+
+setUpView();
+
 //         addPatient = (Button) findViewById(R.id.addPatient);
 
-        setUpView();
+
 //        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 //        Query query = patients;
 //        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
@@ -68,13 +163,9 @@ public class patientFeed extends AppCompatActivity{
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setAdapter(patientAdapter);
 
+        Button menuButton = (Button) findViewById(R.id.button_menu);
 
-        Button memuButton = (Button) findViewById(R.id.button_menu);
-
-
-
-
-        memuButton.setOnClickListener(new View.OnClickListener() {
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder menuDialog = new AlertDialog.Builder(patientFeed.this);
@@ -99,6 +190,7 @@ public class patientFeed extends AppCompatActivity{
 
                 });
 
+// <<<<<<< HEAD
                 menuDialog.setPositiveButton("More Options", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -136,12 +228,22 @@ public class patientFeed extends AppCompatActivity{
 
 
 
+// =======
+//                 menuDialog.setPositiveButton("Add Patient", new DialogInterface.OnClickListener() {
+//                     @Override
+//                     public void onClick(DialogInterface dialog, int which) {
+// >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099
 
+//                         startActivity(new Intent(patientFeed.this, addPatient.class));
 
+// <<<<<<< HEAD
                                 menuDialog23.show();
                             }
+// =======
+                    }
+// >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099
 
-                        });
+                });
 
                 menuDialog.setNeutralButton("Filter Patient Feed", new DialogInterface.OnClickListener() {
                     @Override
@@ -165,7 +267,6 @@ public class patientFeed extends AppCompatActivity{
                         });
 
 
-
                         menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -174,7 +275,7 @@ public class patientFeed extends AppCompatActivity{
 
 
                             }
-                    });
+                        });
 
                         menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
                             @Override
@@ -183,7 +284,6 @@ public class patientFeed extends AppCompatActivity{
                                 setUpView();
                             }
                         });
-
 
 
                         menuDialog1.show();
@@ -196,18 +296,44 @@ public class patientFeed extends AppCompatActivity{
 
             }
 
+        });
+    }
 
+    public void request_username() {
+        final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enter your name?");
+        ee = new EditText(this);
+        builder.setView(ee);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                name = ee.getText().toString();
+
+
+            }
         });
 
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+                request_username();
 
 
-
-
-
-
-
+            }
+        });
+        builder.show();
 
     }
+
+
+    public void insert_data(View v) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put(e1.getText().toString(), "");
+        reference.updateChildren(map);
+    }
+
 
         private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");

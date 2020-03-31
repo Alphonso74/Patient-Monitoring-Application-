@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signUp} from "../../store/actions/authActions";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 class SignUp extends Component {
@@ -24,7 +26,15 @@ class SignUp extends Component {
         console.log(this.state);
         this.props.signUp(this.state)
     }
+    onSelect = (option) => {
+        this.setState({department: option});
+        console.log(this.state.department);
+    };
     render() {
+        const options = [
+            'General Care', 'Neonatal', 'Post-Operation'
+        ];
+        const defaultOption = options[0];
         const { auth ,authError} = this.props;
         if(auth.uid) return <Redirect to='/'/>
         return (
@@ -52,8 +62,8 @@ class SignUp extends Component {
                         <input type="text" id='position' onChange={this.handleChange} />
                     </div>
                     <div className="input-field">
-                        <label htmlFor="department">Department</label>
-                        <input type="text" id='department' onChange={this.handleChange} />
+                        <span>Department</span>
+                        <Dropdown options={options} onChange={this.onSelect} value={defaultOption} placeholder="Select an option" />
                     </div>
                     <div className="input-field">
                         <label htmlFor="hospital">Hospital</label>
