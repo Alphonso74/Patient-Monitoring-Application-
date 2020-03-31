@@ -32,10 +32,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.core.Tag;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import psu.ajm6684.patientmonitoringsystem.R;
 import psu.ajm6684.patientmonitoringsystem.createAccount.createAccount;
 import psu.ajm6684.patientmonitoringsystem.patientFeed;
+import psu.ajm6684.patientmonitoringsystem.neonatalPatientFeed;
+import psu.ajm6684.patientmonitoringsystem.postOpPatientFeed;
 //import psu.ajm6684.patientmonitoringsystem.patientListActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -53,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         updateUiWithUser(currentUser);
     }
 
+    String Uid;
+    FirebaseFirestore firestore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,15 +89,61 @@ public class LoginActivity extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
+        //Uid = firebaseAuth.getCurrentUser().getUid();
+       // DocumentReference documentReference = firestore.collection("Users").document(Uid);
+
 
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent(LoginActivity.this, patientFeed.class);
-                    startActivity(intent);
-                    finish();
+
+
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    final CollectionReference users = db.collection("Users");
+
+                    String userid = user.getUid();
+
+                    DocumentReference documentReference = db.collection("Users").document(userid);
+
+                    documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot document = task.getResult();
+
+                            Log.d("User", "DocumentSnapshot data: " + document.getData());
+
+                            if(document.get("department").equals("General Care")){
+
+                                Intent intent = new Intent(LoginActivity.this, patientFeed.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+
+                            if(document.get("department").equals("Neonatal")){
+
+                                Intent intent = new Intent(LoginActivity.this, neonatalPatientFeed.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+
+                            if(document.get("department").equals("Post-Operation")){
+
+                                Intent intent = new Intent(LoginActivity.this, postOpPatientFeed.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+
+                        }
+                    });
+
+//                    Intent intent = new Intent(LoginActivity.this, patientFeed.class);
+//                    startActivity(intent);
+//                    finish();
                 }
             }
         };
@@ -186,7 +240,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             updateUiWithUser(user);
                             Toast.makeText(getApplicationContext(), "Logged in user: " + mail, Toast.LENGTH_LONG).show();
-                            openPatientFeedActivity();
+                            //openPatientFeedActivity();
 
                         }
                         else{

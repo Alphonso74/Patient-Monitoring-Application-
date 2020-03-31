@@ -49,6 +49,20 @@
 
 <!--    </androidx.appcompat.widget.Toolbar>-->
 
+    <Button
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/arbutus"
+        android:text="General Care"
+
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -63,7 +77,8 @@
         android:layout_margin="16dp"
         android:onClick="logout"
         android:text="Menu"
-        app:backgroundTint="#79070606" />
+        app:backgroundTint="#79070606"
+        />
 
 <!--    <Button-->
 <!--    android:id="@+id/button_logout"-->

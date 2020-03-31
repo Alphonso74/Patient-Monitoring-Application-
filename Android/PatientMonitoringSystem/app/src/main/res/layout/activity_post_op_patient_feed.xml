@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+
+
+
+    <!--    <menu-->
+    <!--        -->
+
+    <!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+
+    <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
+
+
+    <!--        <item-->
+    <!--            android:id="@+id/add"-->
+    <!--            android:title="Save"-->
+    <!--            app:showAsAction="always"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content" />-->
+
+    <!--    </menu>-->
+
+
+    <!--    <androidx.appcompat.widget.Toolbar-->
+    <!--        android:id="@+id/toolbar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="?attr/colorPrimary"-->
+    <!--        android:minHeight="?attr/actionBarSize"-->
+    <!--        android:theme="?attr/actionBarTheme"-->
+    <!--        >-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:gravity="end"-->
+    <!--            android:text="Logout"/>-->
+
+    <!--    </androidx.appcompat.widget.Toolbar>-->
+
+    <Button
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/arbutus"
+        android:text="Post-Op"
+
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32"/>
+
+
+    <Button
+        android:id="@+id/button_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:onClick="logout"
+        android:text="Menu"
+        app:backgroundTint="#79070606" />
+
+    <!--    <Button-->
+    <!--    android:id="@+id/button_logout"-->
+    <!--    android:layout_width="wrap_content"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:layout_gravity="end"-->
+    <!--    android:layout_margin="16dp"-->
+    <!--    android:onClick="logout"-->
+    <!--    android:text="Logout"-->
+    <!--    app:backgroundTint="#79070606" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/button_add"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|end"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        android:text="Add Patient"-->
+    <!--        app:backgroundTint="#79070606" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/button_filter"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        android:text="Filter Feed"-->
+    <!--        app:backgroundTint="#79070606" />-->
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+
+    <!--        android:id="@+id/myfab"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|end"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        android:clickable="true"-->
+    <!--        android:src="@drawable/add_button"-->
+    <!--        app:backgroundTint="#79070606"-->
+    <!--        android:focusable="true" />-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
