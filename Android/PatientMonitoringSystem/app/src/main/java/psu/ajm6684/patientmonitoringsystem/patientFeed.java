@@ -112,7 +112,7 @@ public class patientFeed extends AppCompatActivity {
             @Override
             public void onClick( View v) {
                 final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(patientFeed.this);
-                builder.setTitle("Enter your name?");
+                builder.setTitle("Enter your name:");
                 ee = new EditText(patientFeed.this);
                 builder.setView(ee);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -136,7 +136,7 @@ public class patientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
-                        request_username();
+
 
 
                     }
@@ -148,7 +148,7 @@ public class patientFeed extends AppCompatActivity {
             }
         });
 
-setUpView();
+                    setUpView();
 
 //         addPatient = (Button) findViewById(R.id.addPatient);
 
@@ -190,7 +190,7 @@ setUpView();
 
                 });
 
-// <<<<<<< HEAD
+
                 menuDialog.setPositiveButton("More Options", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -228,22 +228,22 @@ setUpView();
 
 
 
-// =======
+
 //                 menuDialog.setPositiveButton("Add Patient", new DialogInterface.OnClickListener() {
 //                     @Override
 //                     public void onClick(DialogInterface dialog, int which) {
-// >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099
+
 
 //                         startActivity(new Intent(patientFeed.this, addPatient.class));
 
-// <<<<<<< HEAD
+
                                 menuDialog23.show();
                             }
-// =======
-                    }
-// >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099
 
-                });
+                    });
+
+
+
 
                 menuDialog.setNeutralButton("Filter Patient Feed", new DialogInterface.OnClickListener() {
                     @Override
@@ -295,6 +295,7 @@ setUpView();
                 menuDialog.show();
 
             }
+
 
         });
     }
