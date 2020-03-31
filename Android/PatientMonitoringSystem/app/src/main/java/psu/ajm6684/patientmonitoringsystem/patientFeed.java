@@ -106,7 +106,7 @@ public class patientFeed extends AppCompatActivity {
         });
 
 
-        ImageButton imageButton = (ImageButton) findViewById(R.id.button_message);
+        //ImageButton imageButton = (ImageButton) findViewById(R.id.button_message);
 
         l1.setOnClickListener(new View.OnClickListener() {
             @Override

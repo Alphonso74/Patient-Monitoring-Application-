@@ -18,8 +18,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -28,8 +30,11 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -37,6 +42,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import java.io.Serializable;
 import java.lang.ref.Reference;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
 import android.os.Bundle;
 
@@ -48,11 +58,99 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
     private PatientAdapter patientAdapter;
 
+    DatabaseReference reference;
+
+    ArrayList<String> arrayList;
+
+    EditText e1;
+    ImageButton l1;
+    ArrayAdapter<String> adapter;
+    String name;
+    EditText ee;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neonatal_patient_feed);
+
+        e1 = (EditText) findViewById(R.id.editText);
+        l1 = (ImageButton) findViewById(R.id.button_message);
+        arrayList = new ArrayList<>();
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        //         l1.setAdapter(adapter);
+        reference = FirebaseDatabase.getInstance().getReference().getRoot();
+        //request_username();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Set<String> set = new HashSet<String>();
+
+
+                Iterator i = dataSnapshot.getChildren().iterator();
+                while (i.hasNext()) {
+                    set.add(((DataSnapshot) i.next()).getKey());
+
+                }
+
+                arrayList.clear();
+                arrayList.addAll(set);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(neonatalPatientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //ImageButton imageButton = (ImageButton) findViewById(R.id.button_message);
+
+        l1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View v) {
+                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(neonatalPatientFeed.this);
+                builder.setTitle("Enter your name:");
+                ee = new EditText(neonatalPatientFeed.this);
+                builder.setView(ee);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        name = ee.getText().toString();
+                        Intent intent = new Intent(neonatalPatientFeed.this, Chatroom.class);
+                        //intent.putExtra("room_name", ((TextView) e1).getText().toString());
+                        intent.putExtra("room_name","Admin");
+                        intent.putExtra("user_name", name);
+
+                        startActivity(intent);
+
+
+
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+
+
+
+                    }
+                });
+                builder.show();
+
+
+
+            }
+        });
+
+
 
         setUpView();
 //        RecyclerView recyclerView = findViewById(R.id.recycler_view);
