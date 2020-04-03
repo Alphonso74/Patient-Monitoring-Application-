@@ -1,5 +1,4 @@
 package psu.ajm6684.patientmonitoringsystem;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,14 +19,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+
 public class Chatroom extends AppCompatActivity {
-    EditText text;
-    TextView view;
+    EditText e1;
+    TextView t1;
 
     private String user_name,room_name;
 
     DatabaseReference reference;
-    String key;
+    String temp_key;
 
 
 
@@ -35,10 +35,9 @@ public class Chatroom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chatroom);
-
-        text= (EditText)findViewById(R.id.editText2);
-        view= (TextView)findViewById(R.id.textView);
+        setContentView(R.layout.displaymessage);
+        e1= (EditText)findViewById(R.id.editText2);
+        t1= (TextView)findViewById(R.id.textView);
         if(getSupportActionBar()!=null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -79,7 +78,15 @@ public class Chatroom extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+
+
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home)
@@ -91,27 +98,37 @@ public class Chatroom extends AppCompatActivity {
     public void send(View v)
     {
         Map<String,Object> map = new HashMap<String,Object>();
-        key = reference.push().getKey();
+        temp_key = reference.push().getKey();
         reference.updateChildren(map);
 
-        DatabaseReference child_ref = reference.child(key);
+        DatabaseReference child_ref = reference.child(temp_key);
         Map<String,Object> map2 = new HashMap<>();
         map2.put("name",user_name);
-        map2.put("msg", text.getText().toString());
+        map2.put("msg", e1.getText().toString());
         child_ref.updateChildren(map2).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show(); }
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
         });
-        text.setText("");
+        e1.setText("");
+
+
+
+
     }
-    public void append_chat(DataSnapshot ss) {
-        String chat_msg, chat_username;
+    public void append_chat(DataSnapshot ss)
+    {
+        String chat_msg,chat_username;
         Iterator i = ss.getChildren().iterator();
-        while (i.hasNext()) {
-            chat_msg = ((DataSnapshot) i.next()).getValue().toString();
-            chat_username = ((DataSnapshot) i.next()).getValue().toString();
-            view.append(chat_username + ": " + chat_msg + " \n");
+        while(i.hasNext())
+        {
+            chat_msg = ((DataSnapshot)i.next()).getValue().toString();
+            chat_username = ((DataSnapshot)i.next()).getValue().toString();
+            t1.append(chat_username + ": " +chat_msg + " \n");
         }
     }
+
+
+
 }

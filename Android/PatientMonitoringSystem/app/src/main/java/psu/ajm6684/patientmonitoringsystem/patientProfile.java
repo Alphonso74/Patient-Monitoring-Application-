@@ -108,8 +108,9 @@ public class patientProfile extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(patientProfile.this,patientFeed.class);
-                startActivity(intent);
+//                Intent intent = new Intent(patientProfile.this,patientFeed.class);
+//                startActivity(intent);
+                finish();
 
             }
         });

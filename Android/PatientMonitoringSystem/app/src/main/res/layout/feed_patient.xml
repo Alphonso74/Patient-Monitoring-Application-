@@ -49,6 +49,22 @@
 
 <!--    </androidx.appcompat.widget.Toolbar>-->
 
+<!-- <<<<<<< HEAD -->
+    <Button
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/arbutus"
+        android:text="General Care"
+
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+<!-- ======= -->
+<!-- >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099 -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -63,7 +79,8 @@
         android:layout_margin="16dp"
         android:onClick="logout"
         android:text="Menu"
-        app:backgroundTint="#79070606" />
+        app:backgroundTint="#79070606"
+        />
 
 
     <ImageButton
@@ -71,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_message_black_24dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right|bottom"
         android:onClick="message"
         tools:ignore="VectorDrawableCompat" />
 

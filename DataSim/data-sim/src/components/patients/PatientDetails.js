@@ -36,7 +36,7 @@ class PatientDetails extends Component {
                     this.props.history.push('/');
 
                     console.log(this.state + 'deleted!');
-                    this.props.deletePatient(this.state, this.state.id);
+                    this.props.deletePatient(this.state, this.props.match.params.id);
                 }
                 break;
 
