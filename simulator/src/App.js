@@ -35,7 +35,7 @@ class App extends Component {
                         </div>
 
                         <div className="col s12 m6">
-                            <Simulator patients={patients} />
+                            <Simulator />
                         </div>
 
                     </div>

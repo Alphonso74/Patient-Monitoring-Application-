@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {UpdatePatient} from "../Store/Actions/PatientActions";
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 class Simulator extends Component{
 
@@ -9,23 +11,29 @@ class Simulator extends Component{
         this.state = {
             text: "Start Simulator",
             running: false
-        };
-    }
+        }
+    };
 
-    simButton = ({patients}) => {
+    simButton = () => {
         this.setState((prevState) => ({
             running: !prevState.running
         }));
 
-        this.startSim({patients});
+        this.startSim();
         if(!this.state.running){ this.setState({text: "Start Simulator"}); }
         else{ this.setState({text: "Stop Simulator"}); }
     };
 
-    startSim = ({patients}) => {
+    startSim = () => {
         if(this.state.running){
-            { patients && patients.map(patient => {
-                console.log(this.state.running);
+            let patients = [];
+            firebase.firestore().collection('patients').get().then(snapshot => {
+                snapshot.forEach(patient => {
+                    patients.push(patient.data())
+                })}
+            ).catch(error => {console.error(error)});
+
+            for (let patient in patients){
                 let max;
                 switch(patient.tt){
                     case "Blue":
@@ -45,6 +53,8 @@ class Simulator extends Component{
                 let rand = 1 + Math.random() * max;
                 let value = patient.hr;
 
+                console.log(value);
+
                 if ( rand <= (max/3) ) {
                     value++;
                 } else if( patient.tt != "Green" && rand == max ){
@@ -54,7 +64,7 @@ class Simulator extends Component{
                 }
 
                 this.props.UpdatePatient(patient, value);
-            }) }
+            }
         }
     };
 
