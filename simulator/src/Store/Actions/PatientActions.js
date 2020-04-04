@@ -1,8 +1,7 @@
-export const UpdatePatients = (patients) => {
+export const UpdatePatient = (patient, value) => {
     return(dispatch, getState, { getFirebase, getFirestore }) => {
         // access db
         const firestore = getFirestore();
-
-        dispatch({ type: 'UPDATE_PATIENTS', patients });
+        firestore.database().set( { hr: value } ).then(() => { dispatch({ type: 'UPDATE_PATIENT', patient }); });
     }
 };

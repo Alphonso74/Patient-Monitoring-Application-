@@ -35,7 +35,7 @@ class App extends Component {
                         </div>
 
                         <div className="col s12 m6">
-                            <Simulator /*running={this.state.running} startSim={this.startSim}*/ />
+                            <Simulator />
                         </div>
 
                     </div>
