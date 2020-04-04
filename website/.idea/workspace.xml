@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/src/main/res/menu/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/src/main/res/menu/StartActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/src/main/res/menu/menu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/CreatePatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/CreatePatient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/PatientDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/PatientDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/reducers/patientReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/reducers/patientReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/logan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/logan.js" afterDir="false" />
-    </list>
+    <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +69,7 @@
       <workItem from="1584976570486" duration="82000" />
       <workItem from="1585009783887" duration="1055000" />
       <workItem from="1585031476788" duration="164000" />
+      <workItem from="1585952350263" duration="167000" />
     </task>
     <servers />
   </component>
