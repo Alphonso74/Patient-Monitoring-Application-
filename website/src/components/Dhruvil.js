@@ -9,12 +9,12 @@ class Dhruvil extends Component {
                 <Grid className="contact-grid">
                     <Cell col={6}>
                         <h2>Dhruvilkumar V Joshi</h2>
-                        {/*<img*/}
-                        {/*    src="https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png"*/}
-                        {/*    alt="avatar"*/}
-                        {/*    style={{height: '250px'}}*/}
-                        {/*/>*/}
-                        <p style={{ width: '75%', margin: 'auto', paddingTop: '1em'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                      
+                      //  src=
+                           alt="avatar"
+                        {    style={{height: '250px'}}*/}
+
+                        <p style={{ width: '75%', margin: 'auto', paddingTop: '1em'}}> My name is Dhruvilkumar Joshi also known as Dhruvil. Currently a Senior at Pennsylvania State University majoring in Computer Science with a minor in Business and Security and Risk Analysis</p>
 
                     </Cell>
                     <Cell col={6}>
@@ -26,16 +26,16 @@ class Dhruvil extends Component {
                                 <ListItem>
                                     <ListItemContent style={{fontSize: '30px', fontFamily: 'Anton'}}>
                                         <i className="fa fa-phone-square" aria-hidden="true"/>
-                                        (123) 456-7890
+                                        (267) 210-9651
                                     </ListItemContent>
                                 </ListItem>
 
-                                <ListItem>
-                                    <ListItemContent style={{fontSize: '30px', fontFamily: 'Anton'}}>
-                                        <i className="fa fa-fax" aria-hidden="true"/>
-                                        (123) 456-7890
-                                    </ListItemContent>
-                                </ListItem>
+                               <ListItem>
+                                    <ListItemContent style={{fontSize: '16px', fontFamily: 'Anton'}}>
+                                     <i className="fa fa-linkedin" aria-hidden="true"/>
+                                  https://www.linkedin.com/in/dhruvilkumarjoshi/
+                                </ListItemContent>
+                               </ListItem>
 
                                 <ListItem>
                                     <ListItemContent style={{fontSize: '30px', fontFamily: 'Anton'}}>

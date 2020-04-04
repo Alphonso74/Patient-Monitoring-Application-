@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/src/main/res/menu/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/src/main/res/menu/StartActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/src/main/res/menu/menu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/CreatePatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/CreatePatient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/PatientDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/components/patients/PatientDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/src/reducers/patientReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/src/reducers/patientReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/logan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/logan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dhruvil.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dhruvil.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +31,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
