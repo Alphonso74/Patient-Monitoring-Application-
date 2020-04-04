@@ -9,7 +9,7 @@ class Dhruvil extends Component {
                 <Grid className="contact-grid">
                     <Cell col={6}>
                         <h2>Dhruvilkumar V Joshi</h2>
-                        <img
+                      
                       //  src=
                            alt="avatar"
                         {    style={{height: '250px'}}*/}
