@@ -19,54 +19,62 @@ class Simulator extends Component{
             running: !prevState.running
         }));
 
-        this.startSim();
-        if(!this.state.running){ this.setState({text: "Start Simulator"}); }
+        if(this.state.running){ this.setState({text: "Start Simulator"}); }
         else{ this.setState({text: "Stop Simulator"}); }
     };
 
     startSim = () => {
-        if(this.state.running){
-            let patients = [];
+        if(this.state.running) {
+            var patients = [];
             firebase.firestore().collection('patients').get().then(snapshot => {
-                snapshot.forEach(patient => {
-                    patients.push(patient.data())
-                })}
-            ).catch(error => {console.error(error)});
-
-            for (let patient in patients){
-                let max;
-                switch(patient.tt){
-                    case "Blue":
-                        max = 100000;
-                        break;
-                    case "Red":
-                        max = 10000;
-                        break;
-                    case "Black":
-                        max = 1000;
-                        break;
-                    case "Green":
-                    default:
-                        max = 100;
+                    snapshot.forEach(patient => {
+                        let data = patient.data();
+                        let id = patient.id;
+                        patients.push({id, ...data});
+                    })
                 }
+            ).catch(error => {
+                console.error(error)
+            }).then(() => {
+                for (let patient of patients) {
+                    let max;
+                    switch (patient.tt) {
+                        case "Blue":
+                            max = 100000;
+                            break;
+                        case "Red":
+                            max = 10000;
+                            break;
+                        case "Black":
+                            max = 1000;
+                            break;
+                        case "Green":
+                        default:
+                            max = 100;
+                    }
 
-                let rand = 1 + Math.random() * max;
-                let value = patient.hr;
+                    let rand = 1 + Math.random() * max;
+                    let value = patient.hr;
 
-                console.log(value);
-
-                if ( rand <= (max/3) ) {
-                    value++;
-                } else if( patient.tt != "Green" && rand == max ){
-                    value = 0;
-                }else if ( rand >= (2 * (max/3) ) ) {
-                    value--;
+                    if (rand <= (max / 3)) {
+                        value++;
+                    } else if (patient.tt !== "Green" && rand === max) {
+                        value = 0;
+                    } else if (rand >= (2 * (max / 3))) {
+                        value--;
+                    }
+                    this.props.UpdatePatient(patient, value);
                 }
-
-                this.props.UpdatePatient(patient, value);
-            }
+            })
         }
     };
+
+    componentDidMount(){
+        this.interval = setInterval(() => {this.startSim()}, 1000);
+    }
+    componentWillUnmount(){
+        clearInterval(this.interval);
+    }
 
     render() {
         return (
