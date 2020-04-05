@@ -4,7 +4,9 @@ import {firestoreConnect} from "react-redux-firebase";
 import {compose} from 'redux'
 import {Redirect} from 'react-router-dom'
 //import DetailButtons from "./DetailButtons";
-import {updatePatient} from "../../store/actions/patientActions";
+import {deletePatient, updatePatient} from "../../store/actions/patientActions";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 class PatientDetails extends Component {
@@ -19,8 +21,8 @@ class PatientDetails extends Component {
         medications: this.props.patient.medications,
         surgicaHistory: this.props.patient.surgicaHistory,
         activeNurse: this.props.patient.activeNurse,
-        standingOrder: this.props.patient.standingOrder
-
+        standingOrder: this.props.patient.standingOrder,
+        department: this.props.patient.department
     };
 
     handleClick = (e) => {
@@ -60,9 +62,9 @@ class PatientDetails extends Component {
                 this.setState({rHeartRate: parseInt(prompt("Enter new resting heart rate:", this.state.rHeartRate))});
                 break;
 
-            case "tag":
+            /*case "tag":
                 this.setState({triageTag: prompt("Enter new triage tag:", this.state.triageTag)});
-                break;
+                break;*/
 
             case "order":
                 this.setState({standingOrder: prompt("Enter new doctor standing order:", this.state.standingOrder)});
@@ -88,8 +90,32 @@ class PatientDetails extends Component {
             default:
         }
     };
+    tagSelect = (option) => {
+        this.setState({triageTag: option.value});
+        console.log(this.state.triageTag);
+    };
+    deptSelect = (option) => {
+        this.setState({department: option.value});
+        console.log(this.state.department);
+    };
+    /*nurseSelect = (option) => {
+        this.setState({activeNurse: option});
+        console.log(this.state.activeNurse);
+    };*/
 
     render() {
+        const tagOptions = [
+            'Blue', 'Green', 'Red', 'Black'
+        ];
+        const defaultTagOption = tagOptions[1];
+        const deptOptions = [
+            'General Care', 'Neonatal', 'Post-Operation'
+        ];
+        const defaultDeptOption = deptOptions[0];
+        {/*const nurseOptions = [
+
+        ];
+        const defaultNurse = nurseOptions[0];*/}
         const {patient, auth} = this.props;
         if (!auth.uid) return <Redirect to='/signin'/>;
 
@@ -99,28 +125,31 @@ class PatientDetails extends Component {
                 <div className="container section project-details">
                     <div className="card z-depth-0">
                         <div className="card-content">
-                            <span className="card-title center">{patient.patientName}
+                            <span className="card-title center">{patient.patientName}  |  {this.state.patientName}  |
                                 <input id="name" type="button" className='button' value='Edit' onClick={this.handleClick}/>
                                 <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
-                            <p>Patient Description: {patient.description}
+                            <p>Patient Description: {patient.description}  |  {this.state.description}  |
                                 <input id="desc" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Height: {patient.height}
+                            <p>Height: {patient.height}  |  {this.state.height}  |
                                 <input id="height" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Weight: {patient.weight}
+                            <p>Weight: {patient.weight}  |  {this.state.weight}  |
                                 <input id="weight" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Body Temperature: {patient.bodyTempature}
+                            <p>Body Temperature: {patient.bodyTempature}  |  {this.state.bodyTempature}  |
                                 <input id="temp" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Heart Rate: {patient.rHeartRate}
+                            <p>Heart Rate: {patient.rHeartRate}  |  {this.state.rHeartRate}  |
                                 <input id="hRate" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
                             <p>Triage Tag: {patient.triageTag}
-                                <input id="tag" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Standing Order: {patient.standingOrder}
+                                <Dropdown options={tagOptions} onChange={this.tagSelect} value={defaultTagOption} placeholder="Edit Triage Tag"/></p>
+                            <p>Department: {patient.department}
+                                <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" /></p>
+                            <p>Standing Order: {patient.standingOrder}  |  {this.state.standingOrder}  |
                                 <input id="order" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Medications: {patient.medications}
+                            <p>Medications: {patient.medications}  |  {this.state.medications}  |
                                 <input id="meds" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Surgical History: {patient.surgicaHistory}
+                            <p>Surgical History: {patient.surgicaHistory}  |  {this.state.surgicaHistory}  |
                                 <input id="surgHist" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
                             <p>Active Nurse: {patient.activeNurse}</p>
+                            {/*<Dropdown options={nurseOptions} onChange={this.nurseSelect} value={defaultNurse} placeholder="Assign Active Nurse" />*/}
                             <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick}/></p>
                             {/* <DetailButtons patient={{patient}}/> */}
                         </div>
