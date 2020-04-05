@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import {createPatient} from "../../store/actions/patientActions";
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import history from "../../history";
+//import {Link} from 'react-router-dom'
+//import history from "../../history";
 import {Redirect} from 'react-router-dom'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 class CreatePatient extends Component {
     state = {
@@ -17,8 +19,8 @@ class CreatePatient extends Component {
         medications: '',
         surgicaHistory: '',
         activeNurse: '',
-        standingOrder: ''
-
+        standingOrder: '',
+        department: ''
     };
     handleChange = (e) => {
         this.setState({
@@ -60,8 +62,25 @@ class CreatePatient extends Component {
         this.props.createPatient(this.state)
     };
 
+    tagSelect = (option) => {
+        this.setState({triageTag: option.value});
+        console.log(this.state.triageTag);
+    };
+    deptSelect = (option) => {
+        this.setState({department: option.value});
+        console.log(this.state.department);
+    };
+
 
     render() {
+        const tagOptions = [
+            'Blue', 'Green', 'Red', 'Black'
+        ];
+        const defaultTagOption = tagOptions[1];
+        const deptOptions = [
+            'General Care', 'Neonatal', 'Post-Operation'
+        ];
+        const defaultDeptOption = deptOptions[0];
         const {auth} = this.props;
         if(!auth.uid) return <Redirect to='/signin'/>
         return (
@@ -75,7 +94,7 @@ class CreatePatient extends Component {
 
                     </div>
                     <div className="input-field">
-                        <label htmlFor="description">Project Description</label>
+                        <label htmlFor="description">Patient Description</label>
                         <textarea id="description" className="materialize-textarea" onChange={this.handleChange}></textarea>
 
                     </div>
@@ -99,11 +118,15 @@ class CreatePatient extends Component {
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="triageTag">TriageTag</label>
-                        <input type="text" id='triageTag' onChange={this.handleChange} />
+                        <label htmlFor="triageTag">Triage Tag</label>
+                        <Dropdown options={tagOptions} onChange={this.tagSelect} value={defaultTagOption} placeholder="Edit Triage Tag"/>
 
                     </div>
 
+                    <div className="input-field">
+                        <label htmlFor="department">Department</label>
+                        <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" />
+                    </div>
 
                     <div className="input-field">
                         <label htmlFor="bodyTempature">Body Temperature</label>
@@ -146,7 +169,7 @@ const mapStateToProps = (state) => {
         auth: state.firebase.auth
 
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
