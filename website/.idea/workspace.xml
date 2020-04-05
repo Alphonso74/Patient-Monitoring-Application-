@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dhruvil.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dhruvil.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +32,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -74,7 +74,7 @@
       <workItem from="1584976570486" duration="82000" />
       <workItem from="1585009783887" duration="1055000" />
       <workItem from="1585031476788" duration="164000" />
-      <workItem from="1585952350263" duration="167000" />
+      <workItem from="1585952350263" duration="322000" />
     </task>
     <servers />
   </component>

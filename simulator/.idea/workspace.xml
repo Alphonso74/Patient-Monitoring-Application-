@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1ea4cc7-3f5a-4d55-9bcc-70135dc5f604" name="Default Changelist" comment="" />
+    <list default="true" id="d1ea4cc7-3f5a-4d55-9bcc-70135dc5f604" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Simulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Simulator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../website/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../website/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +49,18 @@
       <recent name="C:\Users\Sean\WebstormProjects\simulator\src\Components" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
@@ -71,11 +91,26 @@
       <workItem from="1585609891773" duration="2516000" />
       <workItem from="1585696954960" duration="10829000" />
       <workItem from="1585874865932" duration="9471000" />
+      <workItem from="1586012528066" duration="941000" />
+      <workItem from="1586013615944" duration="583000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="706" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585594626975">
