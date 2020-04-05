@@ -15,28 +15,44 @@ class SignUp extends Component {
         department: '',
         hospital: '' ,
         // confirmpassword: ''
-    }
+    };
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
-    }
+    };
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
         this.props.signUp(this.state)
-    }
-    onSelect = (option) => {
-        this.setState({department: option});
+    };
+    deptSelect = (option) => {
+        this.setState({department: option.value});
         console.log(this.state.department);
     };
+    posSelect = (option) => {
+        this.setState({position: option.value});
+        console.log(this.state.position);
+    };
+    /*hospSelect = (option) => {
+        this.setState({hospital: option});
+        console.log(this.state.hospital);
+    }; */
     render() {
-        const options = [
+        const deptOptions = [
             'General Care', 'Neonatal', 'Post-Operation'
         ];
-        const defaultOption = options[0];
+        const posOptions = [
+            'Doctor', 'Nurse', 'Reception'
+        ];
+        {/*const hospOptions = [
+
+        ];*/}
+        const defaultDeptOption = deptOptions[0];
+        const defaultPosOption = posOptions[1];
+        {/*const defaultHospital = hospOptions[0];*/}
         const { auth ,authError} = this.props;
-        if(auth.uid) return <Redirect to='/'/>
+        if(auth.uid) return <Redirect to='/'/>;
         return (
             <div className="container">
                 <form className="white" onSubmit={this.handleSubmit}>
@@ -59,14 +75,15 @@ class SignUp extends Component {
                     </div>
                     <div className="input-field">
                         <label htmlFor="position">Position</label>
-                        <input type="text" id='position' onChange={this.handleChange} />
+                        <Dropdown options={posOptions} onChange={this.posSelect} value={defaultPosOption} placeholder="Select your position" />
                     </div>
                     <div className="input-field">
                         <span>Department</span>
-                        <Dropdown options={options} onChange={this.onSelect} value={defaultOption} placeholder="Select an option" />
+                        <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" />
                     </div>
                     <div className="input-field">
                         <label htmlFor="hospital">Hospital</label>
+                        {/*<Dropdown options={hospOptions} onChange=(this.hospSelect} value={defaultHospital} placeholder="Select your hospital" />*/}
                         <input type="text" id='hospital' onChange={this.handleChange} />
                     </div>
                     <div className="input-field">
