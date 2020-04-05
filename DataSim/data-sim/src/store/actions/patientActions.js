@@ -8,13 +8,13 @@ export const createPatient = (patient) =>{
         const firestore = getFirestore();
         // console.log('Test');
 
-        firestore.collection('patients3').add({
+        firestore.collection('patients').add({
 
             ...patient
 
             // authorFirstName: 'Net'
         }).then(() =>{
-            console.log('Test');
+            //console.log('Test');
             dispatch({type: 'CREATE_PATIENT', patient});
 
 

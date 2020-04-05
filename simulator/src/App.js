@@ -7,20 +7,6 @@ import { firestoreConnect} from "react-redux-firebase";
 import { compose } from "redux";
 
 class App extends Component {
-/*    constructor(props) {
-        super(props);
-        this.state = {
-            running: null
-        };
-        this.startSim = this.startSim.bind(this);
-    }
-
-    startSim = () => {
-        this.setState((prevState) => ({
-            running: !prevState.running
-        }));
-    };
-*/
     render(){
         const { patients } = this.props;
         return(
