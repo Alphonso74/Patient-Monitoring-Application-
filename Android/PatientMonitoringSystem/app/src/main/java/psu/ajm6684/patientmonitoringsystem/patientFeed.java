@@ -338,7 +338,7 @@ public class patientFeed extends AppCompatActivity {
 
         private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
-            Query query = patients;
+            Query query = patients.whereEqualTo("department","General Care");
 
 
 

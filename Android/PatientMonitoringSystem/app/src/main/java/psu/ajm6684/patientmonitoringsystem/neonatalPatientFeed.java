@@ -298,7 +298,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
     private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
-        Query query = patients.limit(1);
+        Query query = patients.whereEqualTo("department","Neonatal");
 
 
 

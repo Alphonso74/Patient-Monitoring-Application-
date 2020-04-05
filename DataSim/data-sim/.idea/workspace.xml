@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbd1be75-5585-43a7-8d67-ce0819c45e66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/PatientMonitoringSystem/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../simulator/src/Components/Simulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../simulator/src/Components/Simulator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../website/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../website/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +74,7 @@
       <workItem from="1584976682335" duration="6037000" />
       <workItem from="1585031476306" duration="164000" />
       <workItem from="1585333419185" duration="10506000" />
-      <workItem from="1585952310433" duration="1440000" />
+      <workItem from="1585952310433" duration="1522000" />
     </task>
     <servers />
   </component>

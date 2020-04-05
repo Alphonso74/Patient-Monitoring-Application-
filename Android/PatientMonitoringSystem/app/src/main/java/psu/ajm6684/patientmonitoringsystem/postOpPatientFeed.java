@@ -297,7 +297,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
     private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
-        Query query = patients.limit(2);
+        Query query = patients.whereEqualTo("department","Post-Operation");
 
 
 

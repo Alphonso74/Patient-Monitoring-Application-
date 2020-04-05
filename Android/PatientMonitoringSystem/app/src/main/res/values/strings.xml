@@ -16,5 +16,15 @@
     <string name="title_activity_add_patient">add_patient</string>
     <!--    <string name="title_activity_add_patient">addPatientActivity</string>-->
 
+    <string name="add_Patient_nurse_prompt">Available Nurses</string>
+    <string name="choose_a_nurse_for_this_patient">Choose a Nurse for this patient</string>
+    <string name="add_patient">Add Patient</string>
+    <string name="discard">Discard</string>
+    <string name="patient_surgical_history_separate_by_comma">Patient Surgical History (Separate By comma)</string>
+    <string name="current_medications_separate_by_comma">Current Medications (Separate By comma)</string>
+    <string name="patient_body_temperature">Patient Body Temperature</string>
+    <string name="triage_tag">Triage Tag</string>
+    <string name="patient_heart_rate">Patient Heart Rate</string>
+    <string name="choose_patient_department">Choose Patient Department</string>
 
 </resources>

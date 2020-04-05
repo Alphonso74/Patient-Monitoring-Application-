@@ -12,19 +12,65 @@ public class Note {
     private String medications;
     private String surgicaHistory;
     private String standingOrder;
+    private String department;
 
-    public Note(String patientName, String description, String height, Integer weight, Integer rHeartRate, String triageTag, String activeNurse, Integer bodyTempature, String medications, String surgicaHistory, String standingOrder) {
+    public Note() {
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
         this.patientName = patientName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
         this.height = height;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
         this.weight = weight;
+    }
+
+    public Integer getrHeartRate() {
+        return rHeartRate;
+    }
+
+    public void setrHeartRate(Integer rHeartRate) {
         this.rHeartRate = rHeartRate;
+    }
+
+    public String getTriageTag() {
+        return triageTag;
+    }
+
+    public void setTriageTag(String triageTag) {
         this.triageTag = triageTag;
+    }
+
+    public String getActiveNurse() {
+        return activeNurse;
+    }
+
+    public void setActiveNurse(String activeNurse) {
         this.activeNurse = activeNurse;
-        this.BodyTempature = bodyTempature;
-        this.medications = medications;
-        this.surgicaHistory = surgicaHistory;
-        this.standingOrder = standingOrder;
     }
 
     public Integer getBodyTempature() {
@@ -59,60 +105,26 @@ public class Note {
         this.standingOrder = standingOrder;
     }
 
-    public String getActiveNurse() {
-        return activeNurse;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setActiveNurse(String activeNurse) {
-        this.activeNurse = activeNurse;
-    }
-    public String getTriageTag() {
-        return triageTag;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public void setTriageTag(String triageTag) {
-        this.triageTag = triageTag;
-    }
-
-    public Note(){}
-
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
-    }
-
-    public Integer getrHeartRate() {
-        return rHeartRate;
-    }
-
-    public void setrHeartRate(Integer rHeartRate) {
-        this.rHeartRate = rHeartRate;
-    }
-
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
+    public Note(String patientName, String description, String height, Integer weight, Integer rHeartRate, String triageTag, String activeNurse, Integer bodyTempature, String medications, String surgicaHistory, String standingOrder, String department) {
         this.patientName = patientName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
+        this.height = height;
+        this.weight = weight;
+        this.rHeartRate = rHeartRate;
+        this.triageTag = triageTag;
+        this.activeNurse = activeNurse;
+        BodyTempature = bodyTempature;
+        this.medications = medications;
+        this.surgicaHistory = surgicaHistory;
+        this.standingOrder = standingOrder;
+        this.department = department;
     }
 }

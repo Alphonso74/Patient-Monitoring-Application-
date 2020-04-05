@@ -3,7 +3,9 @@ package psu.ajm6684.patientmonitoringsystem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,10 +13,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,12 +28,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -53,6 +59,9 @@ public class addPatient extends AppCompatActivity {
     final private CollectionReference nurses = db.collection("Nurse");
 
 
+    Spinner spinner;
+    Spinner departmentSpinner;
+    String TAG = "DocSnippets";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +71,50 @@ public class addPatient extends AppCompatActivity {
 
         //  Query query = users.
 
-        final List<String> spinnerArray =  new ArrayList<String>();
-
-        final Spinner spinner = (Spinner) findViewById(R.id.spinnerPatient);
 
 
+        String[] departments = new String[] {
+                "Neonatal",
+                "General Care",
+                "Post-Operation",
+        };
 
-        final String TAG = "DocSnippets";
+        departmentSpinner = (Spinner) findViewById(R.id.spinnerDepartment);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(addPatient.this, android.R.layout.simple_dropdown_item_1line, departments);
+
+        adapter1.notifyDataSetChanged();
+        adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
+        departmentSpinner.setAdapter(adapter1);
+        departmentSpinner.setEnabled(true);
+
+        departmentSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View v,
+                                       int postion, long arg3) {
+                // TODO Auto-generated method stub
+//                Object nurseName = parent.getItemAtPosition(postion).toString();
+//                String  spinnerValue = parent.getItemAtPosition(postion).toString();
+
+                ((TextView) v).setTextColor(Color.BLACK);
+
+
+                departmentSpinner.setSelection(postion);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+
+        spinner = (Spinner) findViewById(R.id.spinnerPatient);
 
 
         db.collection("Users")
@@ -77,43 +123,52 @@ public class addPatient extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        final  List<String>  spinnerArray =  new ArrayList<String>();
+                        QuerySnapshot queryDocumentSnapshots = task.getResult();
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
 
-                                String nurseName = document.get("fullName").toString();
+
+                            for (DocumentSnapshot document :  queryDocumentSnapshots.getDocuments()) {
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                String nurseName = Objects.requireNonNull(document.get("fullName")).toString();
 
                                 spinnerArray.add(nurseName);
 
-//                                Toast.makeText(addPatient.this,nurseName, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(addPatient.this,nurseName, Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(addPatient.this, android.R.layout.simple_dropdown_item_1line, spinnerArray);
+
+
+                        adapter.notifyDataSetChanged();
+                        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
+                        spinner.setAdapter(adapter);
+                        spinner.setEnabled(true);
+
                     }
                 });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                addPatient.this, android.R.layout.simple_spinner_item, spinnerArray);
-
-        spinner.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View v,
                                        int postion, long arg3) {
                 // TODO Auto-generated method stub
-                String  spinnerValue= parent.getItemAtPosition(postion).toString();
+                Object nurseName = parent.getItemAtPosition(postion).toString();
+                String  spinnerValue = parent.getItemAtPosition(postion).toString();
 
-                Toast.makeText(getBaseContext(),
-                        "Selected item" + spinnerValue,
-                        Toast.LENGTH_SHORT).show();
+                ((TextView) v).setTextColor(Color.BLACK);
+
 
                 spinner.setSelection(postion);
+
 
             }
 
@@ -250,7 +305,7 @@ public class addPatient extends AppCompatActivity {
 
     private void saveNote() {
 
-
+        String nurseName = spinner.getSelectedItem().toString();
         String patientName = name.getText().toString();
         String patientDescrition = description.getText().toString();
         String triage = triageTag.getText().toString();
@@ -261,6 +316,7 @@ public class addPatient extends AppCompatActivity {
         String meds = medications.getText().toString();
         String sugeries = surgicalHistory.getText().toString();
 
+        String department = departmentSpinner.getSelectedItem().toString();
         if (patientName.trim().isEmpty() || patientDescrition.trim().isEmpty() || triage.trim().isEmpty() ||
                 patientHeight.trim().isEmpty()) {
 
@@ -270,7 +326,7 @@ public class addPatient extends AppCompatActivity {
 
             CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("patients3");
 
-            collectionReference.add(new Note(patientName, patientDescrition, patientHeight, patientWeight, patientRHeartRate, triage, "", temp, meds, sugeries, ""));
+            collectionReference.add(new Note(patientName, patientDescrition, patientHeight, patientWeight, patientRHeartRate, triage, nurseName, temp, meds, sugeries, "", department ));
 
 //                CollectionReference collectionReference1 = FirebaseFirestore.getInstance().collection("Nurse");
 //
