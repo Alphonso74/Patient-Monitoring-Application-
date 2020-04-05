@@ -23,10 +23,11 @@ class Simulator extends Component{
         else{ this.setState({text: "Stop Simulator"}); }
     };
 
-    startSim = () => {
+    runSim = () => {
         if(this.state.running) {
             var patients = [];
             firebase.firestore().collection('patients').get().then(snapshot => {
+                    // Populate array patients[] with firestore data
                     snapshot.forEach(patient => {
                         let data = patient.data();
                         let id = patient.id;
@@ -37,6 +38,7 @@ class Simulator extends Component{
                 console.error(error)
             }).then(() => {
                 for (let patient of patients) {
+                    // Set max according to triage tag
                     let max;
                     switch (patient.tt) {
                         case "Blue":
@@ -53,24 +55,41 @@ class Simulator extends Component{
                             max = 100;
                     }
 
-                    let rand = 1 + Math.random() * max;
-                    let value = patient.hr;
+                    // Randomize values
+                    let randHR = 1 + Math.random() * max;
+                    let randBT = 1 + Math.random() * max;
 
-                    if (rand <= (max / 3)) {
-                        value++;
-                    } else if (patient.tt !== "Green" && rand === max) {
-                        value = 0;
-                    } else if (rand >= (2 * (max / 3))) {
-                        value--;
+                    let heartRate = patient.hr;
+                    let bodyTemp = patient.temp;
+
+                    // Change heart rate
+                    if (randHR <= (max / 3)) {
+                        heartRate++;
+                    } else if (patient.tt !== "Green" && randHR === max) {
+                        heartRate = 0;
+                    } else if (randHR >= (2 * (max / 3))) {
+                        heartRate--;
                     }
-                    this.props.UpdatePatient(patient, value);
+
+                    // Change body temp
+                    if (randBT <= (max / 3)) {
+                        bodyTemp += .1;
+                    } else if (randBT >= (2 * (max / 3))) {
+                        bodyTemp -= .1;
+                    }
+
+                    // Round to ##.#
+                    bodyTemp = Math.round(bodyTemp * 10) / 10;
+
+                    // Update firestore data with new values
+                    this.props.UpdatePatient(patient, heartRate, bodyTemp);
                 }
             })
         }
     };
 
     componentDidMount(){
-        this.interval = setInterval(() => {this.startSim()}, 1000);
+        this.interval = setInterval(() => {this.runSim()}, 1000);
     }
     componentWillUnmount(){
         clearInterval(this.interval);
@@ -79,9 +98,24 @@ class Simulator extends Component{
     render() {
         return (
             <div className="section">
-                <h4>Simulator</h4>
+                <h4>Simulator Details</h4>
                 <div className="divider"/>
-                <p className="valign-wrapper">Simulator details coming soon.</p>
+                <p>
+                    Randomization depends on triage tag<br/>
+                    <div className="divider"/>
+                    <h5>Heart Rate:</h5>
+                    All:<br/>1/3 chance of increase by 1<br/>
+                    1/3 chance of decrease by 1<br/>
+                    1/3 chance of no change<br/>
+                    Blue:<br/>1/100000 chance of dropping to 0<br/>
+                    Red:<br/>1/10000 chance of dropping to 0<br/>
+                    Black:<br/>1/1000 chance of dropping to 0<br/>
+                    <div className="divider"/>
+                    <h5>Body Temperature</h5>
+                    All:<br/>1/3 chance of increase by 0.1<br/>
+                    1/3 chance of decrease by 0.1<br/>
+                    1/3 chance of no change<br/>
+                </p>
                 <div className="divider"/>
                 <a id="start" href="#" onClick={ this.simButton } className="waves-effect waves-light light-green darken-2 btn">{this.state.text}</a>
             </div>
@@ -91,7 +125,7 @@ class Simulator extends Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        UpdatePatient: (patient, value) => dispatch(UpdatePatient(patient, value))
+        UpdatePatient: (patient, heartRate, bodyTemp) => dispatch(UpdatePatient(patient, heartRate, bodyTemp))
     }
 };
 
