@@ -534,6 +534,8 @@ public class patientFeed extends AppCompatActivity {
                     intent.putExtra("medications",medications);
                     intent.putExtra("surgicalH",surgicalHistory);
                     intent.putExtra("standingO",standingO);
+                    intent.putExtra("activeNurse",activeNurse);
+
                     //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                     //intent.putExtra("Firebse Reference", (Serializable) ref);
 

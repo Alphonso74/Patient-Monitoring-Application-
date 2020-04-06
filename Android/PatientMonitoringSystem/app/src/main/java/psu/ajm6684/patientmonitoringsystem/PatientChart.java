@@ -33,15 +33,33 @@ public class PatientChart extends AppCompatActivity {
 
     private chartAdapter ChartAdapter;
 
+    String patientName;
+    String patientDescription;
+    String patientHeight;
+    String patientRestingHeartRate;
+    String patientID;
+    String bodyTemp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chartfeed);
         Intent intent = getIntent();
         String patientName = intent.getStringExtra("Patient Name");
-        Toast.makeText(PatientChart.this, patientName, Toast.LENGTH_SHORT).show();
 
         setUpView(patientName);
+
+        final String patientDescription = intent.getStringExtra("Patient Description");
+        final String patientHeight = intent.getStringExtra("Patient Height");
+        final String patientWeight = intent.getStringExtra("Patient Weight");
+        final String patientRestingHeartRate = intent.getStringExtra("Patient Resting Heart Rate");
+        final String patientID = intent.getStringExtra("Patient ID");
+        final Integer position = intent.getIntExtra("position",0);
+        final String bodyTemp = intent.getStringExtra("bodyTemp");
+        final String activeNurse = intent.getStringExtra("nurse");
+        final String medications = intent.getStringExtra("medications");
+        final String sHistory = intent.getStringExtra("surgicalH");
+        final String standingO = intent.getStringExtra("standingO");
 
     }
 
@@ -67,7 +85,70 @@ public class PatientChart extends AppCompatActivity {
 
 
 
+                ChartAdapter.setOnItemClickListener(new chartAdapter.onItemClickListener() {
 
+                    @Override
+                    public void onItemClick(final DocumentSnapshot documentSnapshot, final int position) {
+                        final AlertDialog.Builder chartDialog = new AlertDialog.Builder(PatientChart.this);
+                        chartDialog.setTitle("Patient Chart Options");
+                        chartDialog.setMessage("What would you like to do?");
+                        chartDialog.setCancelable(true);
+
+                       final String userText = documentSnapshot.get("userText").toString();
+//                        Toast.makeText(PatientChart.this, userText, Toast.LENGTH_SHORT).show();
+
+
+                        chartDialog.setPositiveButton("Edit this Chart", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                String id = documentSnapshot.getId();
+//                                Toast.makeText(PatientChart.this, "Edit Chart Clicked!", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(PatientChart.this,editChart.class);
+                                intent.putExtra("Patient Name",patientName);
+                                intent.putExtra("userText",userText);
+                                intent.putExtra("ID",id);
+                                startActivity(intent);
+
+
+                            }
+                        });
+
+                        chartDialog.setNeutralButton("View this Chart", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//                                Toast.makeText(PatientChart.this, "View Chart Clicked!", Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        });
+
+                        chartDialog.setNegativeButton("Delete this Chart", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                                ChartAdapter.deleteChart(position);
+
+
+                                Toast.makeText(PatientChart.this, "Chart Deleted!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                        chartDialog.show();
+
+
+                    }
+
+                    @Override
+                    public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
+                        Toast.makeText(PatientChart.this, "Chart Long Clicked!", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                });
 
 //        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
 //

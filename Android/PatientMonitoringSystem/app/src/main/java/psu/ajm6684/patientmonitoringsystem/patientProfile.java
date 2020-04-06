@@ -22,32 +22,7 @@ public class patientProfile extends AppCompatActivity {
     PatientAdapter patientAdapter;
 
 
-    @Override
-    protected void onStart() {
-//        Intent intent = getIntent();
-//
-//        final String standingO = intent.getStringExtra("standingO");
-//        TextView standingOrder = (TextView) findViewById(R.id.textView17);
-//        standingOrder.setText(standingO);
-//
 
-
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-
-//        Intent intent = getIntent();
-//
-//        final String standingO = intent.getStringExtra("standingO");
-//        TextView standingOrder = (TextView) findViewById(R.id.textView17);
-//        standingOrder.setText(standingO);
-
-
-
-        super.onResume();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,10 +86,23 @@ public class patientProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Toast.makeText(patientProfile.this, patientName.toString(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(patientProfile.this,PatientChart.class);
-                intent.putExtra("Patient Name",patientName.toString());
+                intent.putExtra("Patient Name",patientName);
+                intent.putExtra("Patient Description",patientDescription);
+                intent.putExtra("Patient Height",patientHeight);
+                intent.putExtra("Patient Weight",patientWeight);
+                intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
+                intent.putExtra("Patient ID",patientID);
+                intent.putExtra("position",position);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",sHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+
+
                 startActivity(intent);
             }
         });
