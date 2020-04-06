@@ -41,7 +41,7 @@ class Simulator extends Component{
                     // Set max according to triage tag
                     let max;
                     switch (patient.tt) {
-                        case "Blue":
+                        case "Yellow":
                             max = 100000;
                             break;
                         case "Red":
@@ -107,9 +107,10 @@ class Simulator extends Component{
                     All:<br/>1/3 chance of increase by 1<br/>
                     1/3 chance of decrease by 1<br/>
                     1/3 chance of no change<br/>
-                    Blue:<br/>1/100000 chance of dropping to 0<br/>
+                    Yellow:<br/>1/100000 chance of dropping to 0<br/>
                     Red:<br/>1/10000 chance of dropping to 0<br/>
                     Black:<br/>1/1000 chance of dropping to 0<br/>
+                    Green:<br/>No chance of dropping to 0
                     <div className="divider"/>
                     <h5>Body Temperature</h5>
                     All:<br/>1/3 chance of increase by 0.1<br/>
