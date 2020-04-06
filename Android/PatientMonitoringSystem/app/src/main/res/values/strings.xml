@@ -30,5 +30,7 @@
     <string name="view_patient_charts">View Patient Charts</string>
     <string name="name">Name</string>
     <string name="patient_charts">Patient Charts</string>
+    <string name="patient_monitoring_system">Patient Monitoring System</string>
+    <string name="patient">Patient</string>
 
 </resources>

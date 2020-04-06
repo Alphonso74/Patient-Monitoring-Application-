@@ -88,7 +88,6 @@ RadioGroup triage;
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                Toast.makeText(addPatient.this, "BUtton ClickeedeWrWR", Toast.LENGTH_LONG).show();
 
                 if(checkedId == R.id.red) {
                     triageTagBoy = "Red";

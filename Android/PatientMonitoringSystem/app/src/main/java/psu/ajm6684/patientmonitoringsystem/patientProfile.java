@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -13,8 +14,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Map;
 
@@ -22,32 +28,10 @@ public class patientProfile extends AppCompatActivity {
     PatientAdapter patientAdapter;
 
 
-    @Override
-    protected void onStart() {
-//        Intent intent = getIntent();
-//
-//        final String standingO = intent.getStringExtra("standingO");
-//        TextView standingOrder = (TextView) findViewById(R.id.textView17);
-//        standingOrder.setText(standingO);
-//
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+CollectionReference userCharts = db.collection("charts");
 
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-
-//        Intent intent = getIntent();
-//
-//        final String standingO = intent.getStringExtra("standingO");
-//        TextView standingOrder = (TextView) findViewById(R.id.textView17);
-//        standingOrder.setText(standingO);
-
-
-
-        super.onResume();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +40,50 @@ public class patientProfile extends AppCompatActivity {
 
         Button addNurse = (Button) findViewById(R.id.button5);
         final Button createChart = (Button) findViewById(R.id.button7);
+        Intent intent = getIntent();
 
         Button backButton = (Button) findViewById(R.id.back2feed);
-        Button viewCharts = (Button) findViewById(R.id.viewCharts);
+        final Button viewCharts = (Button) findViewById(R.id.viewCharts);
+        final String patientName = intent.getStringExtra("Patient Name");
+        final int count = 0;
+
+        Query query = userCharts.whereEqualTo("patientName",patientName);
+
+        db.collection("charts").whereEqualTo("patientName",patientName).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        @Override
+        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+            // [START_EXCLUDE]
+            int count = 0;
+            for (QueryDocumentSnapshot snap : queryDocumentSnapshots) {
+
+
+                if(snap!= null ){
+
+                    count++;
+                }
+
+
+            }
+            Log.d("Data ------", "Should be zero" + count);
+
+            if(count == 0){
+
+
+                viewCharts.setAlpha(.5f);
+                viewCharts.setClickable(false);
+            }
+            // [END_EXCLUDE]
+        }
+    });
 
         Button standingOrderButton = (Button) findViewById(R.id.button6);
 
         FirebaseFirestore  firebaseFirestore = FirebaseFirestore.getInstance();
 
-        Intent intent = getIntent();
 
-        final String patientName = intent.getStringExtra("Patient Name");
+
+
         final String patientDescription = intent.getStringExtra("Patient Description");
         final String patientHeight = intent.getStringExtra("Patient Height");
         final String patientWeight = intent.getStringExtra("Patient Weight");
@@ -111,10 +128,23 @@ public class patientProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Toast.makeText(patientProfile.this, patientName.toString(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(patientProfile.this,PatientChart.class);
-                intent.putExtra("Patient Name",patientName.toString());
+                intent.putExtra("Patient Name",patientName);
+                intent.putExtra("Patient Description",patientDescription);
+                intent.putExtra("Patient Height",patientHeight);
+                intent.putExtra("Patient Weight",patientWeight);
+                intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
+                intent.putExtra("Patient ID",patientID);
+                intent.putExtra("position",position);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",sHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+
+
                 startActivity(intent);
             }
         });

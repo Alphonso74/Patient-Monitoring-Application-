@@ -306,7 +306,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
         // Query nurses = patients.document().;
 
 
-        ImageView face = (ImageView) findViewById(R.id.facey) ;
+//        ImageView face = (ImageView) findViewById(R.id.facey) ;
 
         // face.setVisibility(View.VISIBLE);
 

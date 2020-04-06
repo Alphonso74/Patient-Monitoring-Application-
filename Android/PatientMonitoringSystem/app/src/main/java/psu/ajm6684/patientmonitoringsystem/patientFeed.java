@@ -348,7 +348,7 @@ public class patientFeed extends AppCompatActivity {
            // Query nurses = patients.document().;
 
 
-            ImageView face = (ImageView) findViewById(R.id.facey) ;
+//            ImageView face = (ImageView) findViewById(R.id.facey) ;
 
            // face.setVisibility(View.VISIBLE);
 
@@ -535,6 +535,8 @@ public class patientFeed extends AppCompatActivity {
                     intent.putExtra("medications",medications);
                     intent.putExtra("surgicalH",surgicalHistory);
                     intent.putExtra("standingO",standingO);
+                    intent.putExtra("activeNurse",activeNurse);
+
                     //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                     //intent.putExtra("Firebse Reference", (Serializable) ref);
 
