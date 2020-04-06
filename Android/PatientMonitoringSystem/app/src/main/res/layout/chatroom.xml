@@ -3,36 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
     tools:context=".patientFeed">
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="296dp"
-        android:layout_height="53dp"
-        android:layout_below="@+id/listView"
+        android:layout_width="351dp"
+        android:layout_height="80dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="25dp" />
+        android:layout_marginStart="0dp" />
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_below="@+id/listView"
+        android:layout_height="66dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="6dp"
         android:onClick="send"
-        android:text="Add" />
+        android:text="Add"
+        tools:ignore="OnClick" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="631dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp" />
+        android:layout_height="597dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="26dp" />
 </RelativeLayout>

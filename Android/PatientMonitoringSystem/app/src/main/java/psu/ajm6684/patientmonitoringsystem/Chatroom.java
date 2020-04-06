@@ -1,7 +1,9 @@
 package psu.ajm6684.patientmonitoringsystem;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ public class Chatroom extends AppCompatActivity {
     EditText e1;
     TextView t1;
 
+
     private String user_name,room_name;
 
     DatabaseReference reference;
@@ -35,6 +38,7 @@ public class Chatroom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.chatroom);
         setContentView(R.layout.displaymessage);
         e1= (EditText)findViewById(R.id.editText2);
         t1= (TextView)findViewById(R.id.textView);
@@ -44,11 +48,11 @@ public class Chatroom extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-
         user_name = getIntent().getExtras().get("user_name").toString();
         room_name = getIntent().getExtras().get("room_name").toString();
         reference = FirebaseDatabase.getInstance().getReference().child(room_name);
         setTitle(" Room - "+room_name);
+
 
 
         reference.addChildEventListener(new ChildEventListener() {
@@ -128,7 +132,5 @@ public class Chatroom extends AppCompatActivity {
             t1.append(chat_username + ": " +chat_msg + " \n");
         }
     }
-
-
 
 }
