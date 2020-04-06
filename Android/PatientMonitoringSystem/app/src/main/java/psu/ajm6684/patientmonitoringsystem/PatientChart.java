@@ -40,6 +40,7 @@ public class PatientChart extends AppCompatActivity {
     String patientID;
     String bodyTemp;
 
+    Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +62,18 @@ public class PatientChart extends AppCompatActivity {
         final String sHistory = intent.getStringExtra("surgicalH");
         final String standingO = intent.getStringExtra("standingO");
 
+
+        backButton = (Button) findViewById(R.id.button_menu);
+
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
 
     private void setUpView(String name) {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
@@ -115,14 +127,14 @@ public class PatientChart extends AppCompatActivity {
                             }
                         });
 
-                        chartDialog.setNeutralButton("View this Chart", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-//                                Toast.makeText(PatientChart.this, "View Chart Clicked!", Toast.LENGTH_SHORT).show();
-
-
-                            }
-                        });
+//                        chartDialog.setNeutralButton("View this Chart", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+////                                Toast.makeText(PatientChart.this, "View Chart Clicked!", Toast.LENGTH_SHORT).show();
+//
+//
+//                            }
+//                        });
 
                         chartDialog.setNegativeButton("Delete this Chart", new DialogInterface.OnClickListener() {
                             @Override

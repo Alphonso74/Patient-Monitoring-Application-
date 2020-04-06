@@ -6,17 +6,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/background">
 
-    <ImageView
-        android:id="@+id/facey2"
-        android:layout_width="158dp"
-        android:layout_height="148dp"
-        android:layout_below="@+id/back2feed"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="10dp"
-        android:contentDescription="Patient Status"
-        app:srcCompat="@drawable/smiley_face"
-        tools:ignore="VectorDrawableCompat" />
+<!--    <ImageView-->
+<!--        android:id="@+id/facey2"-->
+<!--        android:layout_width="158dp"-->
+<!--        android:layout_height="148dp"-->
+<!--        android:layout_below="@+id/back2feed"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="19dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:contentDescription="Patient Status"-->
+<!--        app:srcCompat="@drawable/smiley_face"-->
+<!--        tools:ignore="VectorDrawableCompat" />-->
 
     <TextView
         android:id="@+id/textView10"
@@ -286,6 +286,7 @@
     <Button
         android:id="@+id/back2feed"
         android:layout_width="78dp"
+        android:background="@drawable/spinner_rounded"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"

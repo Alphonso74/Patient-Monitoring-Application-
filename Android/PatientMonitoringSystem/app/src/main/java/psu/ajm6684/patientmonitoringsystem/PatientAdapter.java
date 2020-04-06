@@ -97,10 +97,10 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
             patientTriageTag = itemView.findViewById(R.id.text_view_triage);
 
 
-            ImageView face = itemView.findViewById(R.id.facey);
+//            ImageView face = itemView.findViewById(R.id.facey);
 
 
-            face.setVisibility(View.VISIBLE);
+//            face.setVisibility(View.VISIBLE);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

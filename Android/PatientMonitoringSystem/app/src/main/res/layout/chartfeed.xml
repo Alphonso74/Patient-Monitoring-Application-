@@ -58,6 +58,7 @@
         android:layout_marginBottom="44dp"
         android:fontFamily="@font/arbutus"
         android:paddingTop="25dp"
+        android:paddingEnd="50dp"
         android:text="@string/patient_charts"
 
         android:textAlignment="center"
@@ -75,17 +76,17 @@
         android:paddingTop="60dp"
         android:paddingBottom="10dp"/>
 
-    <!--    <Button-->
-<!--        android:id="@+id/button_menu"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:onClick="logout"-->
-<!--        android:text="Menu"-->
-<!--        android:background="@drawable/spinner_rounded"-->
-<!--        app:backgroundTint="#79070606"-->
-<!--        />-->
+        <Button
+        android:id="@+id/button_menu"
+            android:background="@drawable/spinner_rounded"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+
+        android:text="@string/patient"
+        app:backgroundTint="#79070606"
+        />
 
 
 

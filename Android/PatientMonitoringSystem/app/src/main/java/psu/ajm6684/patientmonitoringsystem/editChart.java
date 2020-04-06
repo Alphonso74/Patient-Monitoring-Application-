@@ -42,7 +42,6 @@ public class editChart extends Activity {
        userText = intent.getStringExtra("userText");
         final String id = intent.getStringExtra("ID");
 
-        Toast.makeText(editChart.this, id, Toast.LENGTH_SHORT).show();
 
         TextView patientName = (TextView) findViewById(R.id.PatientNameChart);
 
