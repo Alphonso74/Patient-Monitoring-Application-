@@ -26,5 +26,8 @@
     <string name="triage_tag">Triage Tag</string>
     <string name="patient_heart_rate">Patient Heart Rate</string>
     <string name="choose_patient_department">Choose Patient Department</string>
+    <string name="create_patient_chart">Create Patient Chart</string>
+    <string name="view_patient_charts">View Patient Charts</string>
+    <string name="name">Name</string>
 
 </resources>

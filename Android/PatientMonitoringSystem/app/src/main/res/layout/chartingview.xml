@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<androidx.cardview.widget.CardView
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    app:cardBackgroundColor="#9FA2AA"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:background="@drawable/spinner_rounded">
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="-8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="50sp" />
+
+
+        <TextView
+            android:id="@+id/dateChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_title"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:text="Date"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/timeChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateChart"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:text="Time"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeChart"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:maxLines="3"
+            android:text="Chart Data"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:layout_width="match_parent" android:layout_height="match_parent">-->
+

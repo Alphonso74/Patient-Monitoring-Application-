@@ -16,7 +16,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +48,6 @@ public class addPatient extends AppCompatActivity {
     private EditText description;
     private EditText height;
     private EditText weight;
-    private EditText triageTag;
     private EditText rHeartRate;
     private EditText bodyTemp;
     private EditText medications;
@@ -58,7 +59,9 @@ public class addPatient extends AppCompatActivity {
 
     final private CollectionReference nurses = db.collection("Nurse");
 
+RadioGroup triage;
 
+    String triageTagBoy;
     Spinner spinner;
     Spinner departmentSpinner;
     String TAG = "DocSnippets";
@@ -72,12 +75,32 @@ public class addPatient extends AppCompatActivity {
         //  Query query = users.
 
 
+        triage = (RadioGroup) findViewById(R.id.triageGroup);
 
         String[] departments = new String[] {
                 "Neonatal",
                 "General Care",
                 "Post-Operation",
         };
+
+        triage.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                Toast.makeText(addPatient.this, "BUtton ClickeedeWrWR", Toast.LENGTH_LONG).show();
+
+                if(checkedId == R.id.red) {
+                    triageTagBoy = "Red";
+                } else if(checkedId == R.id.green) {
+                    triageTagBoy = "Green";
+                } else if(checkedId == R.id.yellow) {
+                    triageTagBoy = "Yellow";
+                }else {
+                    triageTagBoy ="Black";
+                }
+            }
+        });
 
         departmentSpinner = (Spinner) findViewById(R.id.spinnerDepartment);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(addPatient.this, android.R.layout.simple_dropdown_item_1line, departments);
@@ -227,7 +250,7 @@ public class addPatient extends AppCompatActivity {
         description = (EditText) findViewById(R.id.edit_text_description);
         height = (EditText) findViewById(R.id.edit_text_height);
         weight = (EditText) findViewById(R.id.edit_text_weight);
-        triageTag = (EditText) findViewById(R.id.edit_text_triageTag);
+//        triageTag = (EditText) findViewById(R.id.edit_text_triageTag);
         rHeartRate = (EditText) findViewById(R.id.edit_text_heartRate);
         bodyTemp = (EditText) findViewById(R.id.bodyTemp);
         medications = (EditText) findViewById(R.id.medications);
@@ -258,7 +281,7 @@ public class addPatient extends AppCompatActivity {
 //                }else {
 
 
-                saveNote();
+                saveNote(triageTagBoy);
 
                 //}
             }
@@ -285,7 +308,7 @@ public class addPatient extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_patient:
-                saveNote();
+                saveNote(triageTagBoy);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -303,12 +326,11 @@ public class addPatient extends AppCompatActivity {
     }
 
 
-    private void saveNote() {
+    private void saveNote(String triageTa) {
 
         String nurseName = spinner.getSelectedItem().toString();
         String patientName = name.getText().toString();
         String patientDescrition = description.getText().toString();
-        String triage = triageTag.getText().toString();
         String patientHeight = height.getText().toString();
         Integer patientWeight = Integer.valueOf(weight.getText().toString());
         Integer patientRHeartRate = Integer.valueOf(rHeartRate.getText().toString());
@@ -317,7 +339,7 @@ public class addPatient extends AppCompatActivity {
         String sugeries = surgicalHistory.getText().toString();
 
         String department = departmentSpinner.getSelectedItem().toString();
-        if (patientName.trim().isEmpty() || patientDescrition.trim().isEmpty() || triage.trim().isEmpty() ||
+        if (patientName.trim().isEmpty() || patientDescrition.trim().isEmpty() ||
                 patientHeight.trim().isEmpty()) {
 
             Toast.makeText(this, "Please fill in Fields", Toast.LENGTH_LONG).show();
@@ -326,7 +348,7 @@ public class addPatient extends AppCompatActivity {
 
             CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("patients3");
 
-            collectionReference.add(new Note(patientName, patientDescrition, patientHeight, patientWeight, patientRHeartRate, triage, nurseName, temp, meds, sugeries, "", department ));
+            collectionReference.add(new Note(patientName, patientDescrition, patientHeight, patientWeight, patientRHeartRate, triageTa, nurseName, temp, meds, sugeries, "", department ));
 
 //                CollectionReference collectionReference1 = FirebaseFirestore.getInstance().collection("Nurse");
 //
