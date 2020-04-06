@@ -105,7 +105,7 @@ class PatientDetails extends Component {
 
     render() {
         const tagOptions = [
-            'Blue', 'Green', 'Red', 'Black'
+            'Yellow', 'Green', 'Red', 'Black'
         ];
         const defaultTagOption = tagOptions[1];
         const deptOptions = [
