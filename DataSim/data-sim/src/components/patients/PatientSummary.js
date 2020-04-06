@@ -16,9 +16,9 @@ const PatientSummary = ({patient}) => {
             </div>
         )
     }
-    else if (patient.triageTag === 'Blue') {
+    else if (patient.triageTag === 'Yellow') {
         return (
-            <div className="card z-depth-0 project-summary light blue center">
+            <div className="card z-depth-0 project-summary light yellow center">
                 <div className="card-content grey-text text-darken-3 hoverable">
                     <span className="card-title ">{patient.patientName}</span>
                     <p>Heart Rate - {patient.rHeartRate}</p>
