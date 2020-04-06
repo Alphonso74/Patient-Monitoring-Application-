@@ -3,41 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginlogo"
+    android:background="@drawable/artboard_1"
 >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
 
-<!--        <ImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="380dp"-->
-<!--            android:paddingBottom="40dp"-->
+        <!--        <ImageView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="380dp"-->
+        <!--            android:paddingBottom="40dp"-->
 
-<!--            android:src="@drawable/loginlogo" />-->
+        <!--            android:src="@drawable/loginlogo" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/anton"
-            android:text="@string/patient_monitoring_system"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@android:color/widget_edittext_dark"
-            android:textSize="35sp"
-            android:textStyle="bold" />
-
-        <ProgressBar
-            android:id="@+id/splashProgress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp" />
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_centerInParent="true"-->
+        <!--            android:fontFamily="@font/anton"-->
+        <!--            android:text="@string/patient_monitoring_system"-->
+        <!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+        <!--            android:textColor="@android:color/widget_edittext_dark"-->
+        <!--            android:textSize="35sp"-->
+        <!--            android:textStyle="bold" />-->
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/splashProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="334dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="381dp" />
 
 </RelativeLayout>
