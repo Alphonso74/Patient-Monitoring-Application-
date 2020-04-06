@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,18 +44,6 @@
       <recent name="C:\Users\Sean\WebstormProjects\simulator\src\Components" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
@@ -93,6 +80,8 @@
       <workItem from="1586017612070" duration="3109000" />
       <workItem from="1586025484171" duration="5006000" />
       <workItem from="1586117252256" duration="3536000" />
+      <workItem from="1586133628254" duration="481000" />
+      <workItem from="1586134162308" duration="76000" />
     </task>
     <servers />
   </component>
