@@ -29,5 +29,6 @@
     <string name="create_patient_chart">Create Patient Chart</string>
     <string name="view_patient_charts">View Patient Charts</string>
     <string name="name">Name</string>
+    <string name="patient_charts">Patient Charts</string>
 
 </resources>

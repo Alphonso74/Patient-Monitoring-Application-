@@ -2,16 +2,19 @@ package psu.ajm6684.patientmonitoringsystem;
 
 public class chartNote {
 
-    String userText;
-    String patientName;
-    String date;
-    String time;
+    private String userText;
+    private String patientName;
+    private String date;
+    private String time;
 
     public chartNote(String userText, String patientName, String date, String time) {
         this.userText = userText;
         this.patientName = patientName;
         this.date = date;
         this.time = time;
+    }
+
+    public chartNote() {
     }
 
     public String getUserText() {

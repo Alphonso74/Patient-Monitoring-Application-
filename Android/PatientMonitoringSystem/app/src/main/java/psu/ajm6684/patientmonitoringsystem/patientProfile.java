@@ -21,6 +21,7 @@ import java.util.Map;
 public class patientProfile extends AppCompatActivity {
     PatientAdapter patientAdapter;
 
+
     @Override
     protected void onStart() {
 //        Intent intent = getIntent();
@@ -57,6 +58,7 @@ public class patientProfile extends AppCompatActivity {
         final Button createChart = (Button) findViewById(R.id.button7);
 
         Button backButton = (Button) findViewById(R.id.back2feed);
+        Button viewCharts = (Button) findViewById(R.id.viewCharts);
 
         Button standingOrderButton = (Button) findViewById(R.id.button6);
 
@@ -104,6 +106,18 @@ public class patientProfile extends AppCompatActivity {
         pWeight.setText(patientWeight);
         pdescriptionView.setText(patientDescription);
         standingOrder.setText(standingO);
+
+        viewCharts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Toast.makeText(patientProfile.this, patientName.toString(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(patientProfile.this,PatientChart.class);
+                intent.putExtra("Patient Name",patientName.toString());
+                startActivity(intent);
+            }
+        });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

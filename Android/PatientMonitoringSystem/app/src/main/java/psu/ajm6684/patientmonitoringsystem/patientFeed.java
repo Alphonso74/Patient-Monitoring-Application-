@@ -985,16 +985,16 @@ public class patientFeed extends AppCompatActivity {
 
 
     @Override
-         protected void onStart(){
-            super.onStart();
-            patientAdapter.startListening();
-        }
+    protected void onStart(){
+        super.onStart();
+        patientAdapter.startListening();
+    }
 
-        @Override
-        protected void onStop(){
+    @Override
+    protected void onStop(){
         super.onStop();
         patientAdapter.stopListening();
-        }
+    }
 
 
     @Override
