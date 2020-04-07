@@ -13,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +42,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.io.Serializable;
 import java.lang.ref.Reference;
 import java.util.ArrayList;
@@ -61,6 +66,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
     DatabaseReference reference;
 
     ArrayList<String> arrayList;
+    ArrayList<Object> patientList;
 
     EditText e1;
     ImageButton l1;
@@ -301,7 +307,23 @@ public class neonatalPatientFeed extends AppCompatActivity {
         Query query = patients.whereEqualTo("department","Neonatal");
 
 
+        //patientList.addAll(patients.whereEqualTo("department","Neonatal").get().toString());
 
+        //       ///  [START fs_collection_group_query]
+//        db.collection("patients3").get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//        @Override
+//        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//            // [START_EXCLUDE]
+//            for (QueryDocumentSnapshot snap : queryDocumentSnapshots) {
+//                patientList.add(snap.getData());
+//
+//
+//
+//            }
+//            // [END_EXCLUDE]
+//        }
+//    });
 
         // Query nurses = patients.document().;
 
