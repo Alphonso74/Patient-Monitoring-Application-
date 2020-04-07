@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
- import pictureAlphonso from '/Users/alphonsomckenzie/Documents/GitHub/Patient-Monitoring-Application-/website/src/images/picture.jpg'
+ import pictureAlphonso from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/picture.jpg'
 
 
 class Alphonso extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
-import Loganpicture from '../images/Portrait_Placeholder.png'
+import Loganpicture from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/Portrait_Placeholder.png'
 
 
 
@@ -11,11 +11,12 @@ class Logan extends Component {
                 <Grid className="contact-grid">
                     <Cell col={6}>
                         <h2>Logan Kollar</h2>
-                        {/*<img*/}
-                        {/*    src={Loganpicture}*/}
-                        {/*    alt="avatar"*/}
-                        {/*    style={{height: '250px'}}*/}
-                        {/*/>*/}
+                        <img
+                            src={Loganpicture}
+                            //src={  '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/Portrait_Placeholder.png' }
+                            alt="avatar"
+                            style={{height: '250px'}}
+                        />
                         <p style={{ width: '75%', margin: 'auto', paddingTop: '1em'}}>I am currently employed in the hospitality industry, where i use my down time to work on side projects</p>
 
                     </Cell>
