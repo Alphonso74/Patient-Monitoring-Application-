@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.ContextMenu;
 import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Adapter;
@@ -68,6 +70,8 @@ public class patientFeed extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     String name;
     EditText ee;
+    int chatmenuindexclicked = -1;
+    boolean isEditMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +82,7 @@ public class patientFeed extends AppCompatActivity {
         arrayList = new ArrayList<>();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
-  //         l1.setAdapter(adapter);
+        //  l1.setAdapter(adapter);
         reference = FirebaseDatabase.getInstance().getReference().getRoot();
         //request_username();
 
@@ -111,7 +115,7 @@ public class patientFeed extends AppCompatActivity {
 
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick( View v) {
+            public void onClick(View v) {
                 final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(patientFeed.this);
                 builder.setTitle("Enter your name:");
                 ee = new EditText(patientFeed.this);
@@ -121,15 +125,11 @@ public class patientFeed extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         name = ee.getText().toString();
                         Intent intent = new Intent(patientFeed.this, Chatroom.class);
-                        //intent.putExtra("room_name", ((TextView) e1).getText().toString());
-                       intent.putExtra("room_name","Admin");
+                       // intent.putExtra("room_name", ((TextView) view).getText().toString());
+                        intent.putExtra("room_name","Admin");
                         intent.putExtra("user_name", name);
 
                         startActivity(intent);
-
-
-
-
                     }
                 });
 
@@ -553,6 +553,31 @@ public class patientFeed extends AppCompatActivity {
 
 
 }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.chat_menu, menu);
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        chatmenuindexclicked = info.position;
+
+        switch(item.getItemId())
+        {
+            case R.id.chat_update:
+                updateMessage();
+                break;
+            case R.id.chat_delete:
+                deleteMessage();
+                break;
+        }
+        return true;
+    }
+
+    private void deleteMessage() {
+    }
+
+    private void updateMessage() {
+    }
 
 //    private void setUpViewByTag() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
