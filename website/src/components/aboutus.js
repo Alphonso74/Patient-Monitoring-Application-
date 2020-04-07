@@ -3,30 +3,27 @@ import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
 
 
-import patientP from '/Users/alphonsomckenzie/Documents/GitHub/Patient-Monitoring-Application-/website/src/images/patientPlusApp.png';
+import patientP from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/patientplusimage.png';
 
 //import picture from "patientPlusApp.png"
 // var imageName = require('./images/patientPlusApp.png')
 class About extends Component {
   render() {
     return(
-        <div>
+        <div style={{paddingTop: '2em'}}>
           <Grid>
-            <Cell col={4}>
-              <div style={{textAlign: 'center'}}>
+            <Cell col={4} style={{paddingLeft: '5em'}}>
+              <div style={{paddingLeft: '7em'}}>
                 <img
-
                     src={patientP}
                     alt="avatar"
-                    style={{height: '200px'}}
+                    style={{height: '200px', borderRadius: 400/2}}
                 />
               </div>
 
-              <h2 style={{paddingTop: '2em'}}>Patient Monitroing System</h2>
-              {/*<h4 style={{color: 'grey'}}>Capstone Proposal</h4>*/}
-              {/*<hr style={{borderTop: '3px solid #833fb2', width: '50%'}}/>*/}
-              {/*<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>*/}
-              <hr style={{borderTop: '3px solid red', width: '50%'}}/>
+              <h2 style={{paddingTop: '2em'}}>Contact Information</h2>
+
+              <hr style={{borderTop: '3px solid red', width: '75%'}}/>
               <h5>School Address</h5>
               <p>777 W Harrisburg Pike, Middletown, PA 17057</p>
               <h5>Phone</h5>
@@ -35,71 +32,41 @@ class About extends Component {
               <p>ajm6684@psu.edu</p>
               <h5>Github</h5>
               <p>https://github.com/Alphonso74/Patient-Monitoring-Application-</p>
-              <hr style={{borderTop: '3px solid red', width: '50%'}}/>
+              <hr style={{borderTop: '3px solid red', width: '75%'}}/>
             </Cell>
-            <Cell className="resume-right-col" col={8}>
 
-              <h2>About the Group</h2>
+            <Cell className="right-col" col={8} style = {{paddingRight: "5em"}}>
 
-                <h4>Alphonso McKenzie </h4>
-                <h4> Sean Todd</h4>
-                <h4>Charles Todd</h4>
-                <h4>Logan Kollar</h4>
-                <h4> Dhruvilkumar Joshi</h4>
-
-              {/*<Education*/}
-              {/*    startYear={2002}*/}
-              {/*    endYear={2006}*/}
-              {/*    schoolName="My University"*/}
-              {/*    schoolDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"*/}
-              {/*/>*/}
-
-              {/*<Education*/}
-              {/*    startYear={2007}*/}
-              {/*    endYear={2009}*/}
-              {/*    schoolName="My 2nd University"*/}
-              {/*    schoolDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"*/}
-              {/*/>*/}
+              <h3>Patient Monitroing System</h3>
               <hr style={{borderTop: '3px solid #e22947'}} />
+              <h4> Our team </h4>
+                <h6>Alphonso Mckenzie · Dhruvilkumar Joshi · Sean Todd · Charles Todd · Logan Kollar
+               </h6>
 
-              <h2>Proposal</h2>
-                <h4>
-                    The Patient Monitoring System is an interface dual web/android application that lets hospital doctors, nurses, and receptionists organize, manage, and monitor the data and wellness of patients that have been admitted into a hospital. Users will be able to look at a feed and scroll through a list of patients alongside their dynamic and static health data. The application allows users to create an account connected to their hospital and enter an interface with administered patients and other hospital doctors, nurses, and receptionists.
-                </h4>
 
-              {/*<Experience*/}
-              {/*    startYear={2009}*/}
-              {/*    endYear={2012}*/}
-              {/*    jobName="First Job"*/}
-              {/*    jobDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"*/}
-              {/*/>*/}
+              <h4>Our Idea</h4>
+                <p>
+                      We wanted to create an application that doctors, nurses, and hospital receptionists would be able to use in order to monitor patient medical conditions and
+                  statuses live all at the same time on one feed. This would in turn help in the effectiveness of the hospital. In the main feed display, doctors and nurses
+                  will be able to visibly see medical data for each patient as well as live monitored including the patient’s heartbeat rate, blood pressure, and body temperature.
+                  If a doctor or nurse clicks directly on a patient icon, they are able to see a full digest of the patients’ information such as the diagnosis, sleep patterns, diet,
+                  pain level, amounts of fatigue, and amount of nausea, etc.
+                </p>
+              <p>
+                    The Patient monitoring System does just that, users will be able to look at a feed and scroll through a list of patients alongside their health data. This applications
+                  allows users to create and account and connect to their fellow coworkers all in the efforts of preserving lives by allowing doctors to be on the same page, with fast
+                  and efficient response times.
+              </p>
+              <p>
 
-              {/*<Experience*/}
-              {/*    startYear={2012}*/}
-              {/*    endYear={2016}*/}
-              {/*    jobName="Second Job"*/}
-              {/*    jobDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"*/}
+                    The idea came from watching as doctors had to scramble to find out what was wrong with a patient and had to find a nurse with the given information of the problem.
+                  This allows for too many errors and increases the amount of time before the patient receives the care they need.
+                </p>
 
-              <hr style={{borderTop: '3px solid #e22947'}} />
-              <h2>Ideas For the Future</h2>
+              <h4>Ideas For the Future</h4>
 
-                <h4>Soon Come....</h4>
-              {/*<Skills*/}
-              {/*    skill="javascript"*/}
-              {/*    progress={100}*/}
-              {/*/>*/}
-              {/*<Skills*/}
-              {/*    skill="HTML/CSS"*/}
-              {/*    progress={80}*/}
-              {/*/>*/}
-              {/*<Skills*/}
-              {/*    skill="NodeJS"*/}
-              {/*    progress={50}*/}
-              {/*/>*/}
-              {/*<Skills*/}
-              {/*    skill="React"*/}
-              {/*    progress={25}*/}
-              {/*/>*/}
+                <p>We want to be able to eliminate chance for error going forward. We hope this can be achieved by being able to sync directly with the patient upon entry eliminating the need for data to be manually entered. Along with being able to sync directly to the monitors in the room more efficiently.  We want to be able to provide this App to hospitals in the region.</p>
+
 
 
             </Cell>

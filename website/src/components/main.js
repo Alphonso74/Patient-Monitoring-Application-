@@ -28,8 +28,7 @@ const Main = () => (
       <Route path="/charles" component={Charles} />
       <Route path="/logan" component={Logan} />
       <Route path="/dhruvilkumar" component={Dhruvil} />
-      <Route path="/dhruvilkumar" component={Dhruvil} />
-      {/*<Route path="/datasim" component={DataSimulator} />*/}
+    /* <Route path="/datasim" component={DataSimulator} />*/
 
 
 

@@ -9,10 +9,6 @@ class Dhruvil extends Component {
                 <Grid className="contact-grid">
                     <Cell col={6}>
                         <h2>Dhruvilkumar V Joshi</h2>
-                      
-                      //  src=
-                           alt="avatar"
-                        {    style={{height: '250px'}}*/}
 
                         <p style={{ width: '75%', margin: 'auto', paddingTop: '1em'}}> My name is Dhruvilkumar Joshi also known as Dhruvil. Currently a Senior at Pennsylvania State University majoring in Computer Science with a minor in Business and Security and Risk Analysis</p>
 
