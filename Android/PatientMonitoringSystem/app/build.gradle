@@ -24,6 +24,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.github.lguipeng:BubbleView:1.0.1'
 
     def room_version = "2.2.3"
 
@@ -40,7 +41,6 @@ dependencies {
     // optional - Guava support for Room, including Optional and ListenableFuture
 
     // Test helpers
-
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.2.0-alpha05'
     implementation 'androidx.annotation:annotation:1.1.0'
