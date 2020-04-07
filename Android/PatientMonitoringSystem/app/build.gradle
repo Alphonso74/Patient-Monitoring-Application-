@@ -24,7 +24,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.github.lguipeng:BubbleView:1.0.1'
 
     def room_version = "2.2.3"
 

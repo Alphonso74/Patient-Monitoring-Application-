@@ -27,6 +27,16 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/button2" />
 
+
+    <Button
+        android:id="@+id/back2feed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="170dp"
+        android:background="#137169"
+        android:text="Back" />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,4 +53,5 @@
             android:textSize="24sp"
             android:textStyle="bold" />
     </ScrollView>
+
 </RelativeLayout>

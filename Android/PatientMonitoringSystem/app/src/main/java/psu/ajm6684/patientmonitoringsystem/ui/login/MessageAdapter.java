@@ -1,5 +1,5 @@
-/*
 package psu.ajm6684.patientmonitoringsystem.ui.login;
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +31,11 @@ public class MessageAdapter<ChatMessage> extends ArrayAdapter<ChatMessage> {
         ChatMessage chatMessage = getItem(position);
         int viewType = getItemViewType(position);
 
-        if (chatMessage.isMine()) {
-            layoutResource = R.layout.item_chat_left;
-        } else {
-            layoutResource = R.layout.item_chat_right;
-        }
+    //    if (chatMessage.isMine()) {
+        //    layoutResource = R.layout.item_chat_left;
+     //   } else {
+       //     layoutResource = R.layout.item_chat_right;
+      //  }
 
         if (convertView != null) {
             holder = (ViewHolder) convertView.getTag();
@@ -46,7 +46,7 @@ public class MessageAdapter<ChatMessage> extends ArrayAdapter<ChatMessage> {
         }
 
         //set message content
-        holder.msg.setText(chatMessage.getContent());
+      //  holder.msg.setText(chatMessage.getContent());
 
         return convertView;
     }
@@ -68,7 +68,7 @@ public class MessageAdapter<ChatMessage> extends ArrayAdapter<ChatMessage> {
         private TextView msg;
 
         public ViewHolder(View v) {
-            msg = (TextView) v.findViewById(R.id.txt_msg);
+           // msg = (TextView) v.findViewById(R.id.txt_msg);
         }
     }
-}*/
+}
