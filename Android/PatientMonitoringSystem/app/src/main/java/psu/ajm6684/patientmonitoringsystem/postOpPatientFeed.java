@@ -1,5 +1,6 @@
 package psu.ajm6684.patientmonitoringsystem;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,6 +70,7 @@ public class postOpPatientFeed extends AppCompatActivity {
     String name;
     EditText ee;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -269,6 +272,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                         });
 
                         menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -295,6 +299,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
         Query query = patients.whereEqualTo("department","Post-Operation");
@@ -312,6 +317,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
 
         FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
 
         patientAdapter = new PatientAdapter(options);
 

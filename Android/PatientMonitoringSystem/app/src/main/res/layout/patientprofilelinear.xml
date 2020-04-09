@@ -38,7 +38,7 @@
         <Button
             android:id="@+id/back2feed"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
 
             android:background="@drawable/spinner_rounded"
             android:text="Feed" />
@@ -85,12 +85,13 @@
 
             <TextView
                 android:id="@+id/textView18"
-                android:layout_width="65dp"
+                android:layout_width="45dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="@string/resting_heart_rate" />
+                android:text="Resting Heart Rate:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -98,7 +99,8 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -116,12 +118,13 @@
 
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="53dp"
+                android:layout_width="10dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Patient Height - " />
+                android:text="Patient Height:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -130,7 +133,8 @@
                 android:layout_weight="1.4"
 
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -148,20 +152,22 @@
 
             <TextView
                 android:id="@+id/textView20"
-                android:layout_width="55dp"
+                android:layout_width="10dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Patient Weight - " />
+                android:text="Patient Weight:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1.5"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -179,21 +185,22 @@
 
             <TextView
                 android:id="@+id/textView26"
-                android:layout_width="58dp"
+                android:layout_width="40dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Body Temperature - " />
+                android:text="Body Temperature:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView29"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1.6"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -211,21 +218,23 @@
 
             <TextView
                 android:id="@+id/textView27"
-                android:layout_width="59dp"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:layout_weight="0.55"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Medications - " />
+                android:text="Medications:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView30"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1.6"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -243,21 +252,23 @@
 
             <TextView
                 android:id="@+id/textView28"
-                android:layout_width="58dp"
+                android:layout_width="20dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Surgical History - " />
+                android:text="Surgical History:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView31"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1.6"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -276,22 +287,24 @@
 
             <TextView
                 android:id="@+id/textView11"
-                android:layout_width="59dp"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:layout_weight="0.52"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Description - " />
+                android:text="Description:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1.5"
-                android:maxLines="4"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:maxLines="4"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -309,21 +322,23 @@
 
             <TextView
                 android:id="@+id/textView12"
-                android:layout_width="61dp"
+                android:layout_width="10dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Standing Order - " />
+                android:text="Standing Order:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1.6"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -341,21 +356,23 @@
 
             <TextView
                 android:id="@+id/textView21"
-                android:layout_width="58dp"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.6"
-                android:gravity="center_vertical"
+                android:layout_weight="0.55"
+                android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
-                android:text="Active Nurse - " />
+                android:text="Active Nurse:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1.6"
+                android:layout_marginRight="00dp"
+                android:layout_weight="1.4"
                 android:gravity="center_vertical"
-                android:text="N/A" />
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         </LinearLayout>
 
@@ -375,7 +392,7 @@
 
         <Button
             android:id="@+id/button7"
-            android:layout_width="165dp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="start"
             android:text="Create Patient Chart"
@@ -383,7 +400,7 @@
 
         <Button
             android:id="@+id/viewCharts"
-            android:layout_width="165dp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_gravity="end"
             android:text="View Patient Chart"
@@ -403,7 +420,7 @@
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="158dp"
+                android:layout_width="180dp"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:text="Assign Nurse"

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.ContextMenu;
@@ -25,6 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,7 +61,7 @@ public class patientFeed extends AppCompatActivity {
     //private CollectionReference bluePatients = db.collection("patients").whereEqualTo("triageTag","Blue");
 
     private PatientAdapter patientAdapter;
-
+    RecyclerView recyclerView;
 
     DatabaseReference reference;
 
@@ -73,6 +75,7 @@ public class patientFeed extends AppCompatActivity {
     int chatmenuindexclicked = -1;
     boolean isEditMode = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,6 +177,7 @@ public class patientFeed extends AppCompatActivity {
                 menuDialog.setMessage("What would you like to do?");
                 menuDialog.setCancelable(true);
 
+
                 menuDialog.setNegativeButton("Logout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -269,6 +273,7 @@ public class patientFeed extends AppCompatActivity {
 
 
                         menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -337,6 +342,7 @@ public class patientFeed extends AppCompatActivity {
     }
 
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
             Query query = patients.whereEqualTo("department","General Care");
@@ -354,14 +360,17 @@ public class patientFeed extends AppCompatActivity {
 
 
             FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+         options.getSnapshots().sort(Note.By_Ascending);
 
             patientAdapter = new PatientAdapter(options);
 
 
 
-            RecyclerView recyclerView = findViewById(R.id.recycler_view);
+             recyclerView = findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
             recyclerView.setAdapter(patientAdapter);
 
 
@@ -794,8 +803,10 @@ public class patientFeed extends AppCompatActivity {
 //
 //    }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setUpViewByHeartRate() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
+
         Query query = patients.orderBy("rHeartRate", Query.Direction.DESCENDING);
 
         Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
@@ -807,19 +818,18 @@ public class patientFeed extends AppCompatActivity {
 
         // face.setVisibility(View.VISIBLE);
 
+        patientAdapter.notifyDataSetChanged();
 
-        patientAdapter.startListening();
 
         FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
-        patientAdapter.notifyDataSetChanged();
+        options.getSnapshots().sort(Note.By_Descending);
         patientAdapter = new PatientAdapter(options);
 
 
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         recyclerView.setAdapter(patientAdapter);
 
 

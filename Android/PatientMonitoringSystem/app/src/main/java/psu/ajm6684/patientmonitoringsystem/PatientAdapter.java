@@ -16,6 +16,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.Comparator;
 import java.util.Random;
 
 public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapter.patientHolder> {
@@ -65,6 +66,10 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
         getSnapshots().getSnapshot(position).getReference().delete();
 
 
+
+    }
+
+    public void updateView(){
 
     }
 
