@@ -69,6 +69,7 @@ public class postOpPatientFeed extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     String name;
     EditText ee;
+    Button profileButton;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -84,6 +85,19 @@ public class postOpPatientFeed extends AppCompatActivity {
         //         l1.setAdapter(adapter);
         reference = FirebaseDatabase.getInstance().getReference().getRoot();
         //request_username();
+
+
+        profileButton = (Button) findViewById(R.id.profileButton);
+
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(postOpPatientFeed.this,UProfile.class);
+                startActivity(intent);
+            }
+        });
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override

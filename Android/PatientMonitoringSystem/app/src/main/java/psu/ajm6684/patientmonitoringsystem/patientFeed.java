@@ -74,6 +74,8 @@ public class patientFeed extends AppCompatActivity {
     EditText ee;
     int chatmenuindexclicked = -1;
     boolean isEditMode = false;
+    Button profileButton;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -88,6 +90,19 @@ public class patientFeed extends AppCompatActivity {
         //  l1.setAdapter(adapter);
         reference = FirebaseDatabase.getInstance().getReference().getRoot();
         //request_username();
+
+        profileButton = (Button) findViewById(R.id.profileButton);
+
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(patientFeed.this,UProfile.class);
+                startActivity(intent);
+            }
+        });
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override

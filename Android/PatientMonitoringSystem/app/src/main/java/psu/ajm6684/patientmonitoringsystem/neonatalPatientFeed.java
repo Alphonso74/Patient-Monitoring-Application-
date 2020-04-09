@@ -75,6 +75,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     String name;
     EditText ee;
+    Button profileButton;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -91,6 +92,18 @@ public class neonatalPatientFeed extends AppCompatActivity {
         //         l1.setAdapter(adapter);
         reference = FirebaseDatabase.getInstance().getReference().getRoot();
         //request_username();
+        profileButton = (Button) findViewById(R.id.profileButton);
+
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(neonatalPatientFeed.this,UProfile.class);
+                startActivity(intent);
+            }
+        });
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -109,6 +122,8 @@ public class neonatalPatientFeed extends AppCompatActivity {
                 arrayList.addAll(set);
                 adapter.notifyDataSetChanged();
             }
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

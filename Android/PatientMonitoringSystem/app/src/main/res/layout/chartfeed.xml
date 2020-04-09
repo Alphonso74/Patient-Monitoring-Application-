@@ -50,44 +50,50 @@
     <!--    </androidx.appcompat.widget.Toolbar>-->
 
     <!-- <<<<<<< HEAD -->
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:layout_marginBottom="44dp"
-        android:fontFamily="@font/arbutus"
-        android:paddingTop="25dp"
-        android:paddingEnd="50dp"
-        android:text="@string/patient_charts"
+    <LinearLayout
+        android:id="@+id/spinneLa"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    <!-- ======= -->
-    <!-- >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099 -->
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center|top"
+            android:layout_marginStart="50dp"
+            android:fontFamily="@font/holtwood_one_sc"
+            android:paddingTop="10dp"
+            android:text="Patient Charts"
+
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <!-- ======= -->
+        <!-- >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099 -->
+        <Button
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="logout"
+            android:text="Patient"
+            android:background="@drawable/spinner_rounded"
+            />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="60dp"
-        android:paddingBottom="10dp"/>
-
-        <Button
-        android:id="@+id/button_menu"
-            android:background="@drawable/spinner_rounded"
-            android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="16dp"
-
-        android:text="@string/patient"
-        app:backgroundTint="#79070606"
-        />
-
+        android:paddingTop="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_height="match_parent" />
 
 
 

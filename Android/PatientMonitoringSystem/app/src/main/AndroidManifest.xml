@@ -29,6 +29,8 @@
         <activity android:name=".createAccount.createAccount" />
         <activity android:name=".chart" />
         <activity android:name=".standingOrder" />
+        <activity android:name=".UProfile" />
+
         <activity android:name=".Chatroom" />
         <activity
             android:name=".ui.login.LoginActivity"

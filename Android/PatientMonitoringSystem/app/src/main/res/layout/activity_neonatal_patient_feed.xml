@@ -54,6 +54,7 @@
         android:weightSum="2">
 
         <Button
+            android:id="@+id/profileButton"
             android:layout_width="67dp"
             android:layout_height="match_parent"
             android:background="@drawable/imagetrans"
