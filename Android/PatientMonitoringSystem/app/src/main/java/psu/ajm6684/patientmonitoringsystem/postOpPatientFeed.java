@@ -3,7 +3,7 @@ package psu.ajm6684.patientmonitoringsystem;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import android.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -129,7 +130,7 @@ public class postOpPatientFeed extends AppCompatActivity {
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v) {
-                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(postOpPatientFeed.this);
+                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                 builder.setTitle("Enter your name:");
                 ee = new EditText(postOpPatientFeed.this);
                 builder.setView(ee);
@@ -178,15 +179,15 @@ public class postOpPatientFeed extends AppCompatActivity {
 //        recyclerView.setAdapter(patientAdapter);
 
 
-        Button memuButton = (Button) findViewById(R.id.button_menu);
+        Button menuButton = (Button) findViewById(R.id.button_menu);
 
 
 
 
-        memuButton.setOnClickListener(new View.OnClickListener() {
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder menuDialog = new AlertDialog.Builder(postOpPatientFeed.this);
+                AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                 menuDialog.setTitle("User Options");
                 menuDialog.setMessage("What would you like to do?");
                 menuDialog.setCancelable(true);
@@ -211,8 +212,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                 menuDialog.setPositiveButton("More Options", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        final AlertDialog.Builder menuDialog23 = new AlertDialog.Builder(postOpPatientFeed.this);
+                        AlertDialog.Builder menuDialog23 = new AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                         menuDialog23.setTitle("More Options");
                         menuDialog23.setMessage("What would you like to do?");
                         menuDialog23.setCancelable(true);
@@ -256,7 +256,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(postOpPatientFeed.this);
+                        AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                         menuDialog1.setTitle("How would you like to filter the feed?");
                         menuDialog1.setMessage("Options: ");
                         menuDialog1.setCancelable(true);
@@ -350,7 +350,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
             @Override
             public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                final AlertDialog.Builder alertDlg = new AlertDialog.Builder(postOpPatientFeed.this);
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                 alertDlg.setTitle("Patient Options");
                 alertDlg.setMessage("What would you like to do?");
                 alertDlg.setCancelable(true);
@@ -361,7 +361,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
 
 
-                        final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(postOpPatientFeed.this);
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                         alertDlg2.setTitle("Delete this patient");
                         alertDlg2.setMessage("Are you sure?");
                         alertDlg2.setCancelable(true);
@@ -397,7 +397,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final Dialog dialog1 = new Dialog(postOpPatientFeed.this);
+                        final Dialog dialog1 = new Dialog(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
                         dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog1.setCancelable(false);
                         dialog1.setContentView(R.layout.addnursedialog);

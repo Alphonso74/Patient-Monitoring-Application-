@@ -134,7 +134,7 @@ public class patientFeed extends AppCompatActivity {
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(patientFeed.this);
+                final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                 builder.setTitle("Enter your name:");
                 ee = new EditText(patientFeed.this);
                 builder.setView(ee);
@@ -187,7 +187,7 @@ public class patientFeed extends AppCompatActivity {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder menuDialog = new AlertDialog.Builder(patientFeed.this);
+                AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                 menuDialog.setTitle("User Options");
                 menuDialog.setMessage("What would you like to do?");
                 menuDialog.setCancelable(true);
@@ -215,7 +215,7 @@ public class patientFeed extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                final AlertDialog.Builder menuDialog23 = new AlertDialog.Builder(patientFeed.this);
+                                AlertDialog.Builder menuDialog23 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                                 menuDialog23.setTitle("More Options");
                                 menuDialog23.setMessage("What would you like to do?");
                                 menuDialog23.setCancelable(true);
@@ -269,7 +269,7 @@ public class patientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(patientFeed.this);
+                        AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                         menuDialog1.setTitle("How would you like to filter the feed?");
                         menuDialog1.setMessage("Options: ");
                         menuDialog1.setCancelable(true);
@@ -322,7 +322,7 @@ public class patientFeed extends AppCompatActivity {
     }
 
     public void request_username() {
-        final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
         builder.setTitle("Enter your name?");
         ee = new EditText(this);
         builder.setView(ee);
@@ -396,7 +396,7 @@ public class patientFeed extends AppCompatActivity {
 
                 @Override
                 public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                    final AlertDialog.Builder alertDlg = new AlertDialog.Builder(patientFeed.this);
+                    AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                     alertDlg.setTitle("Patient Options");
                     alertDlg.setMessage("What would you like to do?");
                     alertDlg.setCancelable(true);
@@ -407,7 +407,7 @@ public class patientFeed extends AppCompatActivity {
 
 
 
-                            final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(patientFeed.this);
+                            AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                             alertDlg2.setTitle("Delete this patient");
                             alertDlg2.setMessage("Are you sure?");
                             alertDlg2.setCancelable(true);
@@ -443,7 +443,7 @@ public class patientFeed extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            final Dialog dialog1 = new Dialog(patientFeed.this);
+                            final Dialog dialog1 = new Dialog(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                             dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
                             dialog1.setCancelable(false);
                             dialog1.setContentView(R.layout.addnursedialog);
@@ -854,7 +854,7 @@ public class patientFeed extends AppCompatActivity {
 
             @Override
             public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                final AlertDialog.Builder alertDlg = new AlertDialog.Builder(patientFeed.this);
+                final AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                 alertDlg.setTitle("Patient Options");
                 alertDlg.setMessage("What would you like to do?");
                 alertDlg.setCancelable(true);
@@ -865,7 +865,7 @@ public class patientFeed extends AppCompatActivity {
 
 
 
-                        final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(patientFeed.this);
+                        final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                         alertDlg2.setTitle("Delete this patient");
                         alertDlg2.setMessage("Are you sure?");
                         alertDlg2.setCancelable(true);
