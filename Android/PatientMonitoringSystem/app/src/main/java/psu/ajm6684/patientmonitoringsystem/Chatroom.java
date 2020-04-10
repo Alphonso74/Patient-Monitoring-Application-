@@ -27,12 +27,10 @@ public class Chatroom extends AppCompatActivity {
     TextView t1;
 
 
-    private String user_name,room_name;
+    private String user_name, room_name;
 
     DatabaseReference reference;
     String temp_key;
-
-
 
 
     @Override
@@ -40,10 +38,9 @@ public class Chatroom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatroom);
         setContentView(R.layout.displaymessage);
-        e1= (EditText)findViewById(R.id.editText2);
-        t1= (TextView)findViewById(R.id.textView);
-        if(getSupportActionBar()!=null)
-        {
+        e1 = (EditText) findViewById(R.id.editText2);
+        t1 = (TextView) findViewById(R.id.textView);
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -51,8 +48,7 @@ public class Chatroom extends AppCompatActivity {
         user_name = getIntent().getExtras().get("user_name").toString();
         room_name = getIntent().getExtras().get("room_name").toString();
         reference = FirebaseDatabase.getInstance().getReference().child(room_name);
-        setTitle(" Room - "+room_name);
-
+        setTitle(" Room - " + room_name);
 
 
         reference.addChildEventListener(new ChildEventListener() {
@@ -84,12 +80,11 @@ public class Chatroom extends AppCompatActivity {
         });
 
 
-
-
-
-
-
     }
+ //   public void previous(View view) {
+ //       startActivity(Chatroom.this, patientFeed.class);
+  //      }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

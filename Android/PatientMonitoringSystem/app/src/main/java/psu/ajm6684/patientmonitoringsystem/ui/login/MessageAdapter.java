@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import psu.ajm6684.patientmonitoringsystem.R;
-
 public class MessageAdapter<ChatMessage> extends ArrayAdapter<ChatMessage> {
 
     private Activity activity;
