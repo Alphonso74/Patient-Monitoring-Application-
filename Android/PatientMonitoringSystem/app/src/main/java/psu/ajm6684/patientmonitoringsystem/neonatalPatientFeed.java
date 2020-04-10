@@ -1,8 +1,9 @@
 package psu.ajm6684.patientmonitoringsystem;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import android.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +13,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -27,6 +31,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +45,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.io.Serializable;
 import java.lang.ref.Reference;
 import java.util.ArrayList;
@@ -61,14 +69,17 @@ public class neonatalPatientFeed extends AppCompatActivity {
     DatabaseReference reference;
 
     ArrayList<String> arrayList;
+    ArrayList<Object> patientList;
 
     EditText e1;
     ImageButton l1;
     ArrayAdapter<String> adapter;
     String name;
     EditText ee;
+    Button profileButton;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +93,18 @@ public class neonatalPatientFeed extends AppCompatActivity {
         //         l1.setAdapter(adapter);
         reference = FirebaseDatabase.getInstance().getReference().getRoot();
         //request_username();
+        profileButton = (Button) findViewById(R.id.profileButton);
+
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(neonatalPatientFeed.this,UProfile.class);
+                startActivity(intent);
+            }
+        });
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,6 +124,8 @@ public class neonatalPatientFeed extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
 
+
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(neonatalPatientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
@@ -113,7 +138,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v) {
-                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(neonatalPatientFeed.this);
+                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                 builder.setTitle("Enter your name:");
                 ee = new EditText(neonatalPatientFeed.this);
                 builder.setView(ee);
@@ -164,15 +189,15 @@ public class neonatalPatientFeed extends AppCompatActivity {
 //        recyclerView.setAdapter(patientAdapter);
 
 
-        Button memuButton = (Button) findViewById(R.id.button_menu);
+        Button menuButton = (Button) findViewById(R.id.button_menu);
 
 
 
 
-        memuButton.setOnClickListener(new View.OnClickListener() {
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder menuDialog = new AlertDialog.Builder(neonatalPatientFeed.this);
+                AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                 menuDialog.setTitle("User Options");
                 menuDialog.setMessage("What would you like to do?");
                 menuDialog.setCancelable(true);
@@ -198,7 +223,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final AlertDialog.Builder menuDialog23 = new AlertDialog.Builder(neonatalPatientFeed.this);
+                        AlertDialog.Builder menuDialog23 = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                         menuDialog23.setTitle("More Options");
                         menuDialog23.setMessage("What would you like to do?");
                         menuDialog23.setCancelable(true);
@@ -242,7 +267,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(neonatalPatientFeed.this);
+                        AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                         menuDialog1.setTitle("How would you like to filter the feed?");
                         menuDialog1.setMessage("Options: ");
                         menuDialog1.setCancelable(true);
@@ -272,6 +297,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                         });
 
                         menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -296,12 +322,29 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
         Query query = patients.whereEqualTo("department","Neonatal");
 
 
+        //patientList.addAll(patients.whereEqualTo("department","Neonatal").get().toString());
 
+        //       ///  [START fs_collection_group_query]
+//        db.collection("patients3").get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//        @Override
+//        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//            // [START_EXCLUDE]
+//            for (QueryDocumentSnapshot snap : queryDocumentSnapshots) {
+//                patientList.add(snap.getData());
+//
+//
+//
+//            }
+//            // [END_EXCLUDE]
+//        }
+//    });
 
         // Query nurses = patients.document().;
 
@@ -313,6 +356,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
 
         FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
 
         patientAdapter = new PatientAdapter(options);
 
@@ -331,7 +375,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
             @Override
             public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                final AlertDialog.Builder alertDlg = new AlertDialog.Builder(neonatalPatientFeed.this);
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                 alertDlg.setTitle("Patient Options");
                 alertDlg.setMessage("What would you like to do?");
                 alertDlg.setCancelable(true);
@@ -342,7 +386,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
 
 
-                        final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(neonatalPatientFeed.this);
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                         alertDlg2.setTitle("Delete this patient");
                         alertDlg2.setMessage("Are you sure?");
                         alertDlg2.setCancelable(true);
@@ -378,7 +422,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final Dialog dialog1 = new Dialog(neonatalPatientFeed.this);
+                        final Dialog dialog1 = new Dialog(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                         dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog1.setCancelable(false);
                         dialog1.setContentView(R.layout.addnursedialog);

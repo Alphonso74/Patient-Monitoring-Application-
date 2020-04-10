@@ -32,5 +32,6 @@
     <string name="patient_charts">Patient Charts</string>
     <string name="patient_monitoring_system">Patient Monitoring System</string>
     <string name="patient">Patient</string>
+    <string name="resting_heart_rate">Resting Heart Rate -</string>
 
 </resources>

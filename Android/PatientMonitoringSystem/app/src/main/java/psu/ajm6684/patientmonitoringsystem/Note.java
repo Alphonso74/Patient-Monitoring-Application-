@@ -1,5 +1,7 @@
 package psu.ajm6684.patientmonitoringsystem;
 
+import java.util.Comparator;
+
 public class Note {
     private String patientName;
     private String description;
@@ -127,4 +129,25 @@ public class Note {
         this.standingOrder = standingOrder;
         this.department = department;
     }
+
+    public static final Comparator<Note> By_Ascending = new Comparator<Note>() {
+        @Override
+        public int compare(Note o1, Note o2) {
+
+            if(o1.getrHeartRate() > o2.getrHeartRate()){
+
+                return  o1.getrHeartRate();
+
+            }
+            else
+            return o2.getrHeartRate();
+        }
+    };
+
+    public static final Comparator<Note> By_Descending = new Comparator<Note>() {
+        @Override
+        public int compare(Note o1, Note o2) {
+            return o2.getrHeartRate().compareTo(o1.getrHeartRate());
+        }
+    };
 }

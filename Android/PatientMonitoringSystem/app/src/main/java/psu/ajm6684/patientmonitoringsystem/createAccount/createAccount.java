@@ -52,7 +52,7 @@ public class createAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        setContentView(R.layout.activity_create_account2);
 
 
 
@@ -93,11 +93,11 @@ public class createAccount extends AppCompatActivity {
 
                     password.setError("Password must be longer than 6 characters!");
                     progressBar.setVisibility(View.INVISIBLE);
-                    return;
                 }
 
 
-                if(firstName.getText().toString().isEmpty()
+
+               else if(firstName.getText().toString().isEmpty()
                         || lastName.getText().toString().isEmpty()
                         || email.getText().toString().isEmpty()
                         || password.getText().toString().isEmpty()) {
@@ -105,7 +105,7 @@ public class createAccount extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(), "Empty Credentials", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.INVISIBLE);
-                    return;
+
                 }
 
                 else

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/greybackground">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/greybackground"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:id="@+id/spinneLa"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="PatientName"
+
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/back2feed"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+
+            android:background="@drawable/spinner_rounded"
+            android:text="Feed" />
+
+    </LinearLayout>
+
+
+
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="350dp"-->
+<!--            android:background="@drawable/greybackground">-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
+
+<!--                <TextView-->
+<!--                    android:id="@+id/patientData"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:text="Patient Data"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--                    android:textStyle="bold" />-->
+
+        <LinearLayout
+            android:id="@+id/spinneLay"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="45dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Resting Heart Rate:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spinn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="10dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Patient Height:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.4"
+
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="10dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Patient Weight:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spi"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Body Temperature:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.55"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Medications:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spwdw"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="20dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Surgical History:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/spwdw12"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.52"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Description:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:maxLines="4"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spwdw123"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="10dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Standing Order:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/spwdw1ed23"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+
+            <!-- place one TextView and one EditText inside layout using weight property -->
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.55"
+                android:gravity="start|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Active Nurse:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="00dp"
+                android:layout_weight="1.4"
+                android:gravity="center_vertical"
+                android:text="N/A"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+            </LinearLayout>
+
+<!--        </ScrollView>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        >
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="start"
+            android:text="Create Patient Chart"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/viewCharts"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="end"
+            android:text="View Patient Chart"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            >
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="180dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:text="Assign Nurse"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="Create Standing Order"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+
+</ScrollView>

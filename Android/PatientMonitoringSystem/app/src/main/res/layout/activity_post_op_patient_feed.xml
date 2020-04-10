@@ -49,41 +49,60 @@
 
     <!--    </androidx.appcompat.widget.Toolbar>-->
 
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
+    <LinearLayout
+        android:id="@+id/spinneLa"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-        android:layout_marginBottom="44dp"
-        android:fontFamily="@font/arbutus"
-        android:paddingStart="10dp"
-        android:paddingTop="25dp"
-        android:paddingEnd="55dp"
-        android:text="Post-Operation"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="67dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/imagetrans"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center|top"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/holtwood_one_sc"
+            android:paddingTop="10dp"
+            android:text="Post-Operation"
+
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <!-- ======= -->
+        <!-- >>>>>>> 15e49b2a4add40f3b445c083af144b043730b099 -->
+        <Button
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:onClick="logout"
+            android:text="Menu"
+            android:background="@drawable/spinner_rounded"
+            />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:paddingTop="60dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_height="match_parent" />
 
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView32"/>
 
 
-    <Button
-        android:id="@+id/button_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="16dp"
-        android:onClick="logout"
-        android:text="Menu"
-        app:backgroundTint="#79070606" />
 
     <ImageButton
         android:id="@+id/button_message"

@@ -36,7 +36,7 @@ CollectionReference userCharts = db.collection("charts");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.patient_profile);
+        setContentView(R.layout.patientprofilelinear);
 
         Button addNurse = (Button) findViewById(R.id.button5);
         final Button createChart = (Button) findViewById(R.id.button7);

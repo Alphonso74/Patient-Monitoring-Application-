@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.*;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -101,7 +102,7 @@ public class PatientChart extends AppCompatActivity {
 
                     @Override
                     public void onItemClick(final DocumentSnapshot documentSnapshot, final int position) {
-                        final AlertDialog.Builder chartDialog = new AlertDialog.Builder(PatientChart.this);
+                        final AlertDialog.Builder chartDialog = new AlertDialog.Builder(new ContextThemeWrapper(PatientChart.this, android.R.style.Theme_Holo_Light));
                         chartDialog.setTitle("Patient Chart Options");
                         chartDialog.setMessage("What would you like to do?");
                         chartDialog.setCancelable(true);

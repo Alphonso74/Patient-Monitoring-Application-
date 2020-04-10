@@ -5,7 +5,7 @@
     android:id="@+id/Activity_createAccount"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greybackground"
+    android:background="@drawable/background"
     tools:context=".createAccount.createAccount">
 
     <TextView
