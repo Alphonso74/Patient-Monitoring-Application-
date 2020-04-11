@@ -225,7 +225,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                             }
                         });
 
-                        menuDialog23.setNegativeButton("Switch to General Care feed", new DialogInterface.OnClickListener() {
+                        menuDialog23.setNegativeButton("General Care feed", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -234,7 +234,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                             }
                         });
 
-                        menuDialog23.setNeutralButton("Switch to Neonatal feed", new DialogInterface.OnClickListener() {
+                        menuDialog23.setNeutralButton("Neonatal feed", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -252,55 +252,14 @@ public class postOpPatientFeed extends AppCompatActivity {
 
                 });
 
-                menuDialog.setNeutralButton("Filter Patient Feed", new DialogInterface.OnClickListener() {
+                menuDialog.setNeutralButton("Data Feed", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
-                        menuDialog1.setTitle("How would you like to filter the feed?");
-                        menuDialog1.setMessage("Options: ");
-                        menuDialog1.setCancelable(true);
-
-                        menuDialog1.setPositiveButton("Filter By Tag", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                //setUpViewByTag();
-
-//                                Query patients1 = patients.whereEqualTo("triageTag","Blue");
-//
-//                                setUpView(patients1);
-                            }
-                        });
-
-
-
-                        menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                //setUpViewByHeartRate();
-
-
-                            }
-                        });
-
-                        menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.N)
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                setUpView();
-                            }
-                        });
-
-
-
-                        menuDialog1.show();
+                        Intent intent = new Intent(postOpPatientFeed.this, dataSimFeed.class);
+                        startActivity(intent);
                     }
-
                 });
-
 
                 menuDialog.show();
 

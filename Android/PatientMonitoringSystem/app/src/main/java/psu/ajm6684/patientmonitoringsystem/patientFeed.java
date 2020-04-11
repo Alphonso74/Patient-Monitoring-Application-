@@ -285,7 +285,7 @@ public class patientFeed extends AppCompatActivity {
                                     }
                                 });
 
-                                menuDialog23.setNegativeButton("Switch to Post-Op feed", new DialogInterface.OnClickListener() {
+                                menuDialog23.setNegativeButton("Post-Op feed", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 
@@ -294,7 +294,7 @@ public class patientFeed extends AppCompatActivity {
                                     }
                                 });
 
-                                menuDialog23.setNeutralButton("Switch to Neonatal feed", new DialogInterface.OnClickListener() {
+                                menuDialog23.setNeutralButton("Neonatal feed", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 

@@ -236,7 +236,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                             }
                         });
 
-                        menuDialog23.setNegativeButton("Switch to Post-Op feed", new DialogInterface.OnClickListener() {
+                        menuDialog23.setNegativeButton("Post-Op feed", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -245,7 +245,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                             }
                         });
 
-                        menuDialog23.setNeutralButton("Switch to General Care feed", new DialogInterface.OnClickListener() {
+                        menuDialog23.setNeutralButton("General Care feed", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -263,54 +263,52 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
                 });
 
-                menuDialog.setNeutralButton("Filter Patient Feed", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
 
-                        AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
-                        menuDialog1.setTitle("How would you like to filter the feed?");
-                        menuDialog1.setMessage("Options: ");
-                        menuDialog1.setCancelable(true);
+                        menuDialog.setNeutralButton("Data Feed", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                        menuDialog1.setPositiveButton("Filter By Tag", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(neonatalPatientFeed.this, dataSimFeed.class);
+                                        startActivity(intent);
+                                    }
+                                });
 
-                                //setUpViewByTag();
-
-//                                Query patients1 = patients.whereEqualTo("triageTag","Blue");
+//                        menuDialog1.setPositiveButton("Filter By Tag", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
 //
-//                                setUpView(patients1);
-                            }
-                        });
+//                                //setUpViewByTag();
+//
+////                                Query patients1 = patients.whereEqualTo("triageTag","Blue");
+////
+////                                setUpView(patients1);
+//                            }
+//                        });
 
 
 
-                        menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+//                        menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                //setUpViewByHeartRate();
+//
+//
+//                            }
+//                        });
 
-                                //setUpViewByHeartRate();
-
-
-                            }
-                        });
-
-                        menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.N)
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                setUpView();
-                            }
-                        });
+//                        menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
+//                            @RequiresApi(api = Build.VERSION_CODES.N)
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                setUpView();
+//                            }
+//                        });
 
 
 
-                        menuDialog1.show();
-                    }
 
-                });
 
 
                 menuDialog.show();
