@@ -1,28 +1,45 @@
 package psu.ajm6684.patientmonitoringsystem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class patientProfile extends AppCompatActivity {
     PatientAdapter patientAdapter;
@@ -30,6 +47,8 @@ public class patientProfile extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    Spinner spinner;
+    String nurseName ;
 CollectionReference userCharts = db.collection("charts");
 
 
@@ -37,6 +56,8 @@ CollectionReference userCharts = db.collection("charts");
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patientprofilelinear);
+
+
 
         Button addNurse = (Button) findViewById(R.id.button5);
         final Button createChart = (Button) findViewById(R.id.button7);
@@ -156,6 +177,8 @@ CollectionReference userCharts = db.collection("charts");
 //                startActivity(intent);
                 finish();
 
+
+
             }
         });
 
@@ -163,38 +186,29 @@ CollectionReference userCharts = db.collection("charts");
         addNurse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(patientProfile.this, android.R.style.Theme_Holo_Light));
+                TextView title = new TextView(patientProfile.this);
+                title.setText("Choose a Nurse:");
+                title.setPadding(10, 10, 10, 10);
+                title.setGravity(Gravity.CENTER);
+                title.setTextColor(Color.rgb(0, 153, 204));
+                title.setTextSize(23);
+                builder.setCustomTitle(title);
 
+                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layout_spinners = inflater.inflate(R.layout.addnursedialog,null);
+                spinner = (Spinner) layout_spinners.findViewById(R.id.spinner_titulo_carpetas);
 
-
-                final Dialog dialog = new Dialog(patientProfile.this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setCancelable(true);
-                dialog.setContentView(R.layout.addnursedialog);
-
-                final EditText et = dialog.findViewById(R.id.et);
-
-
-                Button btnok = (Button) dialog.findViewById(R.id.btnok);
-                btnok.setOnClickListener(new View.OnClickListener() {
+                builder.setPositiveButton("Add Nurse", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        nurseName = spinner.getSelectedItem().toString();
+
+                        patientItem.update("activeNurse", nurseName);
 
 
-                        String nurse = et.getText().toString();
-
-
-                        if(nurse.isEmpty()){
-
-                            Toast toast = Toast.makeText(getApplicationContext(),"Please Enter the name of the Nurse",Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
-                        else {
-                            patientItem.update("activeNurse", nurse);
-
-                            Toast.makeText(patientProfile.this, " Nurse Added", Toast.LENGTH_SHORT).show();
-
-
-                            Intent intent = new Intent(patientProfile.this,patientProfile.class);
+                        Intent intent = new Intent(patientProfile.this,patientProfile.class);
                             intent.putExtra("Patient Name",patientName);
                             intent.putExtra("Patient Description",patientDescription);
                             intent.putExtra("Patient Height",patientHeight);
@@ -203,7 +217,7 @@ CollectionReference userCharts = db.collection("charts");
                             intent.putExtra("Patient ID",patientID);
                             intent.putExtra("position",position);
                             intent.putExtra("bodyTemp",bodyTemp);
-                            intent.putExtra("nurse",nurse);
+                            intent.putExtra("nurse",nurseName);
                             intent.putExtra("medications",medications);
                             intent.putExtra("surgicalH",sHistory);
                             intent.putExtra("standingO",standingO);
@@ -212,25 +226,229 @@ CollectionReference userCharts = db.collection("charts");
                             startActivity(intent);
 
 
-
-                            dialog.dismiss();
-                        }
                     }
                 });
 
-                Button btncn = (Button) dialog.findViewById(R.id.btncn);
-                btncn.setOnClickListener(new View.OnClickListener() {
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onClick(DialogInterface dialog, int which) {
+
+
                     }
                 });
 
-                dialog.show();
+                builder.setView(layout_spinners);
+                builder.setCancelable(true);
+                builder.show();
 
 
+                db.collection("Users")
+                        .whereEqualTo("position", "Nurse")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                final  List<String>  spinnerArray =  new ArrayList<String>();
+                                QuerySnapshot queryDocumentSnapshots = task.getResult();
+                                if (task.isSuccessful()) {
+
+
+                                    for (DocumentSnapshot document :  queryDocumentSnapshots.getDocuments()) {
+                                        //Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                        String nurseName = Objects.requireNonNull(document.get("fullName")).toString();
+
+                                        spinnerArray.add(nurseName);
+
+                                       // Toast.makeText(patientProfile.this,nurseName, Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+//                                    Log.d(TAG, "Error getting documents: ", task.getException());
+                                }
+                                ArrayAdapter<String> adapter = new ArrayAdapter<>(patientProfile.this, android.R.layout.simple_dropdown_item_1line, spinnerArray);
+
+
+                                adapter.notifyDataSetChanged();
+                                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
+                                spinner.setAdapter(adapter);
+                                spinner.setEnabled(true);
+
+                            }
+                        });
+
+
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View v,
+                                               int postion, long arg3) {
+                        // TODO Auto-generated method stub
+                        Object nurseName = parent.getItemAtPosition(postion).toString();
+                        String  spinnerValue = parent.getItemAtPosition(postion).toString();
+
+
+
+                        nurseName = parent.getItemAtPosition(position).toString();
+                        ((TextView) v).setTextColor(Color.BLACK);
+
+
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // TODO Auto-generated method stub
+
+                    }
+                });
+
+//
+//
 
             }
+            //  @Override
+            //public void onClick(View v) {
+
+
+
+//                final Dialog dialog = new Dialog(patientProfile.this);
+//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialog.setCancelable(true);
+//                dialog.setContentView(R.layout.addnursedialog);
+//
+//                //final EditText et = dialog.findViewById(R.id.et);
+//
+//               final Spinner nurseSpinner = (Spinner) findViewById(R.id.spinnerAddnurse);
+//
+//
+//                db.collection("Users")
+//                        .whereEqualTo("position", "Nurse")
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                final List<String> spinnerArray =  new ArrayList<String>();
+//                                QuerySnapshot queryDocumentSnapshots = task.getResult();
+//                                if (task.isSuccessful()) {
+//
+//
+//                                    for (DocumentSnapshot document :  queryDocumentSnapshots.getDocuments()) {
+//                                        //Log.d(TAG, document.getId() + " => " + document.getData());
+//
+//                                        String nurseName = Objects.requireNonNull(document.get("fullName")).toString();
+//
+//                                        spinnerArray.add(nurseName);
+//
+//                                        //Toast.makeText(addPatient.this,nurseName, Toast.LENGTH_SHORT).show();
+//                                    }
+//                                } else {
+////                                    Log.d(TAG, "Error getting documents: ", task.getException());
+//                                }
+//                                ArrayAdapter<String> adapter = new ArrayAdapter<>(dialog.getContext(), android.R.layout.simple_dropdown_item_1line, spinnerArray);
+//
+//
+//                                adapter.notifyDataSetChanged();
+//                                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+//
+//                                nurseSpinner.setAdapter(adapter);
+//                                nurseSpinner.setEnabled(true);
+//
+//                                nurseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//
+//
+//                                    @Override
+//                                    public void onItemSelected(AdapterView<?> parent, View v,
+//                                                               int postion, long arg3) {
+//                                        // TODO Auto-generated method stub
+//                                        Object nurseName = parent.getItemAtPosition(postion).toString();
+//                                        String  spinnerValue = parent.getItemAtPosition(postion).toString();
+//
+//                                        ((TextView) v).setTextColor(Color.BLACK);
+//
+//
+//                                        nurseSpinner.setSelection(postion);
+//
+//
+//                                    }
+//
+//                                    @Override
+//                                    public void onNothingSelected(AdapterView<?> arg0) {
+//                                        // TODO Auto-generated method stub
+//
+//                                    }
+//                                });
+//
+//
+//                            }
+//                        });
+//
+//
+//
+
+
+
+//                Button btnok = (Button) dialog.findViewById(R.id.btnok);
+//                btnok.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//
+//                        String nurse = nurseSpinner.getSelectedItem().toString();
+//
+//
+//                        if(nurse.isEmpty()){
+//
+//                            Toast toast = Toast.makeText(getApplicationContext(),"Please Select the name of the Nurse",Toast.LENGTH_SHORT);
+//                            toast.show();
+//                        }
+//                        else {
+//                            patientItem.update("activeNurse", nurse);
+//
+//                            Toast.makeText(patientProfile.this, " Nurse Added", Toast.LENGTH_SHORT).show();
+//
+//
+//                            Intent intent = new Intent(patientProfile.this,patientProfile.class);
+//                            intent.putExtra("Patient Name",patientName);
+//                            intent.putExtra("Patient Description",patientDescription);
+//                            intent.putExtra("Patient Height",patientHeight);
+//                            intent.putExtra("Patient Weight",patientWeight);
+//                            intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
+//                            intent.putExtra("Patient ID",patientID);
+//                            intent.putExtra("position",position);
+//                            intent.putExtra("bodyTemp",bodyTemp);
+//                            intent.putExtra("nurse",nurse);
+//                            intent.putExtra("medications",medications);
+//                            intent.putExtra("surgicalH",sHistory);
+//                            intent.putExtra("standingO",standingO);
+//
+//
+//                            startActivity(intent);
+//
+//
+//
+//                            //dialog.dismiss();
+//                        }
+//                    }
+//                });
+
+//                Button btncn = (Button) dialog.findViewById(R.id.btncn);
+//                btncn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                dialog.show();
+//
+
+
+           // }
         });
 
         standingOrderButton.setOnClickListener(new View.OnClickListener() {
@@ -276,7 +494,7 @@ CollectionReference userCharts = db.collection("charts");
 
     private void updateNurse(View v, String Name){
 
-        //patientAdapter.updateNurse(position,name);
+//        patientAdapter.updateNurse(position,name);
 
     }
 }

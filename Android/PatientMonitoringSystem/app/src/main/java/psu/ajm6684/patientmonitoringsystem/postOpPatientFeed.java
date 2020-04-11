@@ -393,66 +393,66 @@ public class postOpPatientFeed extends AppCompatActivity {
 
                 });
 
-                alertDlg.setNegativeButton("Add Nurse", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+//                alertDlg.setNegativeButton("Add Nurse", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        final Dialog dialog1 = new Dialog(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
+//                        dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                        dialog1.setCancelable(false);
+//                        dialog1.setContentView(R.layout.addnursedialog);
 
-                        final Dialog dialog1 = new Dialog(new ContextThemeWrapper(postOpPatientFeed.this, android.R.style.Theme_Holo_Light));
-                        dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        dialog1.setCancelable(false);
-                        dialog1.setContentView(R.layout.addnursedialog);
-
-                        final EditText et = dialog1.findViewById(R.id.et);
+//                        final EditText et = dialog1.findViewById(R.id.et);
 
                         //String id = patientAdapter.getItemId(position);
 
-                        Button btnok = (Button) dialog1.findViewById(R.id.btnok);
-                        btnok.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+                        //Button btnok = (Button) dialog1.findViewById(R.id.btnok);
+//                        btnok.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//
+//
+//                                String nurse = null;
+//
+//
+//
+//                                //Note patient = documentSnapshot.toObject(Note.class);
+//
+//
+//                                final DocumentReference patientItem = db.collection("patients3").document(documentSnapshot.getId());
+//
+//                                //update
+//
+//                                if(nurse.isEmpty()){
+//
+//                                    Toast toast = Toast.makeText(getApplicationContext(),"Please Enter the name of the Nurse",Toast.LENGTH_SHORT);
+//                                    toast.show();
+//                                }
+//                                else {
+//
+//                                    patientItem.update("activeNurse", nurse);
+//
+//                                    Toast.makeText(postOpPatientFeed.this, " Nurse Added", Toast.LENGTH_SHORT).show();
+//
+//
+//
+//                                    dialog1.dismiss();
+//                                }
+//                            }
+//                        });
 
+                       // Button btncn = (Button) dialog1.findViewById(R.id.btncn);
+//                        btncn.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                dialog1.dismiss();
+//                            }
+//                        });
 
-                                String nurse = et.getText().toString();
-
-
-
-                                //Note patient = documentSnapshot.toObject(Note.class);
-
-
-                                final DocumentReference patientItem = db.collection("patients3").document(documentSnapshot.getId());
-
-                                //update
-
-                                if(nurse.isEmpty()){
-
-                                    Toast toast = Toast.makeText(getApplicationContext(),"Please Enter the name of the Nurse",Toast.LENGTH_SHORT);
-                                    toast.show();
-                                }
-                                else {
-
-                                    patientItem.update("activeNurse", nurse);
-
-                                    Toast.makeText(postOpPatientFeed.this, " Nurse Added", Toast.LENGTH_SHORT).show();
-
-
-
-                                    dialog1.dismiss();
-                                }
-                            }
-                        });
-
-                        Button btncn = (Button) dialog1.findViewById(R.id.btncn);
-                        btncn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialog1.dismiss();
-                            }
-                        });
-
-                        dialog1.show();
-
-                    }
-                });
+//                        dialog1.show();
+//
+//                    }
+//                });
 
                 alertDlg.setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
