@@ -1,64 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:orientation="vertical" android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
-
-<!--</LinearLayout>-->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:background="#fff"
-android:orientation="vertical">
-
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height= "wrap_content"
-    android:textSize="30dp"
-    android:gravity="center"
-    android:textColor="#0A0909"
-    android:layout_marginTop="30dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:text="Add Nurse"/>
-
-    <EditText
-        android:id="@+id/et"
+    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="100"
+ >
+    <Spinner
+        android:id="@+id/spinner_titulo_carpetas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:hint="Enter Nurse Name" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="50dp"
+        android:layout_weight="50"/>
 
-        <Button
-            android:id="@+id/btnok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add"
-            android:textColor="#ffffffff"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btncn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Cancel"
-            android:textColor="#ffffffff"
-            android:textSize="20sp" />
-
-
-    </LinearLayout>
 
 
 </LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/greybackground"
+
+
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="32sp"
+        android:layout_marginTop="16dp"
+        android:text="Patient Data Feed"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="30dp">
+
+
+        <TextView
+            android:id="@+id/dataFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold" />
+
+
+    </ScrollView>
+
+    <Button
+    android:id="@+id/clearButton"
+    android:layout_marginTop="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:text="@string/clear_feed"
+    android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Back To Feed"
+        android:textSize="24sp"/>
+
+
+
+</LinearLayout>
+

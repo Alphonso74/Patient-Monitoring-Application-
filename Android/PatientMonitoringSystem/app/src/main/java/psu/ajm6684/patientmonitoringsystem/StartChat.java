@@ -2,6 +2,7 @@ package psu.ajm6684.patientmonitoringsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -45,7 +47,7 @@ public class StartChat extends AppCompatActivity {
     CircleImageView profile_image;
     TextView username;
     FirebaseUser firebaseUser;
-
+    ListView mListview;
     private PatientAdapter patientAdapter;
     RecyclerView recyclerView;
     DatabaseReference reference;
@@ -82,10 +84,19 @@ public class StartChat extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                firebaseUser.getDisplayName();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+
+                    String name = dataSnapshot.child("username").getValue(String.class);
+                    Log.d("TAG", String.valueOf(username));
+                    arrayList.add(name);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter(StartChat.this, android.R.layout.simple_list_item_1, arrayList);
+
+             /*   firebaseUser.getUid();
                 user user = dataSnapshot.getValue(user.class);
                 assert user != null;
-            /*  username.setText(user.getUsername());
+              username.setText(user.getUsername());
               if (user.getImageURL().equals("default")) {
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
