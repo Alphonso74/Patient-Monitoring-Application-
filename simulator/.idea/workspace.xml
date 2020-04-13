@@ -30,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DataSim/data-sim" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -82,6 +82,9 @@
       <workItem from="1586117252256" duration="3536000" />
       <workItem from="1586133628254" duration="481000" />
       <workItem from="1586134162308" duration="76000" />
+      <workItem from="1586557309902" duration="8257000" />
+      <workItem from="1586650434642" duration="15302000" />
+      <workItem from="1586736221099" duration="1534000" />
     </task>
     <servers />
   </component>
@@ -110,6 +113,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585513272358" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1586557348416">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586557348416" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1586658174720">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586658174720" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585510919252">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

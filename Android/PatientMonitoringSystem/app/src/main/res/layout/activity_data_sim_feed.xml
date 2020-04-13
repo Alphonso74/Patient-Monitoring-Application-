@@ -8,7 +8,6 @@
     android:padding="16dp"
     android:background="@drawable/greybackground"
 
-
     >
 
     <TextView

@@ -33,11 +33,11 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        patients: state.firestore.ordered.patients
+        patients: state.firestore.ordered.patients3
     }
 };
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([ { collection: 'patients' } ] )
+    firestoreConnect([ { collection: 'patients3' } ] )
 )(App);
