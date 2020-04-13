@@ -976,14 +976,14 @@ public class postOpPatientFeed extends AppCompatActivity {
                                 menuDialog.setMessage(patientName1 + " Is in critical condition!!!!");
                                 menuDialog.setCancelable(true);
 
-                                menuDialog.setPositiveButton("Button1", new DialogInterface.OnClickListener() {
+                                menuDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 
                                     }
                                 });
 
-                                menuDialog.setNegativeButton("Button2", new DialogInterface.OnClickListener() {
+                                menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 
