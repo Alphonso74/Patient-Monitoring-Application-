@@ -542,6 +542,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                 intent.putExtra("standingO",standingO);
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
+                intent.putExtra("FeedType", "PatientFeed");
 
                 startActivity(intent);
 

@@ -481,6 +481,7 @@ public class postOpPatientFeed extends AppCompatActivity {
                 intent.putExtra("standingO",standingO);
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
+                intent.putExtra("FeedType", "PostOp");
 
                 startActivity(intent);
 

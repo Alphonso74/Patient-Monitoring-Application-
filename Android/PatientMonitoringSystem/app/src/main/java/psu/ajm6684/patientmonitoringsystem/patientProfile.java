@@ -49,6 +49,8 @@ public class patientProfile extends AppCompatActivity {
 
     Spinner spinner;
     String nurseName ;
+    String feedFrom;
+
 CollectionReference userCharts = db.collection("charts");
 
 
@@ -105,6 +107,9 @@ CollectionReference userCharts = db.collection("charts");
 
 
 
+
+
+
         final String patientDescription = intent.getStringExtra("Patient Description");
         final String patientHeight = intent.getStringExtra("Patient Height");
         final String patientWeight = intent.getStringExtra("Patient Weight");
@@ -117,7 +122,9 @@ CollectionReference userCharts = db.collection("charts");
         final String sHistory = intent.getStringExtra("surgicalH");
         final String standingO = intent.getStringExtra("standingO");
 
+        feedFrom = intent.getStringExtra("FeedType");
 
+//        Toast.makeText(patientProfile.this,feedFrom, Toast.LENGTH_LONG).show();
         final DocumentReference patientItem = firebaseFirestore.collection("patients3").document(patientID);
 
 
@@ -173,9 +180,35 @@ CollectionReference userCharts = db.collection("charts");
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(feedFrom == null){
+
+                    Intent intent = new Intent(patientProfile.this,patientFeed.class);
+                    startActivity(intent);
+
+                }
+
+                else if(feedFrom.equals("PatientFeed")){
+
+                    Intent intent = new Intent(patientProfile.this,patientFeed.class);
+                    startActivity(intent);
+
+                }
+
+                else if(feedFrom.equals("PostOp")){
+
+                    Intent intent = new Intent(patientProfile.this,postOpPatientFeed.class);
+                    startActivity(intent);
+                }
+                else{
+
+
+                    Intent intent = new Intent(patientProfile.this,neonatalPatientFeed.class);
+                    startActivity(intent);
+                }
 //                Intent intent = new Intent(patientProfile.this,patientFeed.class);
 //                startActivity(intent);
-                finish();
+//                finish();
 
 
 

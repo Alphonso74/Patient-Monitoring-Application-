@@ -1038,7 +1038,7 @@ public class patientFeed extends AppCompatActivity {
 
         Query query = patients.orderBy("rHeartRate", Query.Direction.DESCENDING);
 
-        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
 
 
         // Query nurses = patients.document().;
@@ -1218,7 +1218,9 @@ public class patientFeed extends AppCompatActivity {
 
                 DocumentReference ref = documentSnapshot.getReference();
 
+                String patientFeed = "PatientFeed";
                 Intent intent = new Intent(patientFeed.this,patientProfile.class);
+
                 intent.putExtra("Patient Name",pname);
                 intent.putExtra("Patient Description",pdescription);
                 intent.putExtra("Patient Height",pheight);
@@ -1233,6 +1235,7 @@ public class patientFeed extends AppCompatActivity {
                 intent.putExtra("standingO",standingO);
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
+                intent.putExtra("FeedType", patientFeed);
 
                 startActivity(intent);
 
