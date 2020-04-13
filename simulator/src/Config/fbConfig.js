@@ -1,20 +1,21 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/analytics';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyDxAY67_nHCZSirHgkMQ_lyraHRvsR1HHk",
-    authDomain: "patient-db-test.firebaseapp.com",
-    databaseURL: "https://patient-db-test.firebaseio.com",
-    projectId: "patient-db-test",
-    storageBucket: "patient-db-test.appspot.com",
-    messagingSenderId: "997536831238",
-    appId: "1:997536831238:web:ad8a0e72e5962d8aaeb087",
-    measurementId: "G-JJQSGKGZPV"
+    apiKey: "AIzaSyB0ODKW_reMr84xHfAaPOeneey-LuOZbL0",
+    authDomain: "patient-monitoring-syste-39706.firebaseapp.com",
+    databaseURL: "https://patient-monitoring-syste-39706.firebaseio.com",
+    projectId: "patient-monitoring-syste-39706",
+    storageBucket: "patient-monitoring-syste-39706.appspot.com",
+    messagingSenderId: "721554238180",
+    appId: "1:721554238180:web:108f787ed05b3a49dfdaf1",
+    measurementId: "G-G6TMTR9P65"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-//firebase.analytics();
+firebase.analytics();
 firebase.firestore().settings({});
 
 export default firebase;
