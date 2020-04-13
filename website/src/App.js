@@ -15,7 +15,7 @@ class App extends Component {
                 {/*<a href="patient-monitoring-syste-39706.firebaseapp.com" rel="noopener noreferrer" target="_blank">*/}
                 {/*    <i className="fa fa-github-square" aria-hidden="true" />*/}
                 {/*</a>*/}
-                <Link to="">Data Simulator</Link>
+                <Link to="/datasim">Data Simulator</Link>
                 <Link to="/alphonso">Alphonso Mckenzie</Link>
                 <Link to="/sean">Sean Todd</Link>
                 <Link to="/charles">Charles Todd</Link>
