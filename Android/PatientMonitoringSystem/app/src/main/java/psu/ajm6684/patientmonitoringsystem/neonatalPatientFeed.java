@@ -150,7 +150,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         name = ee.getText().toString();
-                        Intent intent = new Intent(neonatalPatientFeed.this, Chatroom.class);
+                        Intent intent = new Intent(neonatalPatientFeed.this, StartChat.class);
                         //intent.putExtra("room_name", ((TextView) e1).getText().toString());
                         intent.putExtra("room_name","Admin");
                         intent.putExtra("user_name", name);
