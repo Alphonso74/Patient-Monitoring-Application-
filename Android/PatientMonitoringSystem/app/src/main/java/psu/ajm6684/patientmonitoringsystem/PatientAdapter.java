@@ -45,6 +45,7 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
         patientHolder.patientTriageTag.setText(note.getTriageTag());
         patientHolder.patientHeight.setText(note.getHeight());
         patientHolder.patientWeight.setText(String.valueOf(note.getWeight()));
+        patientHolder.patientBodyTemp.setText(String.valueOf(note.getBodyTempature()));
 
 //        patientHolder.patientWeight.setText(note.getWeight());
 
@@ -114,6 +115,7 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
             TextView patientWeight;
             TextView patientRHeartRate;
             TextView patientTriageTag;
+            TextView patientBodyTemp;
 
 
 
@@ -125,6 +127,7 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
             patientWeight = itemView.findViewById(R.id.text_view_weight);
             patientRHeartRate = itemView.findViewById(R.id.text_view_heartrate);
             patientTriageTag = itemView.findViewById(R.id.text_view_triage);
+            patientBodyTemp = itemView.findViewById(R.id.text_view_temp);
 
 
 //            ImageView face = itemView.findViewById(R.id.facey);
