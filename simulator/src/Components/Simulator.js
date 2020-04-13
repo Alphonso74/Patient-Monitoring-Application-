@@ -26,7 +26,7 @@ class Simulator extends Component{
     runSim = () => {
         if(this.state.running) {
             var patients = [];
-            firebase.firestore().collection('patients').get().then(snapshot => {
+            firebase.firestore().collection('patients3').get().then(snapshot => {
                     // Populate array patients[] with firestore data
                     snapshot.forEach(patient => {
                         let data = patient.data();
@@ -40,7 +40,7 @@ class Simulator extends Component{
                 for (let patient of patients) {
                     // Set max according to triage tag
                     let max;
-                    switch (patient.tt) {
+                    switch (patient.triageTag) {
                         case "Yellow":
                             max = 100000;
                             break;
@@ -59,27 +59,27 @@ class Simulator extends Component{
                     let randHR = 1 + Math.random() * max;
                     let randBT = 1 + Math.random() * max;
 
-                    let heartRate = patient.hr;
-                    let bodyTemp = patient.temp;
+                    let heartRate = patient.rHeartRate;
+                    let bodyTemp = patient.bodyTempature;
 
                     // Change heart rate
                     if (randHR <= (max / 3)) {
                         heartRate++;
-                    } else if (patient.tt !== "Green" && randHR === max) {
+                    } else if (patient.triageTag !== "Green" && randHR === max) {
                         heartRate = 0;
-                    } else if (randHR >= (2 * (max / 3))) {
+                    } else if (heartRate > 0 && randHR >= (2 * (max / 3))) {
                         heartRate--;
                     }
 
                     // Change body temp
                     if (randBT <= (max / 3)) {
-                        bodyTemp += .1;
+                        bodyTemp += 1;
                     } else if (randBT >= (2 * (max / 3))) {
-                        bodyTemp -= .1;
+                        bodyTemp -= 1;
                     }
 
                     // Round to ##.#
-                    bodyTemp = Math.round(bodyTemp * 10) / 10;
+                    //bodyTemp = Math.round(bodyTemp * 1) / 1;
 
                     // Update firestore data with new values
                     this.props.UpdatePatient(patient, heartRate, bodyTemp);
@@ -100,8 +100,9 @@ class Simulator extends Component{
             <div className="section">
                 <h4>Simulator Details</h4>
                 <div className="divider"/>
-                <p>
-                    Randomization depends on triage tag<br/>
+
+                    Randomization depends on triage tag.<br/>
+                    Click patient name to bring up buttons for individual patients.<br/>
                     <div className="divider"/>
                     <h5>Heart Rate:</h5>
                     All:<br/>1/3 chance of increase by 1<br/>
@@ -116,7 +117,7 @@ class Simulator extends Component{
                     All:<br/>1/3 chance of increase by 0.1<br/>
                     1/3 chance of decrease by 0.1<br/>
                     1/3 chance of no change<br/>
-                </p>
+
                 <div className="divider"/>
                 <a id="start" href="#" onClick={ this.simButton } className="waves-effect waves-light light-green darken-2 btn">{this.state.text}</a>
             </div>
