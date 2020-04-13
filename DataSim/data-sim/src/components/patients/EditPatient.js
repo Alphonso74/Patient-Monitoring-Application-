@@ -170,7 +170,7 @@ class EditPatient extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-    const patients = state.firestore.data.patients;
+    const patients = state.firestore.data.patients3;
     const patient = patients ? patients[id] : null;
     return{
 
@@ -190,6 +190,6 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-        {collection: 'patients'}
+        {collection: 'patients3'}
     ])
 )(EditPatient)
