@@ -142,43 +142,13 @@ public class neonatalPatientFeed extends AppCompatActivity {
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v) {
-                final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
-                builder.setTitle("Enter your name:");
-                ee = new EditText(neonatalPatientFeed.this);
-                builder.setView(ee);
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        name = ee.getText().toString();
-                        Intent intent = new Intent(neonatalPatientFeed.this, StartChat.class);
-                        //intent.putExtra("room_name", ((TextView) e1).getText().toString());
-                        intent.putExtra("room_name","Admin");
-                        intent.putExtra("user_name", name);
+
+                        Intent intent = new Intent(neonatalPatientFeed.this, Chatroom.class);
 
                         startActivity(intent);
 
-
-
-
                     }
                 });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-
-
-
-                    }
-                });
-                builder.show();
-
-
-
-            }
-        });
-
 
 
         setUpView();

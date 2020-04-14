@@ -262,43 +262,20 @@ public class patientFeed extends AppCompatActivity {
 
         //ImageButton imageButton = (ImageButton) findViewById(R.id.button_message);
 
+
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
-                builder.setTitle("Enter your name:");
-                ee = new EditText(patientFeed.this);
-                builder.setView(ee);
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        name = ee.getText().toString();
-                        Intent intent = new Intent(patientFeed.this, Chatroom.class);
-                       // intent.putExtra("room_name", ((TextView) view).getText().toString());
-                        intent.putExtra("room_name","Admin");
-                        intent.putExtra("user_name", name);
+            public void onClick( View v) {
 
-                        startActivity(intent);
-                    }
-                });
+                Intent intent = new Intent(patientFeed.this, Chatroom.class);
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-
-
-
-                    }
-                });
-                builder.show();
-
-
+                startActivity(intent);
 
             }
         });
 
-                    setUpView();
+
+        setUpView();
 
 //         addPatient = (Button) findViewById(R.id.addPatient);
 

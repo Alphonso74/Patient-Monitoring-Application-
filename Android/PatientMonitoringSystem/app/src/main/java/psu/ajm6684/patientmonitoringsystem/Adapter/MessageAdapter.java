@@ -22,11 +22,10 @@ import psu.ajm6684.patientmonitoringsystem.R;
 import psu.ajm6684.patientmonitoringsystem.chat;
 import psu.ajm6684.patientmonitoringsystem.user;
 
-public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder>
+public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
-{
-    public static final int MSG_type_left = 0;
-    public static final int MSG_type_right = 1;
+    public static  final int MSG_TYPE_LEFT = 0;
+    public static  final int MSG_TYPE_RIGHT = 1;
 
     private Context mContext;
     private List<chat> mChat;
@@ -34,66 +33,76 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     FirebaseUser fuser;
 
-    public MessageAdapter(Context mContext, List<chat> mChat, String imageurl) {
+    public MessageAdapter(Context mContext, List<chat> mChat, String imageurl){
         this.mChat = mChat;
         this.mContext = mContext;
         this.imageurl = imageurl;
-
     }
 
+    @NonNull
     @Override
-    public MessageAdapter.ViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
-        if (viewType == MSG_type_right) {
-
+    public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == MSG_TYPE_RIGHT) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_right, parent, false);
             return new MessageAdapter.ViewHolder(view);
         } else {
             View view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_left, parent, false);
             return new MessageAdapter.ViewHolder(view);
         }
-
     }
+
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
 
         chat chat = mChat.get(position);
 
         holder.show_message.setText(chat.getMessage());
 
-        if (imageurl.equals("default")) {
-            holder.profimage.setImageResource(R.mipmap.ic_launcher);
-        }else {
-            Glide.with(mContext).load(imageurl).into(holder.profimage);
-        }
+        if (imageurl.equals("default")){
+            holder.profile_image.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            Glide.with(mContext).load(imageurl).into(holder.profile_image);
         }
 
+        if (position == mChat.size()-1){
+            if (chat.isIsseen()){
+                holder.txt_seen.setText("Seen");
+            } else {
+                holder.txt_seen.setText("Delivered");
+            }
+        } else {
+            holder.txt_seen.setVisibility(View.GONE);
+        }
+
+    }
 
     @Override
-    public int getItemCount () {
+    public int getItemCount() {
         return mChat.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView show_message;
-        public ImageView profimage;
+        public ImageView profile_image;
+        public TextView txt_seen;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
             show_message = itemView.findViewById(R.id.show_message);
-            profimage = itemView.findViewById(R.id.profimage);
+            profile_image = itemView.findViewById(R.id.profimage);
+         //   txt_seen = itemView.findViewById(R.id.txt_seen);
         }
     }
 
     @Override
     public int getItemViewType(int position) {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        if (mChat.get(position).getSender().equals(fuser.getUid()))
-        {
-            return MSG_type_right;
+        if (mChat.get(position).getSender().equals(fuser.getUid())){
+            return MSG_TYPE_RIGHT;
         } else {
-            return MSG_type_left;
+            return MSG_TYPE_LEFT;
         }
     }
 }

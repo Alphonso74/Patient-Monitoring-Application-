@@ -2,18 +2,23 @@ package psu.ajm6684.patientmonitoringsystem;
 
 public class user {
 
-
     private String id;
-    private  String username;
+    private String username;
     private String imageURL;
+    private String status;
+    private String search;
 
-
-    public user (String id, String username, String imageURL) {
+    public user(String id, String username, String imageURL, String status, String search) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
+        this.status = status;
+        this.search = search;
     }
 
+    public user() {
+
+    }
 
     public String getId() {
         return id;
@@ -39,9 +44,19 @@ public class user {
         this.imageURL = imageURL;
     }
 
-    public user() {
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 }
-

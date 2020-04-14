@@ -2,26 +2,17 @@ package psu.ajm6684.patientmonitoringsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
@@ -33,10 +24,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import psu.ajm6684.patientmonitoringsystem.Fragments.ChatFragment;
@@ -47,110 +37,117 @@ public class StartChat extends AppCompatActivity {
     CircleImageView profile_image;
     TextView username;
     FirebaseUser firebaseUser;
-    ListView mListview;
-    private PatientAdapter patientAdapter;
-    RecyclerView recyclerView;
     DatabaseReference reference;
-
-    ArrayList<String> arrayList;
-    ImageButton l1;
-
-    EditText e1;
-    ArrayAdapter<String> adapter;
-    String name;
-    EditText ee;
-    int chatmenuindexclicked = -1;
-    boolean isEditMode = false;
-    Button profileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatlayout);
 
-
-/*
-
-          Toolbar toolbar = findViewById(R.id.chattoolbar);
-          setSupportActionBar(toolbar);
-          getSupportActionBar().setTitle("");
-*/
+        Toolbar toolbar = findViewById(R.id.chattoolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
         profile_image = findViewById(R.id.profimage);
         username = findViewById(R.id.username);
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-
-                    String name = dataSnapshot.child("username").getValue(String.class);
-                    Log.d("TAG", String.valueOf(username));
-                    arrayList.add(name);
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter(StartChat.this, android.R.layout.simple_list_item_1, arrayList);
-
-             /*   firebaseUser.getUid();
                 user user = dataSnapshot.getValue(user.class);
                 assert user != null;
-              username.setText(user.getUsername());
-              if (user.getImageURL().equals("default")) {
+                username.setText(user.getUsername());
+                if (user.getImageURL().equals("default")){
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
-                    Glide.with(StartChat.this).load(user.getImageURL()).into(profile_image);
-                }*/
+
+                    //change this
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
+                }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-
-        ViewPager viewpager = findViewById(R.id.view_pager);
-
-        ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        viewpageradapter.addFragment(new  ChatFragment(), "Chats");
-        viewpageradapter.addFragment(new  UsersFragment(), "Users");
+        final TabLayout tabLayout = findViewById(R.id.tab_layout);
+        final ViewPager viewPager = findViewById(R.id.view_pager);
 
 
-        viewpager.setAdapter(viewpageradapter);
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+                int unread = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    chat chat = snapshot.getValue(chat.class);
+                //    if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()){
+                 //       unread++;
+                 //   }
+                }
 
-        tabLayout.setupWithViewPager(viewpager);
+                if (unread == 0){
+                    viewPagerAdapter.addFragment(new ChatFragment(), "Chats");
+                } else {
+                    viewPagerAdapter.addFragment(new ChatFragment(), "("+unread+") Chats");
+                }
+
+                viewPagerAdapter.addFragment(new UsersFragment(), "Users");
+              //  viewPagerAdapter.addFragment(new ProfileFragment(), "Profile");
+
+                viewPager.setAdapter(viewPagerAdapter);
+
+                tabLayout.setupWithViewPager(viewPager);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.chat_menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
+            case  R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                // change this code beacuse your app will crash
+                startActivity(new Intent(StartChat.this, patientFeed.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
         }
+
         return false;
     }
 
-    static class ViewPagerAdapter extends FragmentPagerAdapter {
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
         private ArrayList<Fragment> fragments;
         private ArrayList<String> titles;
 
-        ViewPagerAdapter(FragmentManager fm) {
+        ViewPagerAdapter(FragmentManager fm){
             super(fm);
             this.fragments = new ArrayList<>();
             this.titles = new ArrayList<>();
-
         }
 
-        @NonNull
+
         @Override
         public Fragment getItem(int position) {
             return fragments.get(position);
@@ -161,18 +158,38 @@ public class StartChat extends AppCompatActivity {
             return fragments.size();
         }
 
-
-        public void addFragment(Fragment fragment, String title) {
+        public void addFragment(Fragment fragment, String title){
             fragments.add(fragment);
             titles.add(title);
         }
+
+        // Ctrl + O
 
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
             return titles.get(position);
         }
-
-
     }
-            }
+
+    private void status(String status){
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
+    }
+}
