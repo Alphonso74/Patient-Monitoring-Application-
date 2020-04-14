@@ -19,7 +19,7 @@ class App extends Component {
               <Route path='/signin' component={SignIn} />
               <Route path='/signup' component={SignUp} />
               <Route path='/create' component={CreatePatient} />
-              <Route path='/patient/edit/:id' component={EditPatient} />
+              <Route path='/edit/:id' component={EditPatient} />
               <Route path='/chat' component={Chat} />
             </Switch>
           </div>
