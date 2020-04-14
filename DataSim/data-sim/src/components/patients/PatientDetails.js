@@ -38,7 +38,7 @@ class PatientDetails extends Component {
             patient: patient,
             id: this.props.match.params.id
         };*/}
-        console.log(patient + " " + auth);
+        const id = this.props.match.params.id;
         if (!auth.uid) return <Redirect to='/signin'/>;
 
         if (patient) {
@@ -47,7 +47,7 @@ class PatientDetails extends Component {
                     <div className="card z-depth-0">
                         <div className="card-content">
                             <span className="card-title center">{patient.patientName}
-                                <Link to={'/patient/edit/'+this.props.match.params.id} key={this.props.match.params.id}><input id="edit" type="button" className='button' value='Edit'/></Link>
+                                <Link to={'/edit/'+ id} key={id}><input id="edit" type="button" className='button' value='Edit'/></Link>
                                 <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
                             <p>Patient Description: {patient.description}</p>
                             <p>Height: {patient.height}</p>
@@ -79,7 +79,7 @@ class PatientDetails extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-    const patients = state.firestore.data.patients;
+    const patients = state.firestore.data.patients3;
     const patient = patients ? patients[id] : null;
     return{
 
@@ -98,6 +98,6 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-        {collection: 'patients'}
+        {collection: 'patients3'}
     ])
 )(PatientDetails)
