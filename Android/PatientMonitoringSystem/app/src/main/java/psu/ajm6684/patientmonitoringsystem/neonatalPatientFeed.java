@@ -1033,7 +1033,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                             //Toast.makeText(dataSimFeed.this,"Patient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature"), Toast.LENGTH_SHORT).show();
                             if(department.equals("Neonatal")) {
 
-                                if (heartRate < 20 || bodyTemp < 20 || heartRate > 100 || bodyTemp > 140) {
+                                if (heartRate < 50 || bodyTemp < 90 || heartRate > 100 || bodyTemp > 110) {
 
                                     AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
                                     menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");

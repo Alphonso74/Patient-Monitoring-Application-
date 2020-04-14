@@ -137,7 +137,7 @@ public class patientFeed extends AppCompatActivity {
                             //Toast.makeText(dataSimFeed.this,"Patient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature"), Toast.LENGTH_SHORT).show();
 
                             if(department.equals("General Care")) {
-                                if (heartRate < 20 || bodyTemp < 20 || heartRate > 100 || bodyTemp > 140) {
+                                if (heartRate < 50 || bodyTemp < 90 || heartRate > 100 || bodyTemp > 110) {
 
                                     AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                                     menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");
