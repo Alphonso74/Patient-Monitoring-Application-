@@ -91,12 +91,91 @@ public class patientFeed extends AppCompatActivity {
     int chatmenuindexclicked = -1;
     boolean isEditMode = false;
     Button profileButton;
-
+    Long heartRate;
+    Long bodyTemp;
+    String department;
     @Override
     protected void onStart() {
         super.onStart();
 
         patientAdapter.startListening();
+
+
+        patients.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot queryDocumentSnapshots, FirebaseFirestoreException e) {
+                if (e != null) {
+                    return;
+                }
+
+                for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
+                    DocumentSnapshot documentSnapshot = dc.getDocument();
+
+
+                    String patientName1 = documentSnapshot.get("patientName").toString();
+                    String id = documentSnapshot.getId();
+                    int oldIndex = dc.getOldIndex();
+                    int newIndex = dc.getNewIndex();
+                    heartRate = (Long) documentSnapshot.get("rHeartRate");
+                    bodyTemp = (Long) documentSnapshot.get("bodyTempature");
+                    department = (String) documentSnapshot.get("department");
+
+
+
+
+
+
+
+                    switch (dc.getType()) {
+                        case ADDED:
+                            //Toast.makeText(patientFeed.this, patientName1, Toast.LENGTH_SHORT).show();
+
+
+                            break;
+                        case MODIFIED:
+
+                            //Toast.makeText(dataSimFeed.this,"Patient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature"), Toast.LENGTH_SHORT).show();
+
+                            if(department.equals("General Care")) {
+                                if (heartRate < 20 || bodyTemp < 20 || heartRate > 100 || bodyTemp > 140) {
+
+                                    AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                                    menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");
+                                    menuDialog.setMessage(patientName1 + " Is in critical condition!!!!");
+                                    menuDialog.setCancelable(true);
+
+                                    menuDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+
+                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+
+
+                                    menuDialog.show();
+
+
+                                }
+                            }
+
+
+
+                            break;
+                        case REMOVED:
+                            //Toast.makeText(dataSimFeed.this, "Removed - " + patientName1, Toast.LENGTH_SHORT).show();
+
+                            break;
+                    }
+                }
+            }
+        });
 
 //        patients.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
 //            @Override
@@ -964,7 +1043,7 @@ public class patientFeed extends AppCompatActivity {
 
         Query query = patients.orderBy("rHeartRate", Query.Direction.DESCENDING);
 
-        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
 
 
         // Query nurses = patients.document().;
@@ -1144,7 +1223,9 @@ public class patientFeed extends AppCompatActivity {
 
                 DocumentReference ref = documentSnapshot.getReference();
 
+                String patientFeed = "PatientFeed";
                 Intent intent = new Intent(patientFeed.this,patientProfile.class);
+
                 intent.putExtra("Patient Name",pname);
                 intent.putExtra("Patient Description",pdescription);
                 intent.putExtra("Patient Height",pheight);
@@ -1159,6 +1240,7 @@ public class patientFeed extends AppCompatActivity {
                 intent.putExtra("standingO",standingO);
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
+                intent.putExtra("FeedType", patientFeed);
 
                 startActivity(intent);
 

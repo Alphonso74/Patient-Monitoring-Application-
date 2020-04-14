@@ -8,7 +8,7 @@ export const createPatient = (patient) =>{
         const firestore = getFirestore();
         // console.log('Test');
 
-        firestore.collection('patients').add({
+        firestore.collection('patients3').add({
 
             ...patient
 
@@ -29,11 +29,11 @@ export const updatePatient = (patient, id) => {
     return(dispatch, getState, {getFirebase, getFirestore}) => {
         const firestore = getFirestore();
 
-        firestore.collection('patients').doc(id).delete().then(()=> console.log("Delete successful!"))
+        firestore.collection('patients3').doc(id).delete().then(()=> console.log("Delete successful!"))
             .catch((err)=>{dispatch({type: 'UPDATE_PATIENT_ERROR', err});
         });
 
-        firestore.collection('patients').add({
+        firestore.collection('patients3').add({
             ...patient
         }).then(()=>{
             dispatch({type: 'UPDATE_PATIENT', patient});
@@ -47,7 +47,7 @@ export const deletePatient = (patient, id) => {
     return(dispatch, getState, {getFirebase, getFirestore}) => {
         const firestore = getFirestore();
 
-        firestore.collection('patients').doc(id).delete().then(()=> {
+        firestore.collection('patients3').doc(id).delete().then(()=> {
             dispatch({type: 'DELETE_PATIENT', patient});
         })
             .catch((err)=>{dispatch({type: 'DELETE_PATIENT_ERROR', err});
