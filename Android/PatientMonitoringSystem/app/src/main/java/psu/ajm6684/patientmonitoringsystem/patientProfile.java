@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,8 +37,11 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -50,6 +54,10 @@ public class patientProfile extends AppCompatActivity {
     Spinner spinner;
     String nurseName ;
     String feedFrom;
+    String activeNurse;
+    String standingO;
+    String standingOrder;
+    EditText standing;
 
 CollectionReference userCharts = db.collection("charts");
 
@@ -63,7 +71,7 @@ CollectionReference userCharts = db.collection("charts");
 
         Button addNurse = (Button) findViewById(R.id.button5);
         final Button createChart = (Button) findViewById(R.id.button7);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         Button backButton = (Button) findViewById(R.id.back2feed);
         final Button viewCharts = (Button) findViewById(R.id.viewCharts);
@@ -102,7 +110,7 @@ CollectionReference userCharts = db.collection("charts");
 
         Button standingOrderButton = (Button) findViewById(R.id.button6);
 
-        FirebaseFirestore  firebaseFirestore = FirebaseFirestore.getInstance();
+        final FirebaseFirestore  firebaseFirestore = FirebaseFirestore.getInstance();
 
 
 
@@ -117,10 +125,10 @@ CollectionReference userCharts = db.collection("charts");
         final String patientID = intent.getStringExtra("Patient ID");
         final Integer position = intent.getIntExtra("position",0);
         final String bodyTemp = intent.getStringExtra("bodyTemp");
-        final String activeNurse = intent.getStringExtra("nurse");
+        activeNurse = intent.getStringExtra("nurse");
         final String medications = intent.getStringExtra("medications");
         final String sHistory = intent.getStringExtra("surgicalH");
-        final String standingO = intent.getStringExtra("standingO");
+         standingO = intent.getStringExtra("standingO");
 
         feedFrom = intent.getStringExtra("FeedType");
 
@@ -136,8 +144,8 @@ CollectionReference userCharts = db.collection("charts");
         TextView bodyTemp1 = (TextView) findViewById(R.id.textView29);
         TextView meds = (TextView) findViewById(R.id.textView30);
         TextView sHistory1 = (TextView) findViewById(R.id.textView31);
-        TextView aNurse = (TextView) findViewById(R.id.textView25);
-        TextView standingOrder = (TextView) findViewById(R.id.textView17);
+        final TextView aNurse = (TextView) findViewById(R.id.textView25);
+        final TextView standingOrder = (TextView) findViewById(R.id.textView17);
 
 
 
@@ -238,25 +246,27 @@ CollectionReference userCharts = db.collection("charts");
 
                         nurseName = spinner.getSelectedItem().toString();
 
+                        aNurse.setText(nurseName);
+
                         patientItem.update("activeNurse", nurseName);
 
 
-                        Intent intent = new Intent(patientProfile.this,patientProfile.class);
-                            intent.putExtra("Patient Name",patientName);
-                            intent.putExtra("Patient Description",patientDescription);
-                            intent.putExtra("Patient Height",patientHeight);
-                            intent.putExtra("Patient Weight",patientWeight);
-                            intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
-                            intent.putExtra("Patient ID",patientID);
-                            intent.putExtra("position",position);
-                            intent.putExtra("bodyTemp",bodyTemp);
-                            intent.putExtra("nurse",nurseName);
-                            intent.putExtra("medications",medications);
-                            intent.putExtra("surgicalH",sHistory);
-                            intent.putExtra("standingO",standingO);
-
-
-                            startActivity(intent);
+//                        Intent intent = new Intent(patientProfile.this,patientProfile.class);
+//                            intent.putExtra("Patient Name",patientName);
+//                            intent.putExtra("Patient Description",patientDescription);
+//                            intent.putExtra("Patient Height",patientHeight);
+//                            intent.putExtra("Patient Weight",patientWeight);
+//                            intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
+//                            intent.putExtra("Patient ID",patientID);
+//                            intent.putExtra("position",position);
+//                            intent.putExtra("bodyTemp",bodyTemp);
+//                            intent.putExtra("nurse",nurseName);
+//                            intent.putExtra("medications",medications);
+//                            intent.putExtra("surgicalH",sHistory);
+//                            intent.putExtra("standingO",standingO);
+//
+//
+//                            startActivity(intent);
 
 
                     }
@@ -487,11 +497,78 @@ CollectionReference userCharts = db.collection("charts");
         standingOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final AlertDialog.Builder builder1 = new AlertDialog.Builder(new ContextThemeWrapper(patientProfile.this, android.R.style.Theme_Holo_Light));
+                TextView title = new TextView(patientProfile.this);
+                title.setText("Create Standing Order");
+                title.setPadding(10, 10, 10, 10);
+                title.setGravity(Gravity.CENTER);
+                title.setTextColor(Color.rgb(0, 153, 204));
+                title.setTextSize(23);
+                builder1.setCustomTitle(title);
 
-                Intent intent = new Intent(patientProfile.this,standingOrder.class);
-                intent.putExtra("Patient ID",patientID); //Changeeeeeeeeeeeee***
-                intent.putExtra("Patient Name", patientName);
-                startActivity(intent);
+
+                final EditText edittext = new EditText(patientProfile.this);
+//                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                View layout_spinners = inflater.inflate(R.layout.addstandingorder,null);
+//                standing = (EditText) layout_spinners.findViewById(R.id.standingordertext);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                edittext.setLayoutParams(lp);
+                builder1.setView(edittext);
+
+                final DocumentReference patientItem = firebaseFirestore.collection("patients3").document(patientID);
+
+
+//                builder1.setView(standing);
+
+                final String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                final String currentTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
+
+                builder1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder1.setPositiveButton("Add Standing Order", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        String userText = edittext.getText().toString();
+
+                        patientItem.update("standingOrder",userText);
+
+                        standingO = userText;
+                        standingOrder.setText(userText);
+
+//                        Intent intent = new Intent(patientProfile.this,patientProfile.class);
+//                        intent.putExtra("Patient Name",patientName);
+//                        intent.putExtra("Patient Description",patientDescription);
+//                        intent.putExtra("Patient Height",patientHeight);
+//                        intent.putExtra("Patient Weight",patientWeight);
+//                        intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
+//                        intent.putExtra("Patient ID",patientID);
+//                        intent.putExtra("position",position);
+//                        intent.putExtra("bodyTemp",bodyTemp);
+//                        intent.putExtra("nurse",nurseName);
+//                        intent.putExtra("medications",medications);
+//                        intent.putExtra("surgicalH",sHistory);
+//                        intent.putExtra("standingO",userText);
+//
+//
+//                        startActivity(intent);
+                    }
+                });
+
+//                Intent intent = new Intent(patientProfile.this,standingOrder.class);
+//                intent.putExtra("Patient ID",patientID); //Changeeeeeeeeeeeee***
+//                intent.putExtra("Patient Name", patientName);
+//                startActivity(intent);
+
+                builder1.show();
             }
         });
 
