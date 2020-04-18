@@ -93,6 +93,7 @@ public class patientFeed extends AppCompatActivity {
     Button profileButton;
     Long heartRate;
     Long bodyTemp;
+    String department;
     @Override
     protected void onStart() {
         super.onStart();
@@ -117,6 +118,7 @@ public class patientFeed extends AppCompatActivity {
                     int newIndex = dc.getNewIndex();
                     heartRate = (Long) documentSnapshot.get("rHeartRate");
                     bodyTemp = (Long) documentSnapshot.get("bodyTempature");
+                    department = (String) documentSnapshot.get("department");
 
 
 
@@ -134,32 +136,35 @@ public class patientFeed extends AppCompatActivity {
 
                             //Toast.makeText(dataSimFeed.this,"Patient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature"), Toast.LENGTH_SHORT).show();
 
-                            if(heartRate < 20 || bodyTemp < 20 || heartRate >  100 || bodyTemp > 140){
+                            if(department.equals("General Care")) {
+                                if (heartRate < 50 || bodyTemp < 90 || heartRate > 100 || bodyTemp > 110) {
 
-                                AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
-                                menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");
-                                menuDialog.setMessage(patientName1 + " Is in critical condition!!!!");
-                                menuDialog.setCancelable(true);
+                                    AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                                    menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");
+                                    menuDialog.setMessage(patientName1 + " Is in critical condition!!!!");
+                                    menuDialog.setCancelable(true);
 
-                                menuDialog.setPositiveButton("Button1", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    menuDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                    }
-                                });
+                                        }
+                                    });
 
-                                menuDialog.setNegativeButton("Button2", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                    }
-                                });
-
-
-                                menuDialog.show();
+                                        }
+                                    });
 
 
+                                    menuDialog.show();
+
+
+                                }
                             }
+
 
 
                             break;
@@ -1015,7 +1020,7 @@ public class patientFeed extends AppCompatActivity {
 
         Query query = patients.orderBy("rHeartRate", Query.Direction.DESCENDING);
 
-        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
 
 
         // Query nurses = patients.document().;
@@ -1195,7 +1200,9 @@ public class patientFeed extends AppCompatActivity {
 
                 DocumentReference ref = documentSnapshot.getReference();
 
+                String patientFeed = "PatientFeed";
                 Intent intent = new Intent(patientFeed.this,patientProfile.class);
+
                 intent.putExtra("Patient Name",pname);
                 intent.putExtra("Patient Description",pdescription);
                 intent.putExtra("Patient Height",pheight);
@@ -1210,6 +1217,7 @@ public class patientFeed extends AppCompatActivity {
                 intent.putExtra("standingO",standingO);
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
+                intent.putExtra("FeedType", patientFeed);
 
                 startActivity(intent);
 

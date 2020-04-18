@@ -82,6 +82,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
     Button profileButton;
     Long heartRate;
     Long bodyTemp;
+    String department;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -512,6 +513,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                 intent.putExtra("standingO",standingO);
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
+                intent.putExtra("FeedType", "PatientFeed");
 
                 startActivity(intent);
 
@@ -983,7 +985,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
                     int newIndex = dc.getNewIndex();
                     heartRate = (Long) documentSnapshot.get("rHeartRate");
                     bodyTemp = (Long) documentSnapshot.get("bodyTempature");
-
+                    department = (String) documentSnapshot.get("department");
 
 
 
@@ -999,32 +1001,34 @@ public class neonatalPatientFeed extends AppCompatActivity {
                         case MODIFIED:
 
                             //Toast.makeText(dataSimFeed.this,"Patient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature"), Toast.LENGTH_SHORT).show();
+                            if(department.equals("Neonatal")) {
 
-                            if(heartRate < 20 || bodyTemp < 20 || heartRate >  100 || bodyTemp > 140){
+                                if (heartRate < 50 || bodyTemp < 90 || heartRate > 100 || bodyTemp > 110) {
 
-                                AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
-                                menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");
-                                menuDialog.setMessage(patientName1 + " Is in critical condition!!!!");
-                                menuDialog.setCancelable(true);
+                                    AlertDialog.Builder menuDialog = new AlertDialog.Builder(new ContextThemeWrapper(neonatalPatientFeed.this, android.R.style.Theme_Holo_Light));
+                                    menuDialog.setTitle("PATIENT IN CRITICAL CONDITION");
+                                    menuDialog.setMessage(patientName1 + " Is in critical condition!!!!");
+                                    menuDialog.setCancelable(true);
 
-                                menuDialog.setPositiveButton("Button1", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    menuDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                    }
-                                });
+                                        }
+                                    });
 
-                                menuDialog.setNegativeButton("Button2", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                    }
-                                });
-
-
-                                menuDialog.show();
+                                        }
+                                    });
 
 
+                                    menuDialog.show();
+
+
+                                }
                             }
 
 

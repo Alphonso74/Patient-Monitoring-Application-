@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {UpdatePatient} from "../Store/Actions/PatientActions";
+import {UpdatePatient} from "../../Store/Actions/PatientActions";
+import firebase from 'firebase';
 import 'firebase/firestore';
-import { Button, Card, Icon } from 'react-materialize';
+import M from 'materialize-css';
+import { Button, Card, CardTitle, Icon, Tabs, Tab } from 'react-materialize';
 
 class PatientList extends Component {
     constructor(props) {
@@ -110,8 +112,9 @@ class PatientList extends Component {
 
     render(){
         return(
-            <div>
-                <Card reveal={
+            <div clasName="container">
+                <Card header={<CardTitle reveal waves="light"></CardTitle>}
+                      reveal={
                           <div>
                               <span>Simulation: </span>
                               <Button node="button" onClick={ this.simButton } small waves="light">{ this.state.text }</Button>
@@ -125,8 +128,6 @@ class PatientList extends Component {
                               <Button node="button" onClick={ this.resetBT } small waves="light">Reset</Button>
                           </div>
                       }
-                      closeIcon={<Icon>close</Icon>}
-                      revealIcon={<Icon>more_vert</Icon>}
                       title={this.props.patient.patientName}
                 >
                     <p>Triage Tag: {this.props.patient.triageTag}</p>

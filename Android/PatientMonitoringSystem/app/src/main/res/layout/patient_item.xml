@@ -16,8 +16,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:background="@drawable/spinner_rounded">
+        android:background="@drawable/spinner_rounded"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/text_view_title"
@@ -131,19 +131,41 @@
             android:layout_marginTop="12dp"
             android:text="Weight:" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/facey"-->
-<!--            android:layout_width="117dp"-->
-<!--            android:layout_height="121dp"-->
-<!--            android:layout_alignTop="@+id/text_view_triage"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginTop="-16dp"-->
-<!--            android:layout_marginEnd="11dp"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:visibility="invisible"-->
-<!--            app:srcCompat="@drawable/smiley_face"-->
-<!--            tools:ignore="VectorDrawableCompat"-->
-<!--            tools:visibility="visible" />-->
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView16"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Body Temperature:"
+            android:layout_alignParentStart="true"
+            />
+
+        <TextView
+            android:id="@+id/text_view_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_weight"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/textView34"
+            android:text="Body Temp" />
+
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/facey"-->
+        <!--            android:layout_width="117dp"-->
+        <!--            android:layout_height="121dp"-->
+        <!--            android:layout_alignTop="@+id/text_view_triage"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_marginTop="-16dp"-->
+        <!--            android:layout_marginEnd="11dp"-->
+        <!--            android:background="@android:color/transparent"-->
+        <!--            android:visibility="invisible"-->
+        <!--            app:srcCompat="@drawable/smiley_face"-->
+        <!--            tools:ignore="VectorDrawableCompat"-->
+        <!--            tools:visibility="visible" />-->
 
 
     </RelativeLayout>

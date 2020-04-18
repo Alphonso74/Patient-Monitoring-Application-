@@ -44,6 +44,7 @@ public class Chatroom extends AppCompatActivity {
     ListView l1;
     ArrayAdapter<String> adapter;
     String name;
+    String email;
     EditText ee;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
