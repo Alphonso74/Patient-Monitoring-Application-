@@ -130,32 +130,13 @@ public class Chatroom extends AppCompatActivity {
                     }
                 });
             }
+    public void back (View view) {
+        startActivity(new Intent(this, patientFeed.class));
+    }
 
             public void get_username() {
-
-                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(name);
-                builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-
+                setTitle(name);
                     }
-                });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-
-                        get_username();
-
-
-                    }
-                });
-                builder.show();
-
-            }
 
             public void insert_data(View v) {
 

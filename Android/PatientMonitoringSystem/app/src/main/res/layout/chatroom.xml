@@ -7,23 +7,43 @@
     tools:context=".Chatroom">
 
     <EditText
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:hint="Enter chat name:"
-        android:layout_alignParentTop="true"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="0dp"
+        android:hint="Enter chat name:" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD"
-        android:id="@+id/button"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="insert_data" />
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="318dp"
+        android:layout_marginRight="318dp"
+        android:onClick="back"
+        android:shadowColor="#AA0E0E"
+        android:text="BACK" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="insert_data"
+        android:text="ADD" />
 
     <ListView
         android:layout_width="wrap_content"
