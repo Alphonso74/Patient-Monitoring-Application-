@@ -8,36 +8,9 @@ import { compose } from "redux";
 
 class datasimulator extends Component {
     render(){
-        const { patients } = this.props;
         return(
-            <div className="App">
-                <Header className="teal darken-2" title="Patient+ Data Simulator" scroll />
-                <div>
-
-                    <div className="row">
-
-                        <div className="col s12 m6">
-                            <Feed patients={patients} />
-                        </div>
-
-                        <div className="col s12 m6">
-                            <Simulator />
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        patients: state.firestore.ordered.patients3
-    }
-};
-
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect([ { collection: 'patients3' } ] )
-)(datasimulator);
+export default datasimulator;
