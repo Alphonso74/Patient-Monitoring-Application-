@@ -1,7 +1,6 @@
 package psu.ajm6684.patientmonitoringsystem.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-import psu.ajm6684.patientmonitoringsystem.MessageActivity;
 import psu.ajm6684.patientmonitoringsystem.R;
 import psu.ajm6684.patientmonitoringsystem.chat;
-import psu.ajm6684.patientmonitoringsystem.user;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 

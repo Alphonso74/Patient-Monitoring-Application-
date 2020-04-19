@@ -29,7 +29,7 @@ public class ChatroomMessage extends AppCompatActivity {
     TextView t1;
 
 
-    private String user_name, room_name;
+    private String user_name, room_name, email;
 
     DatabaseReference reference;
     String temp_key;
@@ -123,7 +123,7 @@ public class ChatroomMessage extends AppCompatActivity {
     }
     public void append_chat(DataSnapshot ss)
     {
-        String chat_msg,chat_username;
+        String chat_msg,chat_username, email;
         Iterator i = ss.getChildren().iterator();
         while(i.hasNext())
         {

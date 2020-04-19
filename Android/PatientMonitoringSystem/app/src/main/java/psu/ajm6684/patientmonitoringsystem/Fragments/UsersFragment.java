@@ -28,8 +28,8 @@ import java.util.List;
 
 import psu.ajm6684.patientmonitoringsystem.Adapter.Useradapter;
 import psu.ajm6684.patientmonitoringsystem.R;
-
 import psu.ajm6684.patientmonitoringsystem.user;
+
 public class UsersFragment extends Fragment {
 
     private RecyclerView recyclerView;
