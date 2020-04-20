@@ -27,9 +27,9 @@ class EditPatient extends Component {
 
     handleClick = (e) => {
         switch(e.target.id){
-            case "name":
+            /*case "name":
                 this.setState({patientName: prompt("Enter new name:", this.state.patientName)});
-                break;
+                break;*/
 
             case "delete":
                 const input = prompt("Enter YES if you're sure you want to delete:");
@@ -42,7 +42,7 @@ class EditPatient extends Component {
                 }
                 break;
 
-            case "desc":
+            /*case "desc":
                 this.setState({description: prompt("Enter new description:", this.state.description)});
                 break;
 
@@ -62,9 +62,9 @@ class EditPatient extends Component {
                 this.setState({rHeartRate: parseInt(prompt("Enter new resting heart rate:", this.state.rHeartRate))});
                 break;
 
-            /*case "tag":
+            case "tag":
                 this.setState({triageTag: prompt("Enter new triage tag:", this.state.triageTag)});
-                break;*/
+                break;
 
             case "order":
                 this.setState({standingOrder: prompt("Enter new doctor standing order:", this.state.standingOrder)});
@@ -76,7 +76,7 @@ class EditPatient extends Component {
 
             case "surgHist":
                 this.setState({surgicaHistory: prompt("Enter patient's surgical history:", this.state.surgicaHistory)});
-                break;
+                break;*/
 
             case "submit":
                 const id = this.props.match.params.id;
@@ -89,6 +89,12 @@ class EditPatient extends Component {
 
             default:
         }
+    };
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+
+        })
     };
     tagSelect = (option) => {
         this.setState({triageTag: option.value});
@@ -125,29 +131,29 @@ class EditPatient extends Component {
                 <div className="container section project-details">
                     <div className="card z-depth-0">
                         <div className="card-content">
-                            <span className="card-title center">{patient.patientName}  |  new name: {this.state.patientName}  |
-                                <input id="name" type="button" className='button' value='Edit' onClick={this.handleClick}/>
-                                <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
-                            <p>Patient Description: {patient.description}  |  new description: {this.state.description}  |
-                                <input id="desc" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Height: {patient.height}  |  new height: {this.state.height}  |
-                                <input id="height" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Weight: {patient.weight}  |  new weight: {this.state.weight}  |
-                                <input id="weight" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Body Temperature: {patient.bodyTempature}  |  new temperature: {this.state.bodyTempature}  |
-                                <input id="temp" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Heart Rate: {patient.rHeartRate}  |  new heart rate: {this.state.rHeartRate}  |
-                                <input id="hRate" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Triage Tag: {patient.triageTag}
+                            <span className="card-title center">
+                                <input id="name" type="text" value={this.state.patientName} onChange={this.handleChange}/>
+                                <input id="delete" type="button" className='button' value='Delete' onChange={this.handleClick}/></span>
+                            <p>Patient Description:
+                                <input id="desc" type="text" value={this.state.description} onChange={this.handleChange}/></p>
+                            <p>Height:
+                                <input id="height" type="text" value={this.state.height} onChange={this.handleChange}/></p>
+                            <p>Weight:
+                                <input id="weight" type="text" value={this.state.weight} onChange={this.handleChange}/></p>
+                            <p>Body Temperature:
+                                <input id="temp" type="text" value={this.state.bodyTempature} onChange={this.handleChange}/></p>
+                            <p>Heart Rate:
+                                <input id="hRate" type="text" value={this.state.rHeartRate} onChange={this.handleChange}/></p>
+                            <p>Triage Tag:
                                 <Dropdown options={tagOptions} onChange={this.tagSelect} value={defaultTagOption} placeholder="Edit Triage Tag"/></p>
-                            <p>Department: {patient.department}
+                            <p>Department:
                                 <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" /></p>
-                            <p>Standing Order: {patient.standingOrder}  |  new standing order: {this.state.standingOrder}  |
-                                <input id="order" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Medications: {patient.medications}  |  new medications: {this.state.medications}  |
-                                <input id="meds" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
-                            <p>Surgical History: {patient.surgicaHistory}  |  new history: {this.state.surgicaHistory}  |
-                                <input id="surgHist" type="button" className='button' value='Edit' onClick={this.handleClick}/></p>
+                            <p>Standing Order:
+                                <input id="order" type="text" value={this.state.standingOrder} onChange={this.handleChange}/></p>
+                            <p>Medications:
+                                <input id="meds" type="text" value={this.state.medications} onChange={this.handleChange}/></p>
+                            <p>Surgical History:
+                                <input id="surgHist" type="text" value={this.state.surgicaHistory} onChange={this.handleChange}/></p>
                             <p>Active Nurse: {patient.activeNurse}</p>
                             {/*<Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />*/}
                             <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick}/></p>
