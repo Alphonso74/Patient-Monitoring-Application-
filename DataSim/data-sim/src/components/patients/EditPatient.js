@@ -92,25 +92,36 @@ class EditPatient extends Component {
         }
     };
     handleChange = (e) => {
+        this.enabler(false);
         this.setState({
             [e.target.id]: e.target.value
 
         })
     };
     tagSelect = (option) => {
+        this.enabler(false);
         this.setState({triageTag: option.value});
         console.log(this.state.triageTag);
     };
     deptSelect = (option) => {
+        this.enabler(false);
         this.setState({department: option.value});
         console.log(this.state.department);
     };
     nurseSelect = (option) => {
+        this.enabler(false);
         this.setState({activeNurse: option.value});
         console.log(this.state.activeNurse);
     };
+    enabler(val) {
+        return val;
+    }
+    isDoc(){
+        return this.props.user.role !== 'Doctor';
+    }
 
     render() {
+        this.enabler(true);
         const tagOptions = [
             'Yellow', 'Green', 'Red', 'Black'
         ];
@@ -119,8 +130,9 @@ class EditPatient extends Component {
             'General Care', 'Neonatal', 'Post-Operation'
         ];
         const defaultDeptOption = deptOptions[0];
-
-        const {patient, auth} = this.props;
+        //this.orderRef = React.createRef();
+        const {patient, auth, user} = this.props;
+        //if (user.role !== 'Doctor') this.orderRef.disabled = true;
         let nurseOptions = [];
         firebase.firestore().collection('Users').where("position", "==", "Nurse").get().then(function (querySnapshot) {
             querySnapshot.forEach(function(doc) {
@@ -157,14 +169,14 @@ class EditPatient extends Component {
                             <p>Department:
                                 <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" /></p>
                             <p>Standing Order:
-                                <input id="order" type="text" value={this.state.standingOrder} onChange={this.handleChange}/></p>
+                                <input id="order" type="text" value={this.state.standingOrder} onChange={this.handleChange} disabled={this.isDoc()}/></p>
                             <p>Medications:
                                 <input id="meds" type="text" value={this.state.medications} onChange={this.handleChange}/></p>
                             <p>Surgical History:
                                 <input id="surgHist" type="text" value={this.state.surgicaHistory} onChange={this.handleChange}/></p>
                             <p>Active Nurse: {patient.activeNurse}</p>
                             <Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />
-                            <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick}/></p>
+                            <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick} disabled={this.enabler()}/></p>
                         </div>
                     </div>
                 </div>
@@ -183,14 +195,17 @@ class EditPatient extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
+    const userid = state.firebase.auth.uid;
+    const users = state.firestore.data.Users;
+    const user = users ? users[userid] : null;
     const id = ownProps.match.params.id;
     const patients = state.firestore.data.patients3;
     const patient = patients ? patients[id] : null;
     return{
 
         patient: patient,
-        auth: state.firebase.auth
-
+        auth: state.firebase.auth,
+        user: user
     }
 };
 
@@ -204,6 +219,6 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-        {collection: 'patients3'}
+        {collection: 'patients3'}, {collection: 'Users'}
     ])
 )(EditPatient)
