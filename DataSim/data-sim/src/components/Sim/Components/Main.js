@@ -10,11 +10,8 @@ class Main extends Component {
         const { patients } = this.props;
         return(
             <div className="App">
-
                 <div>
-
                     <div className="row">
-
                         <div className="col s12 m6">
                             <Feed patients={patients} />
                         </div>
