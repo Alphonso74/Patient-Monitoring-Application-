@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AlertModal from './AlertModal';
+import { Link } from 'react-router-dom';
 
 class PatientSummary extends Component {
     constructor(props) {
@@ -13,14 +14,11 @@ class PatientSummary extends Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(() => {this.checkAlerts()}, 1000);
-    }
-    componentWillUnmount(){
-        clearInterval(this.interval);
+        this.checkAlerts();
     }
 
     checkAlerts(){
-        // MODALS
+        // Changes flags to true so modals will open
         // High Heart Rate
         if(this.props.patient.rHeartRate > 100 && this.state.highHR === false){
             this.setState({ highHR: true });
@@ -64,28 +62,30 @@ class PatientSummary extends Component {
         if (this.props.patient.triageTag === 'Black') {
             return (
                 <div>
-                    <div className="card z-depth-0 project-summary light grey center">
-                        <div className="card-content grey-text text-darken-3 hoverable">
-                            <span className="card-title ">{this.props.patient.patientName}</span>
-                            <p>Heart Rate - {this.props.patient.rHeartRate}</p>
-                            <p>Body Temperature - {this.props.patient.bodyTempature}</p>
-                            <p>Height - {this.props.patient.height}</p>
-                            <p>Weight - {this.props.patient.weight}</p>
-                            <p>Triage Tag - {this.props.patient.triageTag}</p>
-                            <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                    <Link to={'/patient/' + patient.id} key={patient.id}>
+                        <div className="card z-depth-0 project-summary light grey center">
+                            <div className="card-content grey-text text-darken-3 hoverable">
+                                <span className="card-title ">{this.props.patient.patientName}</span>
+                                <p>Heart Rate - {this.props.patient.rHeartRate}</p>
+                                <p>Body Temperature - {this.props.patient.bodyTempature}</p>
+                                <p>Height - {this.props.patient.height}</p>
+                                <p>Weight - {this.props.patient.weight}</p>
+                                <p>Triage Tag - {this.props.patient.triageTag}</p>
+                                <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     {patient.rHeartRate > 100 && this.state.highHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"High HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High HR"} />
                     }
                     {patient.rHeartRate < 50 && this.state.lowHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low HR"} />
                     }
                     {patient.bodyTempature > 110 && this.state.fever === false &&
-                    <AlertModal patient={this.props.patient} alert={"High Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High Temp"} />
                     }
                     {patient.bodyTempature < 90 && this.state.hypotherm === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low Temp"} />
                     }
                 </div>
             )
@@ -93,28 +93,30 @@ class PatientSummary extends Component {
         else if (this.props.patient.triageTag === 'Yellow') {
             return (
                 <div>
-                    <div className="card z-depth-0 project-summary light yellow center">
-                        <div className="card-content grey-text text-darken-3 hoverable">
-                            <span className="card-title ">{this.props.patient.patientName}</span>
-                            <p>Heart Rate - {this.props.patient.rHeartRate}</p>
-                            <p>Body Temperature - {this.props.patient.bodyTempature}</p>
-                            <p>Height - {this.props.patient.height}</p>
-                            <p>Weight - {this.props.patient.weight}</p>
-                            <p>Triage Tag - {this.props.patient.triageTag}</p>
-                            <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                    <Link to={'/patient/' + patient.id} key={patient.id}>
+                        <div className="card z-depth-0 project-summary light yellow center">
+                            <div className="card-content grey-text text-darken-3 hoverable">
+                                <span className="card-title ">{this.props.patient.patientName}</span>
+                                <p>Heart Rate - {this.props.patient.rHeartRate}</p>
+                                <p>Body Temperature - {this.props.patient.bodyTempature}</p>
+                                <p>Height - {this.props.patient.height}</p>
+                                <p>Weight - {this.props.patient.weight}</p>
+                                <p>Triage Tag - {this.props.patient.triageTag}</p>
+                                <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     {this.props.patient.rHeartRate > 100 && this.state.highHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"High HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High HR"} />
                     }
                     {this.props.patient.rHeartRate < 50 && this.state.lowHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low HR"} />
                     }
                     {this.props.patient.bodyTempature > 110 && this.state.fever === false &&
-                    <AlertModal patient={this.props.patient} alert={"High Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High Temp"} />
                     }
                     {this.props.patient.bodyTempature < 90 && this.state.hypotherm === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low Temp"} />
                     }
                 </div>
             )
@@ -122,28 +124,30 @@ class PatientSummary extends Component {
         else if (this.props.patient.triageTag === 'Green') {
             return (
                 <div>
-                    <div className="card z-depth-0 project-summary light green center">
-                        <div className="card-content grey-text text-darken-3 hoverable">
-                            <span className="card-title ">{this.props.patient.patientName}</span>
-                            <p>Heart Rate - {this.props.patient.rHeartRate}</p>
-                            <p>Body Temperature - {this.props.patient.bodyTempature}</p>
-                            <p>Height - {this.props.patient.height}</p>
-                            <p>Weight - {this.props.patient.weight}</p>
-                            <p>Triage Tag - {this.props.patient.triageTag}</p>
-                            <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                    <Link to={'/patient/' + patient.id} key={patient.id}>
+                        <div className="card z-depth-0 project-summary light green center">
+                            <div className="card-content grey-text text-darken-3 hoverable">
+                                <span className="card-title ">{this.props.patient.patientName}</span>
+                                <p>Heart Rate - {this.props.patient.rHeartRate}</p>
+                                <p>Body Temperature - {this.props.patient.bodyTempature}</p>
+                                <p>Height - {this.props.patient.height}</p>
+                                <p>Weight - {this.props.patient.weight}</p>
+                                <p>Triage Tag - {this.props.patient.triageTag}</p>
+                                <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     {this.props.patient.rHeartRate > 100 && this.state.highHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"High HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High HR"} />
                     }
                     {this.props.patient.rHeartRate < 50 && this.state.lowHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low HR"} />
                     }
                     {this.props.patient.bodyTempature > 110 && this.state.fever === false &&
-                    <AlertModal patient={this.props.patient} alert={"High Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High Temp"} />
                     }
                     {this.props.patient.bodyTempature < 90 && this.state.hypotherm === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low Temp"} />
                     }
                 </div>
             )
@@ -151,28 +155,30 @@ class PatientSummary extends Component {
         else if (this.props.patient.triageTag === 'Red') {
             return (
                 <div>
-                    <div className="card z-depth-0 project-summary light red center">
-                        <div className="card-content grey-text text-darken-3 hoverable">
-                            <span className="card-title ">{this.props.patient.patientName}</span>
-                            <p>Heart Rate - {this.props.patient.rHeartRate}</p>
-                            <p>Body Temperature - {this.props.patient.bodyTempature}</p>
-                            <p>Height - {this.props.patient.height}</p>
-                            <p>Weight - {this.props.patient.weight}</p>
-                            <p>Triage Tag - {this.props.patient.triageTag}</p>
-                            <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                    <Link to={'/patient/' + patient.id} key={patient.id}>
+                        <div className="card z-depth-0 project-summary light red center">
+                            <div className="card-content grey-text text-darken-3 hoverable">
+                                <span className="card-title ">{this.props.patient.patientName}</span>
+                                <p>Heart Rate - {this.props.patient.rHeartRate}</p>
+                                <p>Body Temperature - {this.props.patient.bodyTempature}</p>
+                                <p>Height - {this.props.patient.height}</p>
+                                <p>Weight - {this.props.patient.weight}</p>
+                                <p>Triage Tag - {this.props.patient.triageTag}</p>
+                                <p>Active Nurse: {this.props.patient.activeNurse}</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     {this.props.patient.rHeartRate > 100 && this.state.highHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"High HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High HR"} />
                     }
                     {this.props.patient.rHeartRate < 50 && this.state.lowHR === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low HR"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low HR"} />
                     }
                     {this.props.patient.bodyTempature > 110 && this.state.fever === false &&
-                    <AlertModal patient={this.props.patient} alert={"High Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"High Temp"} />
                     }
                     {this.props.patient.bodyTempature < 90 && this.state.hypotherm === false &&
-                    <AlertModal patient={this.props.patient} alert={"Low Temp"} />
+                    <AlertModal show={true} patient={this.props.patient} alert={"Low Temp"} />
                     }
                 </div>
             )
