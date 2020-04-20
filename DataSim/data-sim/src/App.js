@@ -6,6 +6,8 @@ import ProjectDetails from './components/patients/PatientDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreatePatient from './components/patients/CreatePatient';
+import EditPatient from './components/patients/EditPatient';
+import Chat from './components/dashboard/Chat';
 
 class App extends Component {
   render() {
