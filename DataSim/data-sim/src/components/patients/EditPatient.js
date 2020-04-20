@@ -7,6 +7,7 @@ import {Redirect} from 'react-router-dom'
 import {deletePatient, updatePatient} from "../../store/actions/patientActions";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import * as firebase from "firebase";
 
 
 class EditPatient extends Component {
@@ -104,10 +105,10 @@ class EditPatient extends Component {
         this.setState({department: option.value});
         console.log(this.state.department);
     };
-    /*nurseSelect = (option) => {
+    nurseSelect = (option) => {
         this.setState({activeNurse: option.value});
         console.log(this.state.activeNurse);
-    };*/
+    };
 
     render() {
         const tagOptions = [
@@ -120,7 +121,14 @@ class EditPatient extends Component {
         const defaultDeptOption = deptOptions[0];
 
         const {patient, auth} = this.props;
-        //let {nurseOptions} = this.props.firestore.collection('Users').orderBy('position').equals('Nurse');//where('position', '==', 'Nurse');
+        let nurseOptions = [];
+        firebase.firestore().collection('Users').where("position", "==", "Nurse").get().then(function (querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                console.log(doc.id, ' => ', doc.data());
+                console.log(doc.data().fullName);
+                nurseOptions.push(doc.data().fullName);
+            });
+        });
         //const defaultNurse = {nurseOptions};
         console.log("patient: " + patient + ", auth: " + auth);
         if (!auth.uid) return <Redirect to='/signin'/>;
@@ -155,7 +163,7 @@ class EditPatient extends Component {
                             <p>Surgical History:
                                 <input id="surgHist" type="text" value={this.state.surgicaHistory} onChange={this.handleChange}/></p>
                             <p>Active Nurse: {patient.activeNurse}</p>
-                            {/*<Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />*/}
+                            <Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />
                             <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick}/></p>
                         </div>
                     </div>
