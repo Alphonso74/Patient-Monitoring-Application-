@@ -34,9 +34,9 @@ const mapStateToProps = (state) => {
 
 
   return {
-    patients: state.firestore.ordered.patients,
+    patients: state.firestore.ordered.patients3,
       auth: state.firebase.auth
   }
 };
 
-export default compose(connect(mapStateToProps), firestoreConnect([{collection: 'patients'}]))(Dashboard)
+export default compose(connect(mapStateToProps), firestoreConnect([{collection: 'patients3'}]))(Dashboard)
