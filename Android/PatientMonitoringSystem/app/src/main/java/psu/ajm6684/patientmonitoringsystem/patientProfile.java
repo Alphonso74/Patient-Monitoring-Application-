@@ -29,6 +29,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -45,6 +47,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import psu.ajm6684.patientmonitoringsystem.ui.login.LoginActivity;
+
 public class patientProfile extends AppCompatActivity {
     PatientAdapter patientAdapter;
 
@@ -58,14 +62,27 @@ public class patientProfile extends AppCompatActivity {
     String standingO;
     String standingOrder;
     EditText standing;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser currentUser;
+String userPosition;
+    String uid;
 
-CollectionReference userCharts = db.collection("charts");
+
+Button standingOrderButton;
+    CollectionReference userCharts = db.collection("charts");
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patientprofilelinear);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        currentUser  = firebaseAuth.getCurrentUser();
+
+      standingOrderButton = (Button) findViewById(R.id.button6);
+
+        uid = currentUser.getUid();
 
 
 
@@ -108,14 +125,60 @@ CollectionReference userCharts = db.collection("charts");
         }
     });
 
-        Button standingOrderButton = (Button) findViewById(R.id.button6);
+//        Button standingOrderButton = (Button) findViewById(R.id.button6);
 
         final FirebaseFirestore  firebaseFirestore = FirebaseFirestore.getInstance();
 
 
 
+//
+//        db.document(uid).get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        // [START_EXCLUDE]
+//                        int count = 0;
+//                        for (QueryDocumentSnapshot snap : queryDocumentSnapshots) {
+//
+//
+//                            if(snap!= null ){
+//
+//                                userPosition= snap.get("position").toString();
+//                                ;                            }
+//
+//
+//                        }
+//
+//                        if(!userPosition.equals("Doctor")){
+//
+//                            viewCharts.setClickable(false);
+//                            standingOrderButton.setClickable(false);
+//                            standingOrderButton.setAlpha(.5f);
+//                        }
+//                        // [END_EXCLUDE]
+//                    }
+//                });
+
+        DocumentReference documentReference = db.collection("Users").document(uid);
+
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+
+                userPosition = document.get("position").toString();
 
 
+                if(!userPosition.equals("Doctor")){
+
+//                    viewCharts.setClickable(false);
+                    standingOrderButton.setClickable(false);
+                    standingOrderButton.setAlpha(.5f);
+                }
+            }
+
+
+        });
 
 
         final String patientDescription = intent.getStringExtra("Patient Description");
