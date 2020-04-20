@@ -6,7 +6,6 @@ import ProjectDetails from './components/patients/PatientDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreatePatient from './components/patients/CreatePatient';
-import Datasim from './components/Sim/Components/Main';
 
 class App extends Component {
   render() {
@@ -15,11 +14,13 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Switch>
-              <Route path='/' exact component={Dashboard} />
-              <Route path='/patient/:id'exact component={ProjectDetails} />
-              <Route path='/signin'exact component={SignIn} />
-              <Route path='/signup' exact component={SignUp} />
-              <Route path='/ds' exact component={Datasim} />
+              <Route exact path='/' component={Dashboard} />
+              <Route path='/patient/:id' component={ProjectDetails} />
+              <Route path='/signin' component={SignIn} />
+              <Route path='/signup' component={SignUp} />
+              <Route path='/create' component={CreatePatient} />
+              <Route path='/edit/:id' component={EditPatient} />
+              <Route path='/chat' component={Chat} />
             </Switch>
           </div>
         </BrowserRouter>
