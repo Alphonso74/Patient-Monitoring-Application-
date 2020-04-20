@@ -94,6 +94,8 @@ public class patientFeed extends AppCompatActivity {
     Long heartRate;
     Long bodyTemp;
     String department;
+    TextView feedTitle;
+    String feedType = "regular";
     @Override
     protected void onStart() {
         super.onStart();
@@ -177,41 +179,7 @@ public class patientFeed extends AppCompatActivity {
             }
         });
 
-//        patients.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
-//            @Override
-//            public void onEvent(QuerySnapshot queryDocumentSnapshots, FirebaseFirestoreException e) {
-//                if (e != null) {
-//                    return;
-//                }
-//
-//                for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
-//                    DocumentSnapshot documentSnapshot = dc.getDocument();
-//                    String patientName1 = documentSnapshot.get("patientName").toString();
-//                    String id = documentSnapshot.getId();
-//                    int oldIndex = dc.getOldIndex();
-//                    int newIndex = dc.getNewIndex();
-//
-//                    switch (dc.getType()) {
-//                        case ADDED:
-//                            //Toast.makeText(patientFeed.this, patientName1, Toast.LENGTH_SHORT).show();
-//
-//
-//                            break;
-//                        case MODIFIED:
-//
-//                            Toast.makeText(patientFeed.this,"Patient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature"), Toast.LENGTH_SHORT).show();
-//
-//
-//
-//                            break;
-//                        case REMOVED:
-//                            Toast.makeText(patientFeed.this, "Removed - " + patientName1, Toast.LENGTH_SHORT).show();
-//
-//                            break;
-//                    }
-//                }
-//            }
-//        });
+
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -221,6 +189,118 @@ public class patientFeed extends AppCompatActivity {
         e1 = (EditText) findViewById(R.id.editText);
         l1 = (ImageButton) findViewById(R.id.button_message);
         arrayList = new ArrayList<>();
+
+        feedTitle = (TextView) findViewById(R.id.textView32);
+        final Intent intent = getIntent();
+        feedType = intent.getStringExtra("Type");
+
+
+
+        feedTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                TextView title = new TextView(patientFeed.this);
+                title.setText("Filter This Feed");
+                title.setPadding(10, 10, 10, 10);
+                title.setGravity(Gravity.CENTER);
+                title.setTextColor(Color.rgb(0, 153, 204));
+                title.setTextSize(23);
+                builder.setMessage("Choose the filter type");
+                builder.setCustomTitle(title);
+
+
+                builder.setPositiveButton("Tag", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        AlertDialog.Builder tagDialog = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        TextView title = new TextView(patientFeed.this);
+                        title.setText("Choose Tag Color");
+                        title.setPadding(10, 10, 10, 10);
+                        title.setGravity(Gravity.CENTER);
+                        title.setTextColor(Color.rgb(0, 153, 204));
+                        title.setTextSize(23);
+                        tagDialog.setMessage("Make Selection:");
+                        tagDialog.setCustomTitle(title);
+
+                        tagDialog.setPositiveButton("Black", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = new Intent(patientFeed.this,patientFeed.class);
+                                intent.putExtra("Type","Black");
+                                startActivity(intent);
+
+
+                            }
+                        });
+
+                        tagDialog.setNeutralButton("Red", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = new Intent(patientFeed.this,patientFeed.class);
+                                intent.putExtra("Type","Red");
+                                startActivity(intent);
+
+
+                            }
+                        });
+
+                        tagDialog.setNegativeButton("Yellow", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = new Intent(patientFeed.this,patientFeed.class);
+                                intent.putExtra("Type","Yellow");
+                                startActivity(intent);
+
+
+                            }
+                        });
+
+
+                        AlertDialog dialogTag =  tagDialog.show();
+
+
+                        TextView messageView = (TextView) dialogTag.findViewById(android.R.id.message);
+                        messageView.setGravity(Gravity.CENTER);
+
+                    }
+                });
+
+                builder.setNeutralButton("Heart Rate", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(patientFeed.this,patientFeed.class);
+                        intent.putExtra("Type","Heart Rate");
+                        startActivity(intent);
+
+
+                    }
+                });
+
+                builder.setNegativeButton("Critical Status", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = new Intent(patientFeed.this,patientFeed.class);
+                        intent.putExtra("Type","Critical Status");
+                        startActivity(intent);
+
+                    }
+                });
+
+                AlertDialog dialog =  builder.show();
+
+
+                TextView messageView = (TextView) dialog.findViewById(android.R.id.message);
+                messageView.setGravity(Gravity.CENTER);
+            }
+        });
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         //  l1.setAdapter(adapter);
@@ -265,7 +345,6 @@ public class patientFeed extends AppCompatActivity {
         });
 
 
-        //ImageButton imageButton = (ImageButton) findViewById(R.id.button_message);
 
 
         l1.setOnClickListener(new View.OnClickListener() {
@@ -280,20 +359,30 @@ public class patientFeed extends AppCompatActivity {
         });
 
 
-        setUpView();
+        if(feedType == null) {
+            setUpView();
+        }
+        else if(feedType.equals("Critical Status")){
 
-//         addPatient = (Button) findViewById(R.id.addPatient);
+            filterStatusView();
+
+        }
+        else if(feedType.equals("Heart Rate")){
+
+            heartRateView();
+        }
+        else if(feedType.equals("Black")){
+
+            blackTagView();
+        } else if(feedType.equals("Red")){
+
+            redTagView();
+        } else if(feedType.equals("Yellow")){
+
+            yellowTagView();
+        }
 
 
-//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        Query query = patients;
-//        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
-
-//        patientAdapter = new PatientAdapter(options);
-
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(patientAdapter);
 
         Button menuButton = (Button) findViewById(R.id.button_menu);
 
@@ -362,12 +451,7 @@ public class patientFeed extends AppCompatActivity {
 
 
 
-//                 menuDialog.setPositiveButton("Add Patient", new DialogInterface.OnClickListener() {
-//                     @Override
-//                     public void onClick(DialogInterface dialog, int which) {
 
-
-//                         startActivity(new Intent(patientFeed.this, addPatient.class));
 
 
                                 menuDialog23.show();
@@ -385,45 +469,7 @@ public class patientFeed extends AppCompatActivity {
                         Intent intent = new Intent(patientFeed.this, dataSimFeed.class);
                         startActivity(intent);
 
-//                        AlertDialog.Builder menuDialog1 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
-//                        menuDialog1.setTitle("How would you like to filter the feed?");
-//                        menuDialog1.setMessage("Options: ");
-//                        menuDialog1.setCancelable(true);
 
-//                        menuDialog1.setPositiveButton("Filter By Tag", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                                //setUpViewByTag();
-//
-////                                Query patients1 = patients.whereEqualTo("triageTag","Blue");
-////
-////                                setUpView(patients1);
-//                            }
-//                        });
-
-
-//                        menuDialog1.setNegativeButton("Filter By Heart Rate", new DialogInterface.OnClickListener() {
-//                            @RequiresApi(api = Build.VERSION_CODES.N)
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                                setUpViewByHeartRate();
-//
-//
-//                            }
-//                        });
-
-//                        menuDialog1.setNeutralButton("Default List", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                                setUpView();
-//                            }
-//                        });
-
-
-                       // menuDialog1.show();
                     }
 
                 });
@@ -474,574 +520,30 @@ public class patientFeed extends AppCompatActivity {
 
 
         @RequiresApi(api = Build.VERSION_CODES.N)
-        private void setUpView() {
+    private void setUpView() {
 //            Query query = patients.whereEqualTo("triageTag","Blue");
-            Query query = patients.whereEqualTo("department","General Care");
+        Query query = patients.whereEqualTo("department","General Care");
 
 
 
 
-           // Query nurses = patients.document().;
 
-
-//            ImageView face = (ImageView) findViewById(R.id.facey) ;
-
-           // face.setVisibility(View.VISIBLE);
-
-
-
-            FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
-         options.getSnapshots().sort(Note.By_Ascending);
-
-            patientAdapter = new PatientAdapter(options);
-
-
-
-             recyclerView = findViewById(R.id.recycler_view);
-            recyclerView.setHasFixedSize(true);
-//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-            recyclerView.setAdapter(patientAdapter);
-
-
-
-
-
-            patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
-
-                @Override
-                public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                    AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
-                    alertDlg.setTitle("Patient Options");
-                    alertDlg.setMessage("What would you like to do?");
-                    alertDlg.setCancelable(true);
-                    patientItem = db.collection("patients3").document(documentSnapshot.getId());
-
-                    alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-
-
-                            AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
-                            alertDlg2.setTitle("Delete this patient");
-                            alertDlg2.setMessage("Are you sure?");
-                            alertDlg2.setCancelable(true);
-
-                            alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-
-
-                                    patientAdapter.deletePatient(position);
-
-                                }
-
-
-                            });
-
-                            alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-
-                                }
-                            });
-
-                            alertDlg2.show();
-                        }
-
-
-                    });
-
-                    alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
-
-                    alertDlg.show();
-
-//                    alertDlg.setNegativeButton("Add Nurse", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//
-//                                    AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
-//                                    TextView title = new TextView(patientFeed.this);
-//                                    title.setText("Choose a Nurse:");
-//                                    title.setPadding(10, 10, 10, 10);
-//                                    title.setGravity(Gravity.CENTER);
-//                                    title.setTextColor(Color.rgb(0, 153, 204));
-//                                    title.setTextSize(23);
-//                                    builder.setCustomTitle(title);
-//
-//                                    LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                                    View layout_spinners = inflater.inflate(R.layout.addnursedialog,null);
-//                                    spinner = (Spinner) layout_spinners.findViewById(R.id.spinner_titulo_carpetas);
-//
-//                                    builder.setPositiveButton("Add Nurse", new DialogInterface.OnClickListener() {
-//                                        @Override
-//                                        public void onClick(DialogInterface dialog, int which) {
-//
-//                                            nurseName = spinner.getSelectedItem().toString();
-//
-//                                            documentSnapshot.
-//                                            .update("activeNurse", nurseName);
-//
-//
-//                                            Intent intent = new Intent(patientProfile.this,patientProfile.class);
-//                                            intent.putExtra("Patient Name",patientName);
-//                                            intent.putExtra("Patient Description",patientDescription);
-//                                            intent.putExtra("Patient Height",patientHeight);
-//                                            intent.putExtra("Patient Weight",patientWeight);
-//                                            intent.putExtra("Patient Resting Heart Rate",patientRestingHeartRate);
-//                                            intent.putExtra("Patient ID",patientID);
-//                                            intent.putExtra("position",position);
-//                                            intent.putExtra("bodyTemp",bodyTemp);
-//                                            intent.putExtra("nurse",nurseName);
-//                                            intent.putExtra("medications",medications);
-//                                            intent.putExtra("surgicalH",sHistory);
-//                                            intent.putExtra("standingO",standingO);
-//
-//
-//                                            startActivity(intent);
-//
-//
-//                                        }
-//                                    });
-//
-//
-//                            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//
-//
-//                                }
-//                            });
-//
-//                            builder.setView(layout_spinners);
-//                            builder.setCancelable(true);
-//                            builder.show();
-//
-//
-//                            db.collection("Users")
-//                                    .whereEqualTo("position", "Nurse")
-//                                    .get()
-//                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                            final List<String> spinnerArray =  new ArrayList<String>();
-//                                            QuerySnapshot queryDocumentSnapshots = task.getResult();
-//                                            if (task.isSuccessful()) {
-//
-//
-//                                                for (DocumentSnapshot document :  queryDocumentSnapshots.getDocuments()) {
-//                                                    //Log.d(TAG, document.getId() + " => " + document.getData());
-//
-//                                                    String nurseName = Objects.requireNonNull(document.get("fullName")).toString();
-//
-//                                                    spinnerArray.add(nurseName);
-//
-//                                                    // Toast.makeText(patientProfile.this,nurseName, Toast.LENGTH_SHORT).show();
-//                                                }
-//                                            } else {
-////                                    Log.d(TAG, "Error getting documents: ", task.getException());
-//                                            }
-//                                            ArrayAdapter<String> adapter = new ArrayAdapter<>(patientProfile.this, android.R.layout.simple_dropdown_item_1line, spinnerArray);
-//
-//
-//                                            adapter.notifyDataSetChanged();
-//                                            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//
-//                                            spinner.setAdapter(adapter);
-//                                            spinner.setEnabled(true);
-//
-//                                        }
-//                                    });
-//
-//
-//
-//                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//
-//                                @Override
-//                                public void onItemSelected(AdapterView<?> parent, View v,
-//                                                           int postion, long arg3) {
-//                                    // TODO Auto-generated method stub
-//                                    Object nurseName = parent.getItemAtPosition(postion).toString();
-//                                    String  spinnerValue = parent.getItemAtPosition(postion).toString();
-//
-//
-//
-//                                    nurseName = parent.getItemAtPosition(position).toString();
-//                                    ((TextView) v).setTextColor(Color.BLACK);
-//
-//
-//
-//
-//                                }
-//
-//                                @Override
-//                                public void onNothingSelected(AdapterView<?> arg0) {
-//                                    // TODO Auto-generated method stub
-//
-//                                }
-//                            });
-//
-//                            dialog1.show();
-//
-//                        }
-//                    });
-//
-//                    alertDlg.setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                        }
-//                    });
-//
-//
-//
-//
-//
-//                    alertDlg.show();
-
-
-
-
-                }
-
-
-                @Override
-                public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-
-                    Note note = documentSnapshot.toObject(Note.class);
-                    assert note != null;
-                    String pname = note.getPatientName();
-                    String pdescription = note.getDescription();
-                    String pheight = note.getHeight();
-                    String pweight = String.valueOf(note.getWeight());
-                    String prhr = String.valueOf(note.getrHeartRate());
-                    String id = documentSnapshot.getId();
-                    Integer position1 = position;
-                    String bodyTemp = String.valueOf(note.getBodyTempature());
-                    String activeNurse = note.getActiveNurse();
-                    String medications = note.getMedications();
-                    String surgicalHistory = note.getSurgicaHistory();
-                    String standingO = note.getStandingOrder();
-
-
-                    DocumentSnapshot DocSnap = documentSnapshot;
-
-
-                    DocumentReference ref = documentSnapshot.getReference();
-
-                    Intent intent = new Intent(patientFeed.this,patientProfile.class);
-                    intent.putExtra("Patient Name",pname);
-                    intent.putExtra("Patient Description",pdescription);
-                    intent.putExtra("Patient Height",pheight);
-                    intent.putExtra("Patient Weight",pweight);
-                    intent.putExtra("Patient Resting Heart Rate",prhr);
-                    intent.putExtra("Patient ID",id);
-                    intent.putExtra("position",position1);
-                    intent.putExtra("bodyTemp",bodyTemp);
-                    intent.putExtra("nurse",activeNurse);
-                    intent.putExtra("medications",medications);
-                    intent.putExtra("surgicalH",surgicalHistory);
-                    intent.putExtra("standingO",standingO);
-                    intent.putExtra("activeNurse",activeNurse);
-
-                    //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
-                    //intent.putExtra("Firebse Reference", (Serializable) ref);
-
-                    startActivity(intent);
-
-
-
-
-
-
-                }
-            });
-
-
-
-
-}
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        getMenuInflater().inflate(R.menu.chat_menu, menu);
-    }
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        chatmenuindexclicked = info.position;
-
-        switch(item.getItemId())
-        {
-            case R.id.chat_update:
-                updateMessage();
-                break;
-            case R.id.chat_delete:
-                deleteMessage();
-                break;
-        }
-        return true;
-    }
-
-    private void deleteMessage() {
-    }
-
-    private void updateMessage() {
-    }
-
-//    private void setUpViewByTag() {
-//            Query query = patients.whereEqualTo("triageTag","Blue");
-//        //Query query = patients.orderBy("triageTag");
-//
-//
-//
-//
-//        // Query nurses = patients.document().;
-//
-//
-//        ImageView face = (ImageView) findViewById(R.id.facey) ;
-//
-//        // face.setVisibility(View.VISIBLE);
-//
-//
-//
-//        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
-//
-//        patientAdapter = new PatientAdapter(options);
-//
-//
-//
-//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(patientAdapter);
-//
-//
-//
-//
-//
-//        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
-//
-//            @Override
-//            public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-//                final AlertDialog.Builder alertDlg = new AlertDialog.Builder(patientFeed.this);
-//                alertDlg.setTitle("Patient Options");
-//                alertDlg.setMessage("What would you like to do?");
-//                alertDlg.setCancelable(true);
-//
-//                alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                        final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(patientFeed.this);
-//                        alertDlg2.setTitle("Delete this patient");
-//                        alertDlg2.setMessage("Are you sure?");
-//                        alertDlg2.setCancelable(true);
-//
-//                        alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                                patientAdapter.deletePatient(position);
-//
-//                            }
-//
-//
-//                        });
-//
-//                        alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//
-//                            }
-//                        });
-//
-//                        alertDlg2.show();
-//                    }
-//
-//
-//                });
-//
-//                alertDlg.setNegativeButton("Add Nurse", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        final Dialog dialog1 = new Dialog(patientFeed.this);
-//                        dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                        dialog1.setCancelable(false);
-//                        dialog1.setContentView(R.layout.addnursedialog);
-//
-//                        final EditText et = dialog1.findViewById(R.id.et);
-//
-//                        //String id = patientAdapter.getItemId(position);
-//
-//                        Button btnok = (Button) dialog1.findViewById(R.id.btnok);
-//                        btnok.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//
-//
-//                                String nurse = et.getText().toString();
-//
-//
-//
-//                                //Note patient = documentSnapshot.toObject(Note.class);
-//
-//
-//                                final DocumentReference patientItem = db.collection("patients3").document(documentSnapshot.getId());
-//
-//                                //update
-//
-//                                if(nurse.isEmpty()){
-//
-//                                    Toast toast = Toast.makeText(getApplicationContext(),"Please Enter the name of the Nurse",Toast.LENGTH_SHORT);
-//                                    toast.show();
-//                                }
-//                                else {
-//
-//                                    patientItem.update("activeNurse", nurse);
-//
-//                                    Toast.makeText(patientFeed.this, " Nurse Added", Toast.LENGTH_SHORT).show();
-//
-//
-//
-//                                    dialog1.dismiss();
-//                                }
-//                            }
-//                        });
-//
-//                        Button btncn = (Button) dialog1.findViewById(R.id.btncn);
-//                        btncn.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                dialog1.dismiss();
-//                            }
-//                        });
-//
-//                        dialog1.show();
-//
-//                    }
-//                });
-//
-//                alertDlg.setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                    }
-//                });
-//
-//
-//
-//
-//
-//                alertDlg.show();
-//
-//
-//
-//
-//            }
-//
-//
-//            @Override
-//            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-//
-//                Note note = documentSnapshot.toObject(Note.class);
-//                assert note != null;
-//                String pname = note.getPatientName();
-//                String pdescription = note.getDescription();
-//                String pheight = note.getHeight();
-//                String pweight = String.valueOf(note.getWeight());
-//                String prhr = String.valueOf(note.getrHeartRate());
-//                String id = documentSnapshot.getId();
-//                Integer position1 = position;
-//                String bodyTemp = String.valueOf(note.getBodyTempature());
-//                String activeNurse = note.getActiveNurse();
-//                String medications = note.getMedications();
-//                String surgicalHistory = note.getSurgicaHistory();
-//                String standingO = note.getStandingOrder();
-//
-//
-//                DocumentSnapshot DocSnap = documentSnapshot;
-//
-//
-//                DocumentReference ref = documentSnapshot.getReference();
-//
-//                Intent intent = new Intent(patientFeed.this,patientProfile.class);
-//                intent.putExtra("Patient Name",pname);
-//                intent.putExtra("Patient Description",pdescription);
-//                intent.putExtra("Patient Height",pheight);
-//                intent.putExtra("Patient Weight",pweight);
-//                intent.putExtra("Patient Resting Heart Rate",prhr);
-//                intent.putExtra("Patient ID",id);
-//                intent.putExtra("position",position1);
-//                intent.putExtra("bodyTemp",bodyTemp);
-//                intent.putExtra("nurse",activeNurse);
-//                intent.putExtra("medications",medications);
-//                intent.putExtra("surgicalH",surgicalHistory);
-//                intent.putExtra("standingO",standingO);
-//                //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
-//                //intent.putExtra("Firebse Reference", (Serializable) ref);
-//
-//                startActivity(intent);
-//
-//
-//
-//
-//
-//
-//            }
-//        });
-//
-//
-//
-//
-//    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void setUpViewByHeartRate() {
-//            Query query = patients.whereEqualTo("triageTag","Blue");
-
-        Query query = patients.orderBy("rHeartRate", Query.Direction.DESCENDING);
-
-//        Toast.makeText(getApplicationContext(),"Tester",Toast.LENGTH_SHORT).show();
-
-
-        // Query nurses = patients.document().;
-
-
-
-        // face.setVisibility(View.VISIBLE);
-
-        patientAdapter.notifyDataSetChanged();
 
 
         FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
-        options.getSnapshots().sort(Note.By_Descending);
+        options.getSnapshots().sort(Note.By_Ascending);
+
         patientAdapter = new PatientAdapter(options);
 
 
 
-         recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         recyclerView.setAdapter(patientAdapter);
+
 
 
 
@@ -1050,10 +552,11 @@ public class patientFeed extends AppCompatActivity {
 
             @Override
             public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                final AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                 alertDlg.setTitle("Patient Options");
                 alertDlg.setMessage("What would you like to do?");
                 alertDlg.setCancelable(true);
+                patientItem = db.collection("patients3").document(documentSnapshot.getId());
 
                 alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
                     @Override
@@ -1061,7 +564,7 @@ public class patientFeed extends AppCompatActivity {
 
 
 
-                        final AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
                         alertDlg2.setTitle("Delete this patient");
                         alertDlg2.setMessage("Are you sure?");
                         alertDlg2.setCancelable(true);
@@ -1093,82 +596,16 @@ public class patientFeed extends AppCompatActivity {
 
                 });
 
-                alertDlg.setNegativeButton("Add Nurse", new DialogInterface.OnClickListener() {
+                alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        final Dialog dialog1 = new Dialog(patientFeed.this);
-                        dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        dialog1.setCancelable(false);
-                        dialog1.setContentView(R.layout.addnursedialog);
-
-//                        final EditText et = dialog1.findViewById(R.id.et);
-
-                        //String id = patientAdapter.getItemId(position);
-
-                       // Button btnok = (Button) dialog1.findViewById(R.id.btnok);
-//                        btnok.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//
-//
-//                              //  String nurse = et.getText().toString();
-//
-//
-//
-//                                //Note patient = documentSnapshot.toObject(Note.class);
-//
-//
-//                                final DocumentReference patientItem = db.collection("patients3").document(documentSnapshot.getId());
-//
-//                                //update
-//
-//                                String nurse = null;
-//                                if(nurse.isEmpty()){
-//
-//                                    Toast toast = Toast.makeText(getApplicationContext(),"Please Enter the name of the Nurse",Toast.LENGTH_SHORT);
-//                                    toast.show();
-//                                }
-//                                else {
-//
-//                                    patientItem.update("activeNurse", nurse);
-//
-//                                    Toast.makeText(patientFeed.this, " Nurse Added", Toast.LENGTH_SHORT).show();
-//
-//
-//
-//                                    dialog1.dismiss();
-//                                }
-//                            }
-//                        });
-
-//                        Button btncn = (Button) dialog1.findViewById(R.id.btncn);
-//                        btncn.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                dialog1.dismiss();
-//                            }
-//                        });
-
-                        dialog1.show();
-
                     }
                 });
-
-                alertDlg.setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-
-
-                    }
-                });
-
-
-
-
 
                 alertDlg.show();
+
+
 
 
 
@@ -1200,9 +637,7 @@ public class patientFeed extends AppCompatActivity {
 
                 DocumentReference ref = documentSnapshot.getReference();
 
-                String patientFeed = "PatientFeed";
                 Intent intent = new Intent(patientFeed.this,patientProfile.class);
-
                 intent.putExtra("Patient Name",pname);
                 intent.putExtra("Patient Description",pdescription);
                 intent.putExtra("Patient Height",pheight);
@@ -1215,9 +650,10 @@ public class patientFeed extends AppCompatActivity {
                 intent.putExtra("medications",medications);
                 intent.putExtra("surgicalH",surgicalHistory);
                 intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
                 //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
                 //intent.putExtra("Firebse Reference", (Serializable) ref);
-                intent.putExtra("FeedType", patientFeed);
 
                 startActivity(intent);
 
@@ -1235,12 +671,790 @@ public class patientFeed extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void filterStatusView() {
+//            Query query = patients.whereEqualTo("triageTag","Blue");
+        Query query = patients.whereLessThan("rHeartRate",50).whereEqualTo("department","General Care");
 
-//    @Override
-//    protected void onStart(){
-//        super.onStart();
-//        patientAdapter.startListening();
-//    }
+
+
+
+
+
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
+
+        patientAdapter = new PatientAdapter(options);
+
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(patientAdapter);
+
+
+
+
+
+        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
+
+            @Override
+            public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                alertDlg.setTitle("Patient Options");
+                alertDlg.setMessage("What would you like to do?");
+                alertDlg.setCancelable(true);
+                patientItem = db.collection("patients3").document(documentSnapshot.getId());
+
+                alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        alertDlg2.setTitle("Delete this patient");
+                        alertDlg2.setMessage("Are you sure?");
+                        alertDlg2.setCancelable(true);
+
+                        alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+
+                                patientAdapter.deletePatient(position);
+
+                            }
+
+
+                        });
+
+                        alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                            }
+                        });
+
+                        alertDlg2.show();
+                    }
+
+
+                });
+
+                alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDlg.show();
+
+
+
+
+
+
+            }
+
+
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+                Note note = documentSnapshot.toObject(Note.class);
+                assert note != null;
+                String pname = note.getPatientName();
+                String pdescription = note.getDescription();
+                String pheight = note.getHeight();
+                String pweight = String.valueOf(note.getWeight());
+                String prhr = String.valueOf(note.getrHeartRate());
+                String id = documentSnapshot.getId();
+                Integer position1 = position;
+                String bodyTemp = String.valueOf(note.getBodyTempature());
+                String activeNurse = note.getActiveNurse();
+                String medications = note.getMedications();
+                String surgicalHistory = note.getSurgicaHistory();
+                String standingO = note.getStandingOrder();
+
+
+                DocumentSnapshot DocSnap = documentSnapshot;
+
+
+                DocumentReference ref = documentSnapshot.getReference();
+
+                Intent intent = new Intent(patientFeed.this,patientProfile.class);
+                intent.putExtra("Patient Name",pname);
+                intent.putExtra("Patient Description",pdescription);
+                intent.putExtra("Patient Height",pheight);
+                intent.putExtra("Patient Weight",pweight);
+                intent.putExtra("Patient Resting Heart Rate",prhr);
+                intent.putExtra("Patient ID",id);
+                intent.putExtra("position",position1);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("nurse",activeNurse);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",surgicalHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+                //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
+                //intent.putExtra("Firebse Reference", (Serializable) ref);
+
+                startActivity(intent);
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void heartRateView() {
+//            Query query = patients.whereEqualTo("triageTag","Blue");
+        Query query = patients.whereEqualTo("department","General Care").orderBy("rHeartRate", Query.Direction.ASCENDING);
+
+
+
+
+
+
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
+
+        patientAdapter = new PatientAdapter(options);
+
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(patientAdapter);
+
+
+
+
+
+        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
+
+            @Override
+            public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                alertDlg.setTitle("Patient Options");
+                alertDlg.setMessage("What would you like to do?");
+                alertDlg.setCancelable(true);
+                patientItem = db.collection("patients3").document(documentSnapshot.getId());
+
+                alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        alertDlg2.setTitle("Delete this patient");
+                        alertDlg2.setMessage("Are you sure?");
+                        alertDlg2.setCancelable(true);
+
+                        alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+
+                                patientAdapter.deletePatient(position);
+
+                            }
+
+
+                        });
+
+                        alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                            }
+                        });
+
+                        alertDlg2.show();
+                    }
+
+
+                });
+
+                alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDlg.show();
+
+
+
+
+
+
+            }
+
+
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+                Note note = documentSnapshot.toObject(Note.class);
+                assert note != null;
+                String pname = note.getPatientName();
+                String pdescription = note.getDescription();
+                String pheight = note.getHeight();
+                String pweight = String.valueOf(note.getWeight());
+                String prhr = String.valueOf(note.getrHeartRate());
+                String id = documentSnapshot.getId();
+                Integer position1 = position;
+                String bodyTemp = String.valueOf(note.getBodyTempature());
+                String activeNurse = note.getActiveNurse();
+                String medications = note.getMedications();
+                String surgicalHistory = note.getSurgicaHistory();
+                String standingO = note.getStandingOrder();
+
+
+                DocumentSnapshot DocSnap = documentSnapshot;
+
+
+                DocumentReference ref = documentSnapshot.getReference();
+
+                Intent intent = new Intent(patientFeed.this,patientProfile.class);
+                intent.putExtra("Patient Name",pname);
+                intent.putExtra("Patient Description",pdescription);
+                intent.putExtra("Patient Height",pheight);
+                intent.putExtra("Patient Weight",pweight);
+                intent.putExtra("Patient Resting Heart Rate",prhr);
+                intent.putExtra("Patient ID",id);
+                intent.putExtra("position",position1);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("nurse",activeNurse);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",surgicalHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+                //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
+                //intent.putExtra("Firebse Reference", (Serializable) ref);
+
+                startActivity(intent);
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void blackTagView() {
+//            Query query = patients.whereEqualTo("triageTag","Blue");
+        Query query = patients.whereEqualTo("department","General Care").whereEqualTo("triageTag","Black");
+
+
+
+
+
+
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
+
+        patientAdapter = new PatientAdapter(options);
+
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(patientAdapter);
+
+
+
+
+
+        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
+
+            @Override
+            public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                alertDlg.setTitle("Patient Options");
+                alertDlg.setMessage("What would you like to do?");
+                alertDlg.setCancelable(true);
+                patientItem = db.collection("patients3").document(documentSnapshot.getId());
+
+                alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        alertDlg2.setTitle("Delete this patient");
+                        alertDlg2.setMessage("Are you sure?");
+                        alertDlg2.setCancelable(true);
+
+                        alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+
+                                patientAdapter.deletePatient(position);
+
+                            }
+
+
+                        });
+
+                        alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                            }
+                        });
+
+                        alertDlg2.show();
+                    }
+
+
+                });
+
+                alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDlg.show();
+
+
+
+
+
+
+            }
+
+
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+                Note note = documentSnapshot.toObject(Note.class);
+                assert note != null;
+                String pname = note.getPatientName();
+                String pdescription = note.getDescription();
+                String pheight = note.getHeight();
+                String pweight = String.valueOf(note.getWeight());
+                String prhr = String.valueOf(note.getrHeartRate());
+                String id = documentSnapshot.getId();
+                Integer position1 = position;
+                String bodyTemp = String.valueOf(note.getBodyTempature());
+                String activeNurse = note.getActiveNurse();
+                String medications = note.getMedications();
+                String surgicalHistory = note.getSurgicaHistory();
+                String standingO = note.getStandingOrder();
+
+
+                DocumentSnapshot DocSnap = documentSnapshot;
+
+
+                DocumentReference ref = documentSnapshot.getReference();
+
+                Intent intent = new Intent(patientFeed.this,patientProfile.class);
+                intent.putExtra("Patient Name",pname);
+                intent.putExtra("Patient Description",pdescription);
+                intent.putExtra("Patient Height",pheight);
+                intent.putExtra("Patient Weight",pweight);
+                intent.putExtra("Patient Resting Heart Rate",prhr);
+                intent.putExtra("Patient ID",id);
+                intent.putExtra("position",position1);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("nurse",activeNurse);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",surgicalHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+                //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
+                //intent.putExtra("Firebse Reference", (Serializable) ref);
+
+                startActivity(intent);
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void redTagView() {
+//            Query query = patients.whereEqualTo("triageTag","Blue");
+        Query query = patients.whereEqualTo("department","General Care").whereEqualTo("triageTag","Red");
+
+
+
+
+
+
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
+
+        patientAdapter = new PatientAdapter(options);
+
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(patientAdapter);
+
+
+
+
+
+        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
+
+            @Override
+            public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                alertDlg.setTitle("Patient Options");
+                alertDlg.setMessage("What would you like to do?");
+                alertDlg.setCancelable(true);
+                patientItem = db.collection("patients3").document(documentSnapshot.getId());
+
+                alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        alertDlg2.setTitle("Delete this patient");
+                        alertDlg2.setMessage("Are you sure?");
+                        alertDlg2.setCancelable(true);
+
+                        alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+
+                                patientAdapter.deletePatient(position);
+
+                            }
+
+
+                        });
+
+                        alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                            }
+                        });
+
+                        alertDlg2.show();
+                    }
+
+
+                });
+
+                alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDlg.show();
+
+
+
+
+
+
+            }
+
+
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+                Note note = documentSnapshot.toObject(Note.class);
+                assert note != null;
+                String pname = note.getPatientName();
+                String pdescription = note.getDescription();
+                String pheight = note.getHeight();
+                String pweight = String.valueOf(note.getWeight());
+                String prhr = String.valueOf(note.getrHeartRate());
+                String id = documentSnapshot.getId();
+                Integer position1 = position;
+                String bodyTemp = String.valueOf(note.getBodyTempature());
+                String activeNurse = note.getActiveNurse();
+                String medications = note.getMedications();
+                String surgicalHistory = note.getSurgicaHistory();
+                String standingO = note.getStandingOrder();
+
+
+                DocumentSnapshot DocSnap = documentSnapshot;
+
+
+                DocumentReference ref = documentSnapshot.getReference();
+
+                Intent intent = new Intent(patientFeed.this,patientProfile.class);
+                intent.putExtra("Patient Name",pname);
+                intent.putExtra("Patient Description",pdescription);
+                intent.putExtra("Patient Height",pheight);
+                intent.putExtra("Patient Weight",pweight);
+                intent.putExtra("Patient Resting Heart Rate",prhr);
+                intent.putExtra("Patient ID",id);
+                intent.putExtra("position",position1);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("nurse",activeNurse);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",surgicalHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+                //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
+                //intent.putExtra("Firebse Reference", (Serializable) ref);
+
+                startActivity(intent);
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void yellowTagView() {
+//            Query query = patients.whereEqualTo("triageTag","Blue");
+        Query query = patients.whereEqualTo("department","General Care").whereEqualTo("triageTag","Yellow");
+
+
+
+
+
+
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>().setQuery(query,Note.class).build();
+        options.getSnapshots().sort(Note.By_Ascending);
+
+        patientAdapter = new PatientAdapter(options);
+
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(patientAdapter);
+
+
+
+
+
+        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
+
+            @Override
+            public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
+                AlertDialog.Builder alertDlg = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                alertDlg.setTitle("Patient Options");
+                alertDlg.setMessage("What would you like to do?");
+                alertDlg.setCancelable(true);
+                patientItem = db.collection("patients3").document(documentSnapshot.getId());
+
+                alertDlg.setPositiveButton("Delete This Patient", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                        AlertDialog.Builder alertDlg2 = new AlertDialog.Builder(new ContextThemeWrapper(patientFeed.this, android.R.style.Theme_Holo_Light));
+                        alertDlg2.setTitle("Delete this patient");
+                        alertDlg2.setMessage("Are you sure?");
+                        alertDlg2.setCancelable(true);
+
+                        alertDlg2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+
+                                patientAdapter.deletePatient(position);
+
+                            }
+
+
+                        });
+
+                        alertDlg2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                            }
+                        });
+
+                        alertDlg2.show();
+                    }
+
+
+                });
+
+                alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                alertDlg.show();
+
+
+
+
+
+
+            }
+
+
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+                Note note = documentSnapshot.toObject(Note.class);
+                assert note != null;
+                String pname = note.getPatientName();
+                String pdescription = note.getDescription();
+                String pheight = note.getHeight();
+                String pweight = String.valueOf(note.getWeight());
+                String prhr = String.valueOf(note.getrHeartRate());
+                String id = documentSnapshot.getId();
+                Integer position1 = position;
+                String bodyTemp = String.valueOf(note.getBodyTempature());
+                String activeNurse = note.getActiveNurse();
+                String medications = note.getMedications();
+                String surgicalHistory = note.getSurgicaHistory();
+                String standingO = note.getStandingOrder();
+
+
+                DocumentSnapshot DocSnap = documentSnapshot;
+
+
+                DocumentReference ref = documentSnapshot.getReference();
+
+                Intent intent = new Intent(patientFeed.this,patientProfile.class);
+                intent.putExtra("Patient Name",pname);
+                intent.putExtra("Patient Description",pdescription);
+                intent.putExtra("Patient Height",pheight);
+                intent.putExtra("Patient Weight",pweight);
+                intent.putExtra("Patient Resting Heart Rate",prhr);
+                intent.putExtra("Patient ID",id);
+                intent.putExtra("position",position1);
+                intent.putExtra("bodyTemp",bodyTemp);
+                intent.putExtra("nurse",activeNurse);
+                intent.putExtra("medications",medications);
+                intent.putExtra("surgicalH",surgicalHistory);
+                intent.putExtra("standingO",standingO);
+                intent.putExtra("activeNurse",activeNurse);
+
+                //intent.putExtra("DocSnap", (Serializable) documentSnapshot);
+                //intent.putExtra("Firebse Reference", (Serializable) ref);
+
+                startActivity(intent);
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.chat_menu, menu);
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        chatmenuindexclicked = info.position;
+
+        switch(item.getItemId())
+        {
+            case R.id.chat_update:
+                updateMessage();
+                break;
+            case R.id.chat_delete:
+                deleteMessage();
+                break;
+        }
+        return true;
+    }
+
+    private void deleteMessage() {
+    }
+
+    private void updateMessage() {
+    }
+
+
+
+
 
     @Override
     protected void onStop(){
