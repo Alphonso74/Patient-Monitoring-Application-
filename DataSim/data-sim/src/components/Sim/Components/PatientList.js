@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {UpdatePatient} from "../Store/Actions/PatientActions";
 import 'firebase/firestore';
+import { Button, Card, Icon } from 'react-materialize';
 
 class PatientList extends Component {
     constructor(props) {
@@ -110,7 +111,28 @@ class PatientList extends Component {
     render(){
         return(
             <div>
-
+                <Card reveal={
+                    <div>
+                        <span>Simulation: </span>
+                        <Button node="button" onClick={ this.simButton } small waves="light">{ this.state.text }</Button>
+                        <br/><span>Heart Rate: </span>
+                        <Button node="button" onClick={ this.flatline } small waves="light">Flat-line</Button>
+                        <Button node="button" onClick={ this.elevate } small waves="light">Elevate</Button>
+                        <Button node="button" onClick={ this.resetHR } small waves="light">Reset</Button>
+                        <br/><span>Body Temp: </span>
+                        <Button node="button" onClick={ this.fever } small waves="light">Fever</Button>
+                        <Button node="button" onClick={ this.hypothermia } small waves="light">Hypothermia</Button>
+                        <Button node="button" onClick={ this.resetBT } small waves="light">Reset</Button>
+                    </div>
+                }
+                      closeIcon={<Icon>close</Icon>}
+                      revealIcon={<Icon>more_vert</Icon>}
+                      title={this.props.patient.patientName}
+                >
+                    <p>Triage Tag: {this.props.patient.triageTag}</p>
+                    <p>Heart Rate: {this.props.patient.rHeartRate}</p>
+                    <p>Body Temp: {this.props.patient.bodyTempature}</p>
+                </Card>
             </div>
         )
     }

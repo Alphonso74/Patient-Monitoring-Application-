@@ -15,11 +15,11 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Switch>
-              <Route exact path='/' component={Dashboard} />
-              <Route path='/patient/:id' component={ProjectDetails} />
-              <Route path='/signin' component={SignIn} />
-              <Route path='/signup' component={SignUp} />
-              <Route path='/ds' component={Datasim} />
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/patient/:id'exact component={ProjectDetails} />
+              <Route path='/signin'exact component={SignIn} />
+              <Route path='/signup' exact component={SignUp} />
+              <Route path='/ds' exact component={Datasim} />
             </Switch>
           </div>
         </BrowserRouter>
