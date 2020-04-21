@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {UpdatePatient} from "../../Store/Actions/PatientActions";
+import {UpdatePatient} from "../Store/Actions/PatientActions";
 import firebase from 'firebase';
 import 'firebase/firestore';
 

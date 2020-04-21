@@ -7,7 +7,8 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreatePatient from './components/patients/CreatePatient';
 import EditPatient from './components/patients/EditPatient';
-import Chat from './components/dashboard/Chat';
+import DS from './components/Sim/Components/Main';
+import Chat from './components/dashboard/Chat'
 
 class App extends Component {
   render() {
@@ -22,7 +23,8 @@ class App extends Component {
               <Route path='/signup' component={SignUp} />
               <Route path='/create' component={CreatePatient} />
               <Route path='/edit/:id' component={EditPatient} />
-              <Route path='/chat' component={Chat} />
+                <Route path='/chat' component={Chat}/>
+              <Route path='/ds' component={DS}/>
             </Switch>
           </div>
         </BrowserRouter>
