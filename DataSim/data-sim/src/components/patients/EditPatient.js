@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {connect} from 'react-redux'
 import {firestoreConnect} from "react-redux-firebase";
 import {compose} from 'redux'
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 //import DetailButtons from "./DetailButtons";
 import {deletePatient, updatePatient} from "../../store/actions/patientActions";
 import Dropdown from 'react-dropdown';
@@ -152,8 +152,10 @@ class EditPatient extends Component {
                     <div className="card z-depth-0">
                         <div className="card-content">
                             <span className="card-title center">
+                                <input id="delete" type="button" className='button' value='Delete' onChange={this.handleClick}/>
+                                <Link to={'/patient/' + this.props.match.params.id}><button>Back</button></Link>
                                 <input id="name" type="text" value={this.state.patientName} onChange={this.handleChange}/>
-                                <input id="delete" type="button" className='button' value='Delete' onChange={this.handleClick}/></span>
+                                </span>
                             <p>Patient Description:
                                 <input id="desc" type="text" value={this.state.description} onChange={this.handleChange}/></p>
                             <p>Height:
@@ -222,3 +224,4 @@ export default compose(
         {collection: 'patients3'}, {collection: 'Users'}
     ])
 )(EditPatient)
+
