@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {UpdatePatient} from "../Store/Actions/PatientActions";
+import {simUpdatePatient} from "../../store/actions/patientActions";
 import 'firebase/firestore';
 import { Button, Card, Icon } from 'react-materialize';
 
@@ -65,7 +65,7 @@ class PatientList extends Component {
             //bodyTemp = Math.round(bodyTemp * 1) / 1;
 
             // Update firestore data with new values
-            this.props.UpdatePatient(this.props.patient, heartRate, bodyTemp);
+            this.props.simUpdatePatient(this.props.patient, heartRate, bodyTemp);
         }
     }
 
@@ -80,32 +80,32 @@ class PatientList extends Component {
 
     flatline = () => {
         let hr = 0;
-        this.props.UpdatePatient(this.props.patient, hr, this.props.patient.bodyTempature);
+        this.props.simUpdatePatient(this.props.patient, hr, this.props.patient.bodyTempature);
     }
 
     elevate = () => {
         let hr = this.props.patient.rHeartRate * 2;
-        this.props.UpdatePatient(this.props.patient, hr, this.props.patient.bodyTempature);
+        this.props.simUpdatePatient(this.props.patient, hr, this.props.patient.bodyTempature);
     }
 
     resetHR = () => {
         let hr = 75;
-        this.props.UpdatePatient(this.props.patient, hr, this.props.patient.bodyTempature);
+        this.props.simUpdatePatient(this.props.patient, hr, this.props.patient.bodyTempature);
     }
 
     fever = () => {
         let bt = 104;
-        this.props.UpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
+        this.props.simUpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
     }
 
     hypothermia = () => {
         let bt = 90;
-        this.props.UpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
+        this.props.simUpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
     }
 
     resetBT = () => {
         let bt = 98;
-        this.props.UpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
+        this.props.simUpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
     }
 
     render(){
@@ -140,7 +140,7 @@ class PatientList extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        UpdatePatient: (patient, heartRate, bodyTemp) => dispatch(UpdatePatient(patient, heartRate, bodyTemp))
+        simUpdatePatient: (patient, heartRate, bodyTemp) => dispatch(simUpdatePatient(patient, heartRate, bodyTemp))
     }
 };
 

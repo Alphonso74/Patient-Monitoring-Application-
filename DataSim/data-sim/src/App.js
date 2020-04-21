@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
 import ProjectDetails from './components/patients/PatientDetails'
@@ -7,8 +7,7 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreatePatient from './components/patients/CreatePatient';
 import EditPatient from './components/patients/EditPatient';
-import DS from './components/Sim/Components/Main';
-import Chat from './components/dashboard/Chat'
+import Main from './components/Sim/Main';
 
 class App extends Component {
   render() {
@@ -23,8 +22,7 @@ class App extends Component {
               <Route path='/signup' component={SignUp} />
               <Route path='/create' component={CreatePatient} />
               <Route path='/edit/:id' component={EditPatient} />
-                <Route path='/chat' component={Chat}/>
-              <Route path='/ds' component={DS}/>
+              <Route path='/ds' component={withRouter(Main)} />
             </Switch>
           </div>
         </BrowserRouter>

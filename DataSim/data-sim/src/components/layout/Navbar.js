@@ -15,9 +15,6 @@ const Navbar = (props) => {
         <Link to='/' className="brand-logo">Patient Monitoring System</Link>
           {links}
       </div>
-        <div>
-            <Link to="/ds">Ds</Link>
-        </div>
     </nav>
   )
 }

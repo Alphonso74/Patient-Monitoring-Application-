@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {UpdatePatient} from "../Store/Actions/PatientActions";
+import {simUpdatePatient} from "../../store/actions/patientActions";
 import firebase from 'firebase';
 import 'firebase/firestore';
 
@@ -82,7 +82,7 @@ class Simulator extends Component{
                     //bodyTemp = Math.round(bodyTemp * 1) / 1;
 
                     // Update firestore data with new values
-                    this.props.UpdatePatient(patient, heartRate, bodyTemp);
+                    this.props.simUpdatePatient(patient, heartRate, bodyTemp);
                 }
             })
         }
@@ -127,7 +127,7 @@ class Simulator extends Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        UpdatePatient: (patient, heartRate, bodyTemp) => dispatch(UpdatePatient(patient, heartRate, bodyTemp))
+        simUpdatePatient: (patient, heartRate, bodyTemp) => dispatch(simUpdatePatient(patient, heartRate, bodyTemp))
     }
 };
 

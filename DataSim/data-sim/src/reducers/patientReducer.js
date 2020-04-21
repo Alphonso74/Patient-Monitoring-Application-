@@ -28,6 +28,10 @@ const patientReducer = (state = initState, action) => {
         case 'DELETE_PATIENT_ERROR':
             console.log('delete patient error', action.err);
             return state;
+
+        case 'UPDATE_PATIENT_SIM':
+            console.log("Patient data updated by simulator.");
+            return state;
         
         default:
             return state;
