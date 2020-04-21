@@ -153,19 +153,18 @@
             android:text="Body Temp" />
 
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/facey"-->
-        <!--            android:layout_width="117dp"-->
-        <!--            android:layout_height="121dp"-->
-        <!--            android:layout_alignTop="@+id/text_view_triage"-->
-        <!--            android:layout_alignParentEnd="true"-->
-        <!--            android:layout_marginTop="-16dp"-->
-        <!--            android:layout_marginEnd="11dp"-->
-        <!--            android:background="@android:color/transparent"-->
-        <!--            android:visibility="invisible"-->
-        <!--            app:srcCompat="@drawable/smiley_face"-->
-        <!--            tools:ignore="VectorDrawableCompat"-->
-        <!--            tools:visibility="visible" />-->
+                <ImageView
+                    android:id="@+id/facey"
+                    android:layout_width="117dp"
+                    android:layout_height="121dp"
+                    android:layout_alignTop="@+id/text_view_triage"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginEnd="11dp"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/smiley_face"
+                    tools:ignore="VectorDrawableCompat"
+                    android:contentDescription="TODO" />
 
 
     </RelativeLayout>

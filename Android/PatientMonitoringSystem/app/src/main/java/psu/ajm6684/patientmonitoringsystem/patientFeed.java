@@ -544,11 +544,13 @@ public class patientFeed extends AppCompatActivity {
 
         recyclerView.setAdapter(patientAdapter);
 
+            ImageView face = (ImageView) findViewById(R.id.facey);
 
 
 
 
-        patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
+
+            patientAdapter.setOnItemClickListener(new PatientAdapter.onItemClickListener() {
 
             @Override
             public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {

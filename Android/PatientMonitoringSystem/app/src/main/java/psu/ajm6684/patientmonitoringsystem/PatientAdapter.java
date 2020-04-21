@@ -53,6 +53,21 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
 
         Integer rate = note.getrHeartRate();
 
+        if(note.getTriageTag().toString().equals("Black") || note.getTriageTag().toString().equals("Red")){
+
+            patientHolder.face.setImageResource(R.drawable.sadboy);
+        }
+        else if(note.getTriageTag().toString().equals("Yellow")){
+            patientHolder.face.setImageResource(R.drawable.straigherfacey);
+
+
+        }
+        else if(note.getTriageTag().toString().equals("Green")){
+
+            patientHolder.face.setImageResource(R.drawable.smiley_face);
+
+        }
+
 
 
 
@@ -116,6 +131,7 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
             TextView patientRHeartRate;
             TextView patientTriageTag;
             TextView patientBodyTemp;
+            ImageView face;
 
 
 
@@ -130,7 +146,7 @@ public class PatientAdapter extends FirestoreRecyclerAdapter<Note, PatientAdapte
             patientBodyTemp = itemView.findViewById(R.id.text_view_temp);
 
 
-//            ImageView face = itemView.findViewById(R.id.facey);
+            face = itemView.findViewById(R.id.facey);
 
 
 //            face.setVisibility(View.VISIBLE);

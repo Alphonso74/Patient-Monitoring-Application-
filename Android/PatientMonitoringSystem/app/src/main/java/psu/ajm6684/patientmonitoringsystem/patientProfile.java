@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -21,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,6 +68,7 @@ public class patientProfile extends AppCompatActivity {
     FirebaseUser currentUser;
 String userPosition;
     String uid;
+    ImageView face;
 
 
 Button standingOrderButton;
@@ -76,6 +79,9 @@ Button standingOrderButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patientprofilelinear);
+
+
+        face = (ImageView) findViewById(R.id.facey2) ;
         firebaseAuth = FirebaseAuth.getInstance();
 
         currentUser  = firebaseAuth.getCurrentUser();
