@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/greybackground">
+    android:background="@drawable/bg1">
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/greybackground">
+    >
 
     <ImageView
         android:id="@+id/facey2"
@@ -31,6 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:text="PatientName"
+        android:textColor="@color/White"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -58,7 +59,8 @@
         android:text="Description -"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView12"
@@ -71,7 +73,8 @@
         android:text="Standing Order -"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -85,7 +88,8 @@
         android:layout_toEndOf="@+id/textView11"
         android:text="Standard Description"
         android:textAlignment="textStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView17"
@@ -100,7 +104,8 @@
         android:maxLines="4"
         android:text="Standard Procedure"
         android:textAlignment="textStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView18"
@@ -111,7 +116,8 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="72dp"
         android:text="Resting Heart Rate - "
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView19"
@@ -121,7 +127,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="5dp"
-        android:text="Height -" />
+        android:text="Height -"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView20"
@@ -131,7 +138,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="5dp"
-        android:text="Weight -" />
+        android:text="Weight -"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView22"
@@ -142,7 +150,8 @@
         android:layout_marginTop="72dp"
         android:layout_toEndOf="@+id/textView18"
         android:text="N/A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView23"
@@ -155,7 +164,8 @@
         android:layout_marginEnd="266dp"
         android:layout_toEndOf="@+id/textView19"
         android:text="N/A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView24"
@@ -168,7 +178,8 @@
         android:layout_marginEnd="268dp"
         android:layout_toEndOf="@+id/textView20"
         android:text="N/A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView21"
@@ -180,7 +191,8 @@
         android:layout_marginTop="19dp"
         android:text="Active Nurse -"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView25"
@@ -194,7 +206,8 @@
         android:layout_toEndOf="@+id/textView21"
         android:text="No Current Nurse"
         android:textAlignment="textStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView26"
@@ -204,7 +217,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="5dp"
-        android:text="Body Temperature -" />
+        android:text="Body Temperature -"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView27"
@@ -214,7 +228,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="5dp"
-        android:text="Medications -" />
+        android:text="Medications -"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView28"
@@ -224,7 +239,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="5dp"
-        android:text="Surgical History -" />
+        android:text="Surgical History -"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView29"
@@ -237,7 +253,8 @@
         android:layout_marginEnd="195dp"
         android:layout_toEndOf="@+id/textView26"
         android:text="N/A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView30"
@@ -250,7 +267,8 @@
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/textView27"
         android:text="N/A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <TextView
         android:id="@+id/textView31"
@@ -263,7 +281,8 @@
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/textView28"
         android:text="N/A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/White"/>
 
     <Button
         android:id="@+id/button7"

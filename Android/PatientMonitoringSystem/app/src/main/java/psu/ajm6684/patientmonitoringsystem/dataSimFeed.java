@@ -120,7 +120,7 @@ public class dataSimFeed extends AppCompatActivity {
 
                             }
 
-                            dataFeed.append("\nPatient: " + patientName1 + ", New Body Temperature - " + documentSnapshot.get("rHeartRate") + ", New Heart Rate - " + documentSnapshot.get("bodyTempature") + ", Active Nurse - " + documentSnapshot.get("activeNurse") + "\n" );
+                            dataFeed.append("\nPatient: " + patientName1 + "\nNew Heart Rate - " + documentSnapshot.get("rHeartRate") + "\nNew Body Temperature - " + documentSnapshot.get("bodyTempature") + "\nActive Nurse - " + documentSnapshot.get("activeNurse") + "\n" );
 
                             break;
                         case REMOVED:

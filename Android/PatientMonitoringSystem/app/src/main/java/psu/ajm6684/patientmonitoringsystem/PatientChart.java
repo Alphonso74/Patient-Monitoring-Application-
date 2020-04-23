@@ -47,7 +47,7 @@ public class PatientChart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chartfeed);
         Intent intent = getIntent();
-        String patientName = intent.getStringExtra("Patient Name");
+       patientName = intent.getStringExtra("Patient Name");
 
         setUpView(patientName);
 
@@ -157,7 +157,7 @@ public class PatientChart extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(final DocumentSnapshot documentSnapshot, final int position) {
-                        Toast.makeText(PatientChart.this, "Chart Long Clicked!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(PatientChart.this, "Chart Long Clicked!", Toast.LENGTH_SHORT).show();
                     }
 
 

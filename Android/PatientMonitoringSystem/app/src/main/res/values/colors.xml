@@ -14,4 +14,5 @@
     <color name="dialog_background">#5fa3d0</color>
     <color name="dialog_button">#f5ef3c</color>
     <color name="dialog_title">#be3c08</color>
+    <color name="White">#FFFFFF</color>
 </resources>

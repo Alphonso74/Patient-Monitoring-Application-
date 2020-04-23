@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/greybackground">
+    android:background="@drawable/bg1">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/container"
@@ -26,6 +26,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="24dp"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
 
         android:hint="Email Address"
         android:inputType="textEmailAddress"
@@ -41,6 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
 
         android:layout_marginEnd="24dp"
         android:hint="Password"
@@ -111,9 +115,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:fontFamily="@font/arbutus"
+        android:fontFamily="@font/bowlby_one"
         android:text="Patient Monitoring System"
-        android:textSize="18sp"
+        android:textColor="@color/White"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/email_login"
         app:layout_constraintEnd_toEndOf="parent"

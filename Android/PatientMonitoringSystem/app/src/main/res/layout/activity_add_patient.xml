@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/greybackground">
+    android:background="@drawable/bg1">
 <LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +12,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/greybackground"
 
     tools:context=".addPatient"
     >
@@ -23,8 +22,10 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:text="New Patient"
+        android:textColor="@color/White"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
 
     <EditText
@@ -33,7 +34,10 @@
         android:layout_height="wrap_content"
         android:hint="Patient Name"
         android:inputType="textCapWords"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+        />
 
     <EditText
         android:id="@+id/edit_text_description"
@@ -41,7 +45,11 @@
         android:layout_height="wrap_content"
         android:hint="Description"
         android:inputType="textMultiLine"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
     <EditText
         android:id="@+id/edit_text_height"
@@ -49,7 +57,11 @@
         android:layout_height="wrap_content"
         android:hint="Patient Height"
         android:inputType="textCapWords"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
 
 
@@ -59,7 +71,11 @@
         android:layout_height="wrap_content"
         android:hint="Patient Weight"
         android:inputType="number"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
     <EditText
         android:id="@+id/edit_text_heartRate"
@@ -67,7 +83,11 @@
         android:layout_height="wrap_content"
         android:hint="@string/patient_heart_rate"
         android:inputType="number"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
 <!--    <EditText-->
 <!--        android:id="@+id/edit_text_triageTag"-->
@@ -83,8 +103,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="Choose Triage Tag"
+        android:textColor="@color/White"
         android:textAppearance="@android:style/TextAppearance.Medium"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+
+ />
 
     <RadioGroup
         android:id="@+id/triageGroup"
@@ -99,26 +122,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Red" />
+            android:text="Red"
+        android:textColor="@color/White"/>
 
         <RadioButton
             android:id="@+id/green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Green" />
+            android:text="Green"
+            android:textColor="@color/White"/>
 
         <RadioButton
             android:id="@+id/yellow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Yellow" />
+            android:text="Yellow"
+            android:textColor="@color/White"/>
 
         <RadioButton
             android:id="@+id/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Black" />
+            android:text="Black"
+            android:textColor="@color/White"/>
     </RadioGroup>
 
 
@@ -128,7 +155,11 @@
         android:layout_height="wrap_content"
         android:hint="@string/patient_body_temperature"
         android:inputType="number"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
     <EditText
         android:id="@+id/medications"
@@ -136,7 +167,11 @@
         android:layout_height="wrap_content"
         android:hint="@string/current_medications_separate_by_comma"
         android:inputType="textCapWords"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
     <EditText
         android:id="@+id/surgicalHistory"
@@ -144,7 +179,11 @@
         android:layout_height="wrap_content"
         android:hint="@string/patient_surgical_history_separate_by_comma"
         android:inputType="textCapWords"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColorHint="@color/White"
+        android:textColor="@color/White"
+
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -153,17 +192,18 @@
         android:layout_marginTop="10dp"
         android:text="@string/choose_patient_department"
         android:textAppearance="@android:style/TextAppearance.Medium"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/White"/>
 
     <Spinner
         android:id="@+id/spinnerDepartment"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:background="@drawable/spinner_rounded"
+        android:textColor="#000000"
+        android:background="@drawable/spinner2design"
         android:drawSelectorOnTop="true"
         android:layout_gravity="center_horizontal"
         android:prompt="@string/add_Patient_nurse_prompt"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:visibility="visible" />
 
@@ -171,6 +211,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/White"
         android:layout_marginTop="10dp"
         android:text="@string/choose_a_nurse_for_this_patient"
         android:textAppearance="@android:style/TextAppearance.Medium"
@@ -183,8 +224,9 @@
         android:drawSelectorOnTop="true"
         android:layout_gravity="center_horizontal"
         android:prompt="@string/add_Patient_nurse_prompt"
+
         android:textColor="#000000"
-        android:background="@drawable/spinner_rounded"
+        android:background="@drawable/spinner2design"
 
         android:textSize="20sp"
         android:visibility="visible" />

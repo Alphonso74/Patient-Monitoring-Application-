@@ -30,7 +30,9 @@ public class editChart extends Activity {
 
     EditText text;
     String userText;
-
+    TextView patientName;
+    String pName;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +40,14 @@ public class editChart extends Activity {
         Intent intent = getIntent();
         //final String pName = intent.getStringExtra("Patient Name");
 
-        final String pName = intent.getStringExtra("Patient Name");
+       pName = intent.getStringExtra("Patient Name");
        userText = intent.getStringExtra("userText");
-        final String id = intent.getStringExtra("ID");
+       id = intent.getStringExtra("ID");
 
 
-        TextView patientName = (TextView) findViewById(R.id.PatientNameChart);
+         patientName = (TextView) findViewById(R.id.PatientNameChart);
 
+//         Toast.makeText(editChart.this, pName, Toast.LENGTH_SHORT).show();
 
         patientName.setText(pName);
 

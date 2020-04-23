@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/greybackground">
+    android:background="@drawable/bg1">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/greybackground"
         android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -46,7 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="Name: "/>
+                android:text="Name: "
+                android:textColor="@color/White"/>
 
 
             <TextView
@@ -54,7 +54,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="N/A"/>
+                android:text="N/A"
+                android:textColor="@color/White"/>
 
 
 
@@ -75,7 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="Email: "/>
+                android:text="Email: "
+                android:textColor="@color/White"/>
 
 
             <TextView
@@ -84,7 +86,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="N/A"/>
+                android:text="N/A"
+                android:textColor="@color/White"/>
 
 
 
@@ -104,7 +107,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="Department: "/>
+                android:text="Department: "
+                android:textColor="@color/White"/>
 
 
             <TextView
@@ -113,7 +117,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="N/A"/>
+                android:text="N/A"
+                android:textColor="@color/White"/>
 
 
 
@@ -133,7 +138,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="Position: "/>
+                android:text="Position: "
+                android:textColor="@color/White"/>
 
 
             <TextView
@@ -142,7 +148,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="N/A"/>
+                android:text="N/A"
+                android:textColor="@color/White"/>
 
 
 
@@ -164,7 +171,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="Hospital: "/>
+                android:text="Hospital: "
+                android:textColor="@color/White"/>
 
 
             <TextView
@@ -173,7 +181,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="N/A"/>
+                android:text="N/A"
+                android:textColor="@color/White"/>
 
 
 

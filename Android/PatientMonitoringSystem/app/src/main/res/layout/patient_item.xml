@@ -16,7 +16,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/spinner_rounded"
         android:padding="8dp">
 
         <TextView
@@ -27,6 +26,7 @@
             android:layout_marginStart="8dp"
             android:ellipsize="end"
             android:text="Name"
+            android:textColor="#000000"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
@@ -38,7 +38,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView8"
-            android:text="Description" />
+            android:text="Description"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/text_view_triage"
@@ -48,7 +49,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView9"
-            android:text="Triage Tag" />
+            android:text="Triage Tag"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/text_view_heartrate"
@@ -59,7 +61,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView14"
-            android:text="Heart Rate" />
+            android:text="Heart Rate"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/text_view_height"
@@ -69,7 +72,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView15"
-            android:text="Height" />
+            android:text="Height"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/text_view_weight"
@@ -79,7 +83,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView16"
-            android:text="Weight" />
+            android:text="Weight"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/textView8"
@@ -89,7 +94,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="Description:" />
+            android:text="Description:"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/textView9"
@@ -99,7 +105,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="Triage Tag:" />
+            android:text="Triage Tag:"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/textView14"
@@ -109,7 +116,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="Resting Heart Rate:" />
+            android:text="Resting Heart Rate:"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/textView15"
@@ -119,7 +127,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="Height:" />
+            android:text="Height:"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/textView16"
@@ -129,7 +138,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="Weight:" />
+            android:text="Weight:"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/textView34"
@@ -140,7 +150,8 @@
             android:layout_marginTop="12dp"
             android:text="Body Temperature:"
             android:layout_alignParentStart="true"
-            />
+
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/text_view_temp"
@@ -150,7 +161,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/textView34"
-            android:text="Body Temp" />
+            android:text="Body Temp"
+            android:textColor="#000000"/>
 
 
                 <ImageView

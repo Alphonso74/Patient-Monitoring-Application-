@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/greybackground"
+    android:background="@drawable/bg1"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -59,6 +59,7 @@
         android:weightSum="2">
 
         <TextView
+            android:textColor="@color/White"
             android:id="@+id/textView32"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"

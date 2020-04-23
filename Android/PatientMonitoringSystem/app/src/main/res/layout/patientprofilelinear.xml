@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/greybackground">
+    android:background="@drawable/bg1">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/greybackground"
         android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -33,7 +32,8 @@
 
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:textColor="@color/White"/>
 
         <Button
             android:id="@+id/back2feed"
@@ -91,7 +91,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Resting Heart Rate:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView22"
@@ -100,7 +101,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -124,7 +126,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Patient Height:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView23"
@@ -134,7 +137,8 @@
 
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -158,7 +162,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Patient Weight:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView24"
@@ -167,7 +172,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -191,7 +197,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Body Temperature:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView29"
@@ -200,7 +207,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -224,7 +232,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Medications:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView30"
@@ -234,7 +243,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -258,7 +268,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Surgical History:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView31"
@@ -268,7 +279,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -293,7 +305,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Description:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView13"
@@ -304,7 +317,8 @@
                 android:gravity="center_vertical"
                 android:maxLines="4"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -314,7 +328,8 @@
             android:layout_height="40dp"
             android:layout_marginTop="0dp"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:textColor="@color/White">
 
 
 
@@ -328,7 +343,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Standing Order:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView17"
@@ -338,7 +354,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -348,7 +365,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="0dp"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
 
 
@@ -362,7 +380,8 @@
                 android:gravity="start|center_vertical"
                 android:paddingLeft="10dp"
                 android:text="Active Nurse:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
             <TextView
                 android:id="@+id/textView25"
@@ -372,7 +391,8 @@
                 android:layout_weight="1.4"
                 android:gravity="center_vertical"
                 android:text="N/A"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/White"/>
 
         </LinearLayout>
 
@@ -420,7 +440,7 @@
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="180dp"
+                android:layout_width="185dp"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:text="Assign Nurse"

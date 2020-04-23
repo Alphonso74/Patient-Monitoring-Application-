@@ -121,12 +121,12 @@ Button standingOrderButton;
             }
             Log.d("Data ------", "Should be zero" + count);
 
-            if(count == 0){
-
-
-                viewCharts.setAlpha(.5f);
-                viewCharts.setClickable(false);
-            }
+//            if(count == 0){
+//
+//
+//                viewCharts.setAlpha(.5f);
+//                viewCharts.setClickable(false);
+//            }
             // [END_EXCLUDE]
         }
     });

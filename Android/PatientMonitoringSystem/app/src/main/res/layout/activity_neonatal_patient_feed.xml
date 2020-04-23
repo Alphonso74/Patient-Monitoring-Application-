@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/greybackground"
+    android:background="@drawable/bg1"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -70,7 +70,7 @@
         android:fontFamily="@font/holtwood_one_sc"
         android:paddingTop="10dp"
         android:text="Neonatal"
-
+        android:textColor="@color/White"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:background="@drawable/spinner_rounded">
+>
 
         <TextView
             android:id="@+id/text_view_title"
@@ -62,6 +62,8 @@
             android:maxLines="3"
             android:text="Chart Data"
             android:textSize="30sp" />
+
+
 
     </RelativeLayout>
 
