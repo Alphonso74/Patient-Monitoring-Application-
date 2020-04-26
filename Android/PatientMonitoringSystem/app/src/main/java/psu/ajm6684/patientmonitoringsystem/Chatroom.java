@@ -81,6 +81,7 @@ public class Chatroom extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 arrayList.remove(current_item);
                                 adapter.notifyDataSetChanged();
+                                Toast.makeText(Chatroom.this, "Chat deleted", Toast.LENGTH_SHORT).show();
 
                             }
                         })
@@ -157,6 +158,8 @@ public class Chatroom extends AppCompatActivity {
                 Map<String, Object> map = new HashMap<>();
                 map.put(e1.getText().toString(), "");
                 reference.updateChildren(map);
+
+                Toast.makeText(Chatroom.this, "Chat created ", Toast.LENGTH_SHORT).show();
 
             }
 

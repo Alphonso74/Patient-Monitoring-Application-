@@ -64,7 +64,6 @@ public class StartChat extends AppCompatActivity {
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
 
-                    //change this
                     Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
             }

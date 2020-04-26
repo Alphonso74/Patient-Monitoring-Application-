@@ -15,7 +15,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="#137169"
-        android:onClick="send"
+        android:onClick="Send"
         android:text="Send" />
 
     <EditText
@@ -41,18 +41,20 @@
         tools:ignore="OnClick" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" >
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="7dp">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView"
-            android:textColor="#F9A825"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
     </ScrollView>

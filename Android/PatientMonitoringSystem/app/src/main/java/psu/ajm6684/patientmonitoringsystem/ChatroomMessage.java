@@ -29,7 +29,7 @@ public class ChatroomMessage extends AppCompatActivity {
     TextView t1;
 
 
-    private String user_name, room_name, email;
+    private String user_name, room_name;
 
     DatabaseReference reference;
     String temp_key;
@@ -80,11 +80,7 @@ public class ChatroomMessage extends AppCompatActivity {
             }
         });
 
-
     }
-    //   public void previous(View view) {
-    //       startActivity(Chatroom.this, patientFeed.class);
-    //      }
 
     public void back (View view) {
         startActivity(new Intent(this, Chatroom.class));
@@ -99,9 +95,9 @@ public class ChatroomMessage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void send(View v)
+    public void Send(View v)
     {
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String,Object>  map = new HashMap<String,Object>();
         temp_key = reference.push().getKey();
         reference.updateChildren(map);
 
