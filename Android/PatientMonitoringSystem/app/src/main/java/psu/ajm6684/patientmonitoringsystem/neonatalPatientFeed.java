@@ -245,7 +245,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(neonatalPatientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(neonatalPatientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -1021,12 +1021,12 @@ public class neonatalPatientFeed extends AppCompatActivity {
                                         }
                                     });
 
-                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-
-                                        }
-                                    });
+//                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//
+//                                        }
+//                                    });
 
 
                                     menuDialog.show();

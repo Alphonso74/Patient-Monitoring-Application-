@@ -107,12 +107,12 @@ public class dataSimFeed extends AppCompatActivity {
                                     }
                                 });
 
-                                menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                });
+//                                menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//
+//                                    }
+//                                });
 
 
                                 menuDialog.show();
