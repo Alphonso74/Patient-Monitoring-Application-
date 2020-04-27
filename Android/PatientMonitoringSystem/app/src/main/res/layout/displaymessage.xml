@@ -15,19 +15,21 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="#137169"
-        android:onClick="Send"
-        android:text="Send" />
+        android:onClick="send"
+        android:text="Send"
+        tools:ignore="OnClick" />
+
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/editText2"
-        android:hint="Enter your message"
-        android:layout_alignTop="@+id/button2"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/button2"
-        android:textColor="@color/White"/>
-
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="2dp"
+        android:hint="Enter your message"
+        android:textColor="@color/White" />
 
     <Button
         android:id="@+id/back2feed"

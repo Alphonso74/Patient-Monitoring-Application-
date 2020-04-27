@@ -27,10 +27,8 @@ import java.util.Objects;
 public class ChatroomMessage extends AppCompatActivity {
     EditText e1;
     TextView t1;
-
-
-    private String user_name, room_name;
-
+    private String user_name;
+    private String room_name;
     DatabaseReference reference;
     String temp_key;
 
@@ -39,14 +37,14 @@ public class ChatroomMessage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displaymessage);
-      /*  e1 = (EditText) findViewById(R.id.editText2);*/
+        e1 = (EditText) findViewById(R.id.editText2);
         t1 = (TextView) findViewById(R.id.textView);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-      /*  user_name = Objects.requireNonNull(getIntent().getExtras().get("user_name")).toString();*/
+        user_name = Objects.requireNonNull(getIntent().getExtras().get("user_name")).toString();
         room_name = Objects.requireNonNull(getIntent().getExtras().get("room_name")).toString();
         reference = FirebaseDatabase.getInstance().getReference().child(room_name);
         setTitle(" Room - " + room_name);
@@ -95,7 +93,7 @@ public class ChatroomMessage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Send(View v)
+    public void send(View v)
     {
         Map<String,Object>  map = new HashMap<String,Object>();
         temp_key = reference.push().getKey();
@@ -128,5 +126,7 @@ public class ChatroomMessage extends AppCompatActivity {
             t1.append(chat_username + ": " +chat_msg + " \n");
         }
     }
+
+
 
 }
