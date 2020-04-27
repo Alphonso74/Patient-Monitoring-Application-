@@ -9,12 +9,13 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
+        android:layout_width="80dp"
+        android:layout_height="68dp"
+        android:layout_alignRight="@+id/textView23"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="387dp"
+        android:layout_marginStart="317dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="14dp"
         android:layout_marginRight="22dp"
@@ -26,10 +27,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button"
-        android:textColor = "#fff"
+        android:textColor = "@color/White"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="22dp" />
+        android:layout_marginTop="22dp"
+        />
 
     <TextView
         android:id="@+id/textView33"
@@ -41,7 +43,8 @@
         android:layout_marginTop="18dp"
         android:fontFamily="@font/holtwood_one_sc"
         android:text="Hospital Chatroom"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/White"/>
 
 </RelativeLayout>

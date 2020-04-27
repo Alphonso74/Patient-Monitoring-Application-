@@ -65,6 +65,7 @@ public class Chatroom extends AppCompatActivity {
         uid = user.getUid();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        
         l1.setAdapter(adapter);
 
         l1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
