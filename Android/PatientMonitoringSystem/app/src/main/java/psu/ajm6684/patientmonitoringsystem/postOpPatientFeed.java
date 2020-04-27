@@ -242,7 +242,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(postOpPatientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(postOpPatientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -1415,12 +1415,12 @@ public class postOpPatientFeed extends AppCompatActivity {
                                         }
                                     });
 
-                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-
-                                        }
-                                    });
+//                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//
+//                                        }
+//                                    });
 
 
                                     menuDialog.show();

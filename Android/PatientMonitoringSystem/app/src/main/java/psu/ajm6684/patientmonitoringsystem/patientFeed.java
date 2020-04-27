@@ -153,12 +153,12 @@ public class patientFeed extends AppCompatActivity {
                                         }
                                     });
 
-                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-
-                                        }
-                                    });
+//                                    menuDialog.setNegativeButton("Notify", new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//
+//                                        }
+//                                    });
 
 
                                     menuDialog.show();
@@ -340,7 +340,7 @@ public class patientFeed extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(patientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(patientFeed.this, "No network connectivity", Toast.LENGTH_SHORT).show();
             }
         });
 
