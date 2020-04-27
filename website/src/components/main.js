@@ -8,7 +8,8 @@ import Charles from './charles';
 import Logan from './logan';
 import DataSimulator from './datasimulator'
 import Dhruvil from './Dhruvil';
-
+import Documentation from './Documentation';
+import Support from './Support';
 
 import {Navigation} from "react-mdl";
 //import Resume from './resume';
@@ -29,6 +30,9 @@ const Main = () => (
       <Route path="/logan" component={Logan} />
       <Route path="/dhruvilkumar" component={Dhruvil} />
     <Route path="/datasimulator" component={DataSimulator} />
+      <Route path="/Documentation" component={Documentation} />
+      <Route path="/Support" component={Support} />
+
 
   </Switch>
 )

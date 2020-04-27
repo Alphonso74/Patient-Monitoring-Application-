@@ -11,16 +11,12 @@ class App extends Component {
     <Layout>
         <Header className="header-color" title={<Link style={{textDecoration: 'none', color: 'white'}} to="/">Home</Link>} scroll>
             <Navigation>
+
+
+                <Link to="/datasimulator">Try Me</Link>
+                <Link to="/Support">Support</Link>
+                <Link to="/Documentation">Documentation</Link>
                 <Link to="/aboutus">About Us</Link>
-                {/*<a href="patient-monitoring-syste-39706.firebaseapp.com" rel="noopener noreferrer" target="_blank">*/}
-                {/*    <i className="fa fa-github-square" aria-hidden="true" />*/}
-                {/*</a>*/}
-                <Link to="/datasimulator">Data Simulator</Link>
-                <Link to="/alphonso">Alphonso Mckenzie</Link>
-                <Link to="/sean">Sean Todd</Link>
-                <Link to="/charles">Charles Todd</Link>
-                <Link to="/logan">Logan Kollar</Link>
-                <Link to="/dhruvilkumar">Dhruvilkumar Joshi</Link>
 
 
 
@@ -29,13 +25,11 @@ class App extends Component {
         </Header>
         <Drawer title={<Link style={{textDecoration: 'none', color: 'black'}} to="/">Home</Link>}>
             <Navigation>
-              <Link to="/aboutus">About Us</Link>
-                <Link to="/datasimulator">Data Simulator</Link>
-                <Link to="/alphonso">Alphonso Mckenzie</Link>
-                <Link to="/sean">Sean Todd</Link>
-                <Link to="/charles">Charles Todd</Link>
-                <Link to="/logan">Logan Kollar</Link>
-                <Link to="/dhruvilkumar">Dhruvilkumar Joshi</Link>
+                <Link to="/datasimulator">Try Me</Link>
+                <Link to="/Support">Support</Link>
+                <Link to="/Documentation">Documentation</Link>
+                <Link to="/aboutus">About Us</Link>
+
 
             </Navigation>
         </Drawer>

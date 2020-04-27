@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 // import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
 import { Grid, Cell } from 'react-mdl';
-
-
 import patientP from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/patientplusimage.png';
+import { Link } from 'react-router-dom';
+
+
+
+
 
 //import picture from "patientPlusApp.png"
 // var imageName = require('./images/patientPlusApp.png')
 class About extends Component {
+
+
   render() {
+
     return(
         <div style={{paddingTop: '2em'}}>
           <Grid>
             <Cell col={4} style={{paddingLeft: '5em'}}>
-              <div style={{paddingLeft: '7em'}}>
+              <div style={{paddingLeft: '5em'}}>
                 <img
                     src={patientP}
                     alt="avatar"
@@ -40,8 +46,11 @@ class About extends Component {
               <h3>Patient Monitroing System</h3>
               <hr style={{borderTop: '3px solid #e22947'}} />
               <h4> Our team </h4>
-                <h6>Alphonso Mckenzie · Dhruvilkumar Joshi · Sean Todd · Charles Todd · Logan Kollar
-               </h6>
+                <h6> <Link style={{textDecoration: 'underline black', color: 'black'}} to="/alphonso">Alphonso Mckenzie</Link> ·
+                <Link style={{textDecoration: 'underline black', color: 'black'}} to="/sean">Sean Todd</Link> ·
+                <Link style={{textDecoration: 'underline black', color: 'black'}} to="/charles">Charles Todd</Link> ·
+                  <Link style={{textDecoration: 'underline black', color: 'black'}} to="/logan">Logan Kollar</Link> ·
+                <Link style={{textDecoration: 'underline black', color: 'black'}} to="/dhruvilkumar">Dhruvilkumar Joshi</Link> </h6>
 
 
               <h4>Our Idea</h4>
@@ -66,8 +75,6 @@ class About extends Component {
               <h4>Ideas For the Future</h4>
 
                 <p>We want to be able to eliminate chance for error going forward. We hope this can be achieved by being able to sync directly with the patient upon entry eliminating the need for data to be manually entered. Along with being able to sync directly to the monitors in the room more efficiently.  We want to be able to provide this App to hospitals in the region.</p>
-
-
 
             </Cell>
           </Grid>
