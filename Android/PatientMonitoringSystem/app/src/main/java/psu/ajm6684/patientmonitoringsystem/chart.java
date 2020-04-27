@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class chart extends Activity {
         setContentView(R.layout.createchart);
         Intent intent = getIntent();
         //final String pName = intent.getStringExtra("Patient Name");
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         final String pName = intent.getStringExtra("Patient Name");
         final String patientDescription = intent.getStringExtra("Patient Description");

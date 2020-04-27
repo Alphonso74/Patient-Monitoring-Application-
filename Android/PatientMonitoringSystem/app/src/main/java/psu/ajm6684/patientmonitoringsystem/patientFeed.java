@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Build;
@@ -194,6 +195,7 @@ public class patientFeed extends AppCompatActivity {
         final Intent intent = getIntent();
         feedType = intent.getStringExtra("Type");
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         feedTitle.setOnClickListener(new View.OnClickListener() {

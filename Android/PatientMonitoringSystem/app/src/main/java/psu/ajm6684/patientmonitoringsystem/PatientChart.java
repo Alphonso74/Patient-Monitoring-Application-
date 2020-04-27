@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.*;
 import android.view.ContextThemeWrapper;
@@ -48,6 +49,7 @@ public class PatientChart extends AppCompatActivity {
         setContentView(R.layout.chartfeed);
         Intent intent = getIntent();
        patientName = intent.getStringExtra("Patient Name");
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setUpView(patientName);
 

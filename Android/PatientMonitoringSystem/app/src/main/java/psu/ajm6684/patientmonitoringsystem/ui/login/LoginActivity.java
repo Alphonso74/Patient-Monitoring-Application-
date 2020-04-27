@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
 
