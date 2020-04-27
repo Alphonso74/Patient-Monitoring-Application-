@@ -64,7 +64,7 @@ public class Chatroom extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        adapter = new ArrayAdapter<String>(this, R.layout.custom_textview, arrayList);
 
         l1.setAdapter(adapter);
 

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1ea4cc7-3f5a-4d55-9bcc-70135dc5f604" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/PatientList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PatientList.js" afterDir="false" />
-    </list>
+    <list default="true" id="d1ea4cc7-3f5a-4d55-9bcc-70135dc5f604" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +97,7 @@
       <workItem from="1586736221099" duration="1534000" />
       <workItem from="1586799766734" duration="872000" />
       <workItem from="1586804740294" duration="236000" />
+      <workItem from="1588005845843" duration="2000" />
     </task>
     <servers />
   </component>

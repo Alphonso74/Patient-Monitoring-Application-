@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../simulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,6 +79,7 @@
       <workItem from="1585009783887" duration="1055000" />
       <workItem from="1585031476788" duration="164000" />
       <workItem from="1585952350263" duration="322000" />
+      <workItem from="1588022821383" duration="1051000" />
     </task>
     <servers />
   </component>
