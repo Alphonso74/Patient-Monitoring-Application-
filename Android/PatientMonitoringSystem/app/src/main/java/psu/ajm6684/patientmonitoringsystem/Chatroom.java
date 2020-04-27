@@ -65,6 +65,7 @@ public class Chatroom extends AppCompatActivity {
         uid = user.getUid();
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+
         l1.setAdapter(adapter);
 
         l1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -93,16 +94,16 @@ public class Chatroom extends AppCompatActivity {
         DocumentReference userDoc = users.document(uid);
 
         userDoc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                                                    DocumentSnapshot document = task.getResult();
+                DocumentSnapshot document = task.getResult();
 
-                                                    name = document.get("fullName").toString();
+                name = document.get("fullName").toString();
 
-                                                    e1.setText(name);
-                                                }
-                                            });
+                e1.setText(name);
+            }
+        });
 
                 reference = FirebaseDatabase.getInstance().getReference().getRoot();
                 get_username();
@@ -152,16 +153,6 @@ public class Chatroom extends AppCompatActivity {
             public void get_username() {
                 setTitle(name);
                     }
-
-            public void insert_data(View v) {
-
-                Map<String, Object> map = new HashMap<>();
-                map.put(e1.getText().toString(), "");
-                reference.updateChildren(map);
-
-                Toast.makeText(Chatroom.this, "Chat created ", Toast.LENGTH_SHORT).show();
-
-            }
 
 }
 

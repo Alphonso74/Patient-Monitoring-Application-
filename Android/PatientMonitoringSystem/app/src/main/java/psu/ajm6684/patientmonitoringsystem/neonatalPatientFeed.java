@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -101,6 +102,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
         e1 = (EditText) findViewById(R.id.editText);
         l1 = (ImageButton) findViewById(R.id.button_message);
         arrayList = new ArrayList<>();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         //         l1.setAdapter(adapter);
@@ -258,7 +260,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
                         Intent intent = new Intent(neonatalPatientFeed.this, Chatroom.class);
                         startActivity(intent);
-                Toast.makeText(neonatalPatientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(neonatalPatientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_LONG).show();
 
                     }
                 });

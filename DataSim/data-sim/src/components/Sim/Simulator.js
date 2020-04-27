@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {simUpdatePatient} from "../../store/actions/patientActions";
 import firebase from 'firebase';
 import 'firebase/firestore';
+import { Card } from 'react-materialize';
 
 class Simulator extends Component{
 
@@ -96,11 +97,15 @@ class Simulator extends Component{
     }
 
     render() {
-        return (
+        return(
             <div className="section">
-                <h4>Simulator Details</h4>
-                <div className="divider"/>
+                <Card actions={[
+                    <a id="start" href="#" onClick={ this.simButton } className="waves-effect waves-light light-green darken-2 btn">{this.state.text}</a>
+                ]}
+                      title="Simulator Details"
+                >
 
+                    <div className="divider" />
                     Randomization depends on triage tag.<br/>
                     Click patient name to bring up buttons for individual patients.<br/>
                     <div className="divider"/>
@@ -118,8 +123,7 @@ class Simulator extends Component{
                     1/3 chance of decrease by 0.1<br/>
                     1/3 chance of no change<br/>
 
-                <div className="divider"/>
-                <a id="start" href="#" onClick={ this.simButton } className="waves-effect waves-light light-green darken-2 btn">{this.state.text}</a>
+                </Card>
             </div>
         )
     }

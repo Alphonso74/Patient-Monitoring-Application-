@@ -94,7 +94,7 @@ class PatientList extends Component {
     }
 
     fever = () => {
-        let bt = 104;
+        let bt = 110;
         this.props.simUpdatePatient(this.props.patient, this.props.patient.rHeartRate, bt);
     }
 

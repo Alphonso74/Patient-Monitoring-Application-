@@ -2,6 +2,7 @@ package psu.ajm6684.patientmonitoringsystem;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class UProfile extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userprofile);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         firebaseAuth = FirebaseAuth.getInstance();

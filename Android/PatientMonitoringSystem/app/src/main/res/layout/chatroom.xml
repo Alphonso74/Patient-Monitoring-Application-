@@ -3,8 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
+    android:background="@drawable/bg1"
     tools:context=".Chatroom">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="80dp"
+        android:layout_height="68dp"
+        android:layout_alignRight="@+id/textView23"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="317dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="22dp"
+        android:onClick="back"
+        android:text="BACK" />
 
     <EditText
         android:id="@+id/editText"
@@ -13,43 +31,34 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="0dp"
-        android:hint="Enter chat name:" />
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="91dp"
+        android:hint="Logged in user:" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="318dp"
-        android:layout_marginRight="318dp"
-        android:onClick="back"
-        android:shadowColor="#AA0E0E"
-        android:text="BACK" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:onClick="insert_data"
-        android:text="ADD" />
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="582dp"
         android:layout_below="@+id/button"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="68dp"
+        android:textColor="@color/White" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/holtwood_one_sc"
+        android:text="Hospital Chatroom"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/White"/>
+
 </RelativeLayout>

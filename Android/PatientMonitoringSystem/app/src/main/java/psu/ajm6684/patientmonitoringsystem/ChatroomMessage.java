@@ -27,10 +27,8 @@ import java.util.Objects;
 public class ChatroomMessage extends AppCompatActivity {
     EditText e1;
     TextView t1;
-
-
-    private String user_name, room_name;
-
+    private String user_name;
+    private String room_name;
     DatabaseReference reference;
     String temp_key;
 
@@ -95,7 +93,7 @@ public class ChatroomMessage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Send(View v)
+    public void send(View v)
     {
         Map<String,Object>  map = new HashMap<String,Object>();
         temp_key = reference.push().getKey();
@@ -119,7 +117,7 @@ public class ChatroomMessage extends AppCompatActivity {
     }
     public void append_chat(DataSnapshot ss)
     {
-        String chat_msg,chat_username, email;
+        String chat_msg,chat_username;
         Iterator i = ss.getChildren().iterator();
         while(i.hasNext())
         {
@@ -128,5 +126,7 @@ public class ChatroomMessage extends AppCompatActivity {
             t1.append(chat_username + ": " +chat_msg + " \n");
         }
     }
+
+
 
 }
