@@ -39,14 +39,14 @@ public class ChatroomMessage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displaymessage);
-        e1 = (EditText) findViewById(R.id.editText2);
+      /*  e1 = (EditText) findViewById(R.id.editText2);*/
         t1 = (TextView) findViewById(R.id.textView);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        user_name = Objects.requireNonNull(getIntent().getExtras().get("user_name")).toString();
+      /*  user_name = Objects.requireNonNull(getIntent().getExtras().get("user_name")).toString();*/
         room_name = Objects.requireNonNull(getIntent().getExtras().get("room_name")).toString();
         reference = FirebaseDatabase.getInstance().getReference().child(room_name);
         setTitle(" Room - " + room_name);
@@ -119,7 +119,7 @@ public class ChatroomMessage extends AppCompatActivity {
     }
     public void append_chat(DataSnapshot ss)
     {
-        String chat_msg,chat_username, email;
+        String chat_msg,chat_username;
         Iterator i = ss.getChildren().iterator();
         while(i.hasNext())
         {

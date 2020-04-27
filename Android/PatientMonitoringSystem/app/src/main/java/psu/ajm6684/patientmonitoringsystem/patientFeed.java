@@ -353,7 +353,7 @@ public class patientFeed extends AppCompatActivity {
 
                 Intent intent = new Intent(patientFeed.this, Chatroom.class);
                 startActivity(intent);
-                Toast.makeText(patientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(patientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_LONG).show();
 
 
 

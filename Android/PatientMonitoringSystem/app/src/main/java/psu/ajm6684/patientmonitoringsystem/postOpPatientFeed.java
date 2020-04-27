@@ -255,7 +255,7 @@ public class postOpPatientFeed extends AppCompatActivity {
 
                 Intent intent = new Intent(postOpPatientFeed.this, Chatroom.class);
                 startActivity(intent);
-                Toast.makeText(postOpPatientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(postOpPatientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_LONG).show();
 
 
             }

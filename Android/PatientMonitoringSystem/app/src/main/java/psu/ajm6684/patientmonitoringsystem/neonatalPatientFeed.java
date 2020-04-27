@@ -258,7 +258,7 @@ public class neonatalPatientFeed extends AppCompatActivity {
 
                         Intent intent = new Intent(neonatalPatientFeed.this, Chatroom.class);
                         startActivity(intent);
-                Toast.makeText(neonatalPatientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(neonatalPatientFeed.this, "Welcome to the Hospital Chatroom! The Staff can communicate with and keep track of the patients and any emergencies.  ", Toast.LENGTH_LONG).show();
 
                     }
                 });
