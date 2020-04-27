@@ -15,4 +15,6 @@
     <color name="dialog_button">#f5ef3c</color>
     <color name="dialog_title">#be3c08</color>
     <color name="White">#FFFFFF</color>
+    <color name="pressed_color">#FFFFFF</color>
+    <color name="default_color">#4EA2E4</color>
 </resources>

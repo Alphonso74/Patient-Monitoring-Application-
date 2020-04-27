@@ -30,6 +30,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -41,7 +42,6 @@ public class Chatroom extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference users = db.collection("Users");
-
     DatabaseReference reference;
     ArrayList<String> arrayList;
     FirebaseUser user;
@@ -50,9 +50,7 @@ public class Chatroom extends AppCompatActivity {
     ListView l1;
     ArrayAdapter<String> adapter;
     String name;
-
-    EditText ee;
-
+    TextView currentuser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +58,8 @@ public class Chatroom extends AppCompatActivity {
 
         e1 = (EditText) findViewById(R.id.editText);
         l1 = (ListView) findViewById(R.id.listView);
+
+        currentuser = (TextView) findViewById(R.id.currentuser);
         arrayList = new ArrayList<>();
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -70,7 +70,7 @@ public class Chatroom extends AppCompatActivity {
 
         l1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
 
                 final int current_item = position;
 
@@ -82,8 +82,9 @@ public class Chatroom extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 arrayList.remove(current_item);
                                 adapter.notifyDataSetChanged();
-                                Toast.makeText(Chatroom.this, "Chat deleted", Toast.LENGTH_SHORT).show();
+                                view.setSelected(true);
 
+                                Toast.makeText(Chatroom.this, "Chat deleted", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("No", null)
@@ -101,7 +102,9 @@ public class Chatroom extends AppCompatActivity {
 
                 name = document.get("fullName").toString();
 
-                e1.setText(name);
+                currentuser.append("User:  " + name);
+
+
             }
         });
 
