@@ -11,21 +11,24 @@ import * as firebase from "firebase";
 
 
 class EditPatient extends Component {
-    state = {
-        patientName: this.props.patient.patientName,
-        description: this.props.patient.description,
-        height: this.props.patient.height,
-        weight: this.props.patient.weight,
-        rHeartRate: this.props.patient.rHeartRate,
-        triageTag:  this.props.patient.triageTag,
-        bodyTempature: this.props.patient.bodyTempature,
-        medications: this.props.patient.medications,
-        surgicaHistory: this.props.patient.surgicaHistory,
-        activeNurse: this.props.patient.activeNurse,
-        standingOrder: this.props.patient.standingOrder,
-        department: this.props.patient.department
-    };
 
+    constructor (props){
+        super (props);
+        this.state = {
+            patientName: props.patient.patientName,
+            description: props.patient.description,
+            height: props.patient.height,
+            weight: props.patient.weight,
+            rHeartRate: props.patient.rHeartRate,
+            triageTag: props.patient.triageTag,
+            bodyTempature: props.patient.bodyTempature,
+            medications: props.patient.medications,
+            surgicaHistory: props.patient.surgicaHistory,
+            activeNurse: props.patient.activeNurse,
+            standingOrder: props.patient.standingOrder,
+            department: props.patient.department
+        }
+    }
     handleClick = (e) => {
         switch(e.target.id){
             /*case "name":
@@ -92,7 +95,6 @@ class EditPatient extends Component {
         }
     };
     handleChange = (e) => {
-        this.enabler(false);
         this.setState({
             [e.target.id]: e.target.value
 
@@ -121,6 +123,7 @@ class EditPatient extends Component {
     }
 
     render() {
+        console.log(this.props);
         this.enabler(true);
         const tagOptions = [
             'Yellow', 'Green', 'Red', 'Black'
@@ -154,10 +157,13 @@ class EditPatient extends Component {
                             <span className="card-title center">
                                 <input id="delete" type="button" className='button' value='Delete' onChange={this.handleClick}/>
                                 <Link to={'/patient/' + this.props.match.params.id}><button>Back</button></Link>
-                                <input id="name" type="text" value={this.state.patientName} onChange={this.handleChange}/>
+                                <input id="name" type="text" defaultValue={this.state.patientName} onChange={this.handleChange}/>
                                 </span>
                             <p>Patient Description:
-                                <input id="desc" type="text" value={this.state.description} onChange={this.handleChange}/></p>
+                                <input id="desc" type="text"
+                                       defaultValue={this.state.description} onChange={this.handleChange.bind(this)}
+                                />
+                            </p>
                             <p>Height:
                                 <input id="height" type="text" value={this.state.height} onChange={this.handleChange}/></p>
                             <p>Weight:
