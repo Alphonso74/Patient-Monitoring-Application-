@@ -91,36 +91,30 @@ class CreatePatient extends Component {
                     <div className="input-field">
                         <label htmlFor="patientName">Patient Name</label>
                         <input type="text" id='patientName' onChange={this.handleChange} />
-
                     </div>
                     <div className="input-field">
                         <label htmlFor="description">Patient Description</label>
                         <textarea id="description" className="materialize-textarea" onChange={this.handleChange}></textarea>
-
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="height">Patient Height</label>
                         <input type="text" id='height' onChange={this.handleChange} />
-
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="weight">Patient Weight</label>
                         <input type="number" id='weight' onChange={this.handleChangeNumber1} />
-
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="rHeartRate">Patient Resting Heart Rate</label>
                         <input type="number" id='rHeartRate' onChange={this.handleChangeNumber2} />
-
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="triageTag">Triage Tag</label>
                         <Dropdown options={tagOptions} onChange={this.tagSelect} value={defaultTagOption} placeholder="Edit Triage Tag"/>
-
                     </div>
 
                     <div className="input-field">
@@ -131,19 +125,16 @@ class CreatePatient extends Component {
                     <div className="input-field">
                         <label htmlFor="bodyTempature">Body Temperature</label>
                         <input type="number" id='bodyTempature' onChange={this.handleChangeNumber3} />
-
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="medications">Current Medication (Separate With Commas)</label>
                         <input type="text" id='medications' onChange={this.handleChange} />
-
                     </div>
 
                     <div className="input-field">
                         <label htmlFor="surgicaHistory">Surgical History (Separate With Commas)</label>
                         <input type="text" id='surgicaHistory' onChange={this.handleChange} />
-
                     </div>
 
 

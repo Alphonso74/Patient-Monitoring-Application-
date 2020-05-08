@@ -44,10 +44,13 @@ class PatientDetails extends Component {
         if (patient) {
             return (
                 <div className="container section project-details">
+                    <h1 className="card-title center">{patient.patientName}</h1>
                     <div className="card z-depth-0">
-                        <div className="card-content">
-                            <span className="card-title center">{patient.patientName}
 
+                        <div className="card-content">
+
+                            {/*<div className="card-title center">{patient.patientName}</div>*/}
+                            <span className="card-title center">
                             <p>Patient Description: {patient.description}</p>
                             <p>Height: {patient.height}</p>
                             <p>Weight: {patient.weight}</p>
@@ -60,7 +63,7 @@ class PatientDetails extends Component {
                             <p>Surgical History: {patient.surgicaHistory}</p>
                             <p>Active Nurse: {patient.activeNurse}</p>
                                 <Link to={'/edit/'+ id} key={id}><input id="edit" type="button" className='button' value='Edit'/></Link>
-                            <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
+                                <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
                         </div>
                     </div>
                 </div>
