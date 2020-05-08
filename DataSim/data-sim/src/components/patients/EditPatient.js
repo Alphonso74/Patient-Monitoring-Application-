@@ -14,6 +14,7 @@ class EditPatient extends Component {
 
     constructor (props){
         super (props);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
             patientName: props.patient.patientName,
             description: props.patient.description,
@@ -182,7 +183,7 @@ class EditPatient extends Component {
                                 <input id="medications" type="text" defaultValue={this.state.medications} onChange={this.handleChange}/></p>
                             <p>Surgical History:
                                 <input id="surgicaHistory" type="text" defaultValue={this.state.surgicaHistory} onChange={this.handleChange}/></p>
-                            <p>Active Nurse: {patient.activeNurse}</p>
+                            <p>Active Nurse: {this.patient.activeNurse}</p>
                             <Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />
                             <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick} disabled={this.enabler()}/></p>
                         </div>

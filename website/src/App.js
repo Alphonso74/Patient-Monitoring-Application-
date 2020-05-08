@@ -19,8 +19,6 @@ class App extends Component {
                 <Link to="/aboutus">About Us</Link>
 
 
-
-
             </Navigation>
         </Header>
         <Drawer title={<Link style={{textDecoration: 'none', color: 'black'}} to="/">Home</Link>}>
