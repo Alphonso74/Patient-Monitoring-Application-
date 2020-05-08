@@ -169,19 +169,19 @@ class EditPatient extends Component {
                             <p>Weight:
                                 <input id="weight" type="text" value={this.state.weight} onChange={this.handleChange}/></p>
                             <p>Body Temperature:
-                                <input id="temp" type="text" value={this.state.bodyTempature} onChange={this.handleChange}/></p>
+                                <input id="temp" type="text" defaultValue={this.state.bodyTempature} onChange={this.handleChange}/></p>
                             <p>Heart Rate:
-                                <input id="hRate" type="text" value={this.state.rHeartRate} onChange={this.handleChange}/></p>
+                                <input id="hRate" type="text" defaultValue={this.state.rHeartRate} onChange={this.handleChange}/></p>
                             <p>Triage Tag:
                                 <Dropdown options={tagOptions} onChange={this.tagSelect} value={defaultTagOption} placeholder="Edit Triage Tag"/></p>
                             <p>Department:
                                 <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" /></p>
                             <p>Standing Order:
-                                <input id="order" type="text" value={this.state.standingOrder} onChange={this.handleChange} disabled={this.isDoc()}/></p>
+                                <input id="order" type="text" defaultValue={this.state.standingOrder} onChange={this.handleChange} disabled={this.isDoc()}/></p>
                             <p>Medications:
-                                <input id="meds" type="text" value={this.state.medications} onChange={this.handleChange}/></p>
+                                <input id="meds" type="text" defaultValue={this.state.medications} onChange={this.handleChange}/></p>
                             <p>Surgical History:
-                                <input id="surgHist" type="text" value={this.state.surgicaHistory} onChange={this.handleChange}/></p>
+                                <input id="surgHist" type="text" defaultValue={this.state.surgicaHistory} onChange={this.handleChange}/></p>
                             <p>Active Nurse: {patient.activeNurse}</p>
                             <Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />
                             <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick} disabled={this.enabler()}/></p>
