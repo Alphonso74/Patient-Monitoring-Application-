@@ -35,13 +35,13 @@ class Landing extends Component {
           <a href="https://github.com/Alphonso74/Patient-Monitoring-Application-" rel="noopener noreferrer" target="_blank">
             <i className="fa fa-github-square" aria-hidden="true" />
           </a>
+          <p>The Patient Monitoring System is a program to help hospital personnel manage their patients in an effective manner, while putting the convenience of patient information in arms reach at all point in time. </p>
 
 
           {/* Youtube */}
           <a href="https://www.youtube.com/" rel="noopener noreferrer" target="_blank">
             <i className="fa fa-youtube-square" aria-hidden="true" />
           </a>
-
 
 
         </div>
