@@ -23,6 +23,7 @@ class App extends Component {
               <Route path='/create' component={CreatePatient} />
               <Route path='/edit/:id' component={EditPatient} />
               <Route path='/ds' component={withRouter(Main)} />
+              {/*<Route path='/chat' component={Chat} />*/}
             </Switch>
           </div>
         </BrowserRouter>

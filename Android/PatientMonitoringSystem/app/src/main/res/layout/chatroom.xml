@@ -14,7 +14,7 @@
         android:layout_alignRight="@+id/textView23"
         android:layout_alignParentStart="true"
         android:backgroundTint="@color/cardview_shadow_end_color"
-
+        android:textColor="#fff"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="317dp"
@@ -24,18 +24,20 @@
         android:onClick="back"
         android:text="BACK" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="194dp"
+    <TextView
+        android:id="@+id/currentuser"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
         android:layout_height="48dp"
+        android:textSize="24sp"
+        android:textColor="#fff"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="9dp"
+        android:layout_marginStart="0dp"
         android:layout_marginLeft="9dp"
         android:layout_marginTop="91dp"
-        android:hint="Logged in user:" />
-
+        android:hint="Display username" />
 
     <ListView
         android:id="@+id/listView"
@@ -45,7 +47,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="68dp"
-        android:textColor="@color/White" />
+        android:textColor="@color/White"
+        />
 
     <TextView
         android:id="@+id/textView33"

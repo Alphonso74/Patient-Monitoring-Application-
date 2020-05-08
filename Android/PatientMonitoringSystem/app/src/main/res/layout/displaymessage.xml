@@ -30,18 +30,21 @@
         android:layout_marginBottom="2dp"
         android:hint="Enter your message"
         android:textColor="@color/White" />
-
     <Button
         android:id="@+id/back2feed"
-        android:layout_width="78dp"
-        android:layout_height="45dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="3dp"
-        android:background="#137169"
+        android:layout_width="80dp"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
         android:backgroundTint="@color/cardview_shadow_end_color"
+        android:textColor="#fff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="317dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="22dp"
         android:onClick="back"
-        android:text="Back"
-        tools:ignore="OnClick" />
+        android:text="BACK" />
 
     <ScrollView
         android:id="@+id/scrollView"
