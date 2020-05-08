@@ -17,10 +17,10 @@ class datasimulator extends Component {
             <div>
 
                 <Grid>
-                    <Cell col={4} >
-                        <div className="col s12 m7" style = {{display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center"}}>
+                    <Cell col={1} >
+                    </Cell>
+                    <Cell col={2} >
+                        <div >
                             <div className="card horizontal card-small">
                                 <div className="card-image">
                                     <img src={APK}/>
@@ -37,19 +37,19 @@ class datasimulator extends Component {
                         </div>
                     </Cell>
 
-                    <Cell className="right-col" col={4} style = {{paddingRight: "8m"}}>
+                    <Cell  col={4}>
 
                         <div className="col s12 m7">
                             <div className="card horizontal card-small">
                                 <div className="card-image">
-                                    <img src={WEB}/>
+                                    <img src={WEB} style={{height: 'auto',width: '80%'}}/>
                                 </div>
                                 <div className="card-stacked">
                                     <div className="card-content">
                                         <p>This is the Web-App Component, Simply click on the link below to head to the web-app.</p>
                                     </div>
                                     <div className="card-action">
-                                        <a href={ 'https://patient-monitoring-syste-39706.firebaseapp.com/' }>Download</a>
+                                        <a href={ 'https://patient-monitoring-syste-39706.firebaseapp.com/' }>Link</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ class datasimulator extends Component {
                         <div className="col s12 m7">
                             <div className="card horizontal card-small">
                                 <div className="card-image">
-                                    <img src={GIT}/>
+                                    <img src={GIT} style = {{height: 'auto',width: '40%'}}/>
                                 </div>
                                 <div className="card-stacked">
                                     <div className="card-content">

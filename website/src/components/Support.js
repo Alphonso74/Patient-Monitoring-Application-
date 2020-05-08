@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
 import { Grid, Cell } from 'react-mdl';
-import patientP from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/patientplusimage.png';
+import patientP from '../images/patientplusimage.png';
 import { Link } from 'react-router-dom';
 import im1 from '../images/IMG_7901.JPG';
 import im2 from '../images/IMG_7902.JPG';

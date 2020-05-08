@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
-import logo from "/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/patientplusimage.png"
+import logo from "../images/patientplusimage.png"
 
 
 class Landing extends Component {
