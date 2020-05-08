@@ -2,8 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6390407-e4a2-4cc9-8e91-3a9328ed6d00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Android/PatientMonitoringSystem/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/Sim/Feed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/Sim/Main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/Sim/PatientList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/Sim/Simulator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/auth/SignIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/auth/SignUp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/dashboard/Chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/dashboard/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/dashboard/Firebase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/dashboard/Notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/layout/Navbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/layout/SignedInLinks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/layout/SignedOutLinks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/AlertModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/CreatePatient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/DetailButtons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/EditPatient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/PatientDetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/PatientList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/components/patients/PatientSummary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/config/firebaseConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/history.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/reducers/authReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/reducers/patientReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/reducers/rootReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/registerServiceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/store/actions/authActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataSim/data-sim/public/src/store/actions/patientActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/Config/fbConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/Store/Actions/PatientActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/Store/Reducers/PatientReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/Store/Reducers/RootReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/Dhruvil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/Documentation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/Support.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/aboutus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/alphonso.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/charles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/datasimulator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/landingpage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/logan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/components/sean.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/firebase" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/Basic Gantt Chart(2).pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/Detailed Schedule- 488.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/Domain Model, Use Cases, Requirements.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/GUI Prototype-4.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7901.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7902.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7903.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7904.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7905.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7906.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7907.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7908.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7909.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/IMG_7910.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/JavFirst - Patient Monitoring System Proposal .pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/Portrait_Placeholder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/Robustness Diagram, Sequence Diagram, Static Class Diagram, Technical Architecure.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/patientPlusApp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/patientplusimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/images/picture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/src/registerServiceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataSim/data-sim/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/../DataSim/data-sim/firebase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,10 +113,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/images" />
     </key>
@@ -75,6 +160,7 @@
       <workItem from="1585952350263" duration="322000" />
       <workItem from="1588022821383" duration="1051000" />
       <workItem from="1588824146941" duration="30000" />
+      <workItem from="1588929780351" duration="2318000" />
     </task>
     <servers />
   </component>
