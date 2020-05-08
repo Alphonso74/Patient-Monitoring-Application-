@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
 import patientP from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/patientplusimage.png';
 import { Link } from 'react-router-dom';
-import im1 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7901.JPG';
-import im2 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7902.JPG';
-import im3 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7903.JPG';
-import im4 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7904.JPG';
-import im6 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7906.JPG';
-import im7 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7907.JPG';
-import im8 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7908.JPG';
-import im9 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7909.JPG';
-import im10 from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/IMG_7910.JPG';
+import im1 from '../images/IMG_7901.JPG';
+import im2 from '../images/IMG_7902.JPG';
+import im3 from '../images/IMG_7903.JPG';
+import im4 from '../images/IMG_7904.JPG';
+import im6 from '../images/IMG_7906.JPG';
+import im7 from '../images/IMG_7907.JPG';
+import im8 from '../images/IMG_7908.JPG';
+import im9 from '../images/IMG_7909.JPG';
+import im10 from '../images/IMG_7910.JPG';
 
 class Support extends Component {
 

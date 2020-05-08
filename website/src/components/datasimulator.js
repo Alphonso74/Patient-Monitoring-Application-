@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 import { Grid, Cell } from 'react-mdl';
 import 'materialize-css';
 import { Button, Card, Row, Col, CardMedia, CardText, CardActions,FlatButton,CardHeader } from 'react-materialize';
-import APK from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/APK.png';
-import WEB from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/Azure-Web-App.jpg';
+import APK from '../images/APK.png';
+import WEB from '../images/Azure-Web-App.jpg';
 
 class datasimulator extends Component {
     render(){

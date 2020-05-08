@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell, List, ListItem, ListItemContent } from 'react-mdl';
-import Loganpicture from '/Users/Logan.000/WebstormProjects/Patient-Monitor/website/src/images/Portrait_Placeholder.png'
+import Loganpicture from '../images/Portrait_Placeholder.png'
 
 
 
