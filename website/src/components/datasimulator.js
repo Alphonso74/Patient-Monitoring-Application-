@@ -75,7 +75,7 @@ class datasimulator extends Component {
                                             a.	This will clear the current caches within the project and update the project with an unique APK file for the device your running the application on.</p>
                                     </div>
                                     <div className="card-action">
-                                        <a href={ 'https://github.com/Alphonso74/Patient-Monitoring-Application' }>Link</a>
+                                        <a href={ 'https://github.com/Alphonso74/Patient-Monitoring-Application-' }>Link</a>
                                     </div>
                                 </div>
                             </div>
