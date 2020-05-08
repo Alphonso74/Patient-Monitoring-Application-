@@ -17,10 +17,10 @@ class datasimulator extends Component {
             <div>
 
                 <Grid>
-                    <Cell col={1} >
-                    </Cell>
-                    <Cell col={2} >
-                        <div >
+                    <Cell col={4} >
+                        <div className="col s12 m7" style = {{display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"}}>
                             <div className="card horizontal card-small">
                                 <div className="card-image">
                                     <img src={APK}/>
@@ -37,19 +37,19 @@ class datasimulator extends Component {
                         </div>
                     </Cell>
 
-                    <Cell  col={4}>
+                    <Cell className="right-col" col={4} style = {{paddingRight: "8m"}}>
 
                         <div className="col s12 m7">
                             <div className="card horizontal card-small">
                                 <div className="card-image">
-                                    <img src={WEB} style={{height: 'auto',width: '80%'}}/>
+                                    <img src={WEB}/>
                                 </div>
                                 <div className="card-stacked">
                                     <div className="card-content">
                                         <p>This is the Web-App Component, Simply click on the link below to head to the web-app.</p>
                                     </div>
                                     <div className="card-action">
-                                        <a href={ 'https://patient-monitoring-syste-39706.firebaseapp.com/' }>Link</a>
+                                        <a href={ 'https://patient-monitoring-syste-39706.web.app/' }>Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ class datasimulator extends Component {
                         <div className="col s12 m7">
                             <div className="card horizontal card-small">
                                 <div className="card-image">
-                                    <img src={GIT} style = {{height: 'auto',width: '40%'}}/>
+                                    <img src={GIT}/>
                                 </div>
                                 <div className="card-stacked">
                                     <div className="card-content">
@@ -75,7 +75,7 @@ class datasimulator extends Component {
                                             a.	This will clear the current caches within the project and update the project with an unique APK file for the device your running the application on.</p>
                                     </div>
                                     <div className="card-action">
-                                        <a href={ 'https://github.com/Alphonso74/Patient-Monitoring-Application' }>Link</a>
+                                        <a href={ 'https://github.com/Alphonso74/Patient-Monitoring-Application-' }>Link</a>
                                     </div>
                                 </div>
                             </div>

@@ -48,11 +48,13 @@ class PatientList extends Component {
 
           {this.state.patients && this.state.patients.map(patient => {
             if (this.state.deptChoice === 'All') {
-              return (
+              if (patient.department === 'General Care' || patient.department === 'Neonatal' || patient.department === 'Post-Operation') {
+                return (
                   <div>
                     <PatientSummary patient={patient}/>
                   </div>
-              )
+                )
+              }
             }
             else if (patient.department === this.state.deptChoice) {
               return (
