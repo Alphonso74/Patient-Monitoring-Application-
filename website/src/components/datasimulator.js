@@ -9,6 +9,7 @@ import 'materialize-css';
 import { Button, Card, Row, Col, CardMedia, CardText, CardActions,FlatButton,CardHeader } from 'react-materialize';
 import APK from '../images/APK.png';
 import WEB from '../images/Azure-Web-App.jpg';
+import GIT from '../images/github-mark.png';
 
 class datasimulator extends Component {
     render(){
@@ -55,6 +56,35 @@ class datasimulator extends Component {
                         </div>
 
                     </Cell>
+
+                    <Cell className="right-col" col={4} style = {{paddingRight: "8m"}}>
+
+                        <div className="col s12 m7">
+                            <div className="card horizontal card-small">
+                                <div className="card-image">
+                                    <img src={GIT}/>
+                                </div>
+                                <div className="card-stacked">
+                                    <div className="card-content">
+                                        <p>Another option for testing the Android application is to pull the current project from our GitHub repository, and running the application within Android Studio.
+                                            This can be done by, <br />
+                                            1.	 Going to https://github.com/Alphonso74/Patient-Monitoring-Application-<br />
+                                            2.	Clicking the green button labeled “Clone or Download”<br />
+                                            3.	Once the installation is complete, opening the project folder directly into Android studio should run it.<br />
+                                            4.	If the current APK file is throwing an error, simply go to File -> Invalidate Caches/Restart -> Invalidate and Restart<br />
+                                            a.	This will clear the current caches within the project and update the project with an unique APK file for the device your running the application on.</p>
+                                    </div>
+                                    <div className="card-action">
+                                        <a href={ 'https://github.com/Alphonso74/Patient-Monitoring-Application' }>Link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </Cell>
+
+
+
 
 
 
