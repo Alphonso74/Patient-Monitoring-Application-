@@ -49,7 +49,7 @@ class datasimulator extends Component {
                                         <p>This is the Web-App Component, Simply click on the link below to head to the web-app.</p>
                                     </div>
                                     <div className="card-action">
-                                        <a href={ 'https://patient-monitoring-syste-39706.firebaseapp.com/' }>Download</a>
+                                        <a href={ 'https://patient-monitoring-syste-39706.web.app/' }>Download</a>
                                     </div>
                                 </div>
                             </div>
