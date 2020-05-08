@@ -47,8 +47,7 @@ class PatientDetails extends Component {
                     <div className="card z-depth-0">
                         <div className="card-content">
                             <span className="card-title center">{patient.patientName}
-                                <Link to={'/edit/'+ id} key={id}><input id="edit" type="button" className='button' value='Edit'/></Link>
-                                <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
+
                             <p>Patient Description: {patient.description}</p>
                             <p>Height: {patient.height}</p>
                             <p>Weight: {patient.weight}</p>
@@ -60,6 +59,8 @@ class PatientDetails extends Component {
                             <p>Medications: {patient.medications}</p>
                             <p>Surgical History: {patient.surgicaHistory}</p>
                             <p>Active Nurse: {patient.activeNurse}</p>
+                                <Link to={'/edit/'+ id} key={id}><input id="edit" type="button" className='button' value='Edit'/></Link>
+                            <input id="delete" type="button" className='button' value='Delete' onClick={this.handleClick}/></span>
                         </div>
                     </div>
                 </div>
