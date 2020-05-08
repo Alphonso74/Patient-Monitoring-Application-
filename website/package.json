@@ -5,10 +5,10 @@
   "dependencies": {
     "firebase": "^7.14.0",
     "materialize": "^1.0.0",
-    "materialize-css": "^1.0.0",
+    "materialize-css": "^1.0.0-rc.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-materialize": "^3.8.3",
+    "react-materialize": "^3.8.10",
     "react-mdl": "^1.11.0",
     "react-pdf": "^4.1.0",
     "react-redux": "^7.2.0",

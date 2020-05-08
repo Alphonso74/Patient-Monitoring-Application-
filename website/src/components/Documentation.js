@@ -12,9 +12,6 @@ import { Link } from 'react-router-dom';
 import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-
-
-
 //import picture from "patientPlusApp.png"
 // var imageName = require('./images/patientPlusApp.png')
 class Documentation extends Component {
@@ -37,64 +34,56 @@ class Documentation extends Component {
             pageNumber: state.pageNumber + 1
         }))
     };
+
     render() {
         const { pageNumber, numPages } = this.state;
 
         return(
             <div style={{paddingTop: '2em'}}>
                 <Grid>
+
                     <Cell col={4} style={{paddingLeft: '5em'}}>
 
-                    </Cell>
+                </Cell>
 
                     <Cell className="right-col" col={8} style = {{paddingRight: "5em"}}>
 
                         <h4>Our Documentation</h4>
-                        <div>
-                            <nav>
-                                <button onClick={this.goToPrevPage}>Prev</button>
-                                <button onClick={this.goToNextPage}>Next</button>
-                            </nav>
 
-                            <div style={{ width: 600 }}>
+                        <h5> Proposal </h5>
+
+                        <div >
+                            <div >
                                 <Document
-                                    file={Proposal}
+                                          file={Proposal}
                                     onLoadSuccess={this.onDocumentLoadSuccess}
                                 >
-                                    <Page pageNumber={pageNumber} width={600} />
+                                    {[1,2,3].map(page => (
+                                        <Page pageNumber={page} />
+                                    ))}
                                 </Document>
                             </div>
-
-                            <p>
-                                Page {pageNumber} of {numPages}
-                            </p>
                         </div>
-                        <div>
-                            <nav>
-                                <button onClick={this.goToPrevPage}>Prev</button>
-                                <button onClick={this.goToNextPage}>Next</button>
-                            </nav>
 
-                            <div style={{ width: 600 }}>
+                        <h5> Schedule </h5>
+
+                        <div>
+                            <div >
                                 <Document
                                     file={Schedule}
                                     onLoadSuccess={this.onDocumentLoadSuccess}
                                 >
-                                    <Page pageNumber={pageNumber} width={600} />
+                                    {[1,2].map(page => (
+                                        <Page pageNumber={page} />
+                                    ))}
                                 </Document>
                             </div>
-
-                            <p>
-                                Page {pageNumber} of {numPages}
-                            </p>
                         </div>
-                        <div>
-                            <nav>
-                                <button onClick={this.goToPrevPage}>Prev</button>
-                                <button onClick={this.goToNextPage}>Next</button>
-                            </nav>
 
-                            <div style={{ width: 600 }}>
+                        <h5> Gnatt </h5>
+
+                        <div>
+                            <div>
                                 <Document
                                     file={Gnatt}
                                     onLoadSuccess={this.onDocumentLoadSuccess}
@@ -102,68 +91,53 @@ class Documentation extends Component {
                                     <Page pageNumber={pageNumber} width={600} />
                                 </Document>
                             </div>
-
-                            <p>
-                                Page {pageNumber} of {numPages}
-                            </p>
                         </div>
 
-                        <div>
-                            <nav>
-                                <button onClick={this.goToPrevPage}>Prev</button>
-                                <button onClick={this.goToNextPage}>Next</button>
-                            </nav>
+                        <h5> Domain Model, Use Cases, Requriements </h5>
 
-                            <div style={{ width: 600 }}>
+                        <div>
+
+                            <div>
                                 <Document
                                     file={Model}
                                     onLoadSuccess={this.onDocumentLoadSuccess}
                                 >
-                                    <Page pageNumber={pageNumber} width={600} />
+                                    {[1,2,3,4,5,6,7].map(page => (
+                                        <Page pageNumber={page} />
+                                    ))}
                                 </Document>
                             </div>
-
-                            <p>
-                                Page {pageNumber} of {numPages}
-                            </p>
                         </div>
-                        <div>
-                            <nav>
-                                <button onClick={this.goToPrevPage}>Prev</button>
-                                <button onClick={this.goToNextPage}>Next</button>
-                            </nav>
 
+                        <h5> Robust Diagrams </h5>
+
+                        <div>
                             <div style={{ width: 600 }}>
                                 <Document
                                     file={Robust}
                                     onLoadSuccess={this.onDocumentLoadSuccess}
                                 >
-                                    <Page pageNumber={pageNumber} width={600} />
+                                    {[1,2,3,4,5,6,7,8,9,10,11].map(page => (
+                                        <Page pageNumber={page} />
+                                    ))}
                                 </Document>
                             </div>
-
-                            <p>
-                                Page {pageNumber} of {numPages}
-                            </p>
                         </div>
-                        <div>
-                            <nav>
-                                <button onClick={this.goToPrevPage}>Prev</button>
-                                <button onClick={this.goToNextPage}>Next</button>
-                            </nav>
 
-                            <div style={{ width: 600 }}>
+                        <h5> GUI </h5>
+
+                        <div>
+                            <div>
                                 <Document
                                     file={GUI}
                                     onLoadSuccess={this.onDocumentLoadSuccess}
                                 >
-                                    <Page pageNumber={pageNumber} width={600} />
+                                    {[1].map(page => (
+                                        <Page pageNumber={page} />
+                                    ))}
                                 </Document>
                             </div>
 
-                            <p>
-                                Page {pageNumber} of {numPages}
-                            </p>
                         </div>
 
 

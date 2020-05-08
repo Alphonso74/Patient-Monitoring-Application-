@@ -7,7 +7,16 @@ import { compose } from "redux";
 class datasimulator extends Component {
     render(){
         return(
-            <div> </div>
+            <div>
+                <h4>
+                    MAke it Fancy
+                </h4>
+
+                <a>
+                    https://www.mediafire.com/file/l81f0dh3g4exo4o/app-debug.apk/file
+                </a>
+
+            </div>
         );
     }
 }
