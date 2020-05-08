@@ -8,7 +8,7 @@ class Landing extends Component {
     return(
       <div className="Home">
 
-      <div style={{width: '100%', margin: 'auto'}}>
+      <div style={{width: '100%', height: '100%',margin: 'auto'}}>
         <Grid className="landing-grid">
           <Cell col={12}>
             <img
@@ -23,6 +23,7 @@ class Landing extends Component {
             <hr/>
 
           <p>React | Java | JavaScript |  | Node | Firebase | Bootstrap | HTML/CSS</p>
+              <p>The Patient Monitoring System is an application used to improve and simplify the workflow of hospital personnel. </p>
 
         <div className="social-links">
 
@@ -31,17 +32,16 @@ class Landing extends Component {
           {/*  <i className="fa fa-linkedin-square" aria-hidden="true" />*/}
           {/*</a>*/}
 
-          {/* Github */}
-          <a href="https://github.com/Alphonso74/Patient-Monitoring-Application-" rel="noopener noreferrer" target="_blank">
-            <i className="fa fa-github-square" aria-hidden="true" />
-          </a>
-          <p>The Patient Monitoring System is a program to help hospital personnel manage their patients in an effective manner, while putting the convenience of patient information in arms reach at all point in time. </p>
+          {/*/!* Github *!/*/}
+          {/*<a href="https://github.com/Alphonso74/Patient-Monitoring-Application-" rel="noopener noreferrer" target="_blank">*/}
+          {/*  <i className="fa fa-github-square" aria-hidden="true" />*/}
+          {/*</a>*/}
 
 
           {/* Youtube */}
-          <a href="https://www.youtube.com/" rel="noopener noreferrer" target="_blank">
-            <i className="fa fa-youtube-square" aria-hidden="true" />
-          </a>
+          {/*<a href="https://www.youtube.com/" rel="noopener noreferrer" target="_blank">*/}
+          {/*  <i className="fa fa-youtube-square" aria-hidden="true" />*/}
+          {/*</a>*/}
 
 
         </div>
