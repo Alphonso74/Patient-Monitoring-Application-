@@ -45,7 +45,7 @@
   },
 
   "hosting": {
-    "public": "dist"
+    "public": "src"
 
 
   }
