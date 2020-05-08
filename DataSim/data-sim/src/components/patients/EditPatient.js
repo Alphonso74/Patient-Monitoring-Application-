@@ -157,10 +157,10 @@ class EditPatient extends Component {
                             <span className="card-title center">
                                 <input id="delete" type="button" className='button' value='Delete' onChange={this.handleClick}/>
                                 <Link to={'/patient/' + this.props.match.params.id}><button>Back</button></Link>
-                                <input id="name" type="text" defaultValue={this.state.patientName} onChange={this.handleChange}/>
+                                <input id="patientName" type="text" defaultValue={this.state.patientName} onChange={this.handleChange}/>
                                 </span>
                             <p>Patient Description:
-                                <input id="desc" type="text"
+                                <input id="description" type="text"
                                        defaultValue={this.state.description} onChange={this.handleChange.bind(this)}
                                 />
                             </p>
@@ -169,19 +169,19 @@ class EditPatient extends Component {
                             <p>Weight:
                                 <input id="weight" type="text" value={this.state.weight} onChange={this.handleChange}/></p>
                             <p>Body Temperature:
-                                <input id="temp" type="text" defaultValue={this.state.bodyTempature} onChange={this.handleChange}/></p>
+                                <input id="bodyTempature" type="text" defaultValue={this.state.bodyTempature} onChange={this.handleChange}/></p>
                             <p>Heart Rate:
-                                <input id="hRate" type="text" defaultValue={this.state.rHeartRate} onChange={this.handleChange}/></p>
+                                <input id="rHeartRate" type="text" defaultValue={this.state.rHeartRate} onChange={this.handleChange}/></p>
                             <p>Triage Tag:
                                 <Dropdown options={tagOptions} onChange={this.tagSelect} value={defaultTagOption} placeholder="Edit Triage Tag"/></p>
                             <p>Department:
                                 <Dropdown options={deptOptions} onChange={this.deptSelect} value={defaultDeptOption} placeholder="Select your department" /></p>
                             <p>Standing Order:
-                                <input id="order" type="text" defaultValue={this.state.standingOrder} onChange={this.handleChange} disabled={this.isDoc()}/></p>
+                                <input id="standingOrder" type="text" defaultValue={this.state.standingOrder} onChange={this.handleChange} disabled={this.isDoc()}/></p>
                             <p>Medications:
-                                <input id="meds" type="text" defaultValue={this.state.medications} onChange={this.handleChange}/></p>
+                                <input id="medications" type="text" defaultValue={this.state.medications} onChange={this.handleChange}/></p>
                             <p>Surgical History:
-                                <input id="surgHist" type="text" defaultValue={this.state.surgicaHistory} onChange={this.handleChange}/></p>
+                                <input id="surgicaHistory" type="text" defaultValue={this.state.surgicaHistory} onChange={this.handleChange}/></p>
                             <p>Active Nurse: {patient.activeNurse}</p>
                             <Dropdown options={nurseOptions} onChange={this.nurseSelect} placeholder="Assign Active Nurse" />
                             <p><input id="submit" type="button" className="button" value="Submit" onClick={this.handleClick} disabled={this.enabler()}/></p>
